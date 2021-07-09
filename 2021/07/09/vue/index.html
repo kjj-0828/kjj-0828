@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>webpack - Hexo</title>
+  <title>vue - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="webpack">
+            <span class="h2" id="subtitle" title="vue">
               
             </span>
 
@@ -173,7 +173,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-09 17:59" pubdate>
+      <time datetime="2021-07-09 18:11" pubdate>
         July 9, 2021 pm
       </time>
     </span>
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      140 字
+      540 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
@@ -225,19 +225,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">webpack</h1>
+            <h1 style="display: none">vue</h1>
             
             <div class="markdown-body">
-              <h2 id="一、webpack基础"><a href="#一、webpack基础" class="headerlink" title="一、webpack基础"></a>一、webpack基础</h2><ol>
-<li>webpack是前端资源加载或者打包的工具</li>
-<li>webpack 3.0 的版本没有问题</li>
-<li>webpack4.0 的版本需要安装webpack-cli </li>
-<li>全局安装在任何项目中都可以使用，如果是局部安装（本地安装）只能在当前项目中使用</li>
-<li>webpack可以打包js，json文件</li>
-<li>如果需要打包其他类型的文件，需要loader</li>
-<li>loader解决不了的问题，需要plugin插件</li>
-<li>webpack有entry入口文件，output出口文件。可以有多个入口，但是只能有一个出口</li>
+              <h2 id="一、vue简介"><a href="#一、vue简介" class="headerlink" title="一、vue简介"></a>一、vue简介</h2><ol>
+<li><p>vue是javascript框架</p>
+</li>
+<li><p>简化了Dom操作</p>
+</li>
+<li><p>响应式的数据交互</p>
+</li>
+<li><p>组件开发</p>
+</li>
 </ol>
+<h2 id="二、第一个vue程序"><a href="#二、第一个vue程序" class="headerlink" title="二、第一个vue程序"></a>二、第一个vue程序</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;!DOCTYPE html&gt;<br>&lt;html lang=<span class="hljs-string">&quot;en&quot;</span>&gt;<br>&lt;head&gt;<br>    &lt;meta charset=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;<br>    &lt;meta name=<span class="hljs-string">&quot;viewport&quot;</span> content=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;<br>    &lt;title&gt;第一个vue程序&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>        &#123;&#123;message&#125;&#125;<br>    &lt;/div&gt;<br>    &lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;<br>&lt;script src=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;</span>&gt;&lt;/script&gt;<br>    &lt;script&gt;<br>        <span class="hljs-keyword">var</span> app = <span class="hljs-keyword">new</span> Vue(&#123;<br>            el:<span class="hljs-string">&#x27;#app&#x27;</span>,<br>            data:&#123;<br>                message:<span class="hljs-string">&#x27;第一个vue程序&#x27;</span><br>            &#125;<br>        &#125;)<br>    &lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="三、el-挂载点"><a href="#三、el-挂载点" class="headerlink" title="三、el:挂载点"></a>三、el:挂载点</h2><p>可以使用id、class、标签选择器，但是一般选择id选择器</p>
+<h2 id="四、data：数据对象"><a href="#四、data：数据对象" class="headerlink" title="四、data：数据对象"></a>四、data：数据对象</h2><p>vue用到的数据定义在data中</p>
+<p>data中可以写复杂的数据类型</p>
+<p>渲染复杂的数据类型，遵守js语法即可</p>
+<h2 id="五、本地应用"><a href="#五、本地应用" class="headerlink" title="五、本地应用"></a>五、本地应用</h2><h2 id="六、vue指令"><a href="#六、vue指令" class="headerlink" title="六、vue指令"></a>六、vue指令</h2><p>一组带v-xxx的vue指令</p>
+<h2 id="v-text："><a href="#v-text：" class="headerlink" title="v-text："></a>v-text：</h2><p>v-text 会覆盖h2内部的值 </p>
+<h2 id="v-html"><a href="#v-html" class="headerlink" title="v-html:"></a>v-html:</h2><p>v-html和v-text的属性一样，但是在有html属性的时候，会渲染成html标签</p>
+<h2 id="v-on"><a href="#v-on" class="headerlink" title="v-on:"></a>v-on:</h2><p>为元素绑定事件，</p>
+<p>可以传入自定义的参数</p>
+<p>@keyup.enter=”” 按回车键触发事件</p>
+<h2 id="v-show"><a href="#v-show" class="headerlink" title="v-show:"></a>v-show:</h2><p>v-show 实质操纵的是元素的dispaly属性，在频繁显示和隐藏的时候，推荐使用</p>
+<h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if:"></a>v-if:</h2><p>v-if实质操纵的是Dom树，会有内存的损耗，一般不要用</p>
+<h2 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind:"></a>v-bind:</h2><p>可以设置元素的属性值，</p>
+<h2 id="v-for："><a href="#v-for：" class="headerlink" title="v-for："></a>v-for：</h2><p>一般和数组联合使用，实现循环</p>
+<p>v-for= “item in intArr  “    </p>
+<p>v-for=” （item,index ）in intArr”</p>
+<p>item代表的就是intArr里的值，</p>
+<h2 id="v-model"><a href="#v-model" class="headerlink" title="v-model:"></a>v-model:</h2><p>便捷的设置和获取表单元素的值</p>
+<p>绑定的数据会和表单元素的值相关联</p>
+<p>一变全变，相互影响</p>
+<h2 id="七、总结："><a href="#七、总结：" class="headerlink" title="七、总结："></a>七、总结：</h2><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">v-text：可以表示成<span class="hljs-comment">&#123;&#123; &#125;</span>&#125;<br><br>v-<span class="hljs-keyword">on</span>：可以表示成@ 为元素绑定事件的 绑定<span class="hljs-function"><span class="hljs-keyword">method</span>里的方法</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">v</span>-<span class="hljs-title">bind</span>：可以表示成：可以改变元素的值 绑定<span class="hljs-title">data</span>里的数据</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">v</span>-<span class="hljs-title">model</span>：实现数据的双向绑定</span><br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -249,7 +273,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/webpack/">webpack</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue/">vue</a>
                     
                   </div>
                 
@@ -276,15 +300,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/07/09/svg/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">svg</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2021/07/09/svg/">
+                        <span class="hidden-mobile">svg</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
