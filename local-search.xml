@@ -4,18 +4,18 @@
   
   
   <entry>
-    <title>日记孔晶晶</title>
-    <link href="/2021/07/09/%E6%97%A5%E8%AE%B0%E5%AD%94%E6%99%B6%E6%99%B6/"/>
-    <url>/2021/07/09/%E6%97%A5%E8%AE%B0%E5%AD%94%E6%99%B6%E6%99%B6/</url>
+    <title>webpack</title>
+    <link href="/2021/07/09/webpack/"/>
+    <url>/2021/07/09/webpack/</url>
     
-    <content type="html"><![CDATA[<p>你好的我饿按哦啊了</p>]]></content>
+    <content type="html"><![CDATA[<ol><li>webpack是前端资源加载或者打包的工具</li><li>webpack 3.0 的版本没有问题</li><li>webpack4.0 的版本需要安装webpack-cli </li><li>全局安装在任何项目中都可以使用，如果是局部安装（本地安装）只能在当前项目中使用</li><li>webpack可以打包js，json文件</li><li>如果需要打包其他类型的文件，需要loader</li><li>loader解决不了的问题，需要plugin插件</li><li>webpack有entry入口文件，output出口文件。可以有多个入口，但是只能有一个出口</li></ol>]]></content>
     
     
     <categories>
       
-      <category>日记</category>
+      <category>前端学习</category>
       
-      <category>前端日记</category>
+      <category>webpack</category>
       
     </categories>
     
@@ -24,61 +24,9 @@
       
       <tag>前端笔记</tag>
       
-      <tag>Vue</tag>
+      <tag>Vue学习</tag>
       
     </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>kongjj的日记</title>
-    <link href="/2021/07/09/kongjj%E7%9A%84%E6%97%A5%E8%AE%B0/"/>
-    <url>/2021/07/09/kongjj%E7%9A%84%E6%97%A5%E8%AE%B0/</url>
-    
-    <content type="html"><![CDATA[<p>我祭坛细腻和那</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>1123313</title>
-    <link href="/2021/07/09/1123313/"/>
-    <url>/2021/07/09/1123313/</url>
-    
-    <content type="html"><![CDATA[<p>121213232132142141431413414</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>1</title>
-    <link href="/2021/07/09/1/"/>
-    <url>/2021/07/09/1/</url>
-    
-    <content type="html"><![CDATA[<p>不想写了</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/2021/07/09/hello-world/"/>
-    <url>/2021/07/09/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Hello world 个屁！</p>]]></content>
-    
-    
     
   </entry>
   
