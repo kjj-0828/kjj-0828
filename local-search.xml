@@ -8,7 +8,7 @@
     <link href="/2021/07/09/webpack/"/>
     <url>/2021/07/09/webpack/</url>
     
-    <content type="html"><![CDATA[<ol><li>webpack是前端资源加载或者打包的工具</li><li>webpack 3.0 的版本没有问题</li><li>webpack4.0 的版本需要安装webpack-cli </li><li>全局安装在任何项目中都可以使用，如果是局部安装（本地安装）只能在当前项目中使用</li><li>webpack可以打包js，json文件</li><li>如果需要打包其他类型的文件，需要loader</li><li>loader解决不了的问题，需要plugin插件</li><li>webpack有entry入口文件，output出口文件。可以有多个入口，但是只能有一个出口</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、webpack基础"><a href="#一、webpack基础" class="headerlink" title="一、webpack基础"></a>一、webpack基础</h2><ol><li>webpack是前端资源加载或者打包的工具</li><li>webpack 3.0 的版本没有问题</li><li>webpack4.0 的版本需要安装webpack-cli </li><li>全局安装在任何项目中都可以使用，如果是局部安装（本地安装）只能在当前项目中使用</li><li>webpack可以打包js，json文件</li><li>如果需要打包其他类型的文件，需要loader</li><li>loader解决不了的问题，需要plugin插件</li><li>webpack有entry入口文件，output出口文件。可以有多个入口，但是只能有一个出口</li></ol>]]></content>
     
     
     <categories>
