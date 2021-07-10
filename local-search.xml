@@ -8,7 +8,7 @@
     <link href="/2021/07/10/ts%E7%AE%80%E4%BB%8B/"/>
     <url>/2021/07/10/ts%E7%AE%80%E4%BB%8B/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、ts的了解"><a href="#一、ts的了解" class="headerlink" title="一、ts的了解"></a>一、ts的了解</h2><ol><li>ts是添加了类型系统的js，适合任何项目</li><li>ts是一门静态类型，弱类型语言<ul><li>动态类型是在运行时才会进行类型检查</li><li>静态类型是在编译阶段就能确定每个变量的类型</li><li>弱类型是允许隐式转换</li><li>强类型是不允许隐式转换，</li><li>ts和js都是弱类型，python是强类型转换</li></ul></li><li>ts完全兼容js</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、ts简介"><a href="#一、ts简介" class="headerlink" title="一、ts简介"></a>一、ts简介</h2><ol><li><p>ts是添加了类型系统的js，适合任何项目</p></li><li><p>ts是一个静态类型，弱类型语言</p><p>动态类型：是运行时才做类型检查(js)</p><p>静态类型：是编译的时候就去做类型检查(ts)</p><p>弱类型：是允许隐式转换</p><p>强类型：不允许类型转换(python)</p></li><li><p>ts完全兼容js</p></li></ol>]]></content>
     
     
     <categories>
