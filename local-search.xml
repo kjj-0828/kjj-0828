@@ -4,40 +4,11 @@
   
   
   <entry>
-    <title>ts</title>
-    <link href="/2021/07/11/ts/"/>
-    <url>/2021/07/11/ts/</url>
+    <title>hellots</title>
+    <link href="/2021/07/11/hellots/"/>
+    <url>/2021/07/11/hellots/</url>
     
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>前端学习</category>
-      
-      <category>ts</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>前端笔记</tag>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>ts简介</title>
-    <link href="/2021/07/10/hello%20ts/"/>
-    <url>/2021/07/10/hello%20ts/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一、第一个ts"><a href="#一、第一个ts" class="headerlink" title="一、第一个ts"></a>一、第一个ts</h2><ol><li><p>全局安装ts    npm install -g typescript</p></li><li><p>vscode 环境下运行ts文件</p></li><li><p>编写第一个ts文件，在终端输入tsc hello.ts 去编译文件 ，会自动生成hello.js 文件</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">/* 编译成功 */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params">person</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello&#x27;</span> + person;<br>&#125;<br><span class="hljs-keyword">var</span> user = <span class="hljs-string">&#x27;Tom&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(sayHello(user));<br><span class="hljs-comment">/*编译出错 */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span> (<span class="hljs-params">person : <span class="hljs-built_in">string</span></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello&#x27;</span> + person;<br>&#125;<br><span class="hljs-keyword">let</span> user = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>];<br><span class="hljs-built_in">console</span>.log(sayHello(user));<br></code></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Hello.js 中的代码</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params">person</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello&#x27;</span> + person;<br>&#125;<br><span class="hljs-keyword">var</span> user = <span class="hljs-string">&#x27;Tom&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(sayHello(user));<br></code></pre></td></tr></table></figure><ol><li>ts会在编译的时候对类型进行静态检查，如果有错，编译的时候就会报错，但是还是会生成相应的js文件，如果不想生成js，在tsconfig.json中配置noEmitOnError即可</li></ol></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、第一个ts"><a href="#一、第一个ts" class="headerlink" title="一、第一个ts"></a>一、第一个ts</h2><ol><li><p>全局安装ts    npm install -g typescript</p></li><li><p>vscode 环境下运行ts文件</p></li><li><p>编写第一个ts文件，在终端输入tsc hello.ts 去编译文件 ，会自动生成hello.js 文件</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">/* 编译成功 */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params">person</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello&#x27;</span> + person;<br>&#125;<br><span class="hljs-keyword">var</span> user = <span class="hljs-string">&#x27;Tom&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(sayHello(user));<br><span class="hljs-comment">/*编译出错 */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span> (<span class="hljs-params">person : <span class="hljs-built_in">string</span></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello&#x27;</span> + person;<br>&#125;<br><span class="hljs-keyword">let</span> user = [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>];<br><span class="hljs-built_in">console</span>.log(sayHello(user));<br></code></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Hello.js 中的代码</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sayHello</span>(<span class="hljs-params">person</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Hello&#x27;</span> + person;<br>&#125;<br><span class="hljs-keyword">var</span> user = <span class="hljs-string">&#x27;Tom&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(sayHello(user));<br></code></pre></td></tr></table></figure></li><li><p>ts会在编译的时候对类型进行静态检查，如果有错，编译的时候就会报错，但是还是会生成相应的js文件，如果不想生成js，在tsconfig.json中配置noEmitOnError即可</p></li></ol>]]></content>
     
     
     <categories>
