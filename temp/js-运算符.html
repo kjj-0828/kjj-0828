@@ -18,9 +18,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>Categories - ts基础 - Hexo</title>
+  <title>运算符 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 
@@ -142,12 +156,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/bg/example.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Category - ts基础">
+            <span class="h2" id="subtitle" title="运算符">
               
             </span>
 
@@ -171,49 +185,47 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">5 posts in total.</p>
-  <hr>
-  
-  
-    
-      
-      <p class="h5">2021</p>
-    
-    <a href="/2021/07/12/ts-%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">类型断言</span>
-      <time style="float: right;">07-12</time>
-    </a>
-  
-    
-    <a href="/2021/07/12/ts-%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">函数类型</span>
-      <time style="float: right;">07-12</time>
-    </a>
-  
-    
-    <a href="/2021/07/12/ts-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">数组类型</span>
-      <time style="float: right;">07-12</time>
-    </a>
-  
-    
-    <a href="/2021/07/11/ts-%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">对象类型</span>
-      <time style="float: right;">07-11</time>
-    </a>
-  
-    
-    <a href="/2021/07/11/ts-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">原始数据类型</span>
-      <time style="float: right;">07-11</time>
-    </a>
-  
-</div>
+<article class="page-content">
+  <h2 id="一、加法运算符（算术运算符）"><a href="#一、加法运算符（算术运算符）" class="headerlink" title="一、加法运算符（算术运算符）"></a>一、加法运算符（算术运算符）</h2><p>boolean会转换成数值型，在做加法</p>
+<p>string类型做加法就是进行连接操作</p>
+<p>到底是执行加法还是连接会在运行时决定，这种现象叫做”重载”,</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-number">3</span> + <span class="hljs-number">4</span> + <span class="hljs-string">&#x27;5&#x27;</span><br><span class="hljs-string">&quot;75&quot;</span><br><span class="hljs-string">&#x27;3&#x27;</span> + <span class="hljs-number">4</span> +<span class="hljs-number">5</span><br><span class="hljs-string">&quot;345&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>只有加法有重载，其他的算术运算没有</p>
+<p>对象相加会先转换成原始类型的值在相加</p>
+<p>对象转换成原始类型的原则是先调用valuesof（），</p>
+<p>valuesof（）总是返回对象本身，在调用对象的toString（）方法，将其转成字符串</p>
+<h2 id="二、比较运算符"><a href="#二、比较运算符" class="headerlink" title="二、比较运算符"></a>二、比较运算符</h2><p>相等比较的是值</p>
+<p>严格相等比较的是类型和值</p>
+<p>当都是原始类型值的时候，转成数值在比较</p>
+<p>如果是对象，转成原始类型在比较</p>
+<p>undefined和null他们自身比较，或者互相比较是true，其他时候都是false</p>
+<p>相等运算符存在问题，推荐使用严格相等</p>
+<p>比如: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-number">2</span> == <span class="hljs-keyword">true</span><br><span class="hljs-keyword">false</span><br><span class="hljs-number">2</span> == <span class="hljs-keyword">false</span><br><span class="hljs-keyword">false</span><br></code></pre></td></tr></table></figure>
 
 
 
+<h2 id="三、布尔运算符"><a href="#三、布尔运算符" class="headerlink" title="三、布尔运算符"></a>三、布尔运算符</h2><p>! 取反   !! x 等价于 Boolean（x）</p>
+<p>&amp;&amp; 且  如果第一个表示式是false ，返回第一个表达式的值，如果第一个是true，返回第二个表达式的值</p>
+<p>if（x） { doSometing（x） } 等价于 x &amp;&amp; doSomething（x） （短路写法）</p>
+<p>|| 或     如果第一个表达式的值是true，返回第一个表达式的值，如果第一个表达式的值是false，返回第二个表达式  </p>
+<p>text == text || ‘’ （短路写法）</p>
+<p>？ ： 三目运算符</p>
+<h2 id="四、二进制运算符"><a href="#四、二进制运算符" class="headerlink" title="四、二进制运算符"></a>四、二进制运算符</h2><p>| 或 </p>
+<p>&amp; 与</p>
+<p>~ 否 （取反 0 变1 1 变0 ）</p>
+<p>^ 异或 （不同取1 相同取0）</p>
+<p>&lt;&lt; 左移 变大 左移一位乘以2</p>
+<p>&lt;&lt; 右移 变小 右移一位除以2</p>
+<p>&lt;&lt;&lt; 头部补零 得到的都是正数，不管符号位</p>
+<h2 id="五、其他运算符"><a href="#五、其他运算符" class="headerlink" title="五、其他运算符"></a>五、其他运算符</h2><p>void（）：执行一个表达式，不返回任何值，或者说返回的是undefined</p>
+<p>逗号：返回最后一个表达式的值</p>
+<p>圆括号：运算级最高</p>
 
+
+  
+</article>
 
               </div>
             </div>
@@ -302,6 +314,8 @@
 
 
 
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 

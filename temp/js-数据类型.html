@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>ts简介 - Hexo</title>
+  <title>数据类型 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -34,8 +34,6 @@
     
   
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -64,7 +62,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -158,51 +156,14 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/bg/example.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ts简介">
+            <span class="h2" id="subtitle" title="数据类型">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-10 22:57" pubdate>
-        July 10, 2021 pm
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      92 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      1
-       分钟
-    </span>
-  
-
-  
-  
-</div>
 
             
           </div>
@@ -215,112 +176,69 @@
 
   <main>
     
-      
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">ts简介</h1>
-            
-            <div class="markdown-body">
-              <h2 id="一、ts简介"><a href="#一、ts简介" class="headerlink" title="一、ts简介"></a>一、ts简介</h2><ol>
-<li><p>ts是添加了类型系统的js，适合任何项目</p>
-</li>
-<li><p>ts是一个静态类型，弱类型语言</p>
-<p>动态类型：是运行时才做类型检查(js)</p>
-<p>静态类型：是编译的时候就去做类型检查(ts)</p>
-<p>弱类型：是允许隐式转换</p>
-<p>强类型：不允许类型转换(python)</p>
-</li>
-<li><p>ts完全兼容js</p>
-</li>
-</ol>
+<article class="page-content">
+  <h2 id="一、js的数据类型"><a href="#一、js的数据类型" class="headerlink" title="一、js的数据类型"></a>一、js的数据类型</h2><p>（1）Number (整数和小数) </p>
+<p>（2）String </p>
+<p>（3）Boolean </p>
+<p>（4）null </p>
+<p>（5）undefine </p>
+<p>（6）object（狭义的对象、Array、function）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">typeof</span> <span class="hljs-number">1</span><br><span class="hljs-string">&quot;number&quot;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-string">&quot;123&quot;</span><br><span class="hljs-string">&quot;string&quot;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-literal">true</span><br><span class="hljs-string">&quot;boolean&quot;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span><br><span class="hljs-string">&quot;undefined&quot;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span><br><span class="hljs-string">&quot;object&quot;</span><br><span class="hljs-keyword">typeof</span> [] <br><span class="hljs-string">&quot;object&quot;</span><br><span class="hljs-keyword">typeof</span> &#123;&#125;<br><span class="hljs-string">&quot;object&quot;</span><br><span class="hljs-keyword">typeof</span> <span class="hljs-built_in">Object</span><br><span class="hljs-string">&quot;function&quot;</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span> (<span class="hljs-params"></span>) </span>&#123;&#125;<br><span class="hljs-keyword">typeof</span> f<br><span class="hljs-string">&quot;function&quot;</span><br></code></pre></td></tr></table></figure>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E7%AE%80%E4%BB%8B/">ts简介</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
-                    
-                  </div>
-                
+
+
+<h2 id="二、null和undefined"><a href="#二、null和undefined" class="headerlink" title="二、null和undefined"></a>二、null和undefined</h2><p>null 在转换成数值是0，undefined 在转换成数值是NaN</p>
+<p>null和undefined的比较</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span><br><span class="hljs-literal">true</span><br><span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span> <br>    <br><span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<p>只有这6种类型被认为是false：null、undefined、””、’’、0、NaN</p>
+<h2 id="三、数值型"><a href="#三、数值型" class="headerlink" title="三、数值型"></a>三、数值型</h2><p>parseInt将字符串转换成数值型，</p>
+<p>parseInt的返回值类型只可能是数值或者NaN，</p>
+<p>如果一个参数不是字符串，会先转成字符串再转换成数值</p>
+<p>parseFloat将字符串转成字符型</p>
+<p>isFinite() 返回布尔值，判断一个值是不是正常的数值</p>
+<h2 id="四、字符型"><a href="#四、字符型" class="headerlink" title="四、字符型"></a>四、字符型</h2><p>字符串和字符数组，转义字符，base64转码，js返回的字符串长度可能是不一样的</p>
+<h2 id="五、对象"><a href="#五、对象" class="headerlink" title="五、对象"></a>五、对象</h2><p>(for …in ) 遍历对象的属性，但是in无法区别自身的属性，可以加入hasOwnProperty判断是不是自身的属性</p>
+<p>with语句不建议使用</p>
+<h2 id="六、函数"><a href="#六、函数" class="headerlink" title="六、函数"></a>六、函数</h2><ul>
+<li><p>函数是一种特殊的值</p>
+</li>
+<li><p>函数的特点是子集可以一直调用父级的内部变量，js特有的链式作用域</p>
+</li>
+<li><p>闭包是函数内部和外部连接起来的桥梁</p>
+</li>
+<li><p>闭包：在函数内部定义一个函数</p>
+</li>
+<li><p>闭包作用：读取外部函数内部的变量，</p>
+</li>
+<li><p>```js<br>function a (){<br>var n =1;<br>function b () {<br> console.log(n)<br>}<br>return b<br>}<br>var res = a();<br>res()</p>
+<p>VM2106:4 1</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><br>  <br><br>- 让这些变量一些保留在内存中，<br><br>- 封装对象的私有属性和私有方法<br><br>- ```js<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">person</span> <span class="hljs-params">(name)</span></span>&#123;<br>  <span class="hljs-keyword">var</span> _age ;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAge</span> <span class="hljs-params">(n)</span></span>&#123;<br>  _age = n;<br>  &#125;<br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAge</span> <span class="hljs-params">()</span></span>&#123;<br>   <span class="hljs-keyword">return</span> _age;<br>  &#125;<br>  <span class="hljs-keyword">return</span> &#123;<br>  name:name,<br>  getAge:getAge,<br>  setAge:setAge<br>  &#125;;<br>  &#125;<br>  <br>  <span class="hljs-keyword">var</span> p1 = person(<span class="hljs-string">&quot;张三&quot;</span>);<br>  p1.setAge(<span class="hljs-number">25</span>);<br>  p1.getAge()<br>  <br>  <span class="hljs-number">25</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="七、数组"><a href="#七、数组" class="headerlink" title="七、数组"></a>七、数组</h2><p>数组的本质是一种对象，</p>
+<p>数组的遍历可以用forEach方法，</p>
+<p>任何类型都可以放入数组中，</p>
+<p>可以使用Array.prototype.sclice.call() 把类似数组转成数组，</p>
+<p>可以使用Array.prototype.forEach.call()把类似数组转成数组</p>
+
+
+  
+</article>
+
               </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/07/11/ts-hellots/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">hellots</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/07/10/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/">
-                        <span class="hidden-mobile">师姐分享</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -400,11 +318,7 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 
