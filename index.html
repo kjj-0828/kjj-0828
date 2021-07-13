@@ -182,18 +182,76 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/13/ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" target="_self">
-          ts-类与接口
+        <a href="/2021/07/13/ts-%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/" target="_self">
+          ts-声明合并
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/07/13/ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" target="_self">
+        <a href="/2021/07/13/ts-%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/" target="_self">
           
           
             
           
-          一、类
+          一、函数的合并123456789function reverse(x: number): number;function reverse(x: string): string;function reverse(x: number | string): number | string &#123;    if (typeof x === &#x27;number&#x27;) &#123;     
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-13 09:58" pubdate>
+              2021-07-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6/">ts进阶</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
+            
+              <a href="/tags/Ts/">Ts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/13/ts-%E6%B3%9B%E5%9E%8B/" target="_self">
+          ts-泛型
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/13/ts-%E6%B3%9B%E5%9E%8B/" target="_self">
+          
+          
+            
+          
+          一、泛型
+小例
+1234567891011/* 小例 */function createArray(length: number, value: any): Array&lt;any&gt; &#123;  let result = [];  for(let i=0;i&lt;length;i++)&#123;      result[i]= value;  &#125;  return resu
         </a>
       </p>
 
@@ -329,6 +387,68 @@
 二、字符串字面量类型
 字符串字面量类型用来约束取值只能是某几个字符串中的一个
 1234567
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-13 09:58" pubdate>
+              2021-07-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6/">ts进阶</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
+            
+              <a href="/tags/Ts/">Ts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/13/ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" target="_self">
+          ts-类与接口
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/13/ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" target="_self">
+          
+          
+            
+          
+          一、类
+举例：
+防盗门是门的子类，
+防盗门有报警的功能
+车有报警的功能
+报警提取成接口，防盗门和车都去实现他
+12345678910111213141516171819/* 类和接口 */interface Alarm &#123;    alert(): void;&#125;class Door &#123;&#125;class SecurityDoor extends Door imple
         </a>
       </p>
 
@@ -672,126 +792,6 @@ ts的函数声明
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/11/ts-%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" target="_self">
-          ts-对象类型
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/11/ts-%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B/" target="_self">
-          
-          
-            
-          
-          一、对象类型-接口
-ts中对象通过接口来实现
-
-确定属性：
-12345678interface Person &#123;    name:string;    age:number;&#125;let tom:Person = &#123;    name:&#x27;Tom&#x27;,    age:25&#125;
-定义了一个接口Person,定义了一个变量：tom ,他的类型是Perso
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-11 22:31" pubdate>
-              2021-07-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80/">ts基础</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
-            
-              <a href="/tags/Ts/">Ts</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/11/ts-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_self">
-          ts-原始数据类型
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/11/ts-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_self">
-          
-          
-            
-          
-          一、boolean类型
- boolean是最基本的数据类型，boolean是js的基本类型，Boolean是js的构造函数
-
-12345678910var createdByNewBoolean = new Boolean(1);console.log(typeof createdByNewBoolean);输出：object//直接调用Boolean 也可以返回一个boolean类型let cr
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-11 14:27" pubdate>
-              2021-07-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80/">ts基础</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
-            
-              <a href="/tags/Ts/">Ts</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -821,7 +821,7 @@ ts中对象通过接口来实现
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -830,7 +830,7 @@ ts中对象通过接口来实现
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
