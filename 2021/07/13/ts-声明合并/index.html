@@ -68,7 +68,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>kjj</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -170,6 +170,11 @@
             
               <div class="mt-3">
   
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      John Doe
+    </span>
+  
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
@@ -202,6 +207,14 @@
 
   
   
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -226,6 +239,12 @@
           <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">ts-声明合并</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 13, 2021 pm
+                
+              </p>
             
             <div class="markdown-body">
               <h2 id="一、函数的合并"><a href="#一、函数的合并" class="headerlink" title="一、函数的合并"></a>一、函数的合并</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="hljs-keyword">function</span><span class="hljs-built_in"> reverse</span>(x:<span class="hljs-built_in"> number</span>):<span class="hljs-built_in"> number</span>;<br><span class="hljs-keyword">function</span><span class="hljs-built_in"> reverse</span>(x:<span class="hljs-built_in"> string</span>):<span class="hljs-built_in"> string</span>;<br><span class="hljs-keyword">function</span><span class="hljs-built_in"> reverse</span>(x:<span class="hljs-built_in"> number</span> |<span class="hljs-built_in"> string</span>):<span class="hljs-built_in"> number</span> |<span class="hljs-built_in"> string</span> &#123;<br>    <span class="hljs-keyword">if</span> (typeof x === <span class="hljs-string">&#x27;number&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> Number(x.toString().split(<span class="hljs-string">&#x27;&#x27;</span>)<span class="hljs-built_in">.reverse</span>().join(<span class="hljs-string">&#x27;&#x27;</span>));<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (typeof x === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> x.split(<span class="hljs-string">&#x27;&#x27;</span>)<span class="hljs-built_in">.reverse</span>().join(<span class="hljs-string">&#x27;&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -281,7 +300,7 @@
                     
                       <a href="/2021/07/13/ts-%E6%B3%9B%E5%9E%8B/">
                         <span class="hidden-mobile">ts-泛型</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -324,7 +343,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -333,7 +352,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -408,6 +427,8 @@
   <script  src="/js/local-search.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
