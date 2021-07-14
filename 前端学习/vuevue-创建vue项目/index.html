@@ -18,7 +18,7 @@
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>svg - kjj</title>
+  <title>vue-创建vue项目 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="svg">
+            <span class="h2" id="subtitle" title="vue-创建vue项目">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-09 18:07" pubdate>
-        July 9, 2021 pm
+      <time datetime="2021-07-14 20:11" pubdate>
+        July 14, 2021 pm
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      670 字
+      64 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      1
        分钟
     </span>
   
@@ -238,35 +238,32 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">svg</h1>
+            <h1 style="display: none">vue-创建vue项目</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 9, 2021 pm
+                  本文最后更新于：July 14, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、手写svg组件"><a href="#一、手写svg组件" class="headerlink" title="一、手写svg组件"></a>一、手写svg组件</h2><ol>
-<li><p>手写一个svg组件（在componment文件下，新建文件SvgIcon）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;svg class=&quot;svg-icon&quot; aria-hidden=&quot;true&quot;&gt;<br>        &lt;use :xlink:href=&quot;iconName&quot;/&gt;<br>    &lt;/svg&gt;<br>&lt;/template&gt;<br>&lt;script&gt;<br>    export default &#123;<br>        name: &#x27;svg-icon&#x27;,<br>        props: &#123;<br>            iconClass: &#123;<br>                type: String,<br>                required: true<br>            &#125;<br>        &#125;,<br>        computed: &#123;<br>            iconName() &#123;<br>                return `#icon-$&#123;this.iconClass&#125;`<br>            &#125;<br>        &#125;<br>    &#125;<br>&lt;/script&gt;<br>&lt;style scoped&gt;<br>    .svg-icon &#123;<br>        width: 1em;<br>        height: 1em;<br>        vertical-align: -0.15em;<br>        fill: currentColor;<br>        overflow: hidden;<br>        margin-right: 10px;<br>    &#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure></li>
-<li><p>在iconfont生成xxx.js文件，（这个文件里包含需要的svg图片），导入index.html</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;&quot;&gt;<br>...<br>&lt;!--    引入svg(password)图标--&gt;<br>&lt;!--    &lt;script src=&quot;//at.alicdn.com/t/font_2648240_79u0g7z36jm.js&quot;&gt;&lt;/script&gt;--&gt;<br>    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;<br>  &lt;/head&gt;<br>...<br>&lt;/html&gt;<br><br></code></pre></td></tr></table></figure></li>
-<li><p>使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;home&quot;&gt;<br>    &lt;svg-icon icon-class=&quot;password&quot;/&gt;<br>&lt;!--    svg原生写法--&gt;<br>&lt;!--    &lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;--&gt;<br>&lt;!--      &lt;use xlink:href=&quot;#icon-password&quot;&gt;&lt;/use&gt;--&gt;<br>&lt;!--    &lt;/svg&gt;--&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>export default &#123;<br>  name: &#x27;Home&#x27;,<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure></li>
-<li><p>优化实现自动导入，在src文件下新建icons/svg文件，新建index.js文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vue">import Vue from &#x27;vue&#x27;<br>import SvgIcon from &quot;@/components/SvgIcon.vue&quot;;<br><br>Vue.component(&#x27;svg-icon&#x27;, SvgIcon)<br><br>// 自动导入<br>const requireAll = requireContext =&gt; requireContext.keys().map(requireContext)<br>const req = require.context(&#x27;./svg&#x27;, false, /\.svg$/)<br>// 打印以.svg命名的所有文件<br>// console.log(req.keys())<br>const result = requireAll(req)<br>console.log(&#x27;********result*****&#x27;)<br>console.log(result)<br></code></pre></td></tr></table></figure></li>
-<li><p>环境安装，基于webpack将svg打包成svg-sprite，安装 npm install svg-sprite-loader -D , 安装 npm install svgo-D</p>
+              <h2 id="一、环境搭建（vue2-X）"><a href="#一、环境搭建（vue2-X）" class="headerlink" title="一、环境搭建（vue2.X）"></a>一、环境搭建（vue2.X）</h2><ol>
+<li><p>安装node.js 官网下载（本人是解压版，解压后是如图所示）</p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210714202421911.png" srcset="/img/loading.gif" lazyload alt="image-20210714202421911"></p>
 </li>
-<li><p>配置vue.config.js 文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span>(<span class="hljs-params">dir</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> path.join(__dirname, dir)<br>&#125;<br><span class="hljs-built_in">module</span>.exports = &#123;<br>    <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>        <span class="hljs-comment">// 1. 取消默认 file-loader 对 svg 文件的处理</span><br>        config.module<br>            .rule(<span class="hljs-string">&#x27;svg&#x27;</span>) <span class="hljs-comment">// 对 svg 规则的配置</span><br>            .exclude <span class="hljs-comment">// 添加忽略文件夹, 忽略file-loader对这个文件夹下的svg文件处理</span><br>            <span class="hljs-comment">// 建议使用绝对路径</span><br>            <span class="hljs-comment">// .add(&#x27;./src/assets/icons/svg&#x27;) // 相对路径</span><br>            .add(resolve(<span class="hljs-string">&#x27;./src/icon&#x27;</span>)) <span class="hljs-comment">// 绝对路径</span><br>            .end()<br>        config.module<br>            .rule(<span class="hljs-string">&#x27;icons&#x27;</span>) <span class="hljs-comment">// 配置 icons 的规则</span><br>            .test(<span class="hljs-regexp">/\.svg$/</span>) <span class="hljs-comment">// 匹配以 .svg 结尾的文件</span><br>            .include <span class="hljs-comment">// 添加要处理的文件夹</span><br>            .add(resolve(<span class="hljs-string">&#x27;./src/icon&#x27;</span>))<br>            .end()<br>            .use(<span class="hljs-string">&#x27;svg-sprite-loader&#x27;</span>) <span class="hljs-comment">// 使用 svg-sprite-loader 处理</span><br>            .loader(<span class="hljs-string">&#x27;svg-sprite-loader&#x27;</span>)<br>            .options(&#123;<br>                <span class="hljs-attr">symbolId</span>: <span class="hljs-string">&#x27;icon-[name]&#x27;</span> <span class="hljs-comment">// 配置 symbol id, 需要使用这个 id 来使用 svg 图标</span><br>            &#125;)<br>            .end()<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
-<li><p>vue.config.js 是基于vue的webpack配置文件，放在项目的根目录下</p>
+<li><p>安装vue-cli （vue 2.x）</p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210714203045168.png" srcset="/img/loading.gif" lazyload alt="image-20210714203045168"></p>
 </li>
-<li><p>webpack.config.js是webpack的配置文件，vue/react都可以使用</p>
+<li><p>输入命令 </p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">vue init webpack <span class="hljs-keyword">my</span>-project<br></code></pre></td></tr></table></figure></li>
+<li><p>设置默认属性</p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210714203426287.png" srcset="/img/loading.gif" lazyload alt="image-20210714203426287"></p>
 </li>
-<li><p>vue-cli 2.0时代，webpack的配置文件写在config/index.js 文件</p>
+<li><p>创建项目成功</p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210714203451146.png" srcset="/img/loading.gif" lazyload alt="image-20210714203451146"></p>
 </li>
-<li><p>vue-cli 3.0 时代，没有了config文件夹，vue.config.js 放在根目录下</p>
+<li><p>访问项目<a target="_blank" rel="noopener" href="http://localhost:8080/#/">http://localhost:8080/#/</a></p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210714203547293.png" srcset="/img/loading.gif" lazyload alt="image-20210714203547293"></p>
 </li>
 </ol>
 
@@ -280,7 +277,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/component/">component</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue/">vue</a>
                     
                   </div>
                 
@@ -307,9 +304,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue/">
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue-vue%E6%95%99%E7%A8%8B/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue</span>
+                        <span class="hidden-mobile">vue-vue教程</span>
                         <span class="visible-mobile">前の記事</span>
                       </a>
                     
@@ -317,8 +314,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/webpackwebpack/">
-                        <span class="hidden-mobile">webpack</span>
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/">
+                        <span class="hidden-mobile">ts-声明合并</span>
                         <span class="visible-mobile">次の記事</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
