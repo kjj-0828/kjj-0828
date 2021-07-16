@@ -1,0 +1,606 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210713000640.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>vue-vue2.x总结 - kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210712235342.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="vue-vue2.x总结">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-15 23:26" pubdate>
+        July 15, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue-vue2.x总结</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 16, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、vue的安装"><a href="#一、vue的安装" class="headerlink" title="一、vue的安装"></a>一、vue的安装</h2><ol>
+<li>在官网下载vue.min.js 然后在script标签中引入。</li>
+<li>使用CDN方法，下载，然后在script标签中引入。</li>
+<li>使用npm安装。</li>
+</ol>
+<h2 id="二、vue的目录结构"><a href="#二、vue的目录结构" class="headerlink" title="二、vue的目录结构"></a>二、vue的目录结构</h2><ol>
+<li>build：是项目打包后的文件夹</li>
+<li>config：配置目录，包括端口号等</li>
+<li>node_modules: 项目的依赖模块</li>
+<li>src：开发目录<ol>
+<li>assets：放置图片等</li>
+<li>components:组件文件</li>
+<li>App.vue 项目入口文件</li>
+<li>main.js 项目的核心文件</li>
+</ol>
+</li>
+<li>static:静态资源目录，图片</li>
+<li>test:测试目录，可以删除</li>
+<li>.xxx文件：都是配置文件</li>
+<li>index.html：首页入口文件</li>
+<li>package.json:项目配置文件</li>
+<li>README.md :项目的说明文档</li>
+</ol>
+<h2 id="三、Vue-js-起步"><a href="#三、Vue-js-起步" class="headerlink" title="三、Vue.js 起步"></a>三、Vue.js 起步</h2><ol>
+<li>每个Vue应用都需要通过实例化Vue来实现。</li>
+<li>Vue构造器中有一个el参数，他是DOM元素的id</li>
+<li>data用于定义属性</li>
+<li>methods用于定义函数</li>
+<li>Vue实例被创建时，它向Vue的响应式系统中加入其data对象中能找到的所有属性</li>
+</ol>
+<h2 id="四、Vue-js-计算属性"><a href="#四、Vue-js-计算属性" class="headerlink" title="四、Vue.js 计算属性"></a>四、Vue.js 计算属性</h2><ol>
+<li><p>methods和computed在效果上是一样的，</p>
+</li>
+<li><p>computed基于他的依赖缓存，只有相关依赖发生改变的时候才会重新获取值</p>
+</li>
+<li><p>methods在重新渲染的时候，函数会重新被调用执行</p>
+</li>
+<li><p>computed只有getter，但是在需要的时候可以加入set</p>
+</li>
+<li><p>computed和methods的比较</p>
+</li>
+<li><p>computed的依赖发生变化，会实时更新，methods只有触发才会调用</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.staticfile.org/vue/2.4.2/vue.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><br>        长度：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;length&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><br>        宽度：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;width&quot;</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><br>        面积：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;areas&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;add&quot;</span>&gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span><br>        和的值为:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;num&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">        <span class="hljs-keyword">var</span> demo = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">            <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#app&#x27;</span>,</span><br><span class="javascript">            <span class="hljs-attr">data</span>: &#123;</span><br><span class="javascript">                <span class="hljs-attr">length</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span><br><span class="javascript">                <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span><br><span class="javascript">                <span class="hljs-attr">num</span>: <span class="hljs-string">&#x27;&#x27;</span></span><br><span class="javascript">            &#125;,</span><br><span class="javascript">            <span class="hljs-attr">computed</span>: &#123;</span><br><span class="javascript">                <span class="hljs-attr">areas</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">                    <span class="hljs-keyword">let</span> areas = <span class="hljs-number">0</span>;</span><br><span class="javascript">                    areas = <span class="hljs-built_in">this</span>.length * <span class="hljs-built_in">this</span>.width;</span><br><span class="javascript">                    <span class="hljs-keyword">return</span> areas;</span><br><span class="javascript">                &#125;</span><br><span class="javascript">            &#125;,</span><br><span class="javascript">            <span class="hljs-attr">methods</span>: &#123;</span><br><span class="javascript">                <span class="hljs-attr">add</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">this</span>.num = <span class="hljs-built_in">this</span>.length * <span class="hljs-built_in">this</span>.width;</span><br><span class="javascript">                &#125;</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>结果：<br><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210716095112614.png" srcset="/img/loading.gif" lazyload alt="image-20210716095112614"></p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210716095200442.png" srcset="/img/loading.gif" lazyload alt="image-20210716095200442"></p>
+</li>
+</ol>
+<h2 id="五、Vue-js的监听属性"><a href="#五、Vue-js的监听属性" class="headerlink" title="五、Vue.js的监听属性"></a>五、Vue.js的监听属性</h2><ol>
+<li><p>watch 监听响应数据的变化</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.staticfile.org/vue/2.4.2/vue.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;main&quot;</span>&gt;</span><br>        千米：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;kilometers&quot;</span> /&gt;</span><br>        米：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;meters&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">        <span class="hljs-keyword">var</span> demo = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">            <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#main&#x27;</span>,</span><br><span class="javascript">            <span class="hljs-attr">data</span>: &#123;</span><br><span class="javascript">                <span class="hljs-attr">kilometers</span>: <span class="hljs-number">0</span>,</span><br><span class="javascript">                <span class="hljs-attr">meters</span>: <span class="hljs-number">0</span></span><br><span class="javascript">            &#125;,</span><br><span class="javascript">            <span class="hljs-attr">methods</span>: &#123;&#125;,</span><br><span class="javascript">            <span class="hljs-attr">computed</span>: &#123;&#125;,</span><br><span class="javascript">            <span class="hljs-attr">watch</span>: &#123;</span><br><span class="javascript">                <span class="hljs-attr">kilometers</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">this</span>.kilometers = val;</span><br><span class="javascript">                    <span class="hljs-built_in">this</span>.meters = <span class="hljs-built_in">this</span>.kilometers * <span class="hljs-number">1000</span>;</span><br><span class="javascript">                &#125;,</span><br><span class="javascript">                <span class="hljs-attr">meters</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">this</span>.kilometers = val / <span class="hljs-number">1000</span>;</span><br><span class="javascript"></span><br><span class="javascript">                &#125;</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">        demo.$watch(<span class="hljs-string">&#x27;kilometers&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">newValue, oldValue</span>) </span>&#123;</span><br><span class="javascript">            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;info&quot;</span>).innerHTML = <span class="hljs-string">&quot;修改前值为: &quot;</span> + oldValue + <span class="hljs-string">&quot;，修改后值为: &quot;</span> + newValue;</span><br><span class="javascript">        &#125;)</span><br><span class="javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="六、Vue-js-事件处理器"><a href="#六、Vue-js-事件处理器" class="headerlink" title="六、Vue.js 事件处理器"></a>六、Vue.js 事件处理器</h2><ol>
+<li>v-on：进行事件的监听</li>
+</ol>
+<h2 id="七、Vue-js-组件"><a href="#七、Vue-js-组件" class="headerlink" title="七、Vue.js 组件"></a>七、Vue.js 组件</h2><ol>
+<li><p>注册一个全局组件的语法</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dts">Vue.component(tagName, options)<br><span class="hljs-comment">// 组件</span><br><span class="hljs-params">&lt;tagName&gt;</span><span class="hljs-params">&lt;/tagName&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li><p>prop子组件接受父组件传递的数据</p>
+</li>
+<li><p>动态props，使用v-bind在父组件绑定props的值，当父组件的值变化时，子组件也会变化</p>
+</li>
+<li><p>props提供验证，可以定制props的验证方式</p>
+</li>
+</ol>
+<h2 id="八、自定义事件"><a href="#八、自定义事件" class="headerlink" title="八、自定义事件"></a>八、自定义事件</h2><ol>
+<li>父组件通过props把值传给子组件</li>
+<li>子组件想要把值传回去，就需要自定义事件</li>
+<li>父组件使用v-on 监听子组件值的变化</li>
+<li>子组件通过$emit触发事件</li>
+<li>data必须是一个函数</li>
+</ol>
+<h2 id="九、Vue-js-路由"><a href="#九、Vue-js-路由" class="headerlink" title="九、Vue.js 路由"></a>九、Vue.js 路由</h2><ol>
+<li><p>router的相关属性</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-comment">&lt;!-- 字符串 --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="xml"><span class="hljs-comment">&lt;!-- 渲染结果 --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;home&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="xml"></span><br><span class="xml"><span class="hljs-comment">&lt;!-- 使用 v-bind 的 JS 表达式 --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">v-bind:to</span>=<span class="hljs-string">&quot;&#x27;home&#x27;&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="xml"></span><br><span class="xml"><span class="hljs-comment">&lt;!-- 不写 v-bind 也可以，就像绑定别的属性一样 --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;&#x27;home&#x27;&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="xml"></span><br><span class="xml"><span class="hljs-comment">&lt;!-- 同上 --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123; path: &#x27;home&#x27; &#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="xml"></span><br><span class="xml"><span class="hljs-comment">&lt;!-- 命名的路由 --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123; name: &#x27;user&#x27;, params: &#123; userId: 123 &#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&#125;&quot;</span>&gt;</span>User<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="xml"></span><br><span class="xml"><span class="hljs-comment">&lt;!-- 带查询参数，下面的结果为 /register?plan=private --&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123; path: &#x27;register&#x27;, query: &#123; plan: &#x27;private&#x27; &#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&#125;&quot;</span>&gt;</span>Register<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>replace 当点击时，会调用router.replace ,而不是router.push ，导航不会留下历史记录</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123; path: &#x27;/abc&#x27;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">replace</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>append  在当前路径前添加路径，例如，我们从 /a 导航到一个相对路径 b，如果没有配置 append，则路径为 /b，如果配了，则为 /a/b</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123; path: &#x27;relative/path&#x27;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">append</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>tag 将<router-link>渲染成某种标签</p>
+</li>
+<li><p>event 声明用来触发导航的事件</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">v-bind:to</span> = <span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123; path: &#x27;/route1&#x27;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">event</span> = <span class="hljs-string">&quot;mouseover&quot;</span>&gt;</span>Router Link 1<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="十、Vue-js-混入"><a href="#十、Vue-js-混入" class="headerlink" title="十、Vue.js 混入"></a>十、Vue.js 混入</h2><ol>
+<li>混入定义了一些可复用的方法或者计算属性</li>
+<li>当组件混入对象时,所有混入对象选项将被混入组件本身</li>
+<li>慎用全局混入</li>
+</ol>
+<h2 id="十一、ajax和axios的区别"><a href="#十一、ajax和axios的区别" class="headerlink" title="十一、ajax和axios的区别"></a>十一、ajax和axios的区别</h2><ol>
+<li><p>ajax</p>
+<p>优点：</p>
+<p>传统的Ajax指的是XMLHttpRequest，最早出现的发送后端请求技术，核心使用的是XMLHttpRequest对象</p>
+<p>JQuery ajax是对原生XHR的封装，除此之外还提供了对JSONP的支持</p>
+<p>缺点：</p>
+<p>本身是针对MVC编程，不符合现在前端MVVM的浪潮</p>
+<p>基于原生的XHR开发， XHR本身的架构不清晰</p>
+<p>JQuery整个项目太大，为了使用Ajax就引入JQuery非常的不合理</p>
+<p>不关注分离原则</p>
+<p>配置和调用非常混乱</p>
+<p>用法：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs fortran">$.ajax(&#123;<br>    <span class="hljs-keyword">type</span>:<span class="hljs-string">&#x27;POST&#x27;</span>,<br>    url:url,<br>    <span class="hljs-keyword">data</span>:<span class="hljs-keyword">data</span>,<br>    dataType:dataType,<br>    success:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;&#125;,<br>    error:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;&#125;<br>&#125;)<br></code></pre></td></tr></table></figure></li>
+<li><p>axios</p>
+<p>优点：</p>
+<p>基于promise用于浏览器和nodejs的HTTP客户端</p>
+<p>本质也是对原生XHR的封装，但是是Promise的实现，</p>
+<p>从浏览器创建XMLHttpRequest</p>
+<p>支持promise API</p>
+<p>客户端支持防止CSRF</p>
+<p>提供一些并发请求的接口</p>
+<p>从nodejs创建http请求</p>
+<p>转换请求数据和响应数据</p>
+<p>取消请求</p>
+<p>自动转换json数据</p>
+<p>用法：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vim">axios(&#123;<br>method:<span class="hljs-string">&#x27;post&#x27;</span>,<br>ur<span class="hljs-variable">l:</span><span class="hljs-string">&#x27;/user/1245&#x27;</span>,<br>dat<span class="hljs-variable">a:</span>&#123;<br>firstname:<span class="hljs-string">&#x27;tom&#x27;</span>,<br>lastname:<span class="hljs-string">&#x27;jack&#x27;</span><br>&#125;,<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span>&#123;</span><br><br>&#125;).<span class="hljs-keyword">catch</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error)</span>&#123;</span><br><br>&#125;)<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）"><a href="#十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）" class="headerlink" title="十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）"></a>十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）</h2><p>MVVM</p>
+<ol>
+<li><p>MVVM源自经典的MVC模式</p>
+</li>
+<li><p>MVVM的核心是viewmodel层</p>
+</li>
+<li><p>viewmodel层是一个中转站，向上与视图层进行双向的数据绑定，向下与model层通过接口进行数据交互</p>
+</li>
+<li><p>view层展示的不是model层的数据，而是viewmodel层的数据</p>
+</li>
+<li><p>viewmodel层进行数据交互，这就完全解耦了view层和model层</p>
+</li>
+<li><p>这种解耦是前后端分离方案最重要的一环</p>
+<p><img src="https://img-blog.csdnimg.cn/2019060818324588.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h5bGRfbHp3,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+</ol>
+<p><img src="C:/Users/11090/Desktop/562c11dfa9ec8a13ab6935fbfc03918fa0ecc0be.jpg" srcset="/img/loading.gif" lazyload alt="562c11dfa9ec8a13ab6935fbfc03918fa0ecc0be"></p>
+<p>MVC</p>
+<ol>
+<li>controller负责将model的数据用view展示出来</li>
+<li>model是数据的管理者，负责存放数据</li>
+<li>model提供接口，可以使得controller去调用他存放的数据</li>
+<li>view：数据的显示部分，视图是根据模型创建的</li>
+<li>controller 负责从视图读取数据，控制用户输入，并且向模型发送数据</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/201904232014235.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20190423202120568.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="十三、css伪类和伪元素的区别"><a href="#十三、css伪类和伪元素的区别" class="headerlink" title="十三、css伪类和伪元素的区别"></a>十三、css伪类和伪元素的区别</h2><ol>
+<li>伪类与伪元素的区别在于：有没有创建一个文档树之外的元素、</li>
+<li>伪类是在已有的DOM元素下操作：:hover、:active</li>
+<li>伪元素是创建一些不在DOM树存在的元素 ： ::after、::before</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue/">vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue-%E5%88%9B%E5%BB%BAvue%E9%A1%B9%E7%9B%AE/">
+                        <span class="hidden-mobile">vue-创建vue项目</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">Stichwort</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
