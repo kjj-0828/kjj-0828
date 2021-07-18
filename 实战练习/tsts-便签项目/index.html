@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      218 字
+      734 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      8
        分钟
     </span>
   
@@ -292,7 +292,7 @@ npm i vuex
 <li><p>CateEnum对分类进行枚举</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718121506.png" srcset="/img/loading.gif" lazyload alt="image-20210718121504968"></p>
 </li>
-<li><p>在main.ts l进行测试</p>
+<li><p>在main.ts 进行测试</p>
 <p>导入2个数据模型：</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718121631.png" srcset="/img/loading.gif" lazyload alt="image-20210718121630607"></p>
 <p>测试数据：</p>
@@ -301,6 +301,138 @@ npm i vuex
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718121716.png" srcset="/img/loading.gif" lazyload alt="image-20210718121715646"></p>
 </li>
 </ol>
+<h2 id="四、封装操作类：ActionHelper、DataHelper"><a href="#四、封装操作类：ActionHelper、DataHelper" class="headerlink" title="四、封装操作类：ActionHelper、DataHelper"></a>四、封装操作类：ActionHelper、DataHelper</h2><ol>
+<li><p>DataHelper用评论项目的</p>
+</li>
+<li><p>ActionHelper主要进行业务逻辑的操作</p>
+<p>定义一个memoList，处理便签数组，初始化时，将本地的数组赋值给memoList</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718124923.png" srcset="/img/loading.gif" lazyload alt="image-20210718124922846"></p>
+<p>封装读取本地数据的方法</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718124958.png" srcset="/img/loading.gif" lazyload alt="image-20210718124957796"></p>
+</li>
+<li><p>main.ts 测试数据</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718125512.png" srcset="/img/loading.gif" lazyload alt="image-20210718125511997"></p>
+</li>
+<li><p>结果</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718125525.png" srcset="/img/loading.gif" lazyload alt="image-20210718125525035"></p>
+</li>
+</ol>
+<h2 id="五、ActionHelper增加业务逻辑，add、edit、remove"><a href="#五、ActionHelper增加业务逻辑，add、edit、remove" class="headerlink" title="五、ActionHelper增加业务逻辑，add、edit、remove"></a>五、ActionHelper增加业务逻辑，add、edit、remove</h2><ol>
+<li><p>ActionHelper增加对文件add、edit、remove操作</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718155200.png" srcset="/img/loading.gif" lazyload alt="image-20210718155159203"></p>
+</li>
+<li><p>在main.ts中测试</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718155501.png" srcset="/img/loading.gif" lazyload alt="image-20210718155459058"></p>
+</li>
+</ol>
+<h2 id="六、组件之间可以共享数据，基于Vuex"><a href="#六、组件之间可以共享数据，基于Vuex" class="headerlink" title="六、组件之间可以共享数据，基于Vuex"></a>六、组件之间可以共享数据，基于Vuex</h2><ol>
+<li><pre><code>  state共享对象和数据，mutations共享方法
+</code></pre>
+</li>
+</ol>
+<p>   <img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718162101.png" srcset="/img/loading.gif" lazyload alt="image-20210718162100273"></p>
+<ol start="2">
+<li><p>在main.ts 全局注册</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718162141.png" srcset="/img/loading.gif" lazyload alt="image-20210718162140393"></p>
+</li>
+<li><p>使用</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718162205.png" srcset="/img/loading.gif" lazyload alt="image-20210718162205010"></p>
+</li>
+<li><p>结果</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718162236.png" srcset="/img/loading.gif" lazyload alt="image-20210718162234966"></p>
+</li>
+</ol>
+<h2 id="七、构建便签列表组件ItemList"><a href="#七、构建便签列表组件ItemList" class="headerlink" title="七、构建便签列表组件ItemList"></a>七、构建便签列表组件ItemList</h2><ol>
+<li><p>创建ItemList文件</p>
+</li>
+<li><p>编写组件类，获取便签的数据</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718164042.png" srcset="/img/loading.gif" lazyload alt="image-20210718164041544"></p>
+</li>
+</ol>
+<h2 id="八、构建便签项MemoItem"><a href="#八、构建便签项MemoItem" class="headerlink" title="八、构建便签项MemoItem"></a>八、构建便签项MemoItem</h2><ol>
+<li><p>MemoItem是MemoList 的子组件</p>
+</li>
+<li><p>创建prop接收父组件的传值</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718170807.png" srcset="/img/loading.gif" lazyload alt="image-20210718170806446"></p>
+</li>
+<li><p>父组件传值</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718171108.png" srcset="/img/loading.gif" lazyload alt="image-20210718171107567"></p>
+</li>
+<li><p>ActionHelper添加翻译分类的方法</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718171241.png" srcset="/img/loading.gif" lazyload alt="image-20210718171240621"></p>
+</li>
+<li><p>结果</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718171305.png" srcset="/img/loading.gif" lazyload alt="image-20210718171304877"></p>
+</li>
+</ol>
+<h2 id="九、MemoItem的删除"><a href="#九、MemoItem的删除" class="headerlink" title="九、MemoItem的删除"></a>九、MemoItem的删除</h2><ol>
+<li><p>创建删除方法，绑定到按钮</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718172923.png" srcset="/img/loading.gif" lazyload alt="image-20210718172920028"></p>
+</li>
+<li><p>结果</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718173036.png" srcset="/img/loading.gif" lazyload alt="image-20210718173035896"></p>
+</li>
+</ol>
+<h2 id="十、创建新增对话框的组件"><a href="#十、创建新增对话框的组件" class="headerlink" title="十、创建新增对话框的组件"></a>十、创建新增对话框的组件</h2><ol>
+<li><p>创建MemoEditor组件</p>
+</li>
+<li><p>创建全局的isshow属性</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718195415.png" srcset="/img/loading.gif" lazyload alt="image-20210718195414493"></p>
+</li>
+<li><p>设置新增按钮，展示新增div</p>
+<p><img src="C:/Users/11090/AppData/Roaming/Typora/typora-user-images/image-20210718195505739.png" srcset="/img/loading.gif" lazyload alt="image-20210718195505739"></p>
+</li>
+<li><p>效果</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718195700.png" srcset="/img/loading.gif" lazyload alt="image-20210718195659454"></p>
+</li>
+<li><p>MemoEditor的退出按钮，取消div的展示</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718195614.png" srcset="/img/loading.gif" lazyload alt="image-20210718195613690"></p>
+</li>
+<li><p>效果</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718195636.png" srcset="/img/loading.gif" lazyload alt="image-20210718195633344"></p>
+</li>
+<li><p>实现新增：界面的按钮、文本框需要和memo建立关系，采用v-model实现双向绑定</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718203130.png" srcset="/img/loading.gif" lazyload alt="image-20210718203108285"></p>
+</li>
+<li><p>新增保存：0.进行数据校验，1.将数据保存到localstorage 2.隐藏新增div</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718203322.png" srcset="/img/loading.gif" lazyload alt="image-20210718203321636"></p>
+</li>
+</ol>
+<h2 id="十一、编写Edit功能"><a href="#十一、编写Edit功能" class="headerlink" title="十一、编写Edit功能"></a>十一、编写Edit功能</h2><ol>
+<li><p>对编辑来说，第一步：获取已经有的数据</p>
+</li>
+<li><p>编辑内容</p>
+</li>
+<li><p>将编辑的内容保存到本地</p>
+</li>
+<li><p>使用vuex进行数据传递</p>
+</li>
+<li><p>点击编辑的时候，创建数据副本，并且传到vuex中</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718224828.png" srcset="/img/loading.gif" lazyload alt="image-20210718224827848"></p>
+</li>
+<li><p>vuex中建立方法，供组件调用</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718224936.png" srcset="/img/loading.gif" lazyload alt="image-20210718224935837"></p>
+</li>
+<li><p>MemoEditor创建的时候，拿到数据，赋值</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718225115.png" srcset="/img/loading.gif" lazyload alt="image-20210718225114919"></p>
+</li>
+<li><p>对新增和修改保存操作的梳理</p>
+<p>新增的时候，初始化了参数id是-1，通过id判断操作</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718225408.png" srcset="/img/loading.gif" lazyload alt="image-20210718225406704"></p>
+</li>
+</ol>
+<h2 id="十二、点击分类，展示页面"><a href="#十二、点击分类，展示页面" class="headerlink" title="十二、点击分类，展示页面"></a>十二、点击分类，展示页面</h2><ol>
+<li><p>在vuex里创建全局数据</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718234840.png" srcset="/img/loading.gif" lazyload alt="image-20210718234839548"></p>
+</li>
+<li><p>写doFilterByCateId()方法，当点击不同的li,展示不同的分类list</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718234938.png" srcset="/img/loading.gif" lazyload alt="image-20210718234937947"></p>
+</li>
+<li><p>计算分类数封装doFilter()</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718235205.png" srcset="/img/loading.gif" lazyload alt="image-20210718235204119"></p>
+</li>
+</ol>
+<h2 id="十三、创建gitee、放到仓库上"><a href="#十三、创建gitee、放到仓库上" class="headerlink" title="十三、创建gitee、放到仓库上"></a>十三、创建gitee、放到仓库上</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/porous-crystal/vue-ts-memo-item.git">https://gitee.com/porous-crystal/vue-ts-memo-item.git</a></p>
 
             </div>
             <hr>
@@ -320,9 +452,9 @@ npm i vuex
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
-                    
                       <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
                   </div>
                 
@@ -345,7 +477,7 @@ npm i vuex
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue-vue2.x%20%E6%80%BB%E7%BB%93/">
                         <span class="hidden-mobile">vue-vue2.x总结</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -388,7 +520,7 @@ npm i vuex
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -397,7 +529,7 @@ npm i vuex
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
