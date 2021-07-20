@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      286 字
+      282 字
     </span>
   
 
@@ -276,10 +276,10 @@
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-string">&quot;node-sass&quot;</span>: <span class="hljs-string">&quot;^4.14.1&quot;</span>,<br> <span class="hljs-string">&quot;sass-loader&quot;</span>: <span class="hljs-string">&quot;^7.3.1&quot;</span>,<br> npm install <span class="hljs-keyword">node</span><span class="hljs-title">-sass</span>@<span class="hljs-number">4.14</span>.<span class="hljs-number">1</span> -D<br> npm install sass-loader@<span class="hljs-number">7.3</span>.<span class="hljs-number">1</span> -D<br></code></pre></td></tr></table></figure></li>
 <li><p>main.ts文件内容</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;createApp&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> &#123;Elementplus&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./element-ui&#x27;</span><br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./assets/css/global.css&#x27;</span><br><br><span class="hljs-keyword">const</span> app = createApp(App);<br><span class="hljs-comment">// 调用</span><br>Elementplus(app);<br><span class="hljs-comment">// 使用</span><br>createApp(App).use(Elementplus).mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
-<li><p>vue3.0采用按需引入的方式，安装插件</p>
+<li><p>vue3.0采用按需引入element-plus的方式，安装插件</p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-string">&quot;babel-plugin-import&quot;</span>: <span class="hljs-string">&quot;^1.13.3&quot;</span>,<br><span class="hljs-built_in">npm</span> install babel-plugin-<span class="hljs-keyword">import</span> -D<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="四、实现功能"><a href="#四、实现功能" class="headerlink" title="四、实现功能"></a>四、实现功能</h2>
+
             </div>
             <hr>
             <div>
@@ -298,9 +298,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
-                    
                       <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
                   </div>
                 
@@ -320,7 +320,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-vue2.0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ts-vue2.0</span>
-                        <span class="visible-mobile">前の記事</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -329,7 +329,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-%E4%BE%BF%E7%AD%BE%E9%A1%B9%E7%9B%AE/">
                         <span class="hidden-mobile">ts-便签项目</span>
-                        <span class="visible-mobile">次の記事</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -346,7 +346,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;ディレクトリ</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -372,7 +372,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -381,7 +381,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">キーワード</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
