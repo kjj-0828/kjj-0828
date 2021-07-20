@@ -18,7 +18,7 @@
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>svg - kjj</title>
+  <title>ts-vue2.0 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="svg">
+            <span class="h2" id="subtitle" title="ts-vue2.0">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-09 18:07" pubdate>
-        July 9, 2021 pm
+      <time datetime="2021-07-20 09:05" pubdate>
+        July 20, 2021 am
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      670 字
+      283 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      4
        分钟
     </span>
   
@@ -238,36 +238,50 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">svg</h1>
+            <h1 style="display: none">ts-vue2.0</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 9, 2021 pm
+                  本文最后更新于：July 20, 2021 am
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、手写svg组件"><a href="#一、手写svg组件" class="headerlink" title="一、手写svg组件"></a>一、手写svg组件</h2><ol>
-<li><p>手写一个svg组件（在componment文件下，新建文件SvgIcon）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;svg class=&quot;svg-icon&quot; aria-hidden=&quot;true&quot;&gt;<br>        &lt;use :xlink:href=&quot;iconName&quot;/&gt;<br>    &lt;/svg&gt;<br>&lt;/template&gt;<br>&lt;script&gt;<br>    export default &#123;<br>        name: &#x27;svg-icon&#x27;,<br>        props: &#123;<br>            iconClass: &#123;<br>                type: String,<br>                required: true<br>            &#125;<br>        &#125;,<br>        computed: &#123;<br>            iconName() &#123;<br>                return `#icon-$&#123;this.iconClass&#125;`<br>            &#125;<br>        &#125;<br>    &#125;<br>&lt;/script&gt;<br>&lt;style scoped&gt;<br>    .svg-icon &#123;<br>        width: 1em;<br>        height: 1em;<br>        vertical-align: -0.15em;<br>        fill: currentColor;<br>        overflow: hidden;<br>        margin-right: 10px;<br>    &#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure></li>
-<li><p>在iconfont生成xxx.js文件，（这个文件里包含需要的svg图片），导入index.html</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;&quot;&gt;<br>...<br>&lt;!--    引入svg(password)图标--&gt;<br>&lt;!--    &lt;script src=&quot;//at.alicdn.com/t/font_2648240_79u0g7z36jm.js&quot;&gt;&lt;/script&gt;--&gt;<br>    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;<br>  &lt;/head&gt;<br>...<br>&lt;/html&gt;<br><br></code></pre></td></tr></table></figure></li>
-<li><p>使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div class=&quot;home&quot;&gt;<br>    &lt;svg-icon icon-class=&quot;password&quot;/&gt;<br>&lt;!--    svg原生写法--&gt;<br>&lt;!--    &lt;svg class=&quot;icon&quot; aria-hidden=&quot;true&quot;&gt;--&gt;<br>&lt;!--      &lt;use xlink:href=&quot;#icon-password&quot;&gt;&lt;/use&gt;--&gt;<br>&lt;!--    &lt;/svg&gt;--&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>export default &#123;<br>  name: &#x27;Home&#x27;,<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure></li>
-<li><p>优化实现自动导入，在src文件下新建icons/svg文件，新建index.js文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vue">import Vue from &#x27;vue&#x27;<br>import SvgIcon from &quot;@/components/SvgIcon.vue&quot;;<br><br>Vue.component(&#x27;svg-icon&#x27;, SvgIcon)<br><br>// 自动导入<br>const requireAll = requireContext =&gt; requireContext.keys().map(requireContext)<br>const req = require.context(&#x27;./svg&#x27;, false, /\.svg$/)<br>// 打印以.svg命名的所有文件<br>// console.log(req.keys())<br>const result = requireAll(req)<br>console.log(&#x27;********result*****&#x27;)<br>console.log(result)<br></code></pre></td></tr></table></figure></li>
-<li><p>环境安装，基于webpack将svg打包成svg-sprite，安装 npm install svg-sprite-loader -D , 安装 npm install svgo-D</p>
+              <h2 id="一、环境搭建"><a href="#一、环境搭建" class="headerlink" title="一、环境搭建"></a>一、环境搭建</h2><ol>
+<li>创建项目 vue create xxx</li>
+<li>默认选择安装了vue2.0</li>
+<li>启动项目</li>
+<li>在项目下安装 vue add @vue/script</li>
+<li>npm i vuex</li>
+<li>搭建完成</li>
+</ol>
+<h2 id="二、创建子组件"><a href="#二、创建子组件" class="headerlink" title="二、创建子组件"></a>二、创建子组件</h2><ol>
+<li><p>头部组件 MenuBar</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210720091304.png" srcset="/img/loading.gif" lazyload alt="image-20210720091255782"></p>
 </li>
-<li><p>配置vue.config.js 文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span>(<span class="hljs-params">dir</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> path.join(__dirname, dir)<br>&#125;<br><span class="hljs-built_in">module</span>.exports = &#123;<br>    <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>        <span class="hljs-comment">// 1. 取消默认 file-loader 对 svg 文件的处理</span><br>        config.module<br>            .rule(<span class="hljs-string">&#x27;svg&#x27;</span>) <span class="hljs-comment">// 对 svg 规则的配置</span><br>            .exclude <span class="hljs-comment">// 添加忽略文件夹, 忽略file-loader对这个文件夹下的svg文件处理</span><br>            <span class="hljs-comment">// 建议使用绝对路径</span><br>            <span class="hljs-comment">// .add(&#x27;./src/assets/icons/svg&#x27;) // 相对路径</span><br>            .add(resolve(<span class="hljs-string">&#x27;./src/icon&#x27;</span>)) <span class="hljs-comment">// 绝对路径</span><br>            .end()<br>        config.module<br>            .rule(<span class="hljs-string">&#x27;icons&#x27;</span>) <span class="hljs-comment">// 配置 icons 的规则</span><br>            .test(<span class="hljs-regexp">/\.svg$/</span>) <span class="hljs-comment">// 匹配以 .svg 结尾的文件</span><br>            .include <span class="hljs-comment">// 添加要处理的文件夹</span><br>            .add(resolve(<span class="hljs-string">&#x27;./src/icon&#x27;</span>))<br>            .end()<br>            .use(<span class="hljs-string">&#x27;svg-sprite-loader&#x27;</span>) <span class="hljs-comment">// 使用 svg-sprite-loader 处理</span><br>            .loader(<span class="hljs-string">&#x27;svg-sprite-loader&#x27;</span>)<br>            .options(&#123;<br>                <span class="hljs-attr">symbolId</span>: <span class="hljs-string">&#x27;icon-[name]&#x27;</span> <span class="hljs-comment">// 配置 symbol id, 需要使用这个 id 来使用 svg 图标</span><br>            &#125;)<br>            .end()<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
-<li><p>vue.config.js 是基于vue的webpack配置文件，放在项目的根目录下</p>
+<li><p>标签组件 MemoItem</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210720091318.png" srcset="/img/loading.gif" lazyload alt="image-20210720091317087"></p>
 </li>
-<li><p>webpack.config.js是webpack的配置文件，vue/react都可以使用</p>
+<li><p>编辑组件 MemoEditor</p>
 </li>
-<li><p>vue-cli 2.0时代，webpack的配置文件写在config/index.js 文件</p>
+</ol>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210720091346.png" srcset="/img/loading.gif" lazyload alt="image-20210720091346033"></p>
+<h2 id="三、vue2-0特点"><a href="#三、vue2-0特点" class="headerlink" title="三、vue2.0特点"></a>三、vue2.0特点</h2><ol>
+<li><p>vue2.0的组件导入方式，采用注解</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210720091554.png" srcset="/img/loading.gif" lazyload alt="image-20210720091553890"></p>
 </li>
-<li><p>vue-cli 3.0 时代，没有了config文件夹，vue.config.js 放在根目录下</p>
+<li><p>编辑文件是会出现红色提示，可能是变量未赋值等，更改package.json</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-string">&quot;rules&quot;</span>: &#123;<br>   <span class="hljs-string">&quot;no-unused-vars&quot;</span>: <span class="hljs-number">0</span>,<br>   <span class="hljs-string">&quot;vue/no-unused-components&quot;</span>: [<br>     <span class="hljs-string">&quot;off&quot;</span>,<br>     &#123;<br>       <span class="hljs-string">&quot;ignoreWhenBindingPresent&quot;</span>: <span class="hljs-literal">true</span><br>     &#125;<br>   ],<br>   <span class="hljs-string">&quot;prefer-const&quot;</span>: <span class="hljs-string">&quot;off&quot;</span><br> &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>在书写css样式时，采用了scss语法，安装相关组件，注意版本问题</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-string">&quot;node-sass&quot;</span>: <span class="hljs-string">&quot;^4.14.1&quot;</span>,<br> <span class="hljs-string">&quot;sass-loader&quot;</span>: <span class="hljs-string">&quot;^7.3.1&quot;</span>,<br> npm install <span class="hljs-keyword">node</span><span class="hljs-title">-sass</span>@<span class="hljs-number">4.14</span>.<span class="hljs-number">1</span> -D<br> npm install sass-loader@<span class="hljs-number">7.3</span>.<span class="hljs-number">1</span> -D<br></code></pre></td></tr></table></figure></li>
+<li><p>main.ts文件内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./assets/css/global.css&#x27;</span><br><span class="hljs-keyword">import</span> ElementUI <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span>;<br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store/index&#x27;</span><br><br>Vue.config.productionTip = <span class="hljs-literal">false</span><br>Vue.use(ElementUI)<br><br><span class="hljs-keyword">new</span> Vue(&#123;<br>  store,<br>  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h(App),<br>&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="四、实现功能"><a href="#四、实现功能" class="headerlink" title="四、实现功能"></a>四、实现功能</h2><ol>
+<li><p>点击新增，实现弹框</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210720092454.png" srcset="/img/loading.gif" lazyload alt="image-20210720092453563"></p>
 </li>
+<li></li>
 </ol>
 
             </div>
@@ -278,9 +292,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/component/">component</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/ts/">ts</a>
                     
                   </div>
                 
@@ -288,9 +302,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
-                      <a class="hover-with-bg" href="/tags/Vue%E5%AD%A6%E4%B9%A0/">Vue学习</a>
+                      <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
                     
                   </div>
                 
@@ -307,18 +321,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue</span>
-                        <span class="visible-mobile">前の記事</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/webpackwebpack/">
-                        <span class="hidden-mobile">webpack</span>
+                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-vue3.0/">
+                        <span class="hidden-mobile">ts-vue3.0</span>
                         <span class="visible-mobile">次の記事</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
