@@ -18,7 +18,7 @@
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>Page not found - kjj</title>
+  <title>Die Seite wurde nicht gefunden - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -186,7 +186,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -195,7 +195,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -207,50 +207,11 @@
     
   </main>
 
-  {%- if theme.footer.beian.enable %}
-  <div class="beian">
-    {{- next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}
-    {%- if theme.footer.beian.gongan_icon_url %}
-      <img src="{{ theme.footer.beian.gongan_icon_url }}" srcset="/img/loading.gif" lazyload style="display: inline-block;">
-    {%- endif %}
-    {%- if theme.footer.beian.gongan_id and theme.footer.beian.gongan_num %}
-      {{- next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' + theme.footer.beian.gongan_id, theme.footer.beian.gongan_num + ' ') }}
-    {%- endif %}
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
   </div>
-{%- endif %}
 
-<div class="copyright">
-  {% set copyright_year = date(null, 'YYYY') %}
-  &copy; {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
-  <span itemprop="copyrightYear">{{ copyright_year }}</span>
-  <span class="with-love">
-    <font color="red"><i class="fa fa-heartbeat" aria-hidden="true"></i></font>
-  </span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright or author }}</span>
-
-  {%- if config.symbols_count_time.total_symbols %}
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    {%- if theme.symbols_count_time.item_text_total %}
-      <span class="post-meta-item-text">{{ __('symbols_count_time.count_total') + __('symbol.colon') }}</span>
-    {%- endif %}
-    <span title="{{ __('symbols_count_time.count_total') }}">{{ symbolsCountTotal(site) }}</span>
-  {%- endif %}
-
-  {%- if config.symbols_count_time.total_time %}
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    {%- if theme.symbols_count_time.item_text_total %}
-      <span class="post-meta-item-text">{{ __('symbols_count_time.time_total') }} &asymp;</span>
-    {%- endif %}
-    <span title="{{ __('symbols_count_time.time_total') }}">{{ symbolsTimeTotal(site, config.symbols_count_time.awl, config.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
-  {%- endif %}
-</div>
-<!--添加运行时间-->
 <span id="sitetime"></span>
 <script language=javascript>
 	function siteTime(){
@@ -311,37 +272,116 @@
     </span>
     -->
 </div>
-<!-- 新增访客统计代码 END-->
 
-{%- if theme.footer.powered.enable %}
-  <div class="powered-by">
-    {{- __('footer.powered', next_url('https://hexo.io', 'Hexo', {class: 'theme-link'})) }}
-    {%- if theme.footer.powered.version %} v{{ hexo_version }}{%- endif %}
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
   </div>
-{%- endif %}
 
-{%- if theme.footer.powered.enable and theme.footer.theme.enable %}
-  <span class="post-meta-divider">|</span>
-{%- endif %}
 
-{%- if theme.footer.theme.enable %}
-  <div class="theme-info">
-    {%- set next_site = 'https://theme-next.org' %}
-    {%- if theme.scheme !== 'Gemini' %}
-      {%- set next_site = 'https://' + theme.scheme | lower + '.theme-next.org' %}
-    {%- endif %}
-    {{- __('footer.theme') }} – {{ next_url(next_site, 'NexT.' + theme.scheme, {class: 'theme-link'}) }}
-    {%- if theme.footer.theme.version %} v{{ next_version }}{%- endif %}
-  </div>
-{%- endif %}
+  
 
-{%- if theme.add_this_id %}
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ theme.add_this_id }}" async="async"></script>
-  </div>
-{%- endif %}
+  
+</footer>
+<!-- SCRIPTS -->
 
-{{- next_inject('footer') }}
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
 
   <!-- SCRIPTS -->
   
