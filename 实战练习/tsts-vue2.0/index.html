@@ -60,7 +60,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><script src="/assets/js/DPlayer.min.js"></script></head>
 
 
 <body>
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.4k 字
+      3.5k 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      60
+      61
        分钟
     </span>
   
@@ -344,9 +344,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">filterMemo():<span class="hljs-built_in">Array</span>&lt;ItemData&gt; &#123;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.$store.state.fliterCateId == -<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.memoArr;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>   <span class="hljs-keyword">return</span>  <span class="hljs-built_in">this</span>.memoArr.filter(<span class="hljs-function">(<span class="hljs-params">item</span>)=&gt;</span>&#123;<br>      <span class="hljs-keyword">return</span>  item.categoryId == <span class="hljs-built_in">this</span>.$store.state.fliterCateId<br>   &#125;)<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="五、gitee共享"><a href="#五、gitee共享" class="headerlink" title="五、gitee共享"></a>五、gitee共享</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/porous-crystal/vue20-ys.git">https://gitee.com/porous-crystal/vue20-ys.git</a></p>
-<h2 id="六、视频展示"><a href="#六、视频展示" class="headerlink" title="六、视频展示"></a>六、视频展示</h2><video id="video" controls="" preload="none">
-    <source id="mp4" src="D:\blog\source\video\1.mp4" type="video/mp4">
-</video>
+<h2 id="六、视频展示"><a href="#六、视频展示" class="headerlink" title="六、视频展示"></a>六、视频展示</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"hotkey":true,"preload":"metadata","video":{"url":"http://www.nenu.edu.cn/_upload/article/videos/03/5f/7c999eed42e3aadc413d7f851f0e/0f50b3eb-9285-41d2-ac4d-6cc363651aad_B.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> 
 
 
             </div>
