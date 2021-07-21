@@ -182,24 +182,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" target="_self">
-          ts-类与接口
+        <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/" target="_self">
+          ts-类型别名
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" target="_self">
+        <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/" target="_self">
           
           
             
           
-          一、类
-举例：
-防盗门是门的子类，
-防盗门有报警的功能
-车有报警的功能
-报警提取成接口，防盗门和车都去实现他
-12345678910111213141516171819/* 类和接口 */interface Alarm &#123;    alert(): void;&#125;class Door &#123;&#125;class SecurityDoor extends Door imple
+          一、类型别名
+使用type创建类型别名，多应用于联合类型
+123456type aa = number;type bb = string | number;let a: aa = 123;let b: bb = &#x27;123&#x27;;console.log(a);console.log(b);
+
+二、字符串字面量类型
+字符串字面量类型用来约束取值只能是某几个字符串中的一个
+1234567
         </a>
       </p>
 
@@ -822,7 +822,7 @@ ts完全兼容js
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -831,7 +831,7 @@ ts完全兼容js
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">ŝlosivorto</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
