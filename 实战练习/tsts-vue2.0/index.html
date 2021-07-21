@@ -60,7 +60,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><script src="/assets/js/DPlayer.min.js"></script></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      3.4k 字
     </span>
   
 
@@ -344,7 +344,9 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">filterMemo():<span class="hljs-built_in">Array</span>&lt;ItemData&gt; &#123;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">this</span>.$store.state.fliterCateId == -<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.memoArr;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>   <span class="hljs-keyword">return</span>  <span class="hljs-built_in">this</span>.memoArr.filter(<span class="hljs-function">(<span class="hljs-params">item</span>)=&gt;</span>&#123;<br>      <span class="hljs-keyword">return</span>  item.categoryId == <span class="hljs-built_in">this</span>.$store.state.fliterCateId<br>   &#125;)<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="五、gitee共享"><a href="#五、gitee共享" class="headerlink" title="五、gitee共享"></a>五、gitee共享</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/porous-crystal/vue20-ys.git">https://gitee.com/porous-crystal/vue20-ys.git</a></p>
-<h2 id="六、视频展示"><a href="#六、视频展示" class="headerlink" title="六、视频展示"></a>六、视频展示</h2><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"hotkey":true,"preload":"metadata","video":{"url":"D:blogsourcevideo1.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> 
+<h2 id="六、视频展示"><a href="#六、视频展示" class="headerlink" title="六、视频展示"></a>六、视频展示</h2><video id="video" controls="" preload="none">
+    <source id="mp4" src="../video/1.mp4" type="video/mp4">
+</video>
 
 
             </div>
@@ -387,7 +389,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-vue3.0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ts-vue3.0</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -396,7 +398,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-%E4%BE%BF%E7%AD%BE%E9%A1%B9%E7%9B%AE/">
                         <span class="hidden-mobile">ts-便签项目</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -413,7 +415,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -439,7 +441,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -448,7 +450,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
