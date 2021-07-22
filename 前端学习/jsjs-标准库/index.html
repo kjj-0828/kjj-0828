@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="介绍js基础点-object对象，数组，包装对象，string对象....">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
@@ -242,7 +242,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 21, 2021 pm
+                  本文最后更新于：July 22, 2021 pm
                 
               </p>
             
@@ -362,8 +362,8 @@
 <li><p>包装对象的实例方法 valueof()，toString()</p>
 </li>
 <li><p>可以给包装对象自定义实例方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">String</span>.prototype.double = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br> <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.valueOf() + <span class="hljs-built_in">this</span>.valueOf()<br>&#125;;<br><span class="hljs-string">&#x27;abc&#x27;</span>.double()<br><span class="hljs-string">&quot;abcabc&quot;</span><br><br><span class="hljs-built_in">Number</span>.prototype.double = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.valueOf() + <span class="hljs-built_in">this</span>.valueOf()<br>&#125;;<br>(<span class="hljs-number">2</span>).double()<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">String</span>.prototype.double = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br> <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.valueOf() + <span class="hljs-built_in">this</span>.valueOf()<br>&#125;;<br><span class="hljs-string">&#x27;abc&#x27;</span>.double()<br><span class="hljs-string">&quot;abcabc&quot;</span><br><br><span class="hljs-built_in">Number</span>.prototype.double = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.valueOf() + <span class="hljs-built_in">this</span>.valueOf()<br>&#125;;<br>(<span class="hljs-number">2</span>).double()<br><span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
+</ol>
 <h2 id="四、Boolean对象"><a href="#四、Boolean对象" class="headerlink" title="四、Boolean对象"></a>四、Boolean对象</h2><ol>
 <li><p>Boolean转换为false的现象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">undefined</span>)<br><span class="hljs-literal">false</span><br><span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">null</span>)<br><span class="hljs-literal">false</span><br><span class="hljs-built_in">Boolean</span>(<span class="hljs-number">0</span>)<br><span class="hljs-literal">false</span><br><span class="hljs-built_in">Boolean</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br><span class="hljs-literal">false</span><br><span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">NaN</span>)<br><span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure></li>
@@ -373,16 +373,18 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-literal">false</span>))&#123;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>&#125;<br><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
 <p>之所以输出true，是因为false对应的包装对象实例是一个对象，进行逻辑运算时，自动转成布尔值true</p>
+</li>
+</ol>
 <h2 id="五、Number对象"><a href="#五、Number对象" class="headerlink" title="五、Number对象"></a>五、Number对象</h2><ol>
 <li>Number()是原始数字类型的包装类型</li>
 <li>有自己静态的属性，定义在Number对象上</li>
 <li>有自己的实例化方法</li>
 <li>也可以自定义方法</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Number</span>.prototype.add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>+x;<br>&#125;;<br>(<span class="hljs-number">8</span>).add(<span class="hljs-number">2</span>)<br><span class="hljs-number">10</span><br><span class="hljs-built_in">Number</span>.prototype.subtract= <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span> -x;<br>&#125;;<br>(<span class="hljs-number">10</span>).subtract(<span class="hljs-number">4</span>)<br><span class="hljs-number">6</span><br><span class="hljs-built_in">Number</span>.prototype.iterate = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-keyword">var</span> result = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span>;i&lt;=<span class="hljs-built_in">this</span>;i++)&#123;<br>result.push(i);<br>&#125;<br><span class="hljs-keyword">return</span> result;<br>&#125;;<br>(<span class="hljs-number">10</span>).iterate()<br>(<span class="hljs-number">11</span>) [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Number</span>.prototype.add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>+x;<br>&#125;;<br>(<span class="hljs-number">8</span>).add(<span class="hljs-number">2</span>)<br><span class="hljs-number">10</span><br><span class="hljs-built_in">Number</span>.prototype.subtract= <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span> -x;<br>&#125;;<br>(<span class="hljs-number">10</span>).subtract(<span class="hljs-number">4</span>)<br><span class="hljs-number">6</span><br><span class="hljs-built_in">Number</span>.prototype.iterate = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-keyword">var</span> result = [];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i =<span class="hljs-number">0</span>;i&lt;=<span class="hljs-built_in">this</span>;i++)&#123;<br>result.push(i);<br>&#125;<br><span class="hljs-keyword">return</span> result;<br>&#125;;<br>(<span class="hljs-number">10</span>).iterate()<br>(<span class="hljs-number">11</span>) [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]<br></code></pre></td></tr></table></figure>
+
+
+
 <h2 id="六、String对象"><a href="#六、String对象" class="headerlink" title="六、String对象"></a>六、String对象</h2><ol>
 <li><p>String是js原生提供的三个包装对象之一</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> s1 = <span class="hljs-string">&#x27;abc&#x27;</span>;<br><span class="hljs-keyword">var</span> s2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span> (<span class="hljs-string">&#x27;abc&#x27;</span>);<br><span class="hljs-keyword">typeof</span> s1<br><span class="hljs-string">&quot;string&quot;</span><br><span class="hljs-keyword">typeof</span> s2<br><span class="hljs-string">&quot;object&quot;</span><br>s2.valueOf()<br><span class="hljs-string">&quot;abc&quot;</span><br></code></pre></td></tr></table></figure></li>
@@ -425,8 +427,10 @@
 <li><p>replace() 用于替换匹配的子字符串，默认只替换第一个</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;aaa&#x27;</span>.replace(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>)<br><span class="hljs-string">&quot;baa&quot;</span><br></code></pre></td></tr></table></figure></li>
 <li><p>split() 方法，按照指定的规则分割字符串，返回一个分割出来的子字符串组成的数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br>[<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;&#x27;</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split()<br>[<span class="hljs-string">&quot;a|b|c&quot;</span>]<br><span class="hljs-string">&#x27;a||c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br> <span class="hljs-string">&#x27;|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br> [<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br> <span class="hljs-string">&#x27;a|b|&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;&quot;</span>]<br> <span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>,<span class="hljs-number">3</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>,<span class="hljs-number">2</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>]<br></code></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br>[<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;&#x27;</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;|&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split()<br>[<span class="hljs-string">&quot;a|b|c&quot;</span>]<br><span class="hljs-string">&#x27;a||c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br> <span class="hljs-string">&#x27;|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br> [<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br> <span class="hljs-string">&#x27;a|b|&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;&quot;</span>]<br> <span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>,<span class="hljs-number">3</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]<br><span class="hljs-string">&#x27;a|b|c&#x27;</span>.split(<span class="hljs-string">&#x27;|&#x27;</span>,<span class="hljs-number">2</span>)<br> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>]<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
 <h2 id="七、json对象"><a href="#七、json对象" class="headerlink" title="七、json对象"></a>七、json对象</h2><ol>
 <li><p>Json格式</p>
 <p>复杂类型只能是数组或者对象，不能是函数、正则对象，日期对象</p>
@@ -440,10 +444,6 @@
 <li><p>如果参数对象有自定义的toJSON()方法，会使用这个方法作为返回值，忽略其他的属性</p>
 </li>
 <li><p>JSON.parse()  将JSON字符串转成对应的值</p>
-</li>
-</ol>
-</li>
-</ol>
 </li>
 </ol>
 
@@ -487,7 +487,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-面向对象编程</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -496,7 +496,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E8%AF%AD%E6%B3%95/">
                         <span class="hidden-mobile">js-语法</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -513,7 +513,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -539,7 +539,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -548,7 +548,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
