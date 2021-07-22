@@ -18,9 +18,25 @@
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>Kategorie - ts进阶 - kjj</title>
+  <title>js-数组扁平化 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -147,9 +163,59 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Kategorie - ts进阶">
+            <span class="h2" id="subtitle" title="js-数组扁平化">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-22 15:05" pubdate>
+        July 22, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      124 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -162,64 +228,106 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">Insgesamt 5 Artikel.</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ts-声明合并</span>
-      <time style="float: right;">07-13</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E6%B3%9B%E5%9E%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ts-泛型</span>
-      <time style="float: right;">07-13</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ts-类</span>
-      <time style="float: right;">07-13</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ts-类与接口</span>
-      <time style="float: right;">07-13</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">ts-类型别名</span>
-      <time style="float: right;">07-13</time>
-    </a>
-  
-</div>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">js-数组扁平化</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：July 22, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法一：数组扁平化，如果是数字，就放入数组，如果是数组，递归处理</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,[<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>],<span class="hljs-number">9</span>],<span class="hljs-number">10</span>,[<span class="hljs-number">11</span>,<span class="hljs-number">12</span>]];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flatten</span>(<span class="hljs-params">arr</span>) </span>&#123; <span class="hljs-comment">// 参数要传值，不然会导致栈无穷大</span><br>    <span class="hljs-keyword">let</span> flatArr = []; <span class="hljs-comment">//避免定义全局变量</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-built_in">console</span>.log(arr[i]);<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> arr[i] == <span class="hljs-string">&#x27;number&#x27;</span>) &#123;<br>            flatArr.push(arr[i]);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(arr[i])) &#123; <span class="hljs-comment">// 如果是数组</span><br>         flatArr = flatArr.concat(flatten(arr[i]));<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> flatArr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(flatten(arr));<br></code></pre></td></tr></table></figure>
 
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/js/">js</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">js-数组相等</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-vue3.0/">
+                        <span class="hidden-mobile">ts-vue3.0</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -382,9 +490,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
@@ -462,9 +576,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
