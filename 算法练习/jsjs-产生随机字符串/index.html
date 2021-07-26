@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      530 字
+      528 字
     </span>
   
 
@@ -251,7 +251,9 @@
 
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs gcode">&#123;<span class="hljs-meta">%</span> label primary @<br>对Math.radom<span class="hljs-comment">()</span>的理解，生成随机的大于等于<span class="hljs-number">0.0</span>且小于<span class="hljs-number">1.0</span>的double值<br><br>返回指定范围<span class="hljs-comment">(m-n)</span>的随机数的公式<br><br>Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(n-m)</span>+m;<br><br>比如生成<span class="hljs-number">3</span><span class="hljs-number">-32</span>位的随机数：Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(32-3)</span><span class="hljs-number">+3</span>;<br><br>Math.radom<span class="hljs-comment">()</span> 生成的是<span class="hljs-number">0.0</span><span class="hljs-number">-1.0</span>,<br><br>Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(32-3)</span>生成的是<span class="hljs-number">0</span><span class="hljs-number">-29</span><br><br>Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(32-3)</span><span class="hljs-number">+3</span> 生成的是<span class="hljs-number">3</span><span class="hljs-number">-32</span><span class="hljs-meta">%</span>&#125;<br></code></pre></td></tr></table></figure>
 
-<span class="label label-success">text 对Math.radom()的理解，生成随机的大于等于0.0且小于1.0的double值 返回指定范围(m-n)的随机数的公式 Math.radom()*(n-m)+m; 比如生成3-32位的随机数：Math.radom()*(32-3)+3; Math.radom() 生成的是0.0-1.0, Math.radom()*(32-3)生成的是0-29 Math.radom()*(32-3)+3 生成的是3-32</span>
+<div class="note note-success">
+            <p>对Math.radom()的理解，生成随机的大于等于0.0且小于1.0的double值</p><p>返回指定范围(m-n)的随机数的公式</p><p>Math.radom()*(n-m)+m;</p><p>比如生成3-32位的随机数：Math.radom()*(32-3)+3;</p><p>Math.radom() 生成的是0.0-1.0,</p><p>Math.radom()*(32-3)生成的是0-29</p><p>Math.radom()*(32-3)+3 生成的是3-32</p>
+          </div>
             </div>
             <hr>
             <div>
@@ -270,9 +272,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/js/">js</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
                     
                   </div>
                 
@@ -295,7 +297,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
                         <span class="hidden-mobile">js-红宝书-语言基础</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -312,7 +314,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -338,7 +340,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -347,7 +349,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
