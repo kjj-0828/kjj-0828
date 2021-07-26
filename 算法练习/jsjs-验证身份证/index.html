@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="介绍红包书中的js知识点-生成uuid">
+  <meta name="description" content="介绍红包书中的js知识点-验证身份证">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>js-生成uuid - kjj</title>
+  <title>js-验证身份证 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="js-生成uuid">
+            <span class="h2" id="subtitle" title="js-验证身份证">
               
             </span>
 
@@ -178,7 +178,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-26 15:32" pubdate>
+      <time datetime="2021-07-26 16:10" pubdate>
         July 26, 2021 pm
       </time>
     </span>
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      213 字
+      49 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      1
        分钟
     </span>
   
@@ -238,7 +238,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js-生成uuid</h1>
+            <h1 style="display: none">js-验证身份证</h1>
             
               <p class="note note-info">
                 
@@ -247,11 +247,9 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成uuid</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateUUID</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">//返回13位的毫秒数 从1970年1月1日到现在的北京时间</span><br>    <span class="hljs-keyword">let</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();<br>    <span class="hljs-comment">//  /[xy]/g 是匹配字符串中的x或者y或者多个xy</span><br>    <span class="hljs-comment">// /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</span><br>    <span class="hljs-keyword">var</span> uuid = <span class="hljs-string">&#x27;xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx&#x27;</span>.replace(<span class="hljs-regexp">/[xy]/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) </span>&#123;<br>        <span class="hljs-comment">// console.log(c); // c的值是替换后的值xxxxxxxxxxxxxxxyxxxxxxxxxxxxxxx</span><br>        <span class="hljs-keyword">let</span> r = (d + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">16</span>) % <span class="hljs-number">16</span> | <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> (c == <span class="hljs-string">&#x27;x&#x27;</span> ? r : (r &amp; <span class="hljs-number">0x7</span> | <span class="hljs-number">0x8</span>)).toString(<span class="hljs-number">16</span>);<br>    &#125;)<br>    <span class="hljs-keyword">return</span> uuid;<br>&#125;<br><span class="hljs-built_in">console</span>.log(generateUUID()); <span class="hljs-comment">//ee465953237b4f16a500bb4b1b96c0ff</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">IdentityCodeValid</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> myreg = <span class="hljs-regexp">/^\d&#123;6&#125;(18|19|20)?\d&#123;2&#125;(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])\d&#123;3&#125;(\d|[xX])$/i</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(IdentityCodeValid(<span class="hljs-string">&quot;150316199910123446&quot;</span>));<span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
-<div class="note note-success">
-            <p> 对/[xy]/g的理解：</p><p> /[xy]/g 是匹配字符串中的x或者y或者多个xy</p><p> /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</p><p>如果上述的程序不加/g得到结果是： 5xxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx 只会匹配一个字符</p>
-          </div>
+
             </div>
             <hr>
             <div>
@@ -260,9 +258,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js/">js</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/js/">js</a>
                     
                   </div>
                 
@@ -289,19 +287,13 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">js-验证手机号</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="hidden-mobile">js-产生随机字符串</span>
-                        <span class="visible-mobile">Nächster</span>
+                      <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/">
+                        <span class="hidden-mobile">js-验证手机号</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -344,7 +336,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -353,7 +345,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
