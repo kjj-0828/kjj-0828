@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="介绍红包书中的js知识点-验证手机号">
+  <meta name="description" content="介绍红包书中的js知识点-">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>js-验证手机号 - kjj</title>
+  <title>js-验证身份证 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="js-验证手机号">
+            <span class="h2" id="subtitle" title="js-验证身份证">
               
             </span>
 
@@ -178,7 +178,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-26 15:49" pubdate>
+      <time datetime="2021-07-26 16:10" pubdate>
         July 26, 2021 pm
       </time>
     </span>
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      151 字
+      49 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      1
        分钟
     </span>
   
@@ -238,7 +238,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js-验证手机号</h1>
+            <h1 style="display: none">js-验证身份证</h1>
             
               <p class="note note-info">
                 
@@ -247,11 +247,9 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入的手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyPhoneNumberFormat</span>(<span class="hljs-params">str</span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> myreg = <span class="hljs-regexp">/^((13[0-9]&#123;1&#125;)|(15[0-9]&#123;1&#125;)|(17[0-9]&#123;1&#125;)|(18[0-9]&#123;1&#125;))+\d&#123;8&#125;$/</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(verifyPhoneNumberFormat(<span class="hljs-string">&quot;15031679910&quot;</span>)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">IdentityCodeValid</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> myreg = <span class="hljs-regexp">/^\d&#123;6&#125;(18|19|20)?\d&#123;2&#125;(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])\d&#123;3&#125;(\d|[xX])$/i</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(IdentityCodeValid(<span class="hljs-string">&quot;150316199910123446&quot;</span>));<span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
 
-<div class="note note-success">
-            <p>对正则的理解：</p><p>/^((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8}$/;</p><p>^ 正则的开始</p><p>$ 正则的结束</p><p>13[0-9]{1} 表示数值可以是130、131、132…这样子，{1}表示匹配一位</p><p>\d：匹配一个数字字符。等价于[0-9]</p><p>{8}：匹配次数8次</p><p>\d{8}：任意的8个数字</p>
-          </div>
+
             </div>
             <hr>
             <div>
@@ -289,7 +287,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/">
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81-1/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-验证身份证</span>
                         <span class="visible-mobile">Vorheriger</span>
@@ -299,8 +297,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E7%94%9F%E6%88%90uuid/">
-                        <span class="hidden-mobile">js-生成uuid</span>
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/">
+                        <span class="hidden-mobile">js-验证手机号</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
