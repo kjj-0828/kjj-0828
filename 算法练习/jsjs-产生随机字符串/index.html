@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="ts基础知识点- ts-泛型">
+  <meta name="description" content="介绍js的练习题-产生随机字符串">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>ts-泛型 - kjj</title>
+  <title>js-产生随机字符串 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ts-泛型">
+            <span class="h2" id="subtitle" title="js-产生随机字符串">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-13 09:58" pubdate>
-        July 13, 2021 am
+      <time datetime="2021-07-25 21:35" pubdate>
+        July 25, 2021 pm
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      492 字
+      536 字
     </span>
   
 
@@ -238,33 +238,23 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ts-泛型</h1>
+            <h1 style="display: none">js-产生随机字符串</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 22, 2021 pm
+                  本文最后更新于：July 26, 2021 am
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、泛型"><a href="#一、泛型" class="headerlink" title="一、泛型"></a>一、泛型</h2><ol>
-<li><p>小例</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">/* 小例 */</span><br><span class="hljs-keyword">function</span> create<span class="hljs-constructor">Array(<span class="hljs-params">length</span>: <span class="hljs-params">number</span>, <span class="hljs-params">value</span>: <span class="hljs-params">any</span>)</span>: Array&lt;any&gt; &#123;<br>  <span class="hljs-keyword">let</span> result = <span class="hljs-literal">[]</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;length;i++)&#123;<br>      result<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>= value;<br>  &#125;<br>  return result;<br>&#125;<br><span class="hljs-keyword">let</span> <span class="hljs-built_in">array</span> = create<span class="hljs-constructor">Array(3,&#x27;<span class="hljs-params">x</span>&#x27;)</span>;<br>console.log(<span class="hljs-built_in">array</span>); <span class="hljs-comment">// [ &#x27;x&#x27;, &#x27;x&#x27;, &#x27;x&#x27; ]</span><br><span class="hljs-comment">// 缺点是返回值的类型没有定义，我们应该要求数组中的每一项都是value的类型</span><br></code></pre></td></tr></table></figure></li>
-<li><p>泛型</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 泛型 */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createArray1</span>&lt;<span class="hljs-title">T</span>&gt; (<span class="hljs-params">length:<span class="hljs-built_in">number</span>,value:T</span>):<span class="hljs-title">Array</span>&lt;<span class="hljs-title">T</span>&gt;</span>&#123;<br>    <span class="hljs-keyword">let</span> result: T[] = [];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;length;i++)&#123;<br>        result[i] = value;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">var</span> array1 = createArray1(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;y&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(array1); <span class="hljs-comment">// [ &#x27;y&#x27;, &#x27;y&#x27;, &#x27;y&#x27; ]</span><br></code></pre></td></tr></table></figure></li>
-<li><p>多个类型参数</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><span class="hljs-comment">/* 多个类型参数 */</span><br>function swap&lt;<span class="hljs-symbol">T</span>,<span class="hljs-symbol">U</span>&gt;(tuple:[<span class="hljs-symbol">T</span>,<span class="hljs-symbol">U</span>]):[<span class="hljs-symbol">U</span>,<span class="hljs-symbol">T</span>]&#123;<br>    return [tuple[<span class="hljs-number">1</span>],tuple[<span class="hljs-number">0</span>]];<br>&#125;<br>console.log(swap([<span class="hljs-number">7</span>,<span class="hljs-string">&#x27;seven&#x27;</span>])); // [ <span class="hljs-string">&#x27;seven&#x27;</span>, <span class="hljs-number">7</span> ]<br></code></pre></td></tr></table></figure></li>
-<li><p>泛型约束</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 泛型约束 */</span><br><span class="hljs-keyword">interface</span> Lengthwise &#123;<br>    <span class="hljs-attr">length</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logging</span>&lt;<span class="hljs-title">T</span> <span class="hljs-title">extends</span> <span class="hljs-title">Lengthwise</span>&gt;(<span class="hljs-params">args: T</span>): <span class="hljs-title">T</span> </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(args.length); <span class="hljs-comment">// 3</span><br>  <span class="hljs-keyword">return</span> args;<br>&#125;<br>logging(<span class="hljs-string">&#x27;123&#x27;</span>); <br></code></pre></td></tr></table></figure></li>
-<li><p>泛型接口</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 泛型接口 */</span><br><span class="hljs-keyword">interface</span> CreateArrayFunc &#123;<br>    &lt;T&gt;(length: <span class="hljs-built_in">number</span>, <span class="hljs-attr">value</span>: T): <span class="hljs-built_in">Array</span>&lt;T&gt;;<br>&#125;<br><span class="hljs-keyword">let</span> createArray2: CreateArrayFunc;<br>createArray2 = <span class="hljs-function"><span class="hljs-keyword">function</span> &lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">length: <span class="hljs-built_in">number</span>, value: T</span>): <span class="hljs-title">Array</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;<br>  <span class="hljs-keyword">let</span> result :T[] = [];<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;length;i++)&#123;<br>      result[i] =value;<br>  &#125;<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-built_in">console</span>.log(createArray2(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;z&#x27;</span>)); <span class="hljs-comment">// [ &#x27;z&#x27;, &#x27;z&#x27;, &#x27;z&#x27; ]</span><br></code></pre></td></tr></table></figure></li>
-<li><p>泛型参数提前到接口上</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 泛型参数提前到泛型接口上 */</span><br><span class="hljs-keyword">interface</span> CreateArrayFunc1&lt;T&gt; &#123;<br>    (length: <span class="hljs-built_in">number</span>, <span class="hljs-attr">value</span>: T): <span class="hljs-built_in">Array</span>&lt;T&gt;;<br>&#125;<br><span class="hljs-keyword">let</span> createArray3: CreateArrayFunc1&lt;<span class="hljs-built_in">any</span>&gt;;<br>createArray3 = <span class="hljs-function"><span class="hljs-keyword">function</span> &lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">length: <span class="hljs-built_in">number</span>, value: T</span>): <span class="hljs-title">Array</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;<br>    <span class="hljs-keyword">let</span> result: T[] = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) &#123;<br>        result[i] = value;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-built_in">console</span>.log(createArray3(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;W&#x27;</span>)); <span class="hljs-comment">// [ &#x27;W&#x27;, &#x27;W&#x27;, &#x27;W&#x27; ]</span><br></code></pre></td></tr></table></figure></li>
-<li><p>泛型类</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 泛型类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GenericNumber</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;<br>    <span class="hljs-attr">zeroValue</span>:T;<br>    add:<span class="hljs-function">(<span class="hljs-params">x:T,y:T</span>) =&gt;</span>T; <span class="hljs-comment">// 函数</span><br>&#125;<br><span class="hljs-keyword">let</span> myGenericNumber = <span class="hljs-keyword">new</span> GenericNumber&lt;<span class="hljs-built_in">number</span>&gt;();<br>myGenericNumber.zeroValue=<span class="hljs-number">0</span>;<br>myGenericNumber.add=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x,y</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> x+y;<br>&#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>泛型参数的默认类型</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs applescript">/* 泛型参数的默认类型 */<br>function createArray5&lt;T = <span class="hljs-built_in">string</span>&gt;(<span class="hljs-built_in">length</span>: <span class="hljs-built_in">number</span>, value: T): Array&lt;T&gt; &#123;<br>    let <span class="hljs-literal">result</span>: T[] = [];<br>    <span class="hljs-keyword">for</span> (let i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">length</span>; i++) &#123;<br>        <span class="hljs-literal">result</span>[i] = value;<br>    &#125;<br><span class="hljs-built_in">    return</span> <span class="hljs-literal">result</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
-</ol>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>radomFlag 用户是否设置位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>min 最小位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>max 最大位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回生成的字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomWord</span>(<span class="hljs-params">radomFlag, min, max</span>) </span>&#123;<br>    <span class="hljs-comment">//结果字符串</span><br>    <span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-comment">// 位数 </span><br>    range = min;<br>    arr = [<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-string">&#x27;g&#x27;</span>, <span class="hljs-string">&#x27;h&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;j&#x27;</span>, <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;m&#x27;</span>, <span class="hljs-string">&#x27;n&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-string">&#x27;q&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span>, <span class="hljs-string">&#x27;t&#x27;</span>, <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-string">&#x27;v&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>, <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-string">&#x27;G&#x27;</span>, <span class="hljs-string">&#x27;H&#x27;</span>, <span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-string">&#x27;J&#x27;</span>, <span class="hljs-string">&#x27;K&#x27;</span>, <span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-string">&#x27;N&#x27;</span>, <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-string">&#x27;P&#x27;</span>, <span class="hljs-string">&#x27;Q&#x27;</span>, <span class="hljs-string">&#x27;R&#x27;</span>, <span class="hljs-string">&#x27;S&#x27;</span>, <span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-string">&#x27;U&#x27;</span>, <span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-string">&#x27;W&#x27;</span>, <span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>, <span class="hljs-string">&#x27;Z&#x27;</span>];<br>    <span class="hljs-comment">//设置产生位数与否</span><br>    <span class="hljs-keyword">if</span> (radomFlag) &#123;<br>        <span class="hljs-comment">// 产生min-max位的随机字符串</span><br>        range = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * (max - min)) + min;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; range; i++) &#123;<br>        <span class="hljs-comment">// 产生0-arr.length 的随机数</span><br>        <span class="hljs-keyword">let</span> pos = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * (arr.length - <span class="hljs-number">1</span>));<br>        str += arr[pos];<br>    &#125;<br>    <span class="hljs-keyword">return</span> str;<br>&#125;<br><span class="hljs-comment">// 生成3-32位的随机字符串</span><br><span class="hljs-keyword">let</span> str1 = randomWord(<span class="hljs-literal">true</span>, <span class="hljs-number">3</span>, <span class="hljs-number">32</span>);<br><span class="hljs-comment">// 生成32位随机字符串</span><br><span class="hljs-keyword">let</span> str2 = randomWord(<span class="hljs-literal">false</span>, <span class="hljs-number">4</span>);<br><span class="hljs-built_in">console</span>.log(str1); <span class="hljs-comment">// JWrQ5AmSv702B7X2J0A4o5mBO</span><br><span class="hljs-built_in">console</span>.log(str2); <span class="hljs-comment">// 5mKY</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;% note primary %&#125;<br><br>对Math.radom()的理解，生成随机的大于等于0.0且小于1.0的double值<br><br>返回指定范围(m-n)的随机数的公式<br><br>Math.radom()<span class="hljs-emphasis">*(n-m)+m;</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">比如生成3-32位的随机数：Math.radom()*</span>(32-3)+3;<br><br>Math.radom() 生成的是0.0-1.0,<br><br>Math.radom()<span class="hljs-emphasis">*(32-3)生成的是0-29</span><br><span class="hljs-emphasis"></span><br><span class="hljs-emphasis">Math.radom()*</span>(32-3)+3 生成的是3-32<br><br>&#123;% endnote %&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs gcode">&#123;<span class="hljs-meta">%</span> label primary @<br>对Math.radom<span class="hljs-comment">()</span>的理解，生成随机的大于等于<span class="hljs-number">0.0</span>且小于<span class="hljs-number">1.0</span>的double值<br><br>返回指定范围<span class="hljs-comment">(m-n)</span>的随机数的公式<br><br>Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(n-m)</span>+m;<br><br>比如生成<span class="hljs-number">3</span><span class="hljs-number">-32</span>位的随机数：Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(32-3)</span><span class="hljs-number">+3</span>;<br><br>Math.radom<span class="hljs-comment">()</span> 生成的是<span class="hljs-number">0.0</span><span class="hljs-number">-1.0</span>,<br><br>Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(32-3)</span>生成的是<span class="hljs-number">0</span><span class="hljs-number">-29</span><br><br>Math.radom<span class="hljs-comment">()</span>*<span class="hljs-comment">(32-3)</span><span class="hljs-number">+3</span> 生成的是<span class="hljs-number">3</span><span class="hljs-number">-32</span><span class="hljs-meta">%</span>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 
             </div>
             <hr>
@@ -274,11 +264,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6/">ts进阶</a>
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/js/">js</a>
                     
                   </div>
                 
@@ -286,9 +274,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
                     
-                      <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
                     
                   </div>
                 
@@ -305,18 +293,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ts-声明合并</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">
-                        <span class="hidden-mobile">ts-类与接口</span>
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">js-红宝书-语言基础</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
