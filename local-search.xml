@@ -5,8 +5,8 @@
   
   <entry>
     <title>js-红宝书-基本引用类型</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</url>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</url>
     
     <content type="html"><![CDATA[<h2 id="一、Date"><a href="#一、Date" class="headerlink" title="一、Date"></a>一、Date</h2><ol><li><p>创建日期对象</p><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">let</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br></code></pre></td></tr></table></figure></li><li><p>Date.parse()和Date.UTC()都会被Date构造函数隐式调用</p></li><li><p>Date.now()返回方法执行日期和时间的毫秒数</p></li><li><p>Date类型重写了toLocaleString()、toString()和valueOf()方法</p></li><li><p>日期中提供了很多方法，需要的时候，可以查看书籍P106</p></li></ol><h2 id="二、RegExp"><a href="#二、RegExp" class="headerlink" title="二、RegExp"></a>二、RegExp</h2><ol><li>ECMAScript 通过RegExp类型支持正则表达式</li><li>RegExp实例的方法：<ul><li>exec()：只要配合捕获组使用，只接受一个参数，即要应用模式的字符串</li><li>test()：接受一个字符串参数，如果匹配返回true，如果不匹配返回false</li></ul></li></ol><h2 id="三、原始值包装类型"><a href="#三、原始值包装类型" class="headerlink" title="三、原始值包装类型"></a>三、原始值包装类型</h2><ol><li><p>提供3种特殊的引用类型：Boolean、Number、String</p></li><li><p>原始值本身不是对象，逻辑上不应该有方法</p><p>String:</p></li><li><p>但是后台做了很多工作：在以读模式访问字符串的任何时候实际上后台会执行3步：</p><ul><li>创建一个String类型的实例</li><li>调用实例上的特定方法</li><li>销毁实例</li></ul></li><li><p>这种行为可以让原始值拥有对象的行为</p><p>Boolean:</p></li><li><p>Boolean是对应的布尔值的引用类型</p></li><li><p>Boolean的实例会重写valueOf()方法，返回一个原始值true或者false</p></li><li><p>toString()方法被调用时也会被覆盖，返回字符串“true”或者“false”</p><p>Number:</p></li><li><p>Number是对应的数值的引用类型</p></li><li><p>toFixed()返回包含小数点位数的数值字符串</p></li><li><p>toExponential()返回以科学计数法表示的数值字符串</p></li><li><p>toPrecision()方法会根据情况返回最合理的输出结果</p></li><li><p>ES6新增的Number.isInteger()方法，用于辨别一个数值是否保存为整数</p><p>String:</p></li><li><p>String是对应的字符串的引用类型</p></li><li><p>String的3个继承方法：toString、toLocaleString、valueOf可以在所以字符串原值上调用</p></li><li><p>字符串的length属性</p></li><li><p>字符串的操作方法：</p><ul><li>concat():用于将一个或者多个字符串拼接成一个新字符串</li><li>但是更常用的连接字符串的是“+”</li><li>slice():返回字符串的一个子字符串，第一个参数表示子字符串开始的位置，第二个参数表示子字符串结束的位置</li><li>slice():将所有负值参数都当做字符串长度加上负参数值</li><li>substring():返回字符串的一个子字符串，第一个参数表示子字符串开始的位置，第二个参数表示子字符串结束的位置</li><li>substring():会将所有负参数值转换成0</li><li>substr():返回字符串的一个子字符串，第一个参数表示子字符串开始的位置，第二个参数表示子字符串的个数</li><li>substr():将第一个负参数值当做字符串长度加上负参数值，第二个负参数值转化成0 </li><li>indexOf()：从字符串开头开始查找子字符串返回下标</li><li>lastIndexOf():从字符串末尾开始查找子字符串返回下标</li><li>startWith():判断字符串是否包含另一个字符串，返回布尔值，从索引0开始</li><li>endWith():检查开始于2个字符串长度的差值</li><li>includes():检查整个字符串</li><li>trim():删除前后所有空格</li><li>repeat():接受一个整数参数，表示将字符串复制多少次</li><li>padStart()、padEnd():复制字符串，如果小于指定长度，则在相应的一边填充字符</li><li>如果长度小于或者等于字符串长度，返回原字符串</li><li>字符串解构: 解构操作符…</li><li>字符串的大小转换：toLowerCase()、toLocaleLowerCase()、toUpperCase()、toLcaleUpperCase()</li><li>match():本质和RegExp对象的exec()方法相同</li><li>replace():第一个参数是字符串或者RegExp对象，第二个参数可以是字符串或者一个函数</li><li>split():会根据传入的分隔符把字符串分割，返回数组</li><li>localeCompare():比较2个字符串，大于返回1，小于返回-1，相等返回0</li></ul></li></ol><h2 id="四、单例内置对象"><a href="#四、单例内置对象" class="headerlink" title="四、单例内置对象"></a>四、单例内置对象</h2><ol><li>2个单例内置对象：Global、Math</li><li>在全局作用域中定义的变量和函数都会变成Global 对象的属性</li><li>通过eval()定义的任何变量和函数都不会被提升</li><li>undefined、NaN、Infinity都是Gobal对象的属性</li><li>所有原生引用类型构造函数比如:Object、Function也都是Global对象的属性</li><li>ECMA-262 没有规定直接访问Global对象的方式</li><li>浏览器将window对象实现为Global对象的代理</li><li>调用一个简单返回this的函数是在执行上下文中获取Global对象通用方式</li><li>Math提供和很多方法，需要时可以查看书籍P132</li></ol><h2 id="五、小结"><a href="#五、小结" class="headerlink" title="五、小结"></a>五、小结</h2><div class="note note-success">            <p>引用值与传统面向对象编程语言中的类相似，但实现不同</p><p>Date类型提供关于日期和时间的信息</p><p>RegExp类型是ECMAScript支持正则表达式的接口</p><p>由于原始值包装类型的存在，Js中的原始值可以当做对象来使用</p><p>当代码开始执行的时候，全局上下文会存在2个内置对象：Global和Math</p><p>Global对象在大多数ECMAScript实现中无法直接访问，不过浏览器将其实现为window对象</p><p>所有全局变量和函数都是Global对象的属性</p>          </div>]]></content>
     
@@ -15,7 +15,7 @@
       
       <category>前端学习</category>
       
-      <category>js</category>
+      <category>js-红宝书</category>
       
     </categories>
     
@@ -34,8 +34,8 @@
   
   <entry>
     <title>js-红宝书-变量、作用域与内存</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98/</url>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98/</url>
     
     <content type="html"><![CDATA[<h2 id="一、原始值与引用值"><a href="#一、原始值与引用值" class="headerlink" title="一、原始值与引用值"></a>一、原始值与引用值</h2><ol><li>原始值就是最简单的数据</li><li>引用值则是多个值构成的对象</li><li>保存原始值的变量是按照值访问的</li><li>引用值是保存在内存中的对象</li><li>js不允许直接访问内存位置，也就不能直接操作对象所在的内存空间，在操作对象时，实际上操作的是对对象的引用</li><li>保存引用值的变量是按照引用访问的</li><li>对于引用值可以随时添加、修改、删除其属性和方法</li><li>只有引用值可以动态添加后面可以使用的属性</li><li>原始值：通过变量把一个原始值赋值到另一个变量时，原始值会被复制到新变量的位置</li><li>引用值：通过变量把一个原始值赋值到另一个变量时，原始值会被复制到新变量的位置，区别是，这里复制的值其实是一个指针，指向存在堆内存中的对象，操作完成后，两个变量实际上指向同一个对象</li><li>变量分为按照值和引用访问，而传参只有按照值传递</li><li>typeof用于检测原始数据类型，instanceof用于检测引用数据类型</li><li>所以引用值都是Object实例</li></ol><h2 id="二、执行上下文和作用域"><a href="#二、执行上下文和作用域" class="headerlink" title="二、执行上下文和作用域"></a>二、执行上下文和作用域</h2><ol><li>在浏览器中，全局上下文就是我们常说的window对象</li><li>全局上下文在应用程序退出时才销毁，比如关闭网页或退出浏览器</li><li>程序的执行流是通过上下文栈进行控制的</li><li>内部上下文可以通过作用域链访问外部上下文中的一切，但是外部上下文无法访问内部上下文中的任何东西</li><li>使用var的函数作用域声明</li><li>使用let的块级作用域声明</li><li>使用const声明的变量必须同时初始化为某个值</li></ol><h2 id="三、垃圾回收"><a href="#三、垃圾回收" class="headerlink" title="三、垃圾回收"></a>三、垃圾回收</h2><ol><li><p>垃圾回收的两种方式：标记清理和引用计数</p></li><li><p>引用计数存在循环引用的问题</p></li><li><p>循环引用就是对象A有一个指针指向对象B，而对象B也引用了对象A</p></li><li><p>分配给浏览器的内存通常比分配给桌面软件的要少的多，分配给移动浏览器的就更少了</p></li><li><p>将内存占用量保持在一个较小的值可以让页面的性能更好</p></li><li><p>解除对一个值的引用并不会自动导致相关的内存被回收，解除引用的关键是，确保相关的值不在上下文里了，他在下次垃圾回收的时候会被回收</p></li><li><p>Chorme是最流行的浏览器，使用的V8 JavaScript引擎</p></li><li><p>苹果浏览器使用的JavaScriptCore引擎</p></li><li><p>Chorme分为html渲染和JavaScrpit解析</p><ul><li>html渲染采用的是webkit的代码,</li><li>js解析采用的自己的框架V8 JavaScript引擎</li></ul></li><li><p>使用js闭包很容易在不知不觉之间造成内存泄漏</p></li><li><p>js的特点：内部变量可以访问外部变量，或者说子对象可以访问父对象的属性和方法</p></li><li><p>闭包：能够读取其他函数内部变量的函数</p></li><li><p>为了提升javascript的性能，可以采用静态分配和对象池</p></li></ol><h2 id="四、小结"><a href="#四、小结" class="headerlink" title="四、小结"></a>四、小结</h2><div class="note note-success">            <p>原始值的大小固定，保存在栈内存</p><p>引用值是对象，保存在堆内存</p><p>typeof确定值的原始类型，instanceof确定值的引用类型</p><p>执行上下文分为全局上下文、函数上下文和块级上下文</p><p>javascript的垃圾回收机制：</p><p>离开作用域的值会被标记成可回收，然后垃圾回收期间被删除</p><p>主流的垃圾回收算法是标记清理</p><p>引用计数是另一种垃圾回收机制</p><p>引用计数在代码中存在循环引用的时候会出现问题</p><p>为了促进内存回收，全局对象，全局对象的属性和循环引用在不需要的时候，都要解除引用</p>          </div>]]></content>
     
@@ -44,7 +44,7 @@
       
       <category>前端学习</category>
       
-      <category>js</category>
+      <category>js-红宝书</category>
       
     </categories>
     
@@ -323,11 +323,11 @@
   
   
   <entry>
-    <title>js-红宝书-什么是javascript</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/</url>
+    <title>js-红宝书-html中的js</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、对js的认识"><a href="#一、对js的认识" class="headerlink" title="一、对js的认识"></a>一、对js的认识</h2><ol><li>js是专门用来进行网页交互的语言</li><li>js包括3大核心内容<ul><li>ECMAscript  制定标准，ES是js基本语法的规范，js是ES的实现</li><li>DOM：提供与网页内容进行交互的方法和接口</li><li>BOM：提供与浏览器进行交互的方法和接口</li></ul></li><li>js的这3部分都得到了5个web浏览器（IE、Firefox、Chorme、Safari、Opera）不同程度的支持，基本上对ES5都是支持的，对ES6的支持也在不断完善。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、html中的js"><a href="#一、html中的js" class="headerlink" title="一、html中的js"></a>一、html中的js</h2><ol><li>javascript通过<script>标签插入html中，也可以引入保存在外部文件中的javascript</li><li>所有的<script>会根据他们在网页中出现的次序依次被解析</li><li>对于不推迟执行的脚本，浏览器必须解释完<script>标签中的内容，才去渲染界面的其他内容</li><li>可以使用defer推迟脚本的执行，可以将脚本延迟到文档解析和加载完成后再运行脚本</li><li>async表示不需要等待其他脚本的加载，也不需要阻塞文档的渲染，即实现异步加载，但是异步加载不能保证他们按照web中的顺序执行</li><li>使用<noscript>标签，可以解决浏览器不支持脚本的时候显示内容，如果浏览器支持脚本，那么<noscript>的内容永远不会被看到</li></ol>]]></content>
     
     
     <categories>
@@ -352,11 +352,11 @@
   
   
   <entry>
-    <title>js-红宝书-html中的js</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/</url>
+    <title>js-红宝书-什么是javascript</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、html中的js"><a href="#一、html中的js" class="headerlink" title="一、html中的js"></a>一、html中的js</h2><ol><li>javascript通过<script>标签插入html中，也可以引入保存在外部文件中的javascript</li><li>所有的<script>会根据他们在网页中出现的次序依次被解析</li><li>对于不推迟执行的脚本，浏览器必须解释完<script>标签中的内容，才去渲染界面的其他内容</li><li>可以使用defer推迟脚本的执行，可以将脚本延迟到文档解析和加载完成后再运行脚本</li><li>async表示不需要等待其他脚本的加载，也不需要阻塞文档的渲染，即实现异步加载，但是异步加载不能保证他们按照web中的顺序执行</li><li>使用<noscript>标签，可以解决浏览器不支持脚本的时候显示内容，如果浏览器支持脚本，那么<noscript>的内容永远不会被看到</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、对js的认识"><a href="#一、对js的认识" class="headerlink" title="一、对js的认识"></a>一、对js的认识</h2><ol><li>js是专门用来进行网页交互的语言</li><li>js包括3大核心内容<ul><li>ECMAscript  制定标准，ES是js基本语法的规范，js是ES的实现</li><li>DOM：提供与网页内容进行交互的方法和接口</li><li>BOM：提供与浏览器进行交互的方法和接口</li></ul></li><li>js的这3部分都得到了5个web浏览器（IE、Firefox、Chorme、Safari、Opera）不同程度的支持，基本上对ES5都是支持的，对ES6的支持也在不断完善。</li></ol>]]></content>
     
     
     <categories>
