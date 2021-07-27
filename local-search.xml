@@ -4,6 +4,122 @@
   
   
   <entry>
+    <title>js-打乱数组</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 打乱数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arrOld 原数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>num 打乱的个数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回打乱后的数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upsetOld</span>(<span class="hljs-params">arrOld, num</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = []; <span class="hljs-comment">// 结果数组</span><br>    <span class="hljs-keyword">let</span> _length = num || arrOld.length; <span class="hljs-comment">// 打乱的个数</span><br>    <span class="hljs-keyword">let</span> arr = <span class="hljs-built_in">Object</span>.assign([], arrOld); <span class="hljs-comment">//Object.assign方法用于对象的合并</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; _length; i++) &#123; <span class="hljs-comment">// 删除随机的一位，然后去第一位放入结果数组</span><br>        result.push(arr.splice(<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * arr.length), <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">let</span> arrOld = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">0</span>];<br><span class="hljs-built_in">console</span>.log(upsetOld(arrOld)); <span class="hljs-comment">//[ 5, 2, 7, 6, 1,  9, 4, 8, 0, 3]</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>对Object.assign()的理解：</p><ul><li>合并目标数组和原数组，,目标数组相同的键会被原数组覆盖</li></ul><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">const</span> target = &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span> &#125;;<br><span class="hljs-attribute">const</span> source = &#123; b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;;<br><span class="hljs-attribute">const</span> returnedTarget = Object.assign(target, source);<br><span class="hljs-attribute">console</span>.log(target);//  &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;<br><span class="hljs-attribute">console</span>.log(returnedTarget);//  &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;<br></code></pre></td></tr></table></figure><ul><li><p> 此方法只会拷贝源对象自身的并且可枚举的属性到目标对象</p></li><li><p>Object.assign进行的拷贝是浅拷贝</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj1 = &#123;<span class="hljs-attr">a</span>: &#123;<span class="hljs-attr">b</span>: <span class="hljs-number">1</span>&#125;&#125;;<br><span class="hljs-keyword">const</span> obj2 = <span class="hljs-built_in">Object</span>.assign(&#123;&#125;, obj1);<br> <br>obj1.a.b = <span class="hljs-number">2</span>;<br>obj2.a.b <span class="hljs-comment">// 2</span><br>由于是浅拷贝，所以属性a的内部有任何变化，都会在目标对象上呈现出来。<br></code></pre></td></tr></table></figure></li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-数组去重</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 数组去重</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arrs  参数数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>去重数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeReapt</span>(<span class="hljs-params">arrs</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> arr = [];<br>    <span class="hljs-keyword">let</span> json = &#123;&#125;;<span class="hljs-comment">// 定义标记数组 换成temp [] 可以达到一样的效果</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, len = arrs.length; i &lt; len; i++) &#123;<br>        <span class="hljs-keyword">if</span> (!json[arrs[i]]) &#123; <span class="hljs-comment">// json[arr[i]] 的值是undefined 是假值</span><br>            arr.push(arrs[i]);<br>            json[arrs[i]] = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 每放进去一值，就做标记1</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><span class="hljs-keyword">let</span> arrs = [<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">79</span>, <span class="hljs-number">11</span>, <span class="hljs-number">46</span>, <span class="hljs-number">97</span>, <span class="hljs-number">46</span>, <span class="hljs-number">46</span>];<br><span class="hljs-built_in">console</span>.log(removeReapt(arrs)); <span class="hljs-comment">// [ 11, 22, 33, 79, 46, 97 ]</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-格式化金额</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化金额(没有分析)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>money 输入的钱数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>type 是否带小数点</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convert</span>(<span class="hljs-params">money , type</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/[^0-9\.]/</span>.test(money))<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>    <span class="hljs-keyword">if</span> (money == <span class="hljs-literal">null</span> || money == <span class="hljs-string">&quot;&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>    money = money.toString().replace(<span class="hljs-regexp">/^(\d*)$/</span>, <span class="hljs-string">&quot;$1.&quot;</span>);<br>    money = (money + <span class="hljs-string">&quot;00&quot;</span>).replace(<span class="hljs-regexp">/(\d*\.\d\d)\d*/</span>, <span class="hljs-string">&quot;$1&quot;</span>);<br>    money = money.replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;,&quot;</span>);<br>    <span class="hljs-keyword">var</span> re = <span class="hljs-regexp">/(\d)(\d&#123;3&#125;,)/</span>;<br>    <span class="hljs-keyword">while</span> (re.test(money))<br>        money = money.replace(re, <span class="hljs-string">&quot;$1,$2&quot;</span>);<br>    money = money.replace(<span class="hljs-regexp">/,(\d\d)$/</span>, <span class="hljs-string">&quot;.$1&quot;</span>);<br>    <span class="hljs-keyword">if</span> (type == <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">// 不带小数位(默认是有小数位)</span><br>        <span class="hljs-keyword">var</span> a = money.split(<span class="hljs-string">&quot;.&quot;</span>);<br>        <span class="hljs-keyword">if</span> (a[<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;00&quot;</span>) &#123;<br>            money = a[<span class="hljs-number">0</span>];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> money;<br>&#125;<br><span class="hljs-built_in">console</span>.log(convert(<span class="hljs-number">123</span>)); <span class="hljs-comment">// 123.00</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-判断2个数组相等</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断2个数组相等</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr1 参数1</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr2 参数2</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回boolean值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrayEqual</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (arr1 === arr2) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (arr1.length != arr2.length) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (arr1[i] !== arr2[i]) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;2&#x27;</span>];<br><span class="hljs-keyword">let</span> arr2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>];<br><span class="hljs-built_in">console</span>.log(arrayEqual(arr1,arr2)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js-验证身份证</title>
     <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/"/>
     <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/</url>
@@ -149,11 +265,11 @@
   
   
   <entry>
-    <title>js-红宝书-什么是javascript</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/</url>
+    <title>js-红宝书-html中的js</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、对js的认识"><a href="#一、对js的认识" class="headerlink" title="一、对js的认识"></a>一、对js的认识</h2><ol><li>js是专门用来进行网页交互的语言</li><li>js包括3大核心内容<ul><li>ECMAscript  制定标准，ES是js基本语法的规范，js是ES的实现</li><li>DOM：提供与网页内容进行交互的方法和接口</li><li>BOM：提供与浏览器进行交互的方法和接口</li></ul></li><li>js的这3部分都得到了5个web浏览器（IE、Firefox、Chorme、Safari、Opera）不同程度的支持，基本上对ES5都是支持的，对ES6的支持也在不断完善。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、html中的js"><a href="#一、html中的js" class="headerlink" title="一、html中的js"></a>一、html中的js</h2><ol><li>javascript通过<script>标签插入html中，也可以引入保存在外部文件中的javascript</li><li>所有的<script>会根据他们在网页中出现的次序依次被解析</li><li>对于不推迟执行的脚本，浏览器必须解释完<script>标签中的内容，才去渲染界面的其他内容</li><li>可以使用defer推迟脚本的执行，可以将脚本延迟到文档解析和加载完成后再运行脚本</li><li>async表示不需要等待其他脚本的加载，也不需要阻塞文档的渲染，即实现异步加载，但是异步加载不能保证他们按照web中的顺序执行</li><li>使用<noscript>标签，可以解决浏览器不支持脚本的时候显示内容，如果浏览器支持脚本，那么<noscript>的内容永远不会被看到</li></ol>]]></content>
     
     
     <categories>
@@ -178,11 +294,11 @@
   
   
   <entry>
-    <title>js-红宝书-html中的js</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/</url>
+    <title>js-红宝书-什么是javascript</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、html中的js"><a href="#一、html中的js" class="headerlink" title="一、html中的js"></a>一、html中的js</h2><ol><li>javascript通过<script>标签插入html中，也可以引入保存在外部文件中的javascript</li><li>所有的<script>会根据他们在网页中出现的次序依次被解析</li><li>对于不推迟执行的脚本，浏览器必须解释完<script>标签中的内容，才去渲染界面的其他内容</li><li>可以使用defer推迟脚本的执行，可以将脚本延迟到文档解析和加载完成后再运行脚本</li><li>async表示不需要等待其他脚本的加载，也不需要阻塞文档的渲染，即实现异步加载，但是异步加载不能保证他们按照web中的顺序执行</li><li>使用<noscript>标签，可以解决浏览器不支持脚本的时候显示内容，如果浏览器支持脚本，那么<noscript>的内容永远不会被看到</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、对js的认识"><a href="#一、对js的认识" class="headerlink" title="一、对js的认识"></a>一、对js的认识</h2><ol><li>js是专门用来进行网页交互的语言</li><li>js包括3大核心内容<ul><li>ECMAscript  制定标准，ES是js基本语法的规范，js是ES的实现</li><li>DOM：提供与网页内容进行交互的方法和接口</li><li>BOM：提供与浏览器进行交互的方法和接口</li></ul></li><li>js的这3部分都得到了5个web浏览器（IE、Firefox、Chorme、Safari、Opera）不同程度的支持，基本上对ES5都是支持的，对ES6的支持也在不断完善。</li></ol>]]></content>
     
     
     <categories>
