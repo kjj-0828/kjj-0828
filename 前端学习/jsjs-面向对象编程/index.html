@@ -242,7 +242,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 22, 2021 pm
+                  本文最后更新于：July 30, 2021 pm
                 
               </p>
             
@@ -260,7 +260,7 @@
 </ol>
 <h2 id="二、this"><a href="#二、this" class="headerlink" title="二、this"></a>二、this</h2><ol>
 <li><p>this的指向，总是指向当前属性或者方法所在的对象</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;姓名:&#x27;</span>+ <span class="hljs-built_in">this</span>.name;<br>&#125;<br><br><span class="hljs-keyword">var</span> A = &#123;<br><span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;张三&#x27;</span>,<br><span class="hljs-attr">describe</span>:f<br>&#125;<br><span class="hljs-keyword">var</span> B = &#123;<br><span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;李四&#x27;</span>,<br><span class="hljs-attr">describe</span>:f<br>&#125;<br><br>A.describe()<br><span class="hljs-string">&quot;姓名:张三&quot;</span><br>B.describe()<br><span class="hljs-string">&quot;姓名:李四&quot;</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>)</span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;姓名:&#x27;</span>+ <span class="hljs-built_in">this</span>.name;<br>&#125;<br><br><span class="hljs-keyword">var</span> A = &#123;<br><span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;张三&#x27;</span>,<br><span class="hljs-attr">describe</span>:f<br>&#125;<br><span class="hljs-keyword">var</span> B = &#123;<br><span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;李四&#x27;</span>,<br><span class="hljs-attr">describe</span>:f<br>&#125;<br><br>A.describe()<br><span class="hljs-string">&quot;姓名:张三&quot;</span><br>B.describe()<br><span class="hljs-string">&quot;姓名:李四&quot;</span><br></code></pre></td></tr></table></figure></li>
 <li><p>this的使用场合</p>
 <p>（1）全局环境；this指的是顶层对象window</p>
 <p>（2）构造函数；this指是的实例对象</p>
@@ -350,7 +350,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-异步操作</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Antaŭa afiŝo</span>
                       </a>
                     
                   </article>
@@ -359,7 +359,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E6%A0%87%E5%87%86%E5%BA%93/">
                         <span class="hidden-mobile">js-标准库</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Sekva afiŝo</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -376,7 +376,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -402,7 +402,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -411,7 +411,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">ŝlosivorto</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
