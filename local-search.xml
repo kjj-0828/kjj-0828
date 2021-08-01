@@ -4,9 +4,154 @@
   
   
   <entry>
-    <title>js-获取地址栏的参数值</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80%E6%A0%8F%E7%9A%84%E5%8F%82%E6%95%B0%E5%80%BC/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80%E6%A0%8F%E7%9A%84%E5%8F%82%E6%95%B0%E5%80%BC/</url>
+    <title>js-07四舍五入指定位数的小数</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E6%8C%87%E5%AE%9A%E4%BD%8D%E6%95%B0%E7%9A%84%E5%B0%8F%E6%95%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E6%8C%87%E5%AE%9A%E4%BD%8D%E6%95%B0%E7%9A%84%E5%B0%8F%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 四舍五入指定位数的小数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>num  数值</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>len 保留位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回四舍五入后指定的小数位数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRound</span>(<span class="hljs-params">num, len</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.round(num * <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, len)) / <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, len);<br>&#125;<br><span class="hljs-built_in">console</span>.log(getRound(<span class="hljs-number">6.123456</span>, <span class="hljs-number">4</span>)); <span class="hljs-comment">//6.1235</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-07判断字符串是否为空</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断字符串是否为空</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str  字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkIsEmpty</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (str !== <span class="hljs-literal">null</span> &amp;&amp; str !== <span class="hljs-literal">undefined</span> &amp;&amp; str !== <span class="hljs-string">&quot;&quot;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-comment">// let str = &quot;你好&quot;; // false</span><br><span class="hljs-comment">// let str = &quot;&quot;; // true</span><br><span class="hljs-comment">// let str = undefined; // true</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-literal">null</span>; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkIsEmpty(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>字符串为空的3种状态：undefined、null、””</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-07只可以整数</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%AA%E5%8F%AF%E4%BB%A5%E8%BE%93%E5%85%A5%E6%95%B4%E6%95%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%AA%E5%8F%AF%E4%BB%A5%E8%BE%93%E5%85%A5%E6%95%B4%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html"><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">onkeyup</span>=<span class="hljs-string">&quot;clearNoInt(this)&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clearNoInt</span>(<span class="hljs-params">curObj</span>) </span>&#123;</span><br><span class="javascript">            curObj.value = curObj.value.replace(<span class="hljs-regexp">/[^\d]/g</span>, <span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// 清除不是数字以外的所有字符</span></span><br><span class="javascript">        &#125;</span><br><span class="javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-07只可以输入小数</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%AA%E5%8F%AF%E4%BB%A5%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%AA%E5%8F%AF%E4%BB%A5%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">onkeyup</span>=<span class="hljs-string">&quot;clearNoFloat(this)&quot;</span>&gt;</span> // JS允许输入小数位，如果是其他字符，则会替换掉<br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clearNoFloat</span>(<span class="hljs-params">curObj</span>) </span>&#123;</span><br><span class="javascript">            curObj.value = curObj.value.replace(<span class="hljs-regexp">/[^\d.]/g</span>, <span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">//清除“数字”和“.”以外的字符</span></span><br><span class="javascript">            curObj.value = curObj.value.replace(<span class="hljs-regexp">/^\./g</span>, <span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">//验证第一个字符是数字而不是.</span></span><br><span class="javascript">            curObj.value = curObj.value.replace(<span class="hljs-regexp">/\.&#123;2,&#125;/g</span>, <span class="hljs-string">&quot;.&quot;</span>); <span class="hljs-comment">//只保留第一个. 清除多余的.</span></span><br><span class="javascript">            curObj.value = curObj.value.replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;$#$&quot;</span>).replace(<span class="hljs-regexp">/\./g</span>, <span class="hljs-string">&quot;&quot;</span>).replace(<span class="hljs-string">&quot;$#$&quot;</span>, <span class="hljs-string">&quot;.&quot;</span>);</span><br><span class="javascript">        &#125;</span><br><span class="javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>replace第一个参数为一个字符串时, 它其实做的是文本替换, 所以这里的’$#$’和正则表达式无关, 所以第一次replace只是把字符.替换成’$#$’, 看到后面的代码(第三次<code>replace</code>)又把它转换回来, 可以推测目的只是为了把’.’转换成一个比较特殊的字符防止被第二个正则替换给替换掉</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-07现金转大写</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E7%8E%B0%E9%87%91%E8%BD%AC%E5%A4%A7%E5%86%99/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E7%8E%B0%E9%87%91%E8%BD%AC%E5%A4%A7%E5%86%99/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 现金转大写</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>n  现金</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">digitUppercase</span>(<span class="hljs-params">n</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> fraction = [<span class="hljs-string">&#x27;角&#x27;</span>, <span class="hljs-string">&#x27;分&#x27;</span>];<br>    <span class="hljs-keyword">let</span> digit = [<span class="hljs-string">&#x27;零&#x27;</span>, <span class="hljs-string">&#x27;壹&#x27;</span>, <span class="hljs-string">&#x27;贰&#x27;</span>, <span class="hljs-string">&#x27;叁&#x27;</span>, <span class="hljs-string">&#x27;肆&#x27;</span>, <span class="hljs-string">&#x27;伍&#x27;</span>, <span class="hljs-string">&#x27;陆&#x27;</span>, <span class="hljs-string">&#x27;柒&#x27;</span>, <span class="hljs-string">&#x27;捌&#x27;</span>, <span class="hljs-string">&#x27;玖&#x27;</span>];<br>    <span class="hljs-keyword">let</span> unit = [[<span class="hljs-string">&#x27;元&#x27;</span>, <span class="hljs-string">&#x27;万&#x27;</span>, <span class="hljs-string">&#x27;亿&#x27;</span>], [<span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-string">&#x27;拾&#x27;</span>, <span class="hljs-string">&#x27;佰&#x27;</span>, <span class="hljs-string">&#x27;仟&#x27;</span>]];<br>    <span class="hljs-keyword">let</span> head = n &lt; <span class="hljs-number">0</span> ? <span class="hljs-string">&#x27;欠&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>; <span class="hljs-comment">// n&lt;0</span><br>    n = <span class="hljs-built_in">Math</span>.abs(n); <span class="hljs-comment">// n保证整数</span><br>    <span class="hljs-keyword">let</span> s = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 结果字符串</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; fraction.length; i++) &#123; <span class="hljs-comment">// 先处理小数位的角、分</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Math</span>.floor(n * <span class="hljs-number">10</span> * <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, i)));<br>        <span class="hljs-built_in">console</span>.log(digit[<span class="hljs-built_in">Math</span>.floor(n * <span class="hljs-number">10</span> * <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, i)) % <span class="hljs-number">10</span>] + fraction[i]);<br>        s += (digit[<span class="hljs-built_in">Math</span>.floor(n * <span class="hljs-number">10</span> * <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, i)) % <span class="hljs-number">10</span>] + fraction[i]).replace(<span class="hljs-regexp">/零./</span>, <span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// 去掉&#x27;零角这样的字&#x27; .匹配任何单个字符 </span><br>    &#125;<br>    s = s || <span class="hljs-string">&#x27;整&#x27;</span>; <span class="hljs-comment">// 没有零头的情况</span><br>    n = <span class="hljs-built_in">Math</span>.floor(n) <span class="hljs-comment">// 去掉零头在处理</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; unit[<span class="hljs-number">0</span>].length &amp;&amp; n &gt; <span class="hljs-number">0</span>; i++) &#123;<br>        <span class="hljs-keyword">let</span> p = <span class="hljs-string">&#x27;&#x27;</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; unit[<span class="hljs-number">1</span>].length &amp;&amp; n &gt; <span class="hljs-number">0</span>; j++) &#123;<br>            p = digit[n % <span class="hljs-number">10</span>] + unit[<span class="hljs-number">1</span>][j] + p; <span class="hljs-comment">// 个 十 佰 千</span><br>            n = <span class="hljs-built_in">Math</span>.floor(n / <span class="hljs-number">10</span>); <span class="hljs-comment">// 去掉一位</span><br>        &#125;<br>        s = p.replace(<span class="hljs-regexp">/(零.)*零$/</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-regexp">/^$/</span>, <span class="hljs-string">&#x27;零&#x27;</span>) + unit[<span class="hljs-number">0</span>][i] + s;<br>    &#125;<br>    <span class="hljs-keyword">return</span> head + s.replace(<span class="hljs-regexp">/(零.)*零元/</span>, <span class="hljs-string">&#x27;元&#x27;</span>)<br>        .replace(<span class="hljs-regexp">/(零.)+/g</span>, <span class="hljs-string">&#x27;零&#x27;</span>)<br>        .replace(<span class="hljs-regexp">/^整$/</span>, <span class="hljs-string">&#x27;零元整&#x27;</span>);<br>&#125;<br><span class="hljs-built_in">console</span>.log(digitUppercase(<span class="hljs-number">10.06</span>)); <span class="hljs-comment">//壹拾元伍角陆分</span><br><span class="hljs-built_in">console</span>.log(digitUppercase(<span class="hljs-number">10</span>)); <span class="hljs-comment">//壹拾元整</span><br><span class="hljs-built_in">console</span>.log(digitUppercase(-<span class="hljs-number">10.06</span>)); <span class="hljs-comment">//欠壹拾元陆分</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>思路：先把零头计算出来，在去计算整数部分</p>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-06获取地址栏的参数值</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80%E6%A0%8F%E7%9A%84%E5%8F%82%E6%95%B0%E5%80%BC/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E8%8E%B7%E5%8F%96%E5%9C%B0%E5%9D%80%E6%A0%8F%E7%9A%84%E5%8F%82%E6%95%B0%E5%80%BC/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取地址栏的参数值</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>url // 地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>name // 参数名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回值或者null</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUrlParam</span>(<span class="hljs-params">url, name</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;(^|&amp;)&quot;</span> + name + <span class="hljs-string">&quot;=([^&amp;]*)(&amp;|$)&quot;</span>);<br>    <span class="hljs-comment">// var r = window.location.search.substr(1).match(reg); // 基于浏览器环境</span><br>    <span class="hljs-keyword">var</span> r = url.substr(<span class="hljs-number">7</span>).match(reg); <span class="hljs-comment">// 自动获取成？之后的内容 t1=1&amp;t2=2&amp;t3=3</span><br>    <span class="hljs-keyword">if</span> (r != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">unescape</span>(r[<span class="hljs-number">2</span>]); <span class="hljs-comment">// 0是t1 1是= 2是值 unescape() 函数可对通过 escape() 编码的字符串进行解码。</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> url = <span class="hljs-string">&quot;a.html?t1=1&amp;t2=2&amp;t3=3&quot;</span>;<br><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;t1&quot;</span>;<br><span class="hljs-built_in">console</span>.log(getUrlParam(url, name));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>^匹配字符串开头,&amp;就是&amp;字符 (^|&amp;)匹配字符串开头或者&amp;字符,</li><li>加上name变量的内容,[^&amp;]再加上任意个不含&amp;的字符,(&amp;|$)以&amp;或字符串结尾</li><li>*表示可以重复0或N次</li><li>这个正则是寻找&amp;+url参数名字=值+&amp;  (&amp;可以不存在)</li><li>match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。</li><li>test() 方法用于检测一个字符串是否匹配某个模式</li><li> location是包含了相关的url的信息，它是windown的一部分。</li><li>search是一个可以查询的属性，可以查询？之后的部分。</li></ul>          </div>]]></content>
     
@@ -22,9 +167,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -33,9 +178,9 @@
   
   
   <entry>
-    <title>js-判断是否是中文</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%AD%E6%96%87/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%AD%E6%96%87/</url>
+    <title>js-06判断是否是中文</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%AD%E6%96%87/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%AD%E6%96%87/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断是否是中文</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isChinese</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^[\u4e00-\u9fa5]+$/i</span>;<br>    <span class="hljs-keyword">if</span> (reg.test(str)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(isChinese(<span class="hljs-string">&#x27;孔&#x27;</span>)); <span class="hljs-comment">// true </span><br><span class="hljs-built_in">console</span>.log(isChinese(<span class="hljs-string">&#x27;kong&#x27;</span>)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>+:表示前面的子表达式至少一次</li><li>/i：表示不区分大小写</li><li>[\u4e00-\u9fa5]是汉字unicode编码的开始和结束</li></ul>          </div><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210731225155.png" alt="image-20210731225147501"></p>]]></content>
     
@@ -51,9 +196,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -62,9 +207,9 @@
   
   
   <entry>
-    <title>js-时间个性化输出功能</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%97%B6%E9%97%B4%E4%B8%AA%E6%80%A7%E5%8C%96%E8%BE%93%E5%87%BA%E5%8A%9F%E8%83%BD/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%97%B6%E9%97%B4%E4%B8%AA%E6%80%A7%E5%8C%96%E8%BE%93%E5%87%BA%E5%8A%9F%E8%83%BD/</url>
+    <title>js-06时间个性化输出功能</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E6%97%B6%E9%97%B4%E4%B8%AA%E6%80%A7%E5%8C%96%E8%BE%93%E5%87%BA%E5%8A%9F%E8%83%BD/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E6%97%B6%E9%97%B4%E4%B8%AA%E6%80%A7%E5%8C%96%E8%BE%93%E5%87%BA%E5%8A%9F%E8%83%BD/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 时间个性化输出功能</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>time 传入时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回个性化的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeFormat</span>(<span class="hljs-params">time</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(time),<br>        curDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),<br>        year = date.getFullYear(),<br>        month = date.getMonth() + <span class="hljs-number">1</span>,<br>        day = date.getDate(),<br>        hour = date.getHours(),<br>        minute = date.getMinutes(),<br>        curYear = curDate.getFullYear(),<br>        curHour = curDate.getHours(),<br>        timeStr;<br>    <span class="hljs-keyword">let</span> M = minute &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&#x27;0&#x27;</span> + minute : minute;<br>    <span class="hljs-keyword">if</span> (year &lt; curYear) &#123;<br>        timeStr = year + <span class="hljs-string">&#x27;年&#x27;</span> + month + <span class="hljs-string">&#x27;月&#x27;</span> + day + <span class="hljs-string">&#x27;日 &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + M;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">var</span> pastTime = curDate - date,<br>            pastH = pastTime / <span class="hljs-number">3600000</span>; <span class="hljs-comment">//60*60*1000</span><br>        <span class="hljs-built_in">console</span>.log(pastH);<br>        <span class="hljs-keyword">if</span> (pastH &gt; curHour) &#123;<br>            timeStr = month + <span class="hljs-string">&#x27;月&#x27;</span> + day + <span class="hljs-string">&#x27;日 &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + M;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (pastH &gt;= <span class="hljs-number">1</span>) &#123;<br>            timeStr = <span class="hljs-string">&#x27;今天 &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + M + <span class="hljs-string">&#x27;分&#x27;</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">var</span> pastM = curDate.getMinutes() - M;<br>            <span class="hljs-keyword">if</span> (pastM &gt; <span class="hljs-number">1</span>) &#123;<br>                timeStr = pastM + <span class="hljs-string">&#x27;分钟前&#x27;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                timeStr = <span class="hljs-string">&#x27;刚刚&#x27;</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> timeStr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>())); <span class="hljs-comment">// 刚刚</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2021/07/31 16:05:00&#x27;</span>)); <span class="hljs-comment">// 今天 16:05分</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2021/07/30 16:10:00&#x27;</span>)); <span class="hljs-comment">// 7月30日 16:10</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2020/07/30 16:05:00&#x27;</span>)); <span class="hljs-comment">// 2020年7月30日 16:05</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2021/07/31 22:05:00&#x27;</span>)); <span class="hljs-comment">// 21分钟前</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>// 使用 - 为连接符，就会转换为GMT为基准，会被解析成ISO格式的字符串</p><p>// 使用 / 为连接符，是以本地时区为准</p><p>// 如果时间字符串中存在 - ，都转为 / 之后 new Date</p>          </div>]]></content>
     
@@ -80,9 +225,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -91,9 +236,9 @@
   
   
   <entry>
-    <title>js-日期格式化函数</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0/</url>
+    <title>js-05日期格式化函数</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 日期格式化函数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>format 改写Date的format函数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回格式化后的结果</span><br><span class="hljs-comment"> */</span><br><span class="hljs-built_in">Date</span>.prototype.format = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">format</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> o = &#123;<br>        <span class="hljs-string">&quot;M+&quot;</span>: <span class="hljs-built_in">this</span>.getMonth() + <span class="hljs-number">1</span>, <span class="hljs-comment">//month</span><br>        <span class="hljs-string">&quot;d+&quot;</span>: <span class="hljs-built_in">this</span>.getDate(),    <span class="hljs-comment">//day</span><br>        <span class="hljs-string">&quot;h+&quot;</span>: <span class="hljs-built_in">this</span>.getHours(),   <span class="hljs-comment">//hour</span><br>        <span class="hljs-string">&quot;m+&quot;</span>: <span class="hljs-built_in">this</span>.getMinutes(), <span class="hljs-comment">//minute</span><br>        <span class="hljs-string">&quot;s+&quot;</span>: <span class="hljs-built_in">this</span>.getSeconds(), <span class="hljs-comment">//second</span><br>        <span class="hljs-string">&quot;q+&quot;</span>: <span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">this</span>.getMonth() + <span class="hljs-number">3</span>) / <span class="hljs-number">3</span>),  <span class="hljs-comment">//quarter</span><br>        <span class="hljs-string">&quot;S&quot;</span>: <span class="hljs-built_in">this</span>.getMilliseconds() <span class="hljs-comment">//millisecond</span><br>    &#125;;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/(y+)/</span>.test(format)) &#123; <span class="hljs-comment">// + 匹配前面的子表达式一次或多次</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">RegExp</span>.$1) <span class="hljs-comment">// yyyy ,RegExp.$1指的是与正则表达式匹配的第一个 子匹配(以括号为标志)字符串</span><br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">RegExp</span>.$1.length); <span class="hljs-comment">// 4</span><br>        format = format.replace(<span class="hljs-built_in">RegExp</span>.$1, (<span class="hljs-built_in">this</span>.getFullYear() + <span class="hljs-string">&quot;&quot;</span>).substr(<span class="hljs-number">4</span> - <span class="hljs-built_in">RegExp</span>.$1.length)); <span class="hljs-comment">//将yyyy用4位日期替换掉</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> o) &#123; <span class="hljs-comment">// for-in遍历对象</span><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;(&quot;</span> + k + <span class="hljs-string">&quot;)&quot;</span>).test(format)) <span class="hljs-comment">//o[k]用中括号取值变量</span><br>            format = format.replace(<span class="hljs-built_in">RegExp</span>.$1, <span class="hljs-built_in">RegExp</span>.$1.length == <span class="hljs-number">1</span> ? o[k] : (<span class="hljs-string">&quot;00&quot;</span> + o[k]).substr((<span class="hljs-string">&quot;&quot;</span> + o[k]).length));<br>    &#125;<br>    <span class="hljs-keyword">return</span> format;<br>&#125;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().format(<span class="hljs-string">&quot;yyyy-MM-dd hh:mm:ss SS&quot;</span>)); <span class="hljs-comment">// 2021-07-30 15:22:27 257S</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p> 本道题涉及的知识点回顾</p><ul><li>创建日期的实例</li><li>正则 + 表示匹配前面的子表达式一次或者多次</li><li>RegExp.$1 与正则表达式匹配的第一个子匹配字符串</li><li>for-in 遍历对象</li><li>o[k]用中括号 进行变量取值</li></ul>          </div><p>​    </p>]]></content>
     
@@ -109,9 +254,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -120,9 +265,9 @@
   
   
   <entry>
-    <title>js-生成随机时间戳</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%97%B6%E9%97%B4%E6%88%B3/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%97%B6%E9%97%B4%E6%88%B3/</url>
+    <title>js-05生成随机时间戳</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%97%B6%E9%97%B4%E6%88%B3/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%97%B6%E9%97%B4%E6%88%B3/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成随机时间戳</span><br><span class="hljs-comment"> * 十三位时间毫秒值+3位随机数(0-10之间,不包括10)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uniqueId</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()).toString() + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>);<br>&#125;<br><span class="hljs-built_in">console</span>.log(uniqueId());<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -138,9 +283,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -149,9 +294,9 @@
   
   
   <entry>
-    <title>js-获取页面高度</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E9%AB%98%E5%BA%A6/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E9%AB%98%E5%BA%A6/</url>
+    <title>js-05获取页面高度</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E9%AB%98%E5%BA%A6/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E9%AB%98%E5%BA%A6/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取页面的高度</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回当前页面的高度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPageHeight</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// document.compatMode用来判断当前浏览器采用的渲染方式。</span><br>    <span class="hljs-comment">// BackCompat：标准兼容模式关闭。浏览器客户区宽度是document.body.clientWidth；</span><br>    <span class="hljs-comment">// CSS1Compat：标准兼容模式开启。浏览器客户区宽度是 document.documentElement.clientWidth；</span><br>    <span class="hljs-keyword">let</span>  d = <span class="hljs-built_in">document</span>.compatMode == <span class="hljs-string">&quot;BackCompat&quot;</span> ? <span class="hljs-built_in">document</span>.body : <span class="hljs-built_in">document</span>.documentElement;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.documentElement.scrollHeight, <span class="hljs-built_in">document</span>.body.scrollHeight, d.clientHeight);<br>&#125;<br><span class="hljs-built_in">console</span>.log(getPageHeight());<br></code></pre></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210730142338.png" alt="image-20210730142337653"></p>]]></content>
     
@@ -167,9 +312,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -178,9 +323,9 @@
   
   
   <entry>
-    <title>js-判断是否是网址</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%BD%91%E5%9D%80/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%BD%91%E5%9D%80/</url>
+    <title>js-05判断是否是网址</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%BD%91%E5%9D%80/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%BD%91%E5%9D%80/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断是否为网址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>strUrl 输入的网址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isURL</span>(<span class="hljs-params">strUrl</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> regular = <span class="hljs-regexp">/^\b(((https?|ftp):\/\/)?[-a-z0-9]+(\.[-a-z0-9]+)*\.(?:com|edu|gov|int|mil|net|org|biz|info|name|museum|asia|coop|aero|[a-z][a-z]|((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]\d)|\d))\b(\/[-a-z0-9_:\@&amp;?=+,.!\/~%\$]*)?)$/i</span>;<br>    <span class="hljs-keyword">if</span> (regular.test(strUrl)) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// let strUrl = &quot;https://kjjblog.netlify.app/&quot;; // false</span><br><span class="hljs-keyword">let</span> strUrl = <span class="hljs-string">&quot;https://kjjblog.netlify.com/&quot;</span>; <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(isURL(strUrl));<br><span class="hljs-comment">// \b匹配单词的边界</span><br><span class="hljs-comment">// ? 匹配前面的子表达式零次或者一次</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -196,9 +341,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -207,9 +352,9 @@
   
   
   <entry>
-    <title>js-设置cookie和获取cookie</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E8%AE%BE%E7%BD%AEcookie%E5%92%8C%E8%8E%B7%E5%8F%96cookie/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E8%AE%BE%E7%BD%AEcookie%E5%92%8C%E8%8E%B7%E5%8F%96cookie/</url>
+    <title>js-05设置cookie和获取cookie</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E8%AE%BE%E7%BD%AEcookie%E5%92%8C%E8%8E%B7%E5%8F%96cookie/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E8%AE%BE%E7%BD%AEcookie%E5%92%8C%E8%8E%B7%E5%8F%96cookie/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 设置cookie的值(键，值，保存的时间)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>name cookie对应的Name</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>value cookie对应的Value</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>expiredays 设置过期时间</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setCookie</span>(<span class="hljs-params">name, value, expiredays</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> exdate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    <span class="hljs-built_in">console</span>.log(exdate); <span class="hljs-comment">// 2021-07-30T03:14:56.716Z 相差8小时，可以使用toString()或者toLocaleString()转换成本地时间</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Number</span>(exdate)); <span class="hljs-comment">// 1627614896716</span><br>    exdate.setTime(<span class="hljs-built_in">Number</span>(exdate) + expiredays); <span class="hljs-comment">// 设置过期时间</span><br>    <span class="hljs-comment">//escape() 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串。</span><br>    <span class="hljs-built_in">document</span>.cookie = name + <span class="hljs-string">&quot;=&quot;</span> + <span class="hljs-built_in">escape</span>(value) + ((expiredays == <span class="hljs-literal">null</span>) ? <span class="hljs-string">&quot;&quot;</span> : <span class="hljs-string">&quot;;expires=&quot;</span> + exdate.toUTCString());<br>&#125;<br>setCookie(<span class="hljs-string">&quot;zhangshan&quot;</span>, <span class="hljs-string">&quot;name1&quot;</span>, <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>);<br></code></pre></td></tr></table></figure><p>在浏览器的环境下运行：</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210730105418.png" alt="image-20210730105417994"></p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210730105405.png" alt="image-20210730105404831"></p><p>获取cookie有问题(暂时不做)</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs js"><br>十四、JS设置cookie和获取cookie<br>JS设置cookie和获取cookie<br>设置cookie和获取cookie<br>代码如下：<br><br>设置 Cookie：<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 设置cookie值</span><br><span class="hljs-comment"> * setCookie（键，值，保存时长（毫秒））</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param </span>name cookie对应名字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param </span>value 该cookie对应的值</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-variable">Hours</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setCookie</span>(<span class="hljs-params">name, value, expiredays</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> exdate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    exdate.setTime(<span class="hljs-built_in">Number</span>(exdate) + expiredays);<br>    <span class="hljs-built_in">document</span>.cookie = name + <span class="hljs-string">&quot;=&quot;</span> + <span class="hljs-built_in">escape</span>(value) + ((expiredays == <span class="hljs-literal">null</span>) ? <span class="hljs-string">&quot;&quot;</span> : <span class="hljs-string">&quot;;expires=&quot;</span> + exdate.toGMTString());<br>&#125;<br>获取 Cookie：<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JS 获取 Cookie</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param </span>name cookie对应名字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;string&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCookie</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">document</span>.cookie.length &gt; <span class="hljs-number">0</span>) &#123;<br>        c_start = <span class="hljs-built_in">document</span>.cookie.indexOf(name + <span class="hljs-string">&quot;=&quot;</span>);<span class="hljs-comment">//获取字符串的起点</span><br>        <span class="hljs-keyword">if</span>(c_start != -<span class="hljs-number">1</span>) &#123;<br>            c_start = c_start + name.length + <span class="hljs-number">1</span>;<span class="hljs-comment">//获取值的起点</span><br>            c_end = <span class="hljs-built_in">document</span>.cookie.indexOf(<span class="hljs-string">&quot;;&quot;</span>, c_start);<span class="hljs-comment">//获取结尾处</span><br>            <span class="hljs-keyword">if</span>(c_end == -<span class="hljs-number">1</span>) c_end = <span class="hljs-built_in">document</span>.cookie.length;<span class="hljs-comment">//如果是最后一个，结尾就是cookie字符串的结尾</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">decodeURI</span>(<span class="hljs-built_in">document</span>.cookie.substring(c_start, c_end));<span class="hljs-comment">//截取字符串返回</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getCookie(<span class="hljs-string">&quot;zhangshan&quot;</span>));<span class="hljs-comment">//name1</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>对escape()的理解：</p><p>可以对字符串进行编码，在所有计算机上读取该字符串</p>          </div>]]></content>
     
@@ -225,9 +370,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -256,9 +401,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -267,9 +412,9 @@
   
   
   <entry>
-    <title>js-判断是否是数字类型</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B/</url>
+    <title>js-04判断是否是数字类型</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断是否是数字类型</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>value 判断的数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDigit</span>(<span class="hljs-params">value</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> pattern = <span class="hljs-regexp">/^[0-9]*$/</span>;<br>    <span class="hljs-keyword">if</span> (pattern.exec(value) === <span class="hljs-literal">null</span> || value === <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(isDigit(<span class="hljs-number">1</span>)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p> 对/^[0-9]*$/的理解：</p><ul><li>^ 正则匹配的开始</li><li>$正则匹配的结束</li><li>[0-9]匹配0-9</li><li>*匹配之前的子表达式零次或者多次 所以可以匹配到99、9999等数字</li></ul>          </div>]]></content>
     
@@ -285,9 +430,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -296,9 +441,9 @@
   
   
   <entry>
-    <title>js-判断是否以某个字符串结束</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F/</url>
+    <title>js-04判断是否以某个字符串结束</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断是否以某个字符串结尾</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 原字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>s 匹配字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">endWith</span>(<span class="hljs-params">str, s</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> d = str.length - s.length;<br>    <span class="hljs-keyword">return</span> d &gt;= <span class="hljs-number">0</span> &amp;&amp; str.lastIndexOf(s) === d;<br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;sdasd  sdx adsad asd sa&quot;</span>;<br><span class="hljs-keyword">let</span> s = <span class="hljs-string">&quot;sa&quot;</span>;<br><span class="hljs-built_in">console</span>.log(endWith(str, s)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p> 对lastIndexOf的理解：</p><ul><li>从字符串结尾开始查找子字符串，返回下标</li><li>判断是否是结尾下标的方式，就是用str.length-s.length</li></ul>          </div>]]></content>
     
@@ -314,9 +459,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -325,9 +470,9 @@
   
   
   <entry>
-    <title>js-判断是否以某个字符串开头</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A4%B4/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A4%B4/</url>
+    <title>js-04判断是否以某个字符串开头</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A4%B4/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A4%B4/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断是否以某个字符串开头</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 原字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>s 匹配字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">startWith</span>(<span class="hljs-params">str, s</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> str.indexOf(s) === <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;sdasd  sdx adsad asd sa &quot;</span>;<br><span class="hljs-keyword">let</span> s = <span class="hljs-string">&quot;a&quot;</span>; <br><span class="hljs-built_in">console</span>.log(startWith(str, s)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p> 对indexOf的理解：</p><ul><li>从字符串开头开始查找子字符串，返回下标</li></ul>          </div>]]></content>
     
@@ -343,9 +488,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -354,9 +499,9 @@
   
   
   <entry>
-    <title>js-截取字符串</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <title>js-04截取字符串</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 截取字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 原始字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>len 截取的长度</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回截取后的字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cutStr</span>(<span class="hljs-params">str, len</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> temp; <span class="hljs-comment">// 记录每个字符</span><br>    <span class="hljs-keyword">let</span> icount = <span class="hljs-number">0</span>; <span class="hljs-comment">//记录长度</span><br>    <span class="hljs-comment">// [^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</span><br>    <span class="hljs-keyword">let</span> pattern = <span class="hljs-regexp">/[^\x00-\xff]/</span>;<br>    <span class="hljs-keyword">let</span> resStr = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 返回的字符串</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (icount &lt; len - <span class="hljs-number">1</span>) &#123;<br>            temp = str.substr(i, <span class="hljs-number">1</span>); <span class="hljs-comment">//每次截取一个字符</span><br>            <span class="hljs-keyword">if</span> (pattern.exec(temp) == <span class="hljs-literal">null</span>) &#123; <span class="hljs-comment">// 没有匹配到双字节字符，返回null</span><br>                icount = icount + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                icount = icount + <span class="hljs-number">2</span>;<br>            &#125;<br>            resStr += temp;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> resStr + <span class="hljs-string">&#x27;......&#x27;</span>;<br>&#125;<br><span class="hljs-comment">// let str = &quot;我爱你，我的祖国&quot;; // 我......</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;fhasjdhklsajhfnolsai&quot;</span>;<span class="hljs-comment">// fh......</span><br><span class="hljs-keyword">let</span> len = <span class="hljs-number">6</span>;<br><span class="hljs-built_in">console</span>.log(cutStr(str, len));<br></code></pre></td></tr></table></figure><div class="note note-success">            <p> 对/[^\x00-\xff]/的理解：</p><ul><li><p>匹配双字节字符</p></li><li><p>英文字母属于单字节字符，而汉字则属于双字节字符。因为英文字母、数字、符号等完全可以用128种不同的数值来表示，而汉字太多则不能，所以才需要扩展到双字节。</p></li><li><p>一个双字节字符长度计2，ASCII字符计1</p></li></ul>          </div>]]></content>
     
@@ -372,9 +517,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -383,9 +528,9 @@
   
   
   <entry>
-    <title>js-冒泡排序</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
+    <title>js-04冒泡排序</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 冒泡排序：每次排序都把最大的放到最后</span><br><span class="hljs-comment"> * 细节：内层j遍历的时候，是当前值j和后一个j+1进行比较，所以j当前值最大控制在length-1</span><br><span class="hljs-comment"> * 当把最大值放到最后，下次遍历就不需要在去比较了，所以控制j=length-1-i</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr 原数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回排序后的数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maoPaoSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr.length - <span class="hljs-number">1</span> - i; j++) &#123; <span class="hljs-comment">//当j=length-1时，j+1 = length 最大是length</span><br>            <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-keyword">let</span> temp = arr[j];<br>                arr[j] = arr[j + <span class="hljs-number">1</span>];<br>                arr[j + <span class="hljs-number">1</span>] = temp;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">85</span>, <span class="hljs-number">24</span>, <span class="hljs-number">63</span>, <span class="hljs-number">17</span>, <span class="hljs-number">31</span>, <span class="hljs-number">17</span>, <span class="hljs-number">86</span>, <span class="hljs-number">50</span>]; <span class="hljs-comment">//[17, 17, 24, 31, 50, 63, 85, 86 ]</span><br><span class="hljs-built_in">console</span>.log(maoPaoSort(arr));<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -401,9 +546,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -432,9 +577,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -463,9 +608,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -474,38 +619,9 @@
   
   
   <entry>
-    <title>js-反序字符串</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%8F%8D%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%8F%8D%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    
-    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 字符串反序</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回反序字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isReverse</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(str.split(<span class="hljs-string">&#x27;&#x27;</span>)); <span class="hljs-comment">//[ &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27; ]</span><br>    <span class="hljs-built_in">console</span>.log(str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse()); <span class="hljs-comment">//[ &#x27;c&#x27;, &#x27;b&#x27;, &#x27;a&#x27; ]</span><br>    <span class="hljs-keyword">return</span> str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// bca</span><br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;abc&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(isReverse(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>字符串反序通过数组使用</li><li>利用split()转成数组</li><li>利用数组的方法reverse()翻转</li><li>在利用join连接数组，返回字符串</li></ul>          </div>]]></content>
-    
-    
-    <categories>
-      
-      <category>算法练习</category>
-      
-      <category>js</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-      <tag>前端笔记</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>js-打乱数组</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/</url>
+    <title>js-03打乱数组</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 打乱数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arrOld 原数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>num 打乱的个数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回打乱后的数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upsetOld</span>(<span class="hljs-params">arrOld, num</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = []; <span class="hljs-comment">// 结果数组</span><br>    <span class="hljs-keyword">let</span> _length = num || arrOld.length; <span class="hljs-comment">// 打乱的个数</span><br>    <span class="hljs-keyword">let</span> arr = <span class="hljs-built_in">Object</span>.assign([], arrOld); <span class="hljs-comment">//Object.assign方法用于对象的合并</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; _length; i++) &#123; <span class="hljs-comment">// 删除随机的一位，然后去第一位放入结果数组</span><br>        result.push(arr.splice(<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * arr.length), <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">let</span> arrOld = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">0</span>];<br><span class="hljs-built_in">console</span>.log(upsetOld(arrOld)); <span class="hljs-comment">//[ 5, 2, 7, 6, 1,  9, 4, 8, 0, 3]</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>对Object.assign()的理解：</p><ul><li>合并目标数组和原数组，,目标数组相同的键会被原数组覆盖</li></ul><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">const</span> target = &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span> &#125;;<br><span class="hljs-attribute">const</span> source = &#123; b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;;<br><span class="hljs-attribute">const</span> returnedTarget = Object.assign(target, source);<br><span class="hljs-attribute">console</span>.log(target);//  &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;<br><span class="hljs-attribute">console</span>.log(returnedTarget);//  &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;<br></code></pre></td></tr></table></figure><ul><li><p> 此方法只会拷贝源对象自身的并且可枚举的属性到目标对象</p></li><li><p>Object.assign进行的拷贝是浅拷贝</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj1 = &#123;<span class="hljs-attr">a</span>: &#123;<span class="hljs-attr">b</span>: <span class="hljs-number">1</span>&#125;&#125;;<br><span class="hljs-keyword">const</span> obj2 = <span class="hljs-built_in">Object</span>.assign(&#123;&#125;, obj1);<br> <br>obj1.a.b = <span class="hljs-number">2</span>;<br>obj2.a.b <span class="hljs-comment">// 2</span><br>由于是浅拷贝，所以属性a的内部有任何变化，都会在目标对象上呈现出来。<br></code></pre></td></tr></table></figure></li></ul>          </div>]]></content>
     
@@ -521,9 +637,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -532,9 +648,38 @@
   
   
   <entry>
-    <title>js-数组去重</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
+    <title>js-07反序字符串</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%8D%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%8D%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 字符串反序</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回反序字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isReverse</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(str.split(<span class="hljs-string">&#x27;&#x27;</span>)); <span class="hljs-comment">//[ &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27; ]</span><br>    <span class="hljs-built_in">console</span>.log(str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse()); <span class="hljs-comment">//[ &#x27;c&#x27;, &#x27;b&#x27;, &#x27;a&#x27; ]</span><br>    <span class="hljs-keyword">return</span> str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// bca</span><br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;abc&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(isReverse(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>字符串反序通过数组使用</li><li>利用split()转成数组</li><li>利用数组的方法reverse()翻转</li><li>在利用join连接数组，返回字符串</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-03数组去重</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 数组去重</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arrs  参数数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>去重数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeReapt</span>(<span class="hljs-params">arrs</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> arr = [];<br>    <span class="hljs-keyword">let</span> json = &#123;&#125;;<span class="hljs-comment">// 定义标记数组 换成temp [] 可以达到一样的效果</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, len = arrs.length; i &lt; len; i++) &#123;<br>        <span class="hljs-keyword">if</span> (!json[arrs[i]]) &#123; <span class="hljs-comment">// json[arr[i]] 的值是undefined 是假值</span><br>            arr.push(arrs[i]);<br>            json[arrs[i]] = <span class="hljs-number">1</span>;  <span class="hljs-comment">// 每放进去一值，就做标记1</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><span class="hljs-keyword">let</span> arrs = [<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">79</span>, <span class="hljs-number">11</span>, <span class="hljs-number">46</span>, <span class="hljs-number">97</span>, <span class="hljs-number">46</span>, <span class="hljs-number">46</span>];<br><span class="hljs-built_in">console</span>.log(removeReapt(arrs)); <span class="hljs-comment">// [ 11, 22, 33, 79, 46, 97 ]</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -550,9 +695,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -561,9 +706,9 @@
   
   
   <entry>
-    <title>js-格式化金额</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/</url>
+    <title>js-03格式化金额</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化金额(没有分析)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>money 输入的钱数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>type 是否带小数点</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convert</span>(<span class="hljs-params">money , type</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/[^0-9\.]/</span>.test(money))<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>    <span class="hljs-keyword">if</span> (money == <span class="hljs-literal">null</span> || money == <span class="hljs-string">&quot;&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>    money = money.toString().replace(<span class="hljs-regexp">/^(\d*)$/</span>, <span class="hljs-string">&quot;$1.&quot;</span>);<br>    money = (money + <span class="hljs-string">&quot;00&quot;</span>).replace(<span class="hljs-regexp">/(\d*\.\d\d)\d*/</span>, <span class="hljs-string">&quot;$1&quot;</span>);<br>    money = money.replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;,&quot;</span>);<br>    <span class="hljs-keyword">var</span> re = <span class="hljs-regexp">/(\d)(\d&#123;3&#125;,)/</span>;<br>    <span class="hljs-keyword">while</span> (re.test(money))<br>        money = money.replace(re, <span class="hljs-string">&quot;$1,$2&quot;</span>);<br>    money = money.replace(<span class="hljs-regexp">/,(\d\d)$/</span>, <span class="hljs-string">&quot;.$1&quot;</span>);<br>    <span class="hljs-keyword">if</span> (type == <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">// 不带小数位(默认是有小数位)</span><br>        <span class="hljs-keyword">var</span> a = money.split(<span class="hljs-string">&quot;.&quot;</span>);<br>        <span class="hljs-keyword">if</span> (a[<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;00&quot;</span>) &#123;<br>            money = a[<span class="hljs-number">0</span>];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> money;<br>&#125;<br><span class="hljs-built_in">console</span>.log(convert(<span class="hljs-number">123</span>)); <span class="hljs-comment">// 123.00</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -579,9 +724,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -590,9 +735,9 @@
   
   
   <entry>
-    <title>js-判断2个数组相等</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/</url>
+    <title>js-02判断2个数组相等</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 判断2个数组相等</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr1 参数1</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr2 参数2</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回boolean值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrayEqual</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (arr1 === arr2) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (arr1.length != arr2.length) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (arr1[i] !== arr2[i]) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-string">&#x27;1&#x27;</span>,<span class="hljs-string">&#x27;2&#x27;</span>];<br><span class="hljs-keyword">let</span> arr2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>];<br><span class="hljs-built_in">console</span>.log(arrayEqual(arr1,arr2)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -608,9 +753,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -619,9 +764,9 @@
   
   
   <entry>
-    <title>js-验证身份证</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/</url>
+    <title>js-02验证身份证</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">IdentityCodeValid</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> myreg = <span class="hljs-regexp">/^\d&#123;6&#125;(18|19|20)?\d&#123;2&#125;(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])\d&#123;3&#125;(\d|[xX])$/i</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(IdentityCodeValid(<span class="hljs-string">&quot;150316199910123446&quot;</span>));<span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -637,9 +782,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -648,9 +793,9 @@
   
   
   <entry>
-    <title>js-验证手机号</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/</url>
+    <title>js-02验证手机号</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入的手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyPhoneNumberFormat</span>(<span class="hljs-params">str</span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> myreg = <span class="hljs-regexp">/^((13[0-9]&#123;1&#125;)|(15[0-9]&#123;1&#125;)|(17[0-9]&#123;1&#125;)|(18[0-9]&#123;1&#125;))+\d&#123;8&#125;$/</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(verifyPhoneNumberFormat(<span class="hljs-string">&quot;15031679910&quot;</span>)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>对正则的理解：</p><p>/^((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8}$/;</p><p>^ 正则的开始</p><p>$ 正则的结束</p><p>13[0-9]{1} 表示数值可以是130、131、132…这样子，{1}表示匹配一位</p><p>\d：匹配一个数字字符。等价于[0-9]</p><p>{8}：匹配次数8次</p><p>\d{8}：任意的8个数字</p>          </div>]]></content>
     
@@ -666,9 +811,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -677,9 +822,9 @@
   
   
   <entry>
-    <title>js-生成uuid</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E7%94%9F%E6%88%90uuid/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E7%94%9F%E6%88%90uuid/</url>
+    <title>js-02生成uuid</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E7%94%9F%E6%88%90uuid/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E7%94%9F%E6%88%90uuid/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成uuid</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateUUID</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">//返回13位的毫秒数 从1970年1月1日到现在的北京时间</span><br>    <span class="hljs-keyword">let</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();<br>    <span class="hljs-comment">//  /[xy]/g 是匹配字符串中的x或者y或者多个xy</span><br>    <span class="hljs-comment">// /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</span><br>    <span class="hljs-keyword">var</span> uuid = <span class="hljs-string">&#x27;xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx&#x27;</span>.replace(<span class="hljs-regexp">/[xy]/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) </span>&#123;<br>        <span class="hljs-comment">// console.log(c); // c的值是替换后的值xxxxxxxxxxxxxxxyxxxxxxxxxxxxxxx</span><br>        <span class="hljs-keyword">let</span> r = (d + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">16</span>) % <span class="hljs-number">16</span> | <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> (c == <span class="hljs-string">&#x27;x&#x27;</span> ? r : (r &amp; <span class="hljs-number">0x7</span> | <span class="hljs-number">0x8</span>)).toString(<span class="hljs-number">16</span>);<br>    &#125;)<br>    <span class="hljs-keyword">return</span> uuid;<br>&#125;<br><span class="hljs-built_in">console</span>.log(generateUUID()); <span class="hljs-comment">//ee465953237b4f16a500bb4b1b96c0ff</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p> 对/[xy]/g的理解：</p><p> /[xy]/g 是匹配字符串中的x或者y或者多个xy</p><p> /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</p><p>如果上述的程序不加/g得到结果是： 5xxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx 只会匹配一个字符</p>          </div>]]></content>
     
@@ -695,9 +840,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -706,9 +851,9 @@
   
   
   <entry>
-    <title>js-产生随机字符串</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <title>js-01产生随机字符串</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-01%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-01%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 产生随机字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>radomFlag 用户是否设置位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>min 最小位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>max 最大位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回生成的字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">randomWord</span>(<span class="hljs-params">radomFlag, min, max</span>) </span>&#123;<br>    <span class="hljs-comment">//结果字符串</span><br>    <span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;&quot;</span>;<br>    <span class="hljs-comment">// 位数 </span><br>    range = min;<br>    arr = [<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>, <span class="hljs-string">&#x27;4&#x27;</span>, <span class="hljs-string">&#x27;5&#x27;</span>, <span class="hljs-string">&#x27;6&#x27;</span>, <span class="hljs-string">&#x27;7&#x27;</span>, <span class="hljs-string">&#x27;8&#x27;</span>, <span class="hljs-string">&#x27;9&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;f&#x27;</span>, <span class="hljs-string">&#x27;g&#x27;</span>, <span class="hljs-string">&#x27;h&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;j&#x27;</span>, <span class="hljs-string">&#x27;k&#x27;</span>, <span class="hljs-string">&#x27;l&#x27;</span>, <span class="hljs-string">&#x27;m&#x27;</span>, <span class="hljs-string">&#x27;n&#x27;</span>, <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-string">&#x27;p&#x27;</span>, <span class="hljs-string">&#x27;q&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span>, <span class="hljs-string">&#x27;t&#x27;</span>, <span class="hljs-string">&#x27;u&#x27;</span>, <span class="hljs-string">&#x27;v&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>, <span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-string">&#x27;D&#x27;</span>, <span class="hljs-string">&#x27;E&#x27;</span>, <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-string">&#x27;G&#x27;</span>, <span class="hljs-string">&#x27;H&#x27;</span>, <span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-string">&#x27;J&#x27;</span>, <span class="hljs-string">&#x27;K&#x27;</span>, <span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-string">&#x27;N&#x27;</span>, <span class="hljs-string">&#x27;O&#x27;</span>, <span class="hljs-string">&#x27;P&#x27;</span>, <span class="hljs-string">&#x27;Q&#x27;</span>, <span class="hljs-string">&#x27;R&#x27;</span>, <span class="hljs-string">&#x27;S&#x27;</span>, <span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-string">&#x27;U&#x27;</span>, <span class="hljs-string">&#x27;V&#x27;</span>, <span class="hljs-string">&#x27;W&#x27;</span>, <span class="hljs-string">&#x27;X&#x27;</span>, <span class="hljs-string">&#x27;Y&#x27;</span>, <span class="hljs-string">&#x27;Z&#x27;</span>];<br>    <span class="hljs-comment">//设置产生位数与否</span><br>    <span class="hljs-keyword">if</span> (radomFlag) &#123;<br>        <span class="hljs-comment">// 产生min-max位的随机字符串</span><br>        range = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * (max - min)) + min;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; range; i++) &#123;<br>        <span class="hljs-comment">// 产生0-arr.length 的随机数</span><br>        <span class="hljs-keyword">let</span> pos = <span class="hljs-built_in">Math</span>.round(<span class="hljs-built_in">Math</span>.random() * (arr.length - <span class="hljs-number">1</span>));<br>        str += arr[pos];<br>    &#125;<br>    <span class="hljs-keyword">return</span> str;<br>&#125;<br><span class="hljs-comment">// 生成3-32位的随机字符串</span><br><span class="hljs-keyword">let</span> str1 = randomWord(<span class="hljs-literal">true</span>, <span class="hljs-number">3</span>, <span class="hljs-number">32</span>);<br><span class="hljs-comment">// 生成32位随机字符串</span><br><span class="hljs-keyword">let</span> str2 = randomWord(<span class="hljs-literal">false</span>, <span class="hljs-number">4</span>);<br><span class="hljs-built_in">console</span>.log(str1); <span class="hljs-comment">// JWrQ5AmSv702B7X2J0A4o5mBO</span><br><span class="hljs-built_in">console</span>.log(str2); <span class="hljs-comment">// 5mKY</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <p>对Math.radom()的理解：生成随机的大于等于0.0且小于1.0的double值</p><p>返回指定范围(m-n)的随机数的公式</p><p>Math.radom()*(n-m)+m;</p><p>比如生成3-32位的随机数：Math.radom()*(32-3)+3;</p><p>Math.radom() 生成的是0.0-1.0,</p><p>Math.radom()*(32-3)生成的是0-29</p><p>Math.radom()*(32-3)+3 生成的是3-32</p>          </div>]]></content>
     
@@ -755,9 +900,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -786,9 +931,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -817,9 +962,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -855,9 +1000,9 @@
   
   
   <entry>
-    <title>js-快速排序</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    <title>js-02快速排序</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 方法一：</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (arr.length &lt;= <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;<br>    <span class="hljs-keyword">var</span> left = []; <span class="hljs-comment">// 左边小容器</span><br>    <span class="hljs-keyword">var</span> right = []; <span class="hljs-comment">// 右边大容器</span><br>    <span class="hljs-keyword">var</span> k = arr.splice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 第一个值是基准</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (arr[i] &lt;= k) &#123;<br>            left.push(arr[i]);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            right.push(arr[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 继续递归左右容器</span><br>    <span class="hljs-keyword">return</span> quickSort(left).concat([k], quickSort(right));<br><span class="hljs-comment">// &#125;方法二：</span><br><span class="hljs-keyword">const</span> quickSort = <span class="hljs-function">(<span class="hljs-params">array</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> sort = <span class="hljs-function">(<span class="hljs-params">arr, left = <span class="hljs-number">0</span>, right = arr.length - <span class="hljs-number">1</span></span>) =&gt;</span> &#123;<br>     <span class="hljs-keyword">if</span> (left &gt;= right) &#123;<span class="hljs-comment">//如果左边的索引大于等于右边的索引说明整理完毕</span><br>      <span class="hljs-keyword">return</span><br>     &#125;<br>    <span class="hljs-keyword">let</span> i = left<br>    <span class="hljs-keyword">let</span> j = right<br>    <span class="hljs-keyword">const</span> baseVal = arr[j] <span class="hljs-comment">// 取无序数组最后一个数为基准值</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<span class="hljs-comment">//把所有比基准值小的数放在左边大的数放在右边</span><br>     <span class="hljs-keyword">while</span> (i &lt; j &amp;&amp; arr[i] &lt;= baseVal) &#123; <span class="hljs-comment">//找到一个比基准值大的数交换</span><br>      i++<br>     &#125;<br>     arr[j] = arr[i] <span class="hljs-comment">// 将较大的值放在右边如果没有比基准值大的数就是将自己赋值给自己（i 等于 j）</span><br>     <span class="hljs-keyword">while</span> (j &gt; i &amp;&amp; arr[j] &gt;= baseVal) &#123; <span class="hljs-comment">//找到一个比基准值小的数交换</span><br>      j--<br>    &#125;<br>     arr[i] = arr[j] <span class="hljs-comment">// 将较小的值放在左边如果没有找到比基准值小的数就是将自己赋值给自己（i 等于 j）</span><br>    &#125;<br>    arr[j] = baseVal <span class="hljs-comment">// 将基准值放至中央位置完成一次循环（这时候 j 等于 i ）</span><br>    sort(arr, left, j-<span class="hljs-number">1</span>) <span class="hljs-comment">// 将左边的无序数组重复上面的操作</span><br>    sort(arr, j+<span class="hljs-number">1</span>, right) <span class="hljs-comment">// 将右边的无序数组重复上面的操作</span><br>    &#125;<br>    <span class="hljs-keyword">const</span> newArr = array.concat() <span class="hljs-comment">// 为了保证这个函数是纯函数拷贝一次数组</span><br>    sort(newArr)<br>    <span class="hljs-keyword">return</span> newArr<br>   &#125;<br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">49</span>, <span class="hljs-number">38</span>, <span class="hljs-number">65</span>, <span class="hljs-number">97</span>, <span class="hljs-number">76</span>, <span class="hljs-number">13</span>, <span class="hljs-number">27</span>, <span class="hljs-number">49</span>];<br><span class="hljs-built_in">console</span>.log(quickSort(arr)); <span class="hljs-comment">// [13, 27, 38, 49,49, 65, 76, 97 ]</span><br></code></pre></td></tr></table></figure>]]></content>
     
@@ -884,9 +1029,9 @@
   
   
   <entry>
-    <title>js-数组相等</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/</url>
+    <title>js-02数组相等</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法一：</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr1 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr2 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrsEqual</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (arr1.length != arr2.length) &#123; <span class="hljs-comment">//长度不同</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123; <span class="hljs-comment">// 依次遍历数组元素</span><br>        <span class="hljs-keyword">if</span> (arr1[i] !== arr2[i]) &#123; <span class="hljs-comment">// 判断是否相等，用了强不等于</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-string">&#x27;1&#x27;</span>, <span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;3&#x27;</span>];<br><span class="hljs-built_in">console</span>.log(arrsEqual(arr1, arr2));<span class="hljs-comment">// false</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr1 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr2 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrsEqual</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-comment">// 1.数组长度相等的基础</span><br>    <span class="hljs-comment">// 2.判断数组1和数组2的成员是否相同</span><br>    <span class="hljs-comment">// 3.every()函数对数组的每一项执行函数，如果都满足返回true</span><br>    <span class="hljs-comment">// 4.some()函数对数组的每一项执行函数，如果有一项满足返回true</span><br>    <span class="hljs-keyword">return</span> arr1.length === arr2.length &amp;&amp; arr1.every(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> item === arr2[index];<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-built_in">console</span>.log(arrsEqual(arr1, arr2));<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -913,9 +1058,9 @@
   
   
   <entry>
-    <title>js-数组扁平化</title>
-    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/"/>
-    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
+    <title>js-02数组扁平化</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96/</url>
     
     <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法一：数组扁平化，如果是数字，就放入数组，如果是数组，递归处理</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, [<span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>], <span class="hljs-number">9</span>], <span class="hljs-number">10</span>, [<span class="hljs-number">11</span>, <span class="hljs-number">12</span>]];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flatten</span>(<span class="hljs-params">arr</span>) </span>&#123; <span class="hljs-comment">// 参数要传值，不然会导致栈无穷大</span><br>    <span class="hljs-keyword">let</span> flatArr = []; <span class="hljs-comment">//避免定义全局变量</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> arr[i] == <span class="hljs-string">&#x27;number&#x27;</span>) &#123;<br>            flatArr.push(arr[i]);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(arr[i])) &#123; <span class="hljs-comment">// 如果是数组</span><br>            flatArr = flatArr.concat(flatten(arr[i]));<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> flatArr;<br>&#125;<br><span class="hljs-comment">// console.log(flatten(arr));</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flattens</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-comment">// reduce()函数</span><br>    <span class="hljs-comment">// 1.reduce 包含2个参数，回调函数，初始值arr.reduce(callback,[initialValue])</span><br>    <span class="hljs-comment">// 2.回调函数包含4个参数 </span><br>    <span class="hljs-comment">// total初始值，或者计算结束后的返回值 必须</span><br>    <span class="hljs-comment">// currentValue 当前元素             必须</span><br>    <span class="hljs-comment">// currentIndex 当前元素的下标</span><br>    <span class="hljs-comment">// arr          当前元素所属的数组对象</span><br>    <span class="hljs-keyword">return</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">result, item</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// console.log(&#x27;result:&#x27;+ result);</span><br>        <span class="hljs-comment">// console.log(&#x27;item:&#x27;+ item);</span><br>        <span class="hljs-keyword">return</span> result.concat(<span class="hljs-built_in">Array</span>.isArray(item) ? flatten(item) : item)<br>    &#125;, [])<br>&#125;<br><span class="hljs-built_in">console</span>.log(flattens([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]]));<br></code></pre></td></tr></table></figure>]]></content>
     
@@ -1149,6 +1294,37 @@
   
   
   <entry>
+    <title>ts-类与接口</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、类"><a href="#一、类" class="headerlink" title="一、类"></a>一、类</h2><ol><li><p>举例：</p><p>防盗门是门的子类，</p><p>防盗门有报警的功能</p><p>车有报警的功能</p><p>报警提取成接口，防盗门和车都去实现他</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-comment">/* 类和接口 */</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;securityDoor alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>类实现多个接口</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类实现多个接口 */</span><br><span class="hljs-keyword">interface</span> Alarm1 &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Light&#123;<br>    lightOn():<span class="hljs-built_in">void</span>;<br>    lightOff():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car1</span> <span class="hljs-title">implements</span> <span class="hljs-title">Alarm1</span>,<span class="hljs-title">Light</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOn</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light on&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light off&#x27;</span>);<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">/* 接口继承接口 */</span><br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Alarm2</span> &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Light2</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Alarm2</span>&#123; <span class="hljs-comment">// 除了继承父级的方法，还有定义了自己的方法</span><br>    lighton():<span class="hljs-built_in">void</span>;<br>    lightoff():<span class="hljs-built_in">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;<br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">interface</span> Point3d <span class="hljs-keyword">extends</span> Point &#123; <span class="hljs-comment">// Point3d 实际上继承的是Point的实例的类型</span><br>    <span class="hljs-attr">z</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> point3d: Point3d = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">z</span>: <span class="hljs-number">3</span> &#125;;<br></code></pre></td></tr></table></figure></li><li><p>接口为什么可以继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口为什么可以继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <span class="hljs-comment">// Point1 当做类来使用</span><br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> point1 = <span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">/*****************************************/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPoint</span> (<span class="hljs-params">p:Point1</span>)</span>&#123; <span class="hljs-comment">// Point1当做类型来用</span><br>    <span class="hljs-built_in">console</span>.log(p.x,p.y); <span class="hljs-comment">// 1 2 </span><br>&#125;<br>printPoint(<span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)); <br></code></pre></td></tr></table></figure></li><li><p>声明Point类的时候，除了会创建一个名为Point类之外，还创建了一个名为Point的类型</p></li><li><p>声明Point类的时候，创建的Point类型是不包含构造函数的</p></li><li><p>声明Point类的时候,创建的Point类型只包含其中的实例属性和实例方法</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端学习</category>
+      
+      <category>ts</category>
+      
+      <category>ts进阶</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>Ts</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ts-类</title>
     <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/"/>
     <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/</url>
@@ -1185,37 +1361,6 @@
     <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/</url>
     
     <content type="html"><![CDATA[<h2 id="一、类型别名"><a href="#一、类型别名" class="headerlink" title="一、类型别名"></a>一、类型别名</h2><ol><li><p>使用type创建类型别名，多应用于联合类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> aa = <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">type</span> bb = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">let</span> a: aa = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> b: bb = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br></code></pre></td></tr></table></figure></li></ol><h2 id="二、字符串字面量类型"><a href="#二、字符串字面量类型" class="headerlink" title="二、字符串字面量类型"></a>二、字符串字面量类型</h2><ol><li><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 字符串字面量类型 */</span><br>type EventNames = <span class="hljs-string">&#x27;click&#x27;</span>| <span class="hljs-string">&#x27;scroll&#x27;</span>| <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> handleEvent (ele:Element,event:EventNames)&#123;<br> <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something<br>&#125;<br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;hello&#x27;</span>),<span class="hljs-string">&#x27;scroll&#x27;</span>); <span class="hljs-regexp">//</span> 运行正常<br><span class="hljs-regexp">//</span> document is not defined (操作DOM和BOM 只能在浏览器环境下进行)<br><span class="hljs-regexp">//</span> handleEvent(document.getElementById(<span class="hljs-string">&#x27;world&#x27;</span>),<span class="hljs-string">&#x27;dbclick&#x27;</span>); <span class="hljs-regexp">//</span> 报错 因为没有<span class="hljs-string">&#x27;dbcllick&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>类型别名和字符串字面量类型都是用type来定义</p></li></ol><h2 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h2><ol><li><p>数组合并类型相同的对象，元组合并类型不同的对象</p></li><li><p>元组</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">25</span>];<br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">0</span>]); <span class="hljs-comment">// tom</span><br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">1</span>]); <span class="hljs-comment">// 25</span><br></code></pre></td></tr></table></figure></li><li><p>元组赋值</p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">let tom1: [string, number];<br>tom1 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];  // 必须先赋值，不然报错<br>tom1[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom1&#x27;</span>;<br>tom1[<span class="hljs-number">1</span>] = <span class="hljs-number">25</span>;<br>console.log(tom1[<span class="hljs-number">0</span>]);<br>console.log(tom1[<span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure></li><li><p>可以赋值一个</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom2: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom2 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom2[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom2&#x27;</span>; <span class="hljs-comment">// 只赋值一个值</span><br><span class="hljs-built_in">console</span>.log(tom2[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure></li><li><p>直接变量初始化</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom3: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom3 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>]; <span class="hljs-comment">// 直接初始化，必须赋值所有项</span><br></code></pre></td></tr></table></figure></li><li><p>越界元素不允许</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom4: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom4 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom4.push(<span class="hljs-string">&#x27;tom&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(tom4); <span class="hljs-comment">// [ &#x27;jack&#x27;, 0, &#x27;tom&#x27; ]</span><br>tom4.push(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 无法push,必须push元组中的类型</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="四、枚举"><a href="#四、枚举" class="headerlink" title="四、枚举"></a>四、枚举</h2><ol><li><p>枚举的关键字enum</p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-string">&#x27;Sun&#x27;</span>] === <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span><br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-number">0</span>] === <span class="hljs-string">&#x27;Sun&#x27;</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure></li><li><p>枚举成员会被赋值从0开始递增的数字，同时也会对枚举值和枚举名进行反向映射</p></li><li><p>给枚举项手动赋值，没有赋值的会递增上一个的枚举值</p></li><li><p>手动赋值</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值 */</span><br>enum Days1 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days1[<span class="hljs-string">&#x27;Wed&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li><li><p>手动赋值小数</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值可以是小数 */</span><br>enum Days2 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1.5</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days2[<span class="hljs-string">&#x27;Tue&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">2.5</span><br></code></pre></td></tr></table></figure></li><li><p>常数枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 常输枚举 不可以包含计算属性 <span class="hljs-operator">*/</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span><br></code></pre></td></tr></table></figure></li><li><p>外部枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 外部枚举 <span class="hljs-operator">*/</span><br><span class="hljs-variable">declare</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions2</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions2</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-operator">//</span> <span class="hljs-punctuation">(</span>运行时会报错 <span class="hljs-variable">Directions2</span> <span class="hljs-variable">is</span> <span class="hljs-variable">not</span> <span class="hljs-variable">defined</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端学习</category>
-      
-      <category>ts</category>
-      
-      <category>ts进阶</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>前端笔记</tag>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>ts-类与接口</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一、类"><a href="#一、类" class="headerlink" title="一、类"></a>一、类</h2><ol><li><p>举例：</p><p>防盗门是门的子类，</p><p>防盗门有报警的功能</p><p>车有报警的功能</p><p>报警提取成接口，防盗门和车都去实现他</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-comment">/* 类和接口 */</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;securityDoor alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>类实现多个接口</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类实现多个接口 */</span><br><span class="hljs-keyword">interface</span> Alarm1 &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Light&#123;<br>    lightOn():<span class="hljs-built_in">void</span>;<br>    lightOff():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car1</span> <span class="hljs-title">implements</span> <span class="hljs-title">Alarm1</span>,<span class="hljs-title">Light</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOn</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light on&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light off&#x27;</span>);<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">/* 接口继承接口 */</span><br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Alarm2</span> &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Light2</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Alarm2</span>&#123; <span class="hljs-comment">// 除了继承父级的方法，还有定义了自己的方法</span><br>    lighton():<span class="hljs-built_in">void</span>;<br>    lightoff():<span class="hljs-built_in">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;<br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">interface</span> Point3d <span class="hljs-keyword">extends</span> Point &#123; <span class="hljs-comment">// Point3d 实际上继承的是Point的实例的类型</span><br>    <span class="hljs-attr">z</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> point3d: Point3d = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">z</span>: <span class="hljs-number">3</span> &#125;;<br></code></pre></td></tr></table></figure></li><li><p>接口为什么可以继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口为什么可以继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <span class="hljs-comment">// Point1 当做类来使用</span><br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> point1 = <span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">/*****************************************/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPoint</span> (<span class="hljs-params">p:Point1</span>)</span>&#123; <span class="hljs-comment">// Point1当做类型来用</span><br>    <span class="hljs-built_in">console</span>.log(p.x,p.y); <span class="hljs-comment">// 1 2 </span><br>&#125;<br>printPoint(<span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)); <br></code></pre></td></tr></table></figure></li><li><p>声明Point类的时候，除了会创建一个名为Point类之外，还创建了一个名为Point的类型</p></li><li><p>声明Point类的时候，创建的Point类型是不包含构造函数的</p></li><li><p>声明Point类的时候,创建的Point类型只包含其中的实例属性和实例方法</p></li></ol>]]></content>
     
     
     <categories>
@@ -1490,31 +1635,6 @@
   
   
   <entry>
-    <title>师姐分享</title>
-    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
-    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
-    
-    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>师姐分享</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>师姐分享</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>项目列表</title>
     <link href="/%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/"/>
     <url>/%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/</url>
@@ -1534,6 +1654,31 @@
     <tags>
       
       <tag>研究生项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>师姐分享</title>
+    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
+    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
+    
+    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>师姐分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>师姐分享</tag>
       
     </tags>
     
@@ -1585,9 +1730,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1614,9 +1759,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1643,9 +1788,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1672,9 +1817,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1701,9 +1846,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1730,9 +1875,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1759,9 +1904,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
