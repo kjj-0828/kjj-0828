@@ -4,6 +4,93 @@
   
   
   <entry>
+    <title>js-08验证银行卡号</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%93%B6%E8%A1%8C%E5%8D%A1%E5%8F%B7/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%93%B6%E8%A1%8C%E5%8D%A1%E5%8F%B7/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * luhn算法验证银行卡号(操作奇数位)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>bankno 银行卡号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bankCardCheck</span>(<span class="hljs-params">bankno</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> lastNum = bankno.substr(bankno.length - <span class="hljs-number">1</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">//取出校验位</span><br>    <span class="hljs-keyword">let</span> firstNum = bankno.substr(<span class="hljs-number">0</span>, bankno.length - <span class="hljs-number">1</span>); <span class="hljs-comment">// 前15位</span><br>    <span class="hljs-keyword">let</span> newArr = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(); <span class="hljs-comment">//倒序的数组</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = firstNum.length - <span class="hljs-number">1</span>; i &gt; -<span class="hljs-number">1</span>; i--) &#123;<br>        newArr.push(firstNum.substr(i, <span class="hljs-number">1</span>));<br>    &#125;<br>    <span class="hljs-keyword">let</span> arrJiShu = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();<span class="hljs-comment">// 奇数位*2 &lt;9</span><br>    <span class="hljs-keyword">let</span> arrJiShu2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>() <span class="hljs-comment">// 奇数位*2 &gt;9</span><br>    <span class="hljs-keyword">let</span> arrOuShu = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(); <span class="hljs-comment">// 偶数位</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; newArr.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> ((i + <span class="hljs-number">1</span>) % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">//奇数位</span><br>            <span class="hljs-keyword">if</span> (newArr[i] * <span class="hljs-number">2</span> &lt; <span class="hljs-number">9</span>) &#123;<br>                arrJiShu.push(<span class="hljs-built_in">parseInt</span>(newArr[i]) * <span class="hljs-number">2</span>);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                arrJiShu2.push(<span class="hljs-built_in">parseInt</span>(newArr[i]) * <span class="hljs-number">2</span>);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            arrOuShu.push(newArr[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">let</span> jishu_child1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(); <span class="hljs-comment">// 奇数位*2 &gt;9 d的个位数组</span><br>    <span class="hljs-keyword">let</span> jishu_child2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(); <span class="hljs-comment">// 奇数位*2 &gt;9 d的十位数组</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arrJiShu2.length; i++) &#123;<br>        jishu_child1.push(<span class="hljs-built_in">parseInt</span>(arrJiShu2[i]) % <span class="hljs-number">10</span>);<br>        jishu_child2.push(<span class="hljs-built_in">parseInt</span>(arrJiShu2[i]) / <span class="hljs-number">10</span>);<br>    &#125;<br>    <span class="hljs-keyword">let</span> sum1 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> sum2 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> sum3 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> sum4 = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> total = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arrOuShu.length; i++) &#123;<br>        sum1 += <span class="hljs-built_in">parseInt</span>(arrOuShu[i]); <span class="hljs-comment">// 偶数和</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arrJiShu.length; i++) &#123;<br>        sum2 += <span class="hljs-built_in">parseInt</span>(arrJiShu[i]); <span class="hljs-comment">// 奇数*2&lt;9 之和</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; jishu_child1.length; i++) &#123;<br>        sum3 += <span class="hljs-built_in">parseInt</span>(jishu_child1[i]); <span class="hljs-comment">//个位和</span><br>        sum4 += <span class="hljs-built_in">parseInt</span>(jishu_child2[i]); <span class="hljs-comment">// 十位和</span><br>    &#125;<br>    total = sum1 + sum2 + sum3 + sum4;<br>    <span class="hljs-comment">// let k = total % 10 == 0 ? 10 : parseInt(total) % 10;</span><br>    <span class="hljs-comment">// let luhn = 10 - k;</span><br>    <span class="hljs-comment">// if (lastNum == luhn &amp;&amp; lastNum.length != 0) &#123;</span><br>    <span class="hljs-comment">//     return true;</span><br>    <span class="hljs-comment">// &#125; else &#123;</span><br>    <span class="hljs-comment">//     return false;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-keyword">if</span> ((total + <span class="hljs-built_in">parseInt</span>(lastNum)) % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// let bankno = &quot;5432123456788881&quot;; // true 69</span><br><span class="hljs-comment">// let bankno = &quot;6225365271562822&quot; // true</span><br><span class="hljs-keyword">let</span> bankno = <span class="hljs-string">&quot;622536527156283&quot;</span> <span class="hljs-comment">// false</span><br><br><span class="hljs-built_in">console</span>.log(bankCardCheck(bankno)); <br><br><br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li><p>Luhn 算法或是Luhn 公式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">luhn算法特点为：<br><span class="hljs-number">1</span>、反方向排列后，从右往左，隔位乘以<span class="hljs-number">2</span>；<br><span class="hljs-number">2</span>、清理两位数字 ： 如果乘以 <span class="hljs-number">2</span> 得到的数字是两位，即大于等于<span class="hljs-number">10</span>， 就把这两位相加得到一位数字；<br><span class="hljs-number">3</span>、相加模 <span class="hljs-number">10</span>： 把步骤<span class="hljs-number">2</span> 得到的各位数字相加， 以 <span class="hljs-number">10</span> 取模后，用 <span class="hljs-number">10</span> 相减即得到校验数字。<br></code></pre></td></tr></table></figure></li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>前端笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-08手机号格式化</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%A0%BC%E5%BC%8F%E5%8C%96/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%A0%BC%E5%BC%8F%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回格式化的手机号</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">phoneToStar</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-comment">// return str.replace(/(\d&#123;3&#125;)\d&#123;4&#125;(\d&#123;4&#125;)/,&quot;$1****$2&quot;);    // $1就是第一个() 188 $2就是第二个() 9948 没有$3 </span><br>     <span class="hljs-keyword">return</span> str.replace(<span class="hljs-regexp">/(\d&#123;3&#125;)(\d&#123;4&#125;)(\d&#123;4&#125;)/</span>,<span class="hljs-string">&quot;$1****$3&quot;</span>); <span class="hljs-comment">// $1就是第一个() 188 $2就是第二个() 3100 $3就是第三个() 9948</span><br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;18831009948&quot;</span>;<br><span class="hljs-built_in">console</span>.log(phoneToStar(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>正则表达式中的括号即可用于分组，同时也用于定义子模式串</li><li>在replace()方法中，参数二中可以使用$n(n为数字)来依次引用模式串中用括号定义的字串。</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>前端笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-08验证邮箱</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%82%AE%E7%AE%B1/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%82%AE%E7%AE%B1/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证邮箱格式</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入的邮箱</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmail</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> emailReg = <span class="hljs-regexp">/^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-z0-9A-Z]&#123;2,&#125;$/</span>;<br>    <span class="hljs-keyword">return</span> emailReg.test(str);<br>&#125;<br><span class="hljs-comment">// let str = &quot;11090@qq.com&quot;; //true</span><br><span class="hljs-comment">// let str = &quot;hjkjhk@645654.2121-6878.com.wcn&quot; //true</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hjkjhk@645654.2121_6878.com.wcn&quot;</span> <span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(isEmail(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>? 表示匹配前面的字表达式零次或者一次，是非贪婪模式的，尽可能少的匹配所搜索的字符串</li><li>邮箱的格式规定</li><li>@之前必须有内容且只能是字母（大小写）、数字、下划线(_)、减号（-）、点（.）</li><li>@和最后一个点（.）之间必须有内容且只能是字母（大小写）、数字、点（.）、减号（-），且两个点不能挨着</li><li> 最后一个点（.）之后必须有内容且内容只能是字母（大小写）、数字且长度为大于等于2个字节，小于等于6个字节</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+      <tag>前端笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js-07切割相应小数点后位数，并将小数点后多余的0清空</title>
     <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%88%87%E5%89%B2%E7%9B%B8%E5%BA%94%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%BD%8D%E6%95%B0%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%A4%9A%E4%BD%99%E7%9A%840%E6%B8%85%E7%A9%BA/"/>
     <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%88%87%E5%89%B2%E7%9B%B8%E5%BA%94%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E4%BD%8D%E6%95%B0%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%A4%9A%E4%BD%99%E7%9A%840%E6%B8%85%E7%A9%BA/</url>
@@ -22,9 +109,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -51,9 +138,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -80,9 +167,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -109,9 +196,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -138,9 +225,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -167,9 +254,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -196,9 +283,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -225,9 +312,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -254,9 +341,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -283,9 +370,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -312,9 +399,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -341,9 +428,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -370,9 +457,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -399,9 +486,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -430,9 +517,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -459,9 +546,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -488,9 +575,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -517,9 +604,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -546,9 +633,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -575,9 +662,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -606,9 +693,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -637,9 +724,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -666,9 +753,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -695,9 +782,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -724,9 +811,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -753,9 +840,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -782,9 +869,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -811,9 +898,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -840,9 +927,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -869,9 +956,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -929,9 +1016,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -960,9 +1047,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -991,9 +1078,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1354,11 +1441,11 @@
   
   
   <entry>
-    <title>ts-类与接口</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
+    <title>ts-类型别名</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、类"><a href="#一、类" class="headerlink" title="一、类"></a>一、类</h2><ol><li><p>举例：</p><p>防盗门是门的子类，</p><p>防盗门有报警的功能</p><p>车有报警的功能</p><p>报警提取成接口，防盗门和车都去实现他</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-comment">/* 类和接口 */</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;securityDoor alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>类实现多个接口</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类实现多个接口 */</span><br><span class="hljs-keyword">interface</span> Alarm1 &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Light&#123;<br>    lightOn():<span class="hljs-built_in">void</span>;<br>    lightOff():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car1</span> <span class="hljs-title">implements</span> <span class="hljs-title">Alarm1</span>,<span class="hljs-title">Light</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOn</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light on&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light off&#x27;</span>);<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">/* 接口继承接口 */</span><br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Alarm2</span> &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Light2</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Alarm2</span>&#123; <span class="hljs-comment">// 除了继承父级的方法，还有定义了自己的方法</span><br>    lighton():<span class="hljs-built_in">void</span>;<br>    lightoff():<span class="hljs-built_in">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;<br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">interface</span> Point3d <span class="hljs-keyword">extends</span> Point &#123; <span class="hljs-comment">// Point3d 实际上继承的是Point的实例的类型</span><br>    <span class="hljs-attr">z</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> point3d: Point3d = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">z</span>: <span class="hljs-number">3</span> &#125;;<br></code></pre></td></tr></table></figure></li><li><p>接口为什么可以继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口为什么可以继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <span class="hljs-comment">// Point1 当做类来使用</span><br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> point1 = <span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">/*****************************************/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPoint</span> (<span class="hljs-params">p:Point1</span>)</span>&#123; <span class="hljs-comment">// Point1当做类型来用</span><br>    <span class="hljs-built_in">console</span>.log(p.x,p.y); <span class="hljs-comment">// 1 2 </span><br>&#125;<br>printPoint(<span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)); <br></code></pre></td></tr></table></figure></li><li><p>声明Point类的时候，除了会创建一个名为Point类之外，还创建了一个名为Point的类型</p></li><li><p>声明Point类的时候，创建的Point类型是不包含构造函数的</p></li><li><p>声明Point类的时候,创建的Point类型只包含其中的实例属性和实例方法</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、类型别名"><a href="#一、类型别名" class="headerlink" title="一、类型别名"></a>一、类型别名</h2><ol><li><p>使用type创建类型别名，多应用于联合类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> aa = <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">type</span> bb = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">let</span> a: aa = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> b: bb = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br></code></pre></td></tr></table></figure></li></ol><h2 id="二、字符串字面量类型"><a href="#二、字符串字面量类型" class="headerlink" title="二、字符串字面量类型"></a>二、字符串字面量类型</h2><ol><li><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 字符串字面量类型 */</span><br>type EventNames = <span class="hljs-string">&#x27;click&#x27;</span>| <span class="hljs-string">&#x27;scroll&#x27;</span>| <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> handleEvent (ele:Element,event:EventNames)&#123;<br> <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something<br>&#125;<br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;hello&#x27;</span>),<span class="hljs-string">&#x27;scroll&#x27;</span>); <span class="hljs-regexp">//</span> 运行正常<br><span class="hljs-regexp">//</span> document is not defined (操作DOM和BOM 只能在浏览器环境下进行)<br><span class="hljs-regexp">//</span> handleEvent(document.getElementById(<span class="hljs-string">&#x27;world&#x27;</span>),<span class="hljs-string">&#x27;dbclick&#x27;</span>); <span class="hljs-regexp">//</span> 报错 因为没有<span class="hljs-string">&#x27;dbcllick&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>类型别名和字符串字面量类型都是用type来定义</p></li></ol><h2 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h2><ol><li><p>数组合并类型相同的对象，元组合并类型不同的对象</p></li><li><p>元组</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">25</span>];<br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">0</span>]); <span class="hljs-comment">// tom</span><br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">1</span>]); <span class="hljs-comment">// 25</span><br></code></pre></td></tr></table></figure></li><li><p>元组赋值</p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">let tom1: [string, number];<br>tom1 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];  // 必须先赋值，不然报错<br>tom1[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom1&#x27;</span>;<br>tom1[<span class="hljs-number">1</span>] = <span class="hljs-number">25</span>;<br>console.log(tom1[<span class="hljs-number">0</span>]);<br>console.log(tom1[<span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure></li><li><p>可以赋值一个</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom2: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom2 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom2[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom2&#x27;</span>; <span class="hljs-comment">// 只赋值一个值</span><br><span class="hljs-built_in">console</span>.log(tom2[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure></li><li><p>直接变量初始化</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom3: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom3 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>]; <span class="hljs-comment">// 直接初始化，必须赋值所有项</span><br></code></pre></td></tr></table></figure></li><li><p>越界元素不允许</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom4: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom4 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom4.push(<span class="hljs-string">&#x27;tom&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(tom4); <span class="hljs-comment">// [ &#x27;jack&#x27;, 0, &#x27;tom&#x27; ]</span><br>tom4.push(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 无法push,必须push元组中的类型</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="四、枚举"><a href="#四、枚举" class="headerlink" title="四、枚举"></a>四、枚举</h2><ol><li><p>枚举的关键字enum</p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-string">&#x27;Sun&#x27;</span>] === <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span><br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-number">0</span>] === <span class="hljs-string">&#x27;Sun&#x27;</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure></li><li><p>枚举成员会被赋值从0开始递增的数字，同时也会对枚举值和枚举名进行反向映射</p></li><li><p>给枚举项手动赋值，没有赋值的会递增上一个的枚举值</p></li><li><p>手动赋值</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值 */</span><br>enum Days1 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days1[<span class="hljs-string">&#x27;Wed&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li><li><p>手动赋值小数</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值可以是小数 */</span><br>enum Days2 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1.5</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days2[<span class="hljs-string">&#x27;Tue&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">2.5</span><br></code></pre></td></tr></table></figure></li><li><p>常数枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 常输枚举 不可以包含计算属性 <span class="hljs-operator">*/</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span><br></code></pre></td></tr></table></figure></li><li><p>外部枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 外部枚举 <span class="hljs-operator">*/</span><br><span class="hljs-variable">declare</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions2</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions2</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-operator">//</span> <span class="hljs-punctuation">(</span>运行时会报错 <span class="hljs-variable">Directions2</span> <span class="hljs-variable">is</span> <span class="hljs-variable">not</span> <span class="hljs-variable">defined</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
     
     
     <categories>
@@ -1385,11 +1472,11 @@
   
   
   <entry>
-    <title>ts-类型别名</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/</url>
+    <title>ts-类与接口</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、类型别名"><a href="#一、类型别名" class="headerlink" title="一、类型别名"></a>一、类型别名</h2><ol><li><p>使用type创建类型别名，多应用于联合类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> aa = <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">type</span> bb = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">let</span> a: aa = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> b: bb = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br></code></pre></td></tr></table></figure></li></ol><h2 id="二、字符串字面量类型"><a href="#二、字符串字面量类型" class="headerlink" title="二、字符串字面量类型"></a>二、字符串字面量类型</h2><ol><li><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 字符串字面量类型 */</span><br>type EventNames = <span class="hljs-string">&#x27;click&#x27;</span>| <span class="hljs-string">&#x27;scroll&#x27;</span>| <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> handleEvent (ele:Element,event:EventNames)&#123;<br> <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something<br>&#125;<br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;hello&#x27;</span>),<span class="hljs-string">&#x27;scroll&#x27;</span>); <span class="hljs-regexp">//</span> 运行正常<br><span class="hljs-regexp">//</span> document is not defined (操作DOM和BOM 只能在浏览器环境下进行)<br><span class="hljs-regexp">//</span> handleEvent(document.getElementById(<span class="hljs-string">&#x27;world&#x27;</span>),<span class="hljs-string">&#x27;dbclick&#x27;</span>); <span class="hljs-regexp">//</span> 报错 因为没有<span class="hljs-string">&#x27;dbcllick&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>类型别名和字符串字面量类型都是用type来定义</p></li></ol><h2 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h2><ol><li><p>数组合并类型相同的对象，元组合并类型不同的对象</p></li><li><p>元组</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">25</span>];<br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">0</span>]); <span class="hljs-comment">// tom</span><br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">1</span>]); <span class="hljs-comment">// 25</span><br></code></pre></td></tr></table></figure></li><li><p>元组赋值</p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">let tom1: [string, number];<br>tom1 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];  // 必须先赋值，不然报错<br>tom1[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom1&#x27;</span>;<br>tom1[<span class="hljs-number">1</span>] = <span class="hljs-number">25</span>;<br>console.log(tom1[<span class="hljs-number">0</span>]);<br>console.log(tom1[<span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure></li><li><p>可以赋值一个</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom2: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom2 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom2[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom2&#x27;</span>; <span class="hljs-comment">// 只赋值一个值</span><br><span class="hljs-built_in">console</span>.log(tom2[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure></li><li><p>直接变量初始化</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom3: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom3 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>]; <span class="hljs-comment">// 直接初始化，必须赋值所有项</span><br></code></pre></td></tr></table></figure></li><li><p>越界元素不允许</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom4: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom4 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom4.push(<span class="hljs-string">&#x27;tom&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(tom4); <span class="hljs-comment">// [ &#x27;jack&#x27;, 0, &#x27;tom&#x27; ]</span><br>tom4.push(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 无法push,必须push元组中的类型</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="四、枚举"><a href="#四、枚举" class="headerlink" title="四、枚举"></a>四、枚举</h2><ol><li><p>枚举的关键字enum</p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-string">&#x27;Sun&#x27;</span>] === <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span><br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-number">0</span>] === <span class="hljs-string">&#x27;Sun&#x27;</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure></li><li><p>枚举成员会被赋值从0开始递增的数字，同时也会对枚举值和枚举名进行反向映射</p></li><li><p>给枚举项手动赋值，没有赋值的会递增上一个的枚举值</p></li><li><p>手动赋值</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值 */</span><br>enum Days1 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days1[<span class="hljs-string">&#x27;Wed&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li><li><p>手动赋值小数</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值可以是小数 */</span><br>enum Days2 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1.5</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days2[<span class="hljs-string">&#x27;Tue&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">2.5</span><br></code></pre></td></tr></table></figure></li><li><p>常数枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 常输枚举 不可以包含计算属性 <span class="hljs-operator">*/</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span><br></code></pre></td></tr></table></figure></li><li><p>外部枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 外部枚举 <span class="hljs-operator">*/</span><br><span class="hljs-variable">declare</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions2</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions2</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-operator">//</span> <span class="hljs-punctuation">(</span>运行时会报错 <span class="hljs-variable">Directions2</span> <span class="hljs-variable">is</span> <span class="hljs-variable">not</span> <span class="hljs-variable">defined</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、类"><a href="#一、类" class="headerlink" title="一、类"></a>一、类</h2><ol><li><p>举例：</p><p>防盗门是门的子类，</p><p>防盗门有报警的功能</p><p>车有报警的功能</p><p>报警提取成接口，防盗门和车都去实现他</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-comment">/* 类和接口 */</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;securityDoor alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>类实现多个接口</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类实现多个接口 */</span><br><span class="hljs-keyword">interface</span> Alarm1 &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Light&#123;<br>    lightOn():<span class="hljs-built_in">void</span>;<br>    lightOff():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car1</span> <span class="hljs-title">implements</span> <span class="hljs-title">Alarm1</span>,<span class="hljs-title">Light</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOn</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light on&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light off&#x27;</span>);<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">/* 接口继承接口 */</span><br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Alarm2</span> &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Light2</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Alarm2</span>&#123; <span class="hljs-comment">// 除了继承父级的方法，还有定义了自己的方法</span><br>    lighton():<span class="hljs-built_in">void</span>;<br>    lightoff():<span class="hljs-built_in">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;<br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">interface</span> Point3d <span class="hljs-keyword">extends</span> Point &#123; <span class="hljs-comment">// Point3d 实际上继承的是Point的实例的类型</span><br>    <span class="hljs-attr">z</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> point3d: Point3d = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">z</span>: <span class="hljs-number">3</span> &#125;;<br></code></pre></td></tr></table></figure></li><li><p>接口为什么可以继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口为什么可以继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <span class="hljs-comment">// Point1 当做类来使用</span><br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> point1 = <span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">/*****************************************/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPoint</span> (<span class="hljs-params">p:Point1</span>)</span>&#123; <span class="hljs-comment">// Point1当做类型来用</span><br>    <span class="hljs-built_in">console</span>.log(p.x,p.y); <span class="hljs-comment">// 1 2 </span><br>&#125;<br>printPoint(<span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)); <br></code></pre></td></tr></table></figure></li><li><p>声明Point类的时候，除了会创建一个名为Point类之外，还创建了一个名为Point的类型</p></li><li><p>声明Point类的时候，创建的Point类型是不包含构造函数的</p></li><li><p>声明Point类的时候,创建的Point类型只包含其中的实例属性和实例方法</p></li></ol>]]></content>
     
     
     <categories>
@@ -1759,9 +1846,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1788,9 +1875,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1817,9 +1904,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1846,9 +1933,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1875,9 +1962,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1904,9 +1991,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
@@ -1933,9 +2020,9 @@
     
     <tags>
       
-      <tag>前端笔记</tag>
-      
       <tag>js</tag>
+      
+      <tag>前端笔记</tag>
       
     </tags>
     
