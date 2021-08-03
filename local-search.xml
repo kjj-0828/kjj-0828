@@ -4,6 +4,296 @@
   
   
   <entry>
+    <title>js-09验证一串字符是否是小数</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E6%98%AF%E5%B0%8F%E6%95%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E6%98%AF%E5%B0%8F%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证一串字符串是否是小数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkDecimal</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (str.match(<span class="hljs-regexp">/^-?\d+(\.\d+)?$/g</span>) == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(checkDecimal(<span class="hljs-string">&quot;1231.310391&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkDecimal(<span class="hljs-string">&quot;-1231.310391&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkDecimal(<span class="hljs-string">&quot;1231.310391a&quot;</span>)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li> ? 匹配0次或者一次</li><li>+匹配一次或者多次</li><li>*匹配零次或者多次</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证一串字符是否全为英文</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E8%8B%B1%E6%96%87/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E8%8B%B1%E6%96%87/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证一串字符是否全是英文</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEnglish</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;<br>        <span class="hljs-keyword">let</span> strTemp = str.charAt(i);<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-regexp">/[a-zA-Z]/</span>.test(strTemp)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(isEnglish(<span class="hljs-string">&quot;abcdclkd&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(isEnglish(<span class="hljs-string">&quot;abcdclkd212&quot;</span>)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证一串字符是否全为数字英文空格半角</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E6%95%B0%E5%AD%97%E8%8B%B1%E6%96%87%E7%A9%BA%E6%A0%BC%E5%8D%8A%E8%A7%92/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E6%95%B0%E5%AD%97%E8%8B%B1%E6%96%87%E7%A9%BA%E6%A0%BC%E5%8D%8A%E8%A7%92/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JS检查输入的一串字符是否全部是数字或者英文或半角-或者空格</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 测试字符</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkEnNumDashOrSpace</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;<br>        <span class="hljs-keyword">let</span> strTemp = str.charAt(i);<br>        <span class="hljs-keyword">if</span> (strTemp == <span class="hljs-string">&#x27; &#x27;</span>) &#123;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (!(<span class="hljs-regexp">/[A-Za-z0-9-]/</span>.test(strTemp)))&#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(checkEnNumDashOrSpace(<span class="hljs-string">&quot;sdad11123 -&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkEnNumDashOrSpace(<span class="hljs-string">&quot;sdad11123 -!&quot;</span>)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证一串字符是否全为数字或者英文</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E6%95%B0%E5%AD%97%E6%88%96%E8%80%85%E8%8B%B1%E6%96%87/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E6%95%B0%E5%AD%97%E6%88%96%E8%80%85%E8%8B%B1%E6%96%87/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 检查输入的一串字符是否全部是数字或者英文</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns  </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkEnNum</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 方法一：</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-comment">// return !(str.match(/^[0-9a-zA-Z]+$/) == null);</span><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 方法二：</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-regexp">/^[A-Za-z0-9]/</span>.test(str.charAt(i))) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;dasdasdas&quot;</span>;<br><span class="hljs-built_in">console</span>.log(checkEnNum(str)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证一串字符是否全为数字</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E6%95%B0%E5%AD%97/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%B2%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%85%A8%E4%B8%BA%E6%95%B0%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 检查输入的一串字符是否全部是数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkNum</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> str.match(<span class="hljs-regexp">/\D/</span>) == <span class="hljs-literal">null</span>;<br>&#125;<br><span class="hljs-comment">// let str = &quot;21315，．：&quot;;//false</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;489641&quot;</span> <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkNum(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>\D匹配一个非数字字符</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证全角</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E5%85%A8%E8%A7%92/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E5%85%A8%E8%A7%92/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证全角</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str  字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkHasFull</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (str.charCodeAt(i) &gt; <span class="hljs-number">65281</span> &amp;&amp; str.charCodeAt(i) &lt; <span class="hljs-number">65374</span> || str.charCodeAt(i) == <span class="hljs-number">12288</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(checkHasFull(<span class="hljs-string">&quot;AaBb1234@#%&amp;；，．：&quot;</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkHasFull(<span class="hljs-string">&quot;AaBb1234@#%&amp;;,.:&quot;</span>)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>半角字符的范围：33 (0x21) ~ 126 (0x7E)</li><li>全角字符的范围：65281 (0xFF01) ~ 65374 (0xFF5E)</li><li>unicode为12288字符为全角空格(&amp;#12288)</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证正整数</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E6%AD%A3%E6%95%B4%E6%95%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E6%AD%A3%E6%95%B4%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证正整数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>number  数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkNumber</span>(<span class="hljs-params">number</span>)</span>&#123;<br>    <span class="hljs-comment">// return /^[1-9]\d*$/.test(number);</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^\d+$/</span>.test(number);<br>&#125;<br><span class="hljs-built_in">console</span>.log(checkNumber(<span class="hljs-number">1</span>)); <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkNumber(-<span class="hljs-number">1</span>)); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>+匹配1次或者多次</li><li>*匹配0次或者多次</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证邮政编码</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E9%82%AE%E6%94%BF%E7%BC%96%E7%A0%81/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E9%82%AE%E6%94%BF%E7%BC%96%E7%A0%81/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证邮政编码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 邮政编码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkPostCode</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (str.match(<span class="hljs-regexp">/^[1-9][0-9]&#123;5&#125;$/</span>) == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// let str = &quot;423000&quot;; // true</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;029000&quot;</span>; <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(checkPostCode(str));<br></code></pre></td></tr></table></figure><div class="note note-success">            <p>test()和match()方法的区别：</p><ul><li>test():是RegExp的方法，参数是字符串，返回值是布尔类型</li><li>match():是string的方法，参数是正则表达式，返回值是数组</li><li>test():用于检测一个字符串是否匹配某个模式</li><li>match():在字符串内检索指定的值，或者找到一个或者多个正则表达式的匹配</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证密码只能是数字和字母组合</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81%E5%8F%AA%E8%83%BD%E6%98%AF%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81%E5%8F%AA%E8%83%BD%E6%98%AF%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证密码必须是字母和数字的组合</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>password  密码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkPasswordValidate</span>(<span class="hljs-params">password</span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]&#123;6,20&#125;$/</span>.test(password);<br>&#125;<br><span class="hljs-comment">// let password = &quot;kjj123&quot;; // true</span><br><span class="hljs-comment">// let password = &quot;kjj&quot;; // false</span><br><span class="hljs-keyword">let</span> password = <span class="hljs-string">&quot;123&quot;</span>; <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(checkPasswordValidate(password));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>(?!正则):表示在这个位置之后不能出现这个正则</li><li>^(?!^\d+$)<br>表示字符串不能完全由数字组成，即必须包含其他字符</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js-09验证用户名</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7%E5%90%8D/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7%E5%90%8D/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JS检查用户名是否满足要求，只能是英文或英文数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>loginName 登录名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkLoginName</span>(<span class="hljs-params">loginName</span>) </span>&#123;<br>    <span class="hljs-comment">// (^\d*$)全是数字的情况 (^\S+\s+\S+$) 用户名中间全是空白字符 </span><br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^[A-Za-z0-9]*$/</span>.test(loginName) &amp;&amp; !<span class="hljs-regexp">/(^\d*$)|(^\S+\s+\S+$)/</span>.test(loginName);<br>&#125;<br><span class="hljs-comment">// let loginName = &quot;kjj&quot;; // true</span><br><span class="hljs-comment">// let loginName = &quot;kjj!&quot; // false</span><br><span class="hljs-comment">// let loginName = &quot;kjj123&quot; // true</span><br><span class="hljs-comment">// let loginName = &quot;kjj    &quot;; // false</span><br><span class="hljs-comment">// let loginName = &quot;123&quot;;// false</span><br><span class="hljs-comment">// let loginName = &quot;   &quot; // false</span><br><span class="hljs-keyword">let</span> loginName = <span class="hljs-string">&quot;kjj    kjj&quot;</span> <span class="hljs-comment">// false </span><br><span class="hljs-built_in">console</span>.log(checkLoginName(loginName));<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li>(^\d*$) </li><li>^表示以…开始，\d表示数字 * 表示匹配0次或者多次 $表示…结束</li><li>^用在[] 表示非的意思，反面的意思 表示不接受该方括号表达式中的字符集合</li><li>所以正则的意思是：多位数字</li><li>\s匹配任何空白字符。</li><li>\S匹配任何非空白字符。</li></ul>          </div>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js-08验证银行卡号</title>
     <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%93%B6%E8%A1%8C%E5%8D%A1%E5%8F%B7/"/>
     <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%93%B6%E8%A1%8C%E5%8D%A1%E5%8F%B7/</url>
@@ -22,9 +312,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -51,9 +341,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -80,9 +370,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -109,9 +399,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -138,9 +428,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -167,9 +457,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -196,9 +486,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -225,9 +515,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -254,9 +544,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -283,9 +573,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -312,9 +602,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -341,9 +631,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -370,9 +660,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -399,9 +689,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -428,9 +718,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -457,9 +747,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -486,9 +776,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -517,9 +807,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -546,9 +836,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -575,9 +865,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -604,9 +894,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -633,9 +923,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -662,9 +952,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -693,9 +983,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -724,9 +1014,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -753,9 +1043,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -782,9 +1072,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -811,9 +1101,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -840,9 +1130,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -869,9 +1159,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -898,9 +1188,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -927,9 +1217,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -956,9 +1246,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1016,9 +1306,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1047,9 +1337,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1078,9 +1368,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1379,37 +1669,6 @@
   
   
   <entry>
-    <title>ts-类</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/</url>
-    
-    <content type="html"><![CDATA[<h2 id="一、类的概念"><a href="#一、类的概念" class="headerlink" title="一、类的概念"></a>一、类的概念</h2><ol><li><p>类：定义一个抽象物体的特点，包括他的属性和方法</p></li><li><p>对象：类的实例，通过new实现</p></li><li><p>面向对象的三大特性：封装、继承、多态</p></li><li><p>封装：将对数据操作的细节隐藏起来，只暴露对外的接口</p></li><li><p>继承：子类继承父类，而且还可以有自己更具体的特性</p></li><li><p>多态：由继承产生的相关的不同的类，对同一个方法有不同的相应。</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210713143911.png" alt="image-20210713143807626"></p></li></ol><h2 id="二、ES6类的用法"><a href="#二、ES6类的用法" class="headerlink" title="二、ES6类的用法"></a>二、ES6类的用法</h2><ol><li><p>属性和方法</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类的属性和方法 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> name;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span>&#123; <span class="hljs-comment">// 构造函数</span><br>    <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">sayHi</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`my name is <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.name&#125;</span>`</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> Animal(<span class="hljs-string">&#x27;Jack&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(a.sayHi()); <span class="hljs-comment">//my name is Jack</span><br></code></pre></td></tr></table></figure></li><li><p>类的继承</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">/* 类的继承 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>constructor(name)&#123;<br>    <span class="hljs-keyword">super</span>(name); <span class="hljs-comment">// 使用super调用父类的构造函数和方法</span><br>    console.log(<span class="hljs-keyword">this</span>.name); <span class="hljs-comment">//cat</span><br><br>&#125;<br>sayHi()&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-symbol">&#x27;Meo</span>w&#x27; + <span class="hljs-keyword">super</span>.sayHi();<br>&#125;<br>&#125;<br>let cat = <span class="hljs-keyword">new</span> <span class="hljs-type">Cat</span>(<span class="hljs-symbol">&#x27;ca</span>t&#x27;);<br>console.log(cat.sayHi()); <span class="hljs-comment">// Meowmy name is cat</span><br></code></pre></td></tr></table></figure></li><li><p>存储器</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* 存取器 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal1</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">get</span> <span class="hljs-title">name</span>() &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Jack&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">set</span> <span class="hljs-title">name</span>(<span class="hljs-params">value</span>) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setter:&#x27;</span> + value); <span class="hljs-comment">// setter:Kitty</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> animal = <span class="hljs-keyword">new</span> Animal1(<span class="hljs-string">&#x27;Kitty&#x27;</span>);<br>animal.name = <span class="hljs-string">&#x27;tom&#x27;</span>; <span class="hljs-comment">// setter:tom</span><br></code></pre></td></tr></table></figure></li><li><p>静态方法</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 静态方法 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal2</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> name;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123; <span class="hljs-comment">// 构造函数</span><br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">isAnimal</span>(<span class="hljs-params">a</span>)</span> &#123; <span class="hljs-comment">// 静态方法</span><br>        <span class="hljs-keyword">return</span> a <span class="hljs-keyword">instanceof</span> Animal2;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> a1 = <span class="hljs-keyword">new</span> Animal2(<span class="hljs-string">&#x27;Jack&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(Animal2.isAnimal(a1)); <span class="hljs-comment">// true //静态方法不需要实例，类直接调用</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="二、ES7类中的用法"><a href="#二、ES7类中的用法" class="headerlink" title="二、ES7类中的用法"></a>二、ES7类中的用法</h2><ol><li><p>实例属性</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* es7实例属性 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal3</span></span>&#123;<br>    name=<span class="hljs-string">&#x27;Jack3&#x27;</span>; <span class="hljs-comment">// 直接在类里定属性</span><br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-comment">//</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> a2 = <span class="hljs-keyword">new</span> Animal3();<br><span class="hljs-built_in">console</span>.log(a2.name); <span class="hljs-comment">// Jack3</span><br></code></pre></td></tr></table></figure></li><li><p>静态属性</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* es7静态属性 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal4</span></span>&#123;<br>    <span class="hljs-keyword">static</span> num =<span class="hljs-number">42</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-comment">//</span><br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(Animal4.num); <span class="hljs-comment">// 42</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="三、ts中类的用法"><a href="#三、ts中类的用法" class="headerlink" title="三、ts中类的用法"></a>三、ts中类的用法</h2><ol><li><p>public 修饰符（开放的属性和方法）</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">class</span> Animal5 &#123;<br>    <span class="hljs-built_in">public</span> <span class="hljs-type">name</span>;<br>    <span class="hljs-built_in">public</span> constructor (<span class="hljs-type">name</span>)&#123;<br>        this.name = <span class="hljs-type">name</span>;<br>    &#125;<br>&#125;<br>let a3 = <span class="hljs-built_in">new</span> Animal5(<span class="hljs-string">&#x27;Jack5&#x27;</span>);<br>console.log(a3.name); // Jack5<br>a3.name = <span class="hljs-string">&#x27;tom5&#x27;</span>; <br>console.log(a3.name); // tom5<br></code></pre></td></tr></table></figure></li><li><p>private修饰符（无法直接读取）</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">/* private */</span><br><span class="hljs-keyword">class</span> Animal6 &#123;<br>    private <span class="hljs-type">name</span>;<br>    <span class="hljs-built_in">public</span> constructor (<span class="hljs-type">name</span>)&#123;<br>        this.name = <span class="hljs-type">name</span>;<br>    &#125;<br>&#125;<br>let a4 = <span class="hljs-built_in">new</span> Animal6(<span class="hljs-string">&#x27;Jack5&#x27;</span>);<br>console.log(a4.name); <br>a4.name = <span class="hljs-string">&#x27;tom5&#x27;</span>; <br>// 报错Property <span class="hljs-string">&#x27;name&#x27;</span> <span class="hljs-keyword">is</span> private <span class="hljs-keyword">and</span> <span class="hljs-keyword">only</span> accessible <span class="hljs-keyword">within</span> <span class="hljs-keyword">class</span> <span class="hljs-string">&#x27;Animal6&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>private（子类无法访问父类）</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">/* private 子类*/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal7</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> name;<br>    public constructor(name) &#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat7</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal7</span> </span>&#123;<br>    constructor(name) &#123;<br>        <span class="hljs-keyword">super</span>(name); <span class="hljs-comment">// 访问父类</span><br>        console.log(<span class="hljs-keyword">this</span>.name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>protected修饰符（子类可以访问父类）</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">/* protected修饰符 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal8</span></span>&#123;<br>    <span class="hljs-keyword">protected</span> name;<br>    public constructor(name)&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat8</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal8</span></span>&#123;<br>    constructor(name)&#123;<br>        <span class="hljs-keyword">super</span>(name);<br>        console.log(<span class="hljs-keyword">this</span>.name);<br>        <br>    &#125;<br>&#125;<br>let cat8 = <span class="hljs-keyword">new</span> <span class="hljs-type">Cat8</span>(<span class="hljs-symbol">&#x27;cat</span>8&#x27;)<br>console.log(cat8); <span class="hljs-comment">// Cat8 &#123; name: &#x27;cat8&#x27; &#125;</span><br></code></pre></td></tr></table></figure></li><li><p>修饰符和readonly可以使用在构造函数参数中</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 参数属性 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal9</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> name</span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(name); <span class="hljs-comment">// tom9</span><br>        <br>    &#125;<br>&#125;<br><span class="hljs-keyword">var</span> cat9  = <span class="hljs-keyword">new</span> Animal9(<span class="hljs-string">&#x27;tom9&#x27;</span>); <br></code></pre></td></tr></table></figure></li><li><p>只读属性readonly</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">/* readonly 可以用在属性 构造函数  */</span><br><span class="hljs-keyword">class</span> Animal10&#123;<br>    readonly <span class="hljs-type">name</span>; <br>    <span class="hljs-built_in">public</span> constructor (<span class="hljs-type">name</span>)&#123;<br>        this.name = <span class="hljs-type">name</span>;<br>    &#125;<br>&#125;<br>let a10 = <span class="hljs-built_in">new</span> Animal10(<span class="hljs-string">&#x27;tom10&#x27;</span>);<br>console.log(a10.name); // tom10<br>a10.name = <span class="hljs-string">&#x27;jack 10&#x27;</span> //  Cannot assign <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;name&#x27;</span> because it <span class="hljs-keyword">is</span> a <span class="hljs-keyword">read</span>-<span class="hljs-keyword">only</span> property.<br></code></pre></td></tr></table></figure></li><li><p>readonly和其他访问修饰符同时存在，要放到后面</p></li><li><p>抽象类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 抽象类 不可以被实例化 抽象类的方法必须被子类实现 */</span><br><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal11</span> </span>&#123; <span class="hljs-comment">// 抽象类</span><br>    <span class="hljs-keyword">public</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> sayHi(); <span class="hljs-comment">// 抽象方法</span><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat11</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal11</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">sayHi</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`meow, my name is <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.name&#125;</span>`</span>); <span class="hljs-comment">// meow, my name is tom11</span><br>        <br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> cat11 = <span class="hljs-keyword">new</span> Cat11(<span class="hljs-string">&#x27;tom11&#x27;</span>);<br>cat11.sayHi();<br></code></pre></td></tr></table></figure></li><li><p>类的类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类的类型 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal12</span> </span>&#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-built_in">string</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name:<span class="hljs-built_in">string</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    sayHi():<span class="hljs-built_in">string</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`my name is <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.name&#125;</span>`</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> cat12:Animal12 = <span class="hljs-keyword">new</span> Animal12(<span class="hljs-string">&#x27;tom12&#x27;</span>); <span class="hljs-comment">// 指定cat12的类型是Animal12 而且进行了初始化</span><br><span class="hljs-built_in">console</span>.log(cat12.sayHi()); <span class="hljs-comment">// my name is tom12</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>前端学习</category>
-      
-      <category>ts</category>
-      
-      <category>ts进阶</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>前端笔记</tag>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>ts-泛型</title>
     <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E6%B3%9B%E5%9E%8B/"/>
     <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E6%B3%9B%E5%9E%8B/</url>
@@ -1441,11 +1700,11 @@
   
   
   <entry>
-    <title>ts-类型别名</title>
-    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/"/>
-    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/</url>
+    <title>ts-类</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、类型别名"><a href="#一、类型别名" class="headerlink" title="一、类型别名"></a>一、类型别名</h2><ol><li><p>使用type创建类型别名，多应用于联合类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> aa = <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">type</span> bb = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">let</span> a: aa = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> b: bb = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br></code></pre></td></tr></table></figure></li></ol><h2 id="二、字符串字面量类型"><a href="#二、字符串字面量类型" class="headerlink" title="二、字符串字面量类型"></a>二、字符串字面量类型</h2><ol><li><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 字符串字面量类型 */</span><br>type EventNames = <span class="hljs-string">&#x27;click&#x27;</span>| <span class="hljs-string">&#x27;scroll&#x27;</span>| <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> handleEvent (ele:Element,event:EventNames)&#123;<br> <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something<br>&#125;<br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;hello&#x27;</span>),<span class="hljs-string">&#x27;scroll&#x27;</span>); <span class="hljs-regexp">//</span> 运行正常<br><span class="hljs-regexp">//</span> document is not defined (操作DOM和BOM 只能在浏览器环境下进行)<br><span class="hljs-regexp">//</span> handleEvent(document.getElementById(<span class="hljs-string">&#x27;world&#x27;</span>),<span class="hljs-string">&#x27;dbclick&#x27;</span>); <span class="hljs-regexp">//</span> 报错 因为没有<span class="hljs-string">&#x27;dbcllick&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>类型别名和字符串字面量类型都是用type来定义</p></li></ol><h2 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h2><ol><li><p>数组合并类型相同的对象，元组合并类型不同的对象</p></li><li><p>元组</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">25</span>];<br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">0</span>]); <span class="hljs-comment">// tom</span><br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">1</span>]); <span class="hljs-comment">// 25</span><br></code></pre></td></tr></table></figure></li><li><p>元组赋值</p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">let tom1: [string, number];<br>tom1 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];  // 必须先赋值，不然报错<br>tom1[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom1&#x27;</span>;<br>tom1[<span class="hljs-number">1</span>] = <span class="hljs-number">25</span>;<br>console.log(tom1[<span class="hljs-number">0</span>]);<br>console.log(tom1[<span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure></li><li><p>可以赋值一个</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom2: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom2 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom2[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom2&#x27;</span>; <span class="hljs-comment">// 只赋值一个值</span><br><span class="hljs-built_in">console</span>.log(tom2[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure></li><li><p>直接变量初始化</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom3: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom3 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>]; <span class="hljs-comment">// 直接初始化，必须赋值所有项</span><br></code></pre></td></tr></table></figure></li><li><p>越界元素不允许</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom4: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom4 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom4.push(<span class="hljs-string">&#x27;tom&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(tom4); <span class="hljs-comment">// [ &#x27;jack&#x27;, 0, &#x27;tom&#x27; ]</span><br>tom4.push(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 无法push,必须push元组中的类型</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="四、枚举"><a href="#四、枚举" class="headerlink" title="四、枚举"></a>四、枚举</h2><ol><li><p>枚举的关键字enum</p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-string">&#x27;Sun&#x27;</span>] === <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span><br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-number">0</span>] === <span class="hljs-string">&#x27;Sun&#x27;</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure></li><li><p>枚举成员会被赋值从0开始递增的数字，同时也会对枚举值和枚举名进行反向映射</p></li><li><p>给枚举项手动赋值，没有赋值的会递增上一个的枚举值</p></li><li><p>手动赋值</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值 */</span><br>enum Days1 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days1[<span class="hljs-string">&#x27;Wed&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li><li><p>手动赋值小数</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值可以是小数 */</span><br>enum Days2 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1.5</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days2[<span class="hljs-string">&#x27;Tue&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">2.5</span><br></code></pre></td></tr></table></figure></li><li><p>常数枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 常输枚举 不可以包含计算属性 <span class="hljs-operator">*/</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span><br></code></pre></td></tr></table></figure></li><li><p>外部枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 外部枚举 <span class="hljs-operator">*/</span><br><span class="hljs-variable">declare</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions2</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions2</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-operator">//</span> <span class="hljs-punctuation">(</span>运行时会报错 <span class="hljs-variable">Directions2</span> <span class="hljs-variable">is</span> <span class="hljs-variable">not</span> <span class="hljs-variable">defined</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、类的概念"><a href="#一、类的概念" class="headerlink" title="一、类的概念"></a>一、类的概念</h2><ol><li><p>类：定义一个抽象物体的特点，包括他的属性和方法</p></li><li><p>对象：类的实例，通过new实现</p></li><li><p>面向对象的三大特性：封装、继承、多态</p></li><li><p>封装：将对数据操作的细节隐藏起来，只暴露对外的接口</p></li><li><p>继承：子类继承父类，而且还可以有自己更具体的特性</p></li><li><p>多态：由继承产生的相关的不同的类，对同一个方法有不同的相应。</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210713143911.png" alt="image-20210713143807626"></p></li></ol><h2 id="二、ES6类的用法"><a href="#二、ES6类的用法" class="headerlink" title="二、ES6类的用法"></a>二、ES6类的用法</h2><ol><li><p>属性和方法</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类的属性和方法 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> name;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span>&#123; <span class="hljs-comment">// 构造函数</span><br>    <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">sayHi</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`my name is <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.name&#125;</span>`</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> Animal(<span class="hljs-string">&#x27;Jack&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(a.sayHi()); <span class="hljs-comment">//my name is Jack</span><br></code></pre></td></tr></table></figure></li><li><p>类的继承</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">/* 类的继承 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal</span></span>&#123;<br>constructor(name)&#123;<br>    <span class="hljs-keyword">super</span>(name); <span class="hljs-comment">// 使用super调用父类的构造函数和方法</span><br>    console.log(<span class="hljs-keyword">this</span>.name); <span class="hljs-comment">//cat</span><br><br>&#125;<br>sayHi()&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-symbol">&#x27;Meo</span>w&#x27; + <span class="hljs-keyword">super</span>.sayHi();<br>&#125;<br>&#125;<br>let cat = <span class="hljs-keyword">new</span> <span class="hljs-type">Cat</span>(<span class="hljs-symbol">&#x27;ca</span>t&#x27;);<br>console.log(cat.sayHi()); <span class="hljs-comment">// Meowmy name is cat</span><br></code></pre></td></tr></table></figure></li><li><p>存储器</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* 存取器 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal1</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">get</span> <span class="hljs-title">name</span>() &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;Jack&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">set</span> <span class="hljs-title">name</span>(<span class="hljs-params">value</span>) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setter:&#x27;</span> + value); <span class="hljs-comment">// setter:Kitty</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> animal = <span class="hljs-keyword">new</span> Animal1(<span class="hljs-string">&#x27;Kitty&#x27;</span>);<br>animal.name = <span class="hljs-string">&#x27;tom&#x27;</span>; <span class="hljs-comment">// setter:tom</span><br></code></pre></td></tr></table></figure></li><li><p>静态方法</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 静态方法 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal2</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> name;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123; <span class="hljs-comment">// 构造函数</span><br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-title">isAnimal</span>(<span class="hljs-params">a</span>)</span> &#123; <span class="hljs-comment">// 静态方法</span><br>        <span class="hljs-keyword">return</span> a <span class="hljs-keyword">instanceof</span> Animal2;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> a1 = <span class="hljs-keyword">new</span> Animal2(<span class="hljs-string">&#x27;Jack&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(Animal2.isAnimal(a1)); <span class="hljs-comment">// true //静态方法不需要实例，类直接调用</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="二、ES7类中的用法"><a href="#二、ES7类中的用法" class="headerlink" title="二、ES7类中的用法"></a>二、ES7类中的用法</h2><ol><li><p>实例属性</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* es7实例属性 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal3</span></span>&#123;<br>    name=<span class="hljs-string">&#x27;Jack3&#x27;</span>; <span class="hljs-comment">// 直接在类里定属性</span><br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-comment">//</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> a2 = <span class="hljs-keyword">new</span> Animal3();<br><span class="hljs-built_in">console</span>.log(a2.name); <span class="hljs-comment">// Jack3</span><br></code></pre></td></tr></table></figure></li><li><p>静态属性</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* es7静态属性 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal4</span></span>&#123;<br>    <span class="hljs-keyword">static</span> num =<span class="hljs-number">42</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-comment">//</span><br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(Animal4.num); <span class="hljs-comment">// 42</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="三、ts中类的用法"><a href="#三、ts中类的用法" class="headerlink" title="三、ts中类的用法"></a>三、ts中类的用法</h2><ol><li><p>public 修饰符（开放的属性和方法）</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">class</span> Animal5 &#123;<br>    <span class="hljs-built_in">public</span> <span class="hljs-type">name</span>;<br>    <span class="hljs-built_in">public</span> constructor (<span class="hljs-type">name</span>)&#123;<br>        this.name = <span class="hljs-type">name</span>;<br>    &#125;<br>&#125;<br>let a3 = <span class="hljs-built_in">new</span> Animal5(<span class="hljs-string">&#x27;Jack5&#x27;</span>);<br>console.log(a3.name); // Jack5<br>a3.name = <span class="hljs-string">&#x27;tom5&#x27;</span>; <br>console.log(a3.name); // tom5<br></code></pre></td></tr></table></figure></li><li><p>private修饰符（无法直接读取）</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">/* private */</span><br><span class="hljs-keyword">class</span> Animal6 &#123;<br>    private <span class="hljs-type">name</span>;<br>    <span class="hljs-built_in">public</span> constructor (<span class="hljs-type">name</span>)&#123;<br>        this.name = <span class="hljs-type">name</span>;<br>    &#125;<br>&#125;<br>let a4 = <span class="hljs-built_in">new</span> Animal6(<span class="hljs-string">&#x27;Jack5&#x27;</span>);<br>console.log(a4.name); <br>a4.name = <span class="hljs-string">&#x27;tom5&#x27;</span>; <br>// 报错Property <span class="hljs-string">&#x27;name&#x27;</span> <span class="hljs-keyword">is</span> private <span class="hljs-keyword">and</span> <span class="hljs-keyword">only</span> accessible <span class="hljs-keyword">within</span> <span class="hljs-keyword">class</span> <span class="hljs-string">&#x27;Animal6&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>private（子类无法访问父类）</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">/* private 子类*/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal7</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> name;<br>    public constructor(name) &#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat7</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal7</span> </span>&#123;<br>    constructor(name) &#123;<br>        <span class="hljs-keyword">super</span>(name); <span class="hljs-comment">// 访问父类</span><br>        console.log(<span class="hljs-keyword">this</span>.name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>protected修饰符（子类可以访问父类）</p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs scala"><span class="hljs-comment">/* protected修饰符 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal8</span></span>&#123;<br>    <span class="hljs-keyword">protected</span> name;<br>    public constructor(name)&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat8</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal8</span></span>&#123;<br>    constructor(name)&#123;<br>        <span class="hljs-keyword">super</span>(name);<br>        console.log(<span class="hljs-keyword">this</span>.name);<br>        <br>    &#125;<br>&#125;<br>let cat8 = <span class="hljs-keyword">new</span> <span class="hljs-type">Cat8</span>(<span class="hljs-symbol">&#x27;cat</span>8&#x27;)<br>console.log(cat8); <span class="hljs-comment">// Cat8 &#123; name: &#x27;cat8&#x27; &#125;</span><br></code></pre></td></tr></table></figure></li><li><p>修饰符和readonly可以使用在构造函数参数中</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 参数属性 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal9</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> name</span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(name); <span class="hljs-comment">// tom9</span><br>        <br>    &#125;<br>&#125;<br><span class="hljs-keyword">var</span> cat9  = <span class="hljs-keyword">new</span> Animal9(<span class="hljs-string">&#x27;tom9&#x27;</span>); <br></code></pre></td></tr></table></figure></li><li><p>只读属性readonly</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-comment">/* readonly 可以用在属性 构造函数  */</span><br><span class="hljs-keyword">class</span> Animal10&#123;<br>    readonly <span class="hljs-type">name</span>; <br>    <span class="hljs-built_in">public</span> constructor (<span class="hljs-type">name</span>)&#123;<br>        this.name = <span class="hljs-type">name</span>;<br>    &#125;<br>&#125;<br>let a10 = <span class="hljs-built_in">new</span> Animal10(<span class="hljs-string">&#x27;tom10&#x27;</span>);<br>console.log(a10.name); // tom10<br>a10.name = <span class="hljs-string">&#x27;jack 10&#x27;</span> //  Cannot assign <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;name&#x27;</span> because it <span class="hljs-keyword">is</span> a <span class="hljs-keyword">read</span>-<span class="hljs-keyword">only</span> property.<br></code></pre></td></tr></table></figure></li><li><p>readonly和其他访问修饰符同时存在，要放到后面</p></li><li><p>抽象类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 抽象类 不可以被实例化 抽象类的方法必须被子类实现 */</span><br><span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal11</span> </span>&#123; <span class="hljs-comment">// 抽象类</span><br>    <span class="hljs-keyword">public</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> sayHi(); <span class="hljs-comment">// 抽象方法</span><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat11</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Animal11</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">sayHi</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`meow, my name is <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.name&#125;</span>`</span>); <span class="hljs-comment">// meow, my name is tom11</span><br>        <br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> cat11 = <span class="hljs-keyword">new</span> Cat11(<span class="hljs-string">&#x27;tom11&#x27;</span>);<br>cat11.sayHi();<br></code></pre></td></tr></table></figure></li><li><p>类的类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类的类型 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal12</span> </span>&#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-built_in">string</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name:<span class="hljs-built_in">string</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>    sayHi():<span class="hljs-built_in">string</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`my name is <span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.name&#125;</span>`</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> cat12:Animal12 = <span class="hljs-keyword">new</span> Animal12(<span class="hljs-string">&#x27;tom12&#x27;</span>); <span class="hljs-comment">// 指定cat12的类型是Animal12 而且进行了初始化</span><br><span class="hljs-built_in">console</span>.log(cat12.sayHi()); <span class="hljs-comment">// my name is tom12</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
     
     
     <categories>
@@ -1477,6 +1736,37 @@
     <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/</url>
     
     <content type="html"><![CDATA[<h2 id="一、类"><a href="#一、类" class="headerlink" title="一、类"></a>一、类</h2><ol><li><p>举例：</p><p>防盗门是门的子类，</p><p>防盗门有报警的功能</p><p>车有报警的功能</p><p>报警提取成接口，防盗门和车都去实现他</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-comment">/* 类和接口 */</span><br><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Alarm</span> </span>&#123;<br>    alert(): <span class="hljs-type">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Door</span> </span>&#123;<br><br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityDoor</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span> <span class="hljs-type">Door</span></span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;securityDoor alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span> <span class="hljs-keyword"><span class="hljs-keyword">implements</span> <span class="hljs-type">Alarm</span></span> </span>&#123;<br>    alert() &#123;<br>        console.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>类实现多个接口</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 类实现多个接口 */</span><br><span class="hljs-keyword">interface</span> Alarm1 &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Light&#123;<br>    lightOn():<span class="hljs-built_in">void</span>;<br>    lightOff():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car1</span> <span class="hljs-title">implements</span> <span class="hljs-title">Alarm1</span>,<span class="hljs-title">Light</span></span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car alert&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOn</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light on&#x27;</span>);<br>        <br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">lightOff</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;car light off&#x27;</span>);<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承接口</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-comment">/* 接口继承接口 */</span><br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Alarm2</span> &#123;<br>    alert():<span class="hljs-built_in">void</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> <span class="hljs-symbol">Light2</span> <span class="hljs-symbol">extends</span> <span class="hljs-symbol">Alarm2</span>&#123; <span class="hljs-comment">// 除了继承父级的方法，还有定义了自己的方法</span><br>    lighton():<span class="hljs-built_in">void</span>;<br>    lightoff():<span class="hljs-built_in">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li><li><p>接口继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>&#123;<br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">interface</span> Point3d <span class="hljs-keyword">extends</span> Point &#123; <span class="hljs-comment">// Point3d 实际上继承的是Point的实例的类型</span><br>    <span class="hljs-attr">z</span>: <span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> point3d: Point3d = &#123; <span class="hljs-attr">x</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">z</span>: <span class="hljs-number">3</span> &#125;;<br></code></pre></td></tr></table></figure></li><li><p>接口为什么可以继承类</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 接口为什么可以继承类 */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <span class="hljs-comment">// Point1 当做类来使用</span><br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> point1 = <span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br><span class="hljs-comment">/*****************************************/</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point1</span> </span>&#123; <br>    <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;<br>    y: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.x = x;<br>        <span class="hljs-built_in">this</span>.y = y;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printPoint</span> (<span class="hljs-params">p:Point1</span>)</span>&#123; <span class="hljs-comment">// Point1当做类型来用</span><br>    <span class="hljs-built_in">console</span>.log(p.x,p.y); <span class="hljs-comment">// 1 2 </span><br>&#125;<br>printPoint(<span class="hljs-keyword">new</span> Point1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)); <br></code></pre></td></tr></table></figure></li><li><p>声明Point类的时候，除了会创建一个名为Point类之外，还创建了一个名为Point的类型</p></li><li><p>声明Point类的时候，创建的Point类型是不包含构造函数的</p></li><li><p>声明Point类的时候,创建的Point类型只包含其中的实例属性和实例方法</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端学习</category>
+      
+      <category>ts</category>
+      
+      <category>ts进阶</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端笔记</tag>
+      
+      <tag>Ts</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ts-类型别名</title>
+    <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/"/>
+    <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、类型别名"><a href="#一、类型别名" class="headerlink" title="一、类型别名"></a>一、类型别名</h2><ol><li><p>使用type创建类型别名，多应用于联合类型</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">type</span> aa = <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">type</span> bb = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br><span class="hljs-keyword">let</span> a: aa = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> b: bb = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(a);<br><span class="hljs-built_in">console</span>.log(b);<br></code></pre></td></tr></table></figure></li></ol><h2 id="二、字符串字面量类型"><a href="#二、字符串字面量类型" class="headerlink" title="二、字符串字面量类型"></a>二、字符串字面量类型</h2><ol><li><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 字符串字面量类型 */</span><br>type EventNames = <span class="hljs-string">&#x27;click&#x27;</span>| <span class="hljs-string">&#x27;scroll&#x27;</span>| <span class="hljs-string">&#x27;mousemove&#x27;</span>;<br><span class="hljs-keyword">function</span> handleEvent (ele:Element,event:EventNames)&#123;<br> <span class="hljs-regexp">//</span> <span class="hljs-keyword">do</span> something<br>&#125;<br>handleEvent(document.getElementById(<span class="hljs-string">&#x27;hello&#x27;</span>),<span class="hljs-string">&#x27;scroll&#x27;</span>); <span class="hljs-regexp">//</span> 运行正常<br><span class="hljs-regexp">//</span> document is not defined (操作DOM和BOM 只能在浏览器环境下进行)<br><span class="hljs-regexp">//</span> handleEvent(document.getElementById(<span class="hljs-string">&#x27;world&#x27;</span>),<span class="hljs-string">&#x27;dbclick&#x27;</span>); <span class="hljs-regexp">//</span> 报错 因为没有<span class="hljs-string">&#x27;dbcllick&#x27;</span><br></code></pre></td></tr></table></figure></li><li><p>类型别名和字符串字面量类型都是用type来定义</p></li></ol><h2 id="三、元组"><a href="#三、元组" class="headerlink" title="三、元组"></a>三、元组</h2><ol><li><p>数组合并类型相同的对象，元组合并类型不同的对象</p></li><li><p>元组</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>] = [<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">25</span>];<br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">0</span>]); <span class="hljs-comment">// tom</span><br><span class="hljs-built_in">console</span>.log(tom[<span class="hljs-number">1</span>]); <span class="hljs-comment">// 25</span><br></code></pre></td></tr></table></figure></li><li><p>元组赋值</p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">let tom1: [string, number];<br>tom1 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];  // 必须先赋值，不然报错<br>tom1[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom1&#x27;</span>;<br>tom1[<span class="hljs-number">1</span>] = <span class="hljs-number">25</span>;<br>console.log(tom1[<span class="hljs-number">0</span>]);<br>console.log(tom1[<span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure></li><li><p>可以赋值一个</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom2: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom2 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom2[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;tom2&#x27;</span>; <span class="hljs-comment">// 只赋值一个值</span><br><span class="hljs-built_in">console</span>.log(tom2[<span class="hljs-number">0</span>]);<br></code></pre></td></tr></table></figure></li><li><p>直接变量初始化</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom3: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom3 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>]; <span class="hljs-comment">// 直接初始化，必须赋值所有项</span><br></code></pre></td></tr></table></figure></li><li><p>越界元素不允许</p><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> tom4: [<span class="hljs-built_in">string</span>, <span class="hljs-built_in">number</span>];<br>tom4 = [<span class="hljs-string">&#x27;jack&#x27;</span>, <span class="hljs-number">0</span>];<br>tom4.push(<span class="hljs-string">&#x27;tom&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(tom4); <span class="hljs-comment">// [ &#x27;jack&#x27;, 0, &#x27;tom&#x27; ]</span><br>tom4.push(<span class="hljs-literal">true</span>); <span class="hljs-comment">// 无法push,必须push元组中的类型</span><br></code></pre></td></tr></table></figure></li></ol><h2 id="四、枚举"><a href="#四、枚举" class="headerlink" title="四、枚举"></a>四、枚举</h2><ol><li><p>枚举的关键字enum</p><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-string">&#x27;Sun&#x27;</span>] === <span class="hljs-number">0</span>); <span class="hljs-comment">// true</span><br>console.<span class="hljs-built_in">log</span>(Days[<span class="hljs-number">0</span>] === <span class="hljs-string">&#x27;Sun&#x27;</span>); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure></li><li><p>枚举成员会被赋值从0开始递增的数字，同时也会对枚举值和枚举名进行反向映射</p></li><li><p>给枚举项手动赋值，没有赋值的会递增上一个的枚举值</p></li><li><p>手动赋值</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值 */</span><br>enum Days1 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days1[<span class="hljs-string">&#x27;Wed&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure></li><li><p>手动赋值小数</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/* 手动赋值可以是小数 */</span><br>enum Days2 &#123;Sun = <span class="hljs-number">7</span>, Mon = <span class="hljs-number">1.5</span>, Tue, Wed, Thu, Fri, Sat&#125;;<br>console.log(Days2[<span class="hljs-string">&#x27;Tue&#x27;</span>]); <span class="hljs-regexp">//</span> <span class="hljs-number">2.5</span><br></code></pre></td></tr></table></figure></li><li><p>常数枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 常输枚举 不可以包含计算属性 <span class="hljs-operator">*/</span><br><span class="hljs-variable">const</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span><br></code></pre></td></tr></table></figure></li><li><p>外部枚举</p><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mathematica"><span class="hljs-operator">/*</span> 外部枚举 <span class="hljs-operator">*/</span><br><span class="hljs-variable">declare</span> <span class="hljs-variable">enum</span> <span class="hljs-variable">Directions2</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-built_in">Up</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Down</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Left</span><span class="hljs-operator">,</span><br>    <span class="hljs-built_in">Right</span><br><span class="hljs-punctuation">&#125;</span><br><span class="hljs-variable">let</span> <span class="hljs-variable">directions2</span> <span class="hljs-operator">=</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Up</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Down</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Left</span><span class="hljs-operator">,</span> <span class="hljs-variable">Directions2</span><span class="hljs-operator">.</span><span class="hljs-built_in">Right</span><span class="hljs-punctuation">]</span><span class="hljs-operator">;</span> <span class="hljs-operator">//</span> <span class="hljs-punctuation">(</span>运行时会报错 <span class="hljs-variable">Directions2</span> <span class="hljs-variable">is</span> <span class="hljs-variable">not</span> <span class="hljs-variable">defined</span><span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
     
     
     <categories>
@@ -1846,9 +2136,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1875,9 +2165,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1904,9 +2194,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1933,9 +2223,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1962,9 +2252,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1991,9 +2281,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -2020,9 +2310,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>前端笔记</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
