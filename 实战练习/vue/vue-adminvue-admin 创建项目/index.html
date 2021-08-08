@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="ts基础知识点- ts-内置对象">
+  <meta name="description" content="vue实战练习- 创建项目">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>ts-内置对象 - kjj</title>
+  <title>vue-admin 创建项目 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ts-内置对象">
+            <span class="h2" id="subtitle" title="vue-admin 创建项目">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-12 22:32" pubdate>
-        July 12, 2021 pm
+      <time datetime="2021-08-08 22:22" pubdate>
+        August 8, 2021 pm
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      74 字
+      549 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -238,20 +238,44 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ts-内置对象</h1>
+            <h1 style="display: none">vue-admin 创建项目</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 22, 2021 pm
+                  本文最后更新于：August 8, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、内置对象"><a href="#一、内置对象" class="headerlink" title="一、内置对象"></a>一、内置对象</h2><ol>
-<li><p>ECMAScript的内置对象:Boolean、Error、Date、RegExp</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tsx">let b:Boolean = new Boolean(1);<br>let e:Error = new Error(&#x27;Error occurred&#x27;);<br>let d:Date = new Date();<br>let r:RegExp = /[a-z]/;<br></code></pre></td></tr></table></figure></li>
-<li><p>DOM和BOM的内置对象：Document、HTMLElement、Event、NodeList</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> body: HTMLElement = <span class="hljs-built_in">document</span>.body;<br><span class="hljs-keyword">let</span> allDiv: NodeList = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;div&#x27;</span>);<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e:MouseEvent</span>)</span>&#123;<br><span class="hljs-comment">// </span><br>&#125;);<br></code></pre></td></tr></table></figure></li>
+              <h2 id="一、创建项目"><a href="#一、创建项目" class="headerlink" title="一、创建项目"></a>一、创建项目</h2><ol>
+<li><p>在vs code中创建项目 vue-admin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">vue create vue-admin<br></code></pre></td></tr></table></figure></li>
+<li><p>选择手动配置项目</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808222646.png" srcset="/img/loading.gif" lazyload alt="image-20210808222638266"></p>
+</li>
+<li><p>选择配置，空格键选择</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223056.png" srcset="/img/loading.gif" lazyload alt="image-20210808223055701"></p>
+</li>
+<li><p>vue版本选择2.0</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223126.png" srcset="/img/loading.gif" lazyload alt="image-20210808223125394"></p>
+</li>
+<li><p>是否选择历史路由，选择n</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223204.png" srcset="/img/loading.gif" lazyload alt="image-20210808223203364"></p>
+</li>
+<li><p>这一步提示我们选择配置文件的位置，因为每个插件都有自己单独的配置文件，我们选择第一个</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223312.png" srcset="/img/loading.gif" lazyload alt="image-20210808223311890"></p>
+</li>
+<li><p>是否保存为预设，选择n</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223350.png" srcset="/img/loading.gif" lazyload alt="image-20210808223349230"></p>
+</li>
+<li><p>下载依赖</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223409.png" srcset="/img/loading.gif" lazyload alt="image-20210808223408753"></p>
+</li>
+<li><p>创建完成</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210808223527.png" srcset="/img/loading.gif" lazyload alt="image-20210808223527083"></p>
+</li>
+<li><p>对package.json文件的注释</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;vue-admin&quot;</span>,<br>  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;0.1.0&quot;</span>,<br>  <span class="hljs-attr">&quot;private&quot;</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">&quot;scripts&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;serve&quot;</span>: <span class="hljs-string">&quot;vue-cli-service serve&quot;</span>,<br>    <span class="hljs-attr">&quot;build&quot;</span>: <span class="hljs-string">&quot;vue-cli-service build&quot;</span>,<br>    <span class="hljs-attr">&quot;lint&quot;</span>: <span class="hljs-string">&quot;vue-cli-service lint&quot;</span><br>  &#125;,<br><br>  <span class="hljs-attr">&quot;dependencies&quot;</span>: &#123; <span class="hljs-comment">// dependencies生产环境,作为依赖，会自动下载</span><br>    <span class="hljs-attr">&quot;core-js&quot;</span>: <span class="hljs-string">&quot;^3.6.5&quot;</span>, <span class="hljs-comment">// core-js 就是提供js新语法api一个集合库 core-js相当于babel-polyfil</span><br>    <span class="hljs-attr">&quot;vue&quot;</span>: <span class="hljs-string">&quot;^2.6.11&quot;</span>,<br>    <span class="hljs-attr">&quot;vue-router&quot;</span>: <span class="hljs-string">&quot;^3.2.0&quot;</span>,<br>    <span class="hljs-attr">&quot;vuex&quot;</span>: <span class="hljs-string">&quot;^3.4.0&quot;</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;devDependencies&quot;</span>: &#123; <span class="hljs-comment">//devDependencies开发环境</span><br>    <span class="hljs-attr">&quot;@vue/cli-plugin-babel&quot;</span>: <span class="hljs-string">&quot;~4.5.0&quot;</span>,<br>    <span class="hljs-attr">&quot;@vue/cli-plugin-eslint&quot;</span>: <span class="hljs-string">&quot;~4.5.0&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;@vue/cli-plugin-router&quot;</span>: <span class="hljs-string">&quot;~4.5.0&quot;</span>,<br>    <span class="hljs-attr">&quot;@vue/cli-plugin-vuex&quot;</span>: <span class="hljs-string">&quot;~4.5.0&quot;</span>,<br>    <span class="hljs-attr">&quot;@vue/cli-service&quot;</span>: <span class="hljs-string">&quot;~4.5.0&quot;</span>,<br>    <span class="hljs-attr">&quot;@vue/eslint-config-standard&quot;</span>: <span class="hljs-string">&quot;^5.1.2&quot;</span>, <span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;babel-eslint&quot;</span>: <span class="hljs-string">&quot;^10.1.0&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;eslint&quot;</span>: <span class="hljs-string">&quot;^6.7.2&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;eslint-plugin-import&quot;</span>: <span class="hljs-string">&quot;^2.20.2&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;eslint-plugin-node&quot;</span>: <span class="hljs-string">&quot;^11.1.0&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;eslint-plugin-promise&quot;</span>: <span class="hljs-string">&quot;^4.2.1&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;eslint-plugin-standard&quot;</span>: <span class="hljs-string">&quot;^4.0.0&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;eslint-plugin-vue&quot;</span>: <span class="hljs-string">&quot;^6.2.2&quot;</span>,<span class="hljs-comment">//安装eslist校验</span><br>    <span class="hljs-attr">&quot;node-sass&quot;</span>: <span class="hljs-string">&quot;^4.12.0&quot;</span>, <span class="hljs-comment">// 第3步安装了CSS Pre-processors node-sass将sass文件编译成css的工具</span><br>    <span class="hljs-attr">&quot;sass-loader&quot;</span>: <span class="hljs-string">&quot;^8.0.2&quot;</span>, <span class="hljs-comment">// 第3步安装了CSS Pre-processors sass-loade加载 SASS/SCSS 文件并将其编译为 CSS</span><br><br>    <span class="hljs-attr">&quot;vue-template-compiler&quot;</span>: <span class="hljs-string">&quot;^2.6.11&quot;</span> <span class="hljs-comment">//vue-template-compiler这个包可用于将Vue 2.0模板预编译为呈现函数在vue工程中，安装依赖时，需要vue和vue-template-compiler版本必须保持一致</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -262,11 +286,11 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/">vue</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80/">ts基础</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-admin/">vue-admin</a>
                     
                   </div>
                 
@@ -274,9 +298,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
-                      <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
+                      <a class="hover-with-bg" href="/tags/vue-admin/">vue-admin</a>
                     
                   </div>
                 
@@ -293,18 +317,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ts-类</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80ts-%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80/">
-                        <span class="hidden-mobile">ts-类型断言</span>
+                      <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-12%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA/">
+                        <span class="hidden-mobile">js-12判断是否为空</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
