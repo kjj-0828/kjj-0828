@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="ts基础知识点- ts-声明合并">
+  <meta name="description" content="vue实战练习-权限控制">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>ts-声明合并 - kjj</title>
+  <title>vue-admin 权限控制 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ts-声明合并">
+            <span class="h2" id="subtitle" title="vue-admin 权限控制">
               
             </span>
 
@@ -178,8 +178,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-07-13 09:58" pubdate>
-        July 13, 2021 am
+      <time datetime="2021-08-09 16:46" pubdate>
+        August 9, 2021 pm
       </time>
     </span>
   
@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      178 字
+      841 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      13
        分钟
     </span>
   
@@ -238,22 +238,67 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">ts-声明合并</h1>
+            <h1 style="display: none">vue-admin 权限控制</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：July 22, 2021 pm
+                  本文最后更新于：August 9, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、函数的合并"><a href="#一、函数的合并" class="headerlink" title="一、函数的合并"></a>一、函数的合并</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xquery"><span class="hljs-keyword">function</span><span class="hljs-built_in"> reverse</span>(x:<span class="hljs-built_in"> number</span>):<span class="hljs-built_in"> number</span>;<br><span class="hljs-keyword">function</span><span class="hljs-built_in"> reverse</span>(x:<span class="hljs-built_in"> string</span>):<span class="hljs-built_in"> string</span>;<br><span class="hljs-keyword">function</span><span class="hljs-built_in"> reverse</span>(x:<span class="hljs-built_in"> number</span> |<span class="hljs-built_in"> string</span>):<span class="hljs-built_in"> number</span> |<span class="hljs-built_in"> string</span> &#123;<br>    <span class="hljs-keyword">if</span> (typeof x === <span class="hljs-string">&#x27;number&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> Number(x.toString().split(<span class="hljs-string">&#x27;&#x27;</span>)<span class="hljs-built_in">.reverse</span>().join(<span class="hljs-string">&#x27;&#x27;</span>));<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (typeof x === <span class="hljs-string">&#x27;string&#x27;</span>) &#123;<br>        <span class="hljs-keyword">return</span> x.split(<span class="hljs-string">&#x27;&#x27;</span>)<span class="hljs-built_in">.reverse</span>().join(<span class="hljs-string">&#x27;&#x27;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h2 id="一、登录成功，进行路由拦截"><a href="#一、登录成功，进行路由拦截" class="headerlink" title="一、登录成功，进行路由拦截"></a>一、登录成功，进行路由拦截</h2><ol>
+<li><p>用户登录成功后，在全局钩子router.brforeEach中拦截路由，实现获取用户信息和动态显示菜单</p>
+<ul>
+<li><p>判断是否有token，有token，如果是登录页直接放行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">&#x27;/login&#x27;</span>) &#123;<br>   <span class="hljs-comment">// if is logged in, redirect to the home page</span><br>   next(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span> &#125;)<br>   NProgress.done() <span class="hljs-comment">// hack: https://github.com/PanJiaChen/vue-element-admin/pull/2939</span><br> &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>不是登录页，进行判断，是否有角色，有角色，直接放行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// determine whether the user has obtained his permission roles through getInfo</span><br>      <span class="hljs-keyword">const</span> hasRoles = store.getters.roles &amp;&amp; store.getters.roles.length &gt; <span class="hljs-number">0</span><br>      <span class="hljs-keyword">if</span> (hasRoles) &#123;<br>        next()<br>      &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>没有角色，去获取用户信息，拿到角色信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>          <span class="hljs-comment">// get user info</span><br>          <span class="hljs-comment">// note: roles must be a object array! such as: [&#x27;admin&#x27;] or ,[&#x27;developer&#x27;,&#x27;editor&#x27;]</span><br>          <span class="hljs-keyword">const</span> &#123; roles &#125; = <span class="hljs-keyword">await</span> store.dispatch(<span class="hljs-string">&#x27;user/getInfo&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<h2 id="二、接口的合并"><a href="#二、接口的合并" class="headerlink" title="二、接口的合并"></a>二、接口的合并</h2><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dts">interface <span class="hljs-class">Alarm </span>&#123;<br><span class="hljs-symbol">    price:</span> number;<br>&#125;<br>interface <span class="hljs-class">Alarm </span>&#123;<br><span class="hljs-symbol">    weight:</span> number;<br>&#125;<br><span class="hljs-comment">// 相当于：</span><br>interface <span class="hljs-class">Alarm </span>&#123;<br><span class="hljs-symbol">    price:</span> number;<br><span class="hljs-symbol">    weight:</span> number;<br>&#125;<br><span class="hljs-comment">// 注意，合并的属性的类型必须是唯一的</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>获取用户信息,获得用户的角色、姓名、头像、介绍</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">getInfo</span>(<span class="hljs-params">&#123;commit, state&#125;</span>)</span> &#123;<br>   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>     getInfo(state.token).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>       <span class="hljs-keyword">const</span> &#123;data&#125; = response<br>       <br>       <span class="hljs-keyword">if</span> (!data) &#123;<br>         reject(<span class="hljs-string">&#x27;Verification failed, please Login again.&#x27;</span>)<br>       &#125;<br>       <br>       <span class="hljs-keyword">const</span> &#123;roles, name, avatar, introduction&#125; = data<br>       <br>       <span class="hljs-comment">// roles must be a non-empty array</span><br>       <span class="hljs-keyword">if</span> (!roles || roles.length &lt;= <span class="hljs-number">0</span>) &#123;<br>         reject(<span class="hljs-string">&#x27;getInfo: roles must be a non-null array!&#x27;</span>)<br>       &#125;<br>       <br>       commit(<span class="hljs-string">&#x27;SET_ROLES&#x27;</span>, roles)<br>       commit(<span class="hljs-string">&#x27;SET_NAME&#x27;</span>, name)<br>       commit(<span class="hljs-string">&#x27;SET_AVATAR&#x27;</span>, avatar)<br>       commit(<span class="hljs-string">&#x27;SET_INTRODUCTION&#x27;</span>, introduction)<br>       resolve(data)<br>     &#125;).catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>       reject(error)<br>     &#125;)<br>   &#125;)<br> &#125;,<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>根据角色生成路由表</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// generate accessible routes map based on roles</span><br><span class="hljs-keyword">const</span> accessRoutes = <span class="hljs-keyword">await</span> store.dispatch(<span class="hljs-string">&#x27;permission/generateRoutes&#x27;</span>, roles)<br></code></pre></td></tr></table></figure>
 
-<h2 id="三、接口中方法的合并"><a href="#三、接口中方法的合并" class="headerlink" title="三、接口中方法的合并"></a>三、接口中方法的合并</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> Alarm &#123;<br>    <span class="hljs-attr">price</span>: <span class="hljs-built_in">number</span>;<br>    alert(s: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-keyword">interface</span> Alarm &#123;<br>    <span class="hljs-attr">weight</span>: <span class="hljs-built_in">number</span>;<br>    alert(s: <span class="hljs-built_in">string</span>, <span class="hljs-attr">n</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span>;<br>&#125;<br><span class="hljs-comment">// 相当于</span><br><span class="hljs-keyword">interface</span> Alarm &#123;<br>    <span class="hljs-attr">price</span>: <span class="hljs-built_in">number</span>;<br>    weight: <span class="hljs-built_in">number</span>;<br>    alert(s: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>;<br>    alert(s: <span class="hljs-built_in">string</span>, <span class="hljs-attr">n</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">string</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>判断角色是admin，路由表就是所有动态加载的路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (roles.includes(<span class="hljs-string">&#x27;admin&#x27;</span>)) &#123;<br>      accessedRoutes = asyncRoutes || []<br>    &#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>如果角色是其他，就要进行过滤</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>       accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)<br>     &#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="四、类的合并"><a href="#四、类的合并" class="headerlink" title="四、类的合并"></a>四、类的合并</h2><p>类的合并与接口的合并规则一致。</p>
+<ul>
+<li><p>根据角色过滤路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">filterAsyncRoutes</span>(<span class="hljs-params">routes, roles</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> res = []<br><br>  routes.forEach(<span class="hljs-function"><span class="hljs-params">route</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> tmp = &#123; ...route &#125;<br>    <span class="hljs-keyword">if</span> (hasPermission(roles, tmp)) &#123;<br>      <span class="hljs-keyword">if</span> (tmp.children) &#123;<br>        tmp.children = filterAsyncRoutes(tmp.children, roles)<br>      &#125;<br>      res.push(tmp)<br>    &#125;<br>  &#125;)<br><br>  <span class="hljs-keyword">return</span> res<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>判断权限的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasPermission</span>(<span class="hljs-params">roles, route</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (route.meta &amp;&amp; route.meta.roles) &#123;<br>    <span class="hljs-keyword">return</span> roles.some(<span class="hljs-function"><span class="hljs-params">role</span> =&gt;</span> route.meta.roles.includes(role))<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span> <span class="hljs-comment">/* 如果没有设置meta含义是界面没有权限，所有人都可以访问*/</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动态添加路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// dynamically add accessible routes</span><br>router.addRoutes(accessRoutes)<br></code></pre></td></tr></table></figure></li>
+<li><p>进行放行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">next(&#123; ...to, <span class="hljs-attr">replace</span>: <span class="hljs-literal">true</span> &#125;)<br></code></pre></td></tr></table></figure></li>
+<li><p>如果没有token，查看是否在免登录的白名单,如果在，放行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (whiteList.indexOf(to.path) !== -<span class="hljs-number">1</span>) &#123;<br>  <span class="hljs-comment">// in the free login whitelist, go directly</span><br>  next()<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>没有在白名单，重定向到登录页</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>  <span class="hljs-comment">// other pages that do not have permission to access are redirected to the login page.</span><br>  next(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;to.path&#125;</span>`</span>)<br>  NProgress.done()<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="二、侧边栏"><a href="#二、侧边栏" class="headerlink" title="二、侧边栏"></a>二、侧边栏</h2><ol>
+<li><p>根据生成的路由表，v-for循环出菜单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu<br>  :default-active=&quot;activeMenu&quot;<br>  :collapse=&quot;isCollapse&quot;<br>  :background-color=&quot;variables.menuBg&quot;<br>  :text-color=&quot;variables.menuText&quot;<br>  :unique-opened=&quot;false&quot;<br>  :active-text-color=&quot;variables.menuActiveText&quot;<br>  :collapse-transition=&quot;false&quot;<br>  mode=&quot;vertical&quot;<br>&gt;<br>  &lt;sidebar-item v-for=&quot;route in permission_routes&quot; :key=&quot;route.path&quot; :item=&quot;route&quot; :base-path=&quot;route.path&quot;/&gt;<br>&lt;/el-menu&gt;<br></code></pre></td></tr></table></figure></li>
+<li><p>递归组件，实现下拉菜单的嵌套</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-submenu v-else ref=&quot;subMenu&quot; :index=&quot;resolvePath(item.path)&quot; popper-append-to-body&gt;<br>  &lt;template slot=&quot;title&quot;&gt;<br>    &lt;item v-if=&quot;item.meta&quot; :icon=&quot;item.meta &amp;&amp; item.meta.icon&quot; :title=&quot;item.meta.title&quot; /&gt;<br>  &lt;/template&gt;<br>  &lt;sidebar-item<br>    v-for=&quot;child in item.children&quot;<br>    :key=&quot;child.path&quot;<br>    :is-nest=&quot;true&quot;<br>    :item=&quot;child&quot;<br>    :base-path=&quot;resolvePath(child.path)&quot;<br>    class=&quot;nest-menu&quot;<br>  /&gt;<br>&lt;/el-submenu&gt;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三、路由挂载"><a href="#三、路由挂载" class="headerlink" title="三、路由挂载"></a>三、路由挂载</h2></li>
+</ol>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210809171503.png" srcset="/img/loading.gif" lazyload alt="image-20210809171455407"></p>
+<h2 id="四、路由格式包含菜单需要的信息"><a href="#四、路由格式包含菜单需要的信息" class="headerlink" title="四、路由格式包含菜单需要的信息"></a>四、路由格式包含菜单需要的信息</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210809171728.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>
@@ -263,11 +308,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/">ts</a>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6/">ts进阶</a>
+                      <a class="hover-with-bg" href="/categories/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/ts/">ts</a>
                     
                   </div>
                 
@@ -275,9 +318,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/">前端笔记</a>
-                    
                       <a class="hover-with-bg" href="/tags/Ts/">Ts</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/">实战练习</a>
                     
                   </div>
                 
@@ -294,18 +337,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue%20%E5%88%9B%E5%BB%BA2.0%E9%A1%B9%E7%9B%AE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue  创建2.0项目</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3/">
-                        <span class="hidden-mobile">ts-类与接口</span>
+                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsvue-admin%20%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91/">
+                        <span class="hidden-mobile">vue-admin 登录逻辑</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
