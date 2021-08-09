@@ -190,7 +190,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      420 字
+      567 字
     </span>
   
 
@@ -200,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      9
        分钟
     </span>
   
@@ -247,7 +247,15 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、登录界面的login发请求"><a href="#一、登录界面的login发请求" class="headerlink" title="一、登录界面的login发请求"></a>一、登录界面的login发请求</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">handleLogin</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-built_in">this</span>.$refs.loginForm.validate(<span class="hljs-function"><span class="hljs-params">valid</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (valid) &#123;<br>      <span class="hljs-built_in">this</span>.loading = <span class="hljs-literal">true</span><br>      <span class="hljs-comment">// 提交到store的action方法中</span><br>      <span class="hljs-built_in">this</span>.$store.dispatch(<span class="hljs-string">&#x27;user/login&#x27;</span>, <span class="hljs-built_in">this</span>.loginForm)<br>        .then(<span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>: <span class="hljs-built_in">this</span>.redirect || <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-attr">query</span>: <span class="hljs-built_in">this</span>.otherQuery&#125;)<br>          <span class="hljs-built_in">this</span>.loading = <span class="hljs-literal">false</span><br>        &#125;)<br>        .catch(<span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-built_in">this</span>.loading = <span class="hljs-literal">false</span><br>        &#125;)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;error submit!!&#x27;</span>)<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>  &#125;)<br>&#125;,<br></code></pre></td></tr></table></figure>
+              <h2 id="一、登录界面的login发请求"><a href="#一、登录界面的login发请求" class="headerlink" title="一、登录界面的login发请求"></a>一、登录界面的login发请求</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">handleLogin</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-built_in">this</span>.$refs.loginForm.validate(<span class="hljs-function"><span class="hljs-params">valid</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (valid) &#123;<br>      <span class="hljs-built_in">this</span>.loading = <span class="hljs-literal">true</span><br>      <span class="hljs-comment">// 提交到store的action方法中</span><br>      <span class="hljs-built_in">this</span>.$store.dispatch(<span class="hljs-string">&#x27;user/login&#x27;</span>, <span class="hljs-built_in">this</span>.loginForm)<br>        .then(<span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>: <span class="hljs-built_in">this</span>.redirect || <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-attr">query</span>: <span class="hljs-built_in">this</span>.otherQuery&#125;)<br>          <span class="hljs-built_in">this</span>.loading = <span class="hljs-literal">false</span><br>        &#125;)<br>        .catch(<span class="hljs-function">() =&gt;</span> &#123;<br>          <span class="hljs-built_in">this</span>.loading = <span class="hljs-literal">false</span><br>        &#125;)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;error submit!!&#x27;</span>)<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>  &#125;)<br>&#125;,<br>    <br></code></pre></td></tr></table></figure>
+
+<div class="note note-success">
+            <ul><li><p> this.$store.dispatch(‘user/login’, this.loginForm)</p></li><li><p> action中的方法是login，但是它提交的方法名是’user/login’</p></li><li><p> 因为在store的index.js中做了相关配置</p></li></ul>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// https://webpack.js.org/guides/dependency-management/#requirecontext</span><br><span class="hljs-keyword">const</span> modulesFiles = <span class="hljs-built_in">require</span>.context(<span class="hljs-string">&#x27;./modules&#x27;</span>, <span class="hljs-literal">true</span>, <span class="hljs-regexp">/\.js$/</span>)<br><br><span class="hljs-comment">// you do not need `import app from &#x27;./modules/app&#x27;`</span><br><span class="hljs-comment">// it will auto require all vuex module from modules file</span><br><span class="hljs-keyword">const</span> modules = modulesFiles.keys().reduce(<span class="hljs-function">(<span class="hljs-params">modules, modulePath</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// set &#x27;./app.js&#x27; =&gt; &#x27;app&#x27;</span><br><span class="hljs-comment">/* \w 匹配包括下划线的任何单词字符。等价于&#x27;[A-Za-z0-9_]&#x27; */</span><br>  <span class="hljs-keyword">const</span> moduleName = modulePath.replace(<span class="hljs-regexp">/^\.\/(.*)\.\w+$/</span>, <span class="hljs-string">&#x27;$1&#x27;</span>)<br>  <span class="hljs-comment">/*   console.log(moduleName) //app errorLog permission settings tagsView user */</span><br>  <span class="hljs-keyword">const</span> value = modulesFiles(modulePath)<br>  modules[moduleName] = value.default<br>  <span class="hljs-keyword">return</span> modules<br>&#125;, &#123;&#125;)<br></code></pre></td></tr></table></figure>
+
+
 
 <h2 id="二、请求被提交到store的action方法中"><a href="#二、请求被提交到store的action方法中" class="headerlink" title="二、请求被提交到store的action方法中"></a>二、请求被提交到store的action方法中</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> actions = &#123;<br>  <span class="hljs-comment">// user login</span><br>    <span class="hljs-function"><span class="hljs-title">login</span>(<span class="hljs-params">&#123;commit&#125;, userInfo</span>)</span> &#123;<br>      <span class="hljs-keyword">const</span> &#123;username, password&#125; = userInfo<br>      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">/*  api中的login，我的理解上相当于后台的controller层 */</span><br>        login(&#123;<span class="hljs-attr">username</span>: username.trim(), <span class="hljs-attr">password</span>: password&#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>          <span class="hljs-keyword">const</span> &#123;data&#125; = response<br>          <span class="hljs-comment">/* response中返回数据 更改state中的数据 */</span><br>          commit(<span class="hljs-string">&#x27;SET_TOKEN&#x27;</span>, data.token)<br>          <span class="hljs-comment">/* token保存到cookie中 */</span><br>          setToken(data.token)<br>          <span class="hljs-comment">/* 回调函数 */</span><br>          resolve()<br>        &#125;).catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>          reject(error)<br>        &#125;)<br>      &#125;)<br>    &#125;,<br></code></pre></td></tr></table></figure>
 
@@ -305,7 +313,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%20%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE/">
                         <span class="hidden-mobile">vue-admin 创建项目</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Sekva afiŝo</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -322,7 +330,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -348,7 +356,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -357,7 +365,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">ŝlosivorto</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
