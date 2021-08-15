@@ -4,6 +4,130 @@
   
   
   <entry>
+    <title>vue-admin-03router</title>
+    <link href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003Router/"/>
+    <url>/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003Router/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>push()方法的调用</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">&#x27;home&#x27;</span>) <span class="hljs-comment">// 跳转到home界面 字符串</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;home&#x27;</span>&#125;) <span class="hljs-comment">// 跳转到home界面 对象</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">userId</span>:<span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;) <span class="hljs-comment">// 命名路由</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;register&#x27;</span>,<span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">plan</span>:private&#125;&#125;) <span class="hljs-comment">// 查询参数</span><br></code></pre></td></tr></table></figure></li><li><p>如果提供了path，param会被忽略，可以理解成==path—&gt;query==   ==name—&gt;params==</p></li><li><p>代替的是下面的这种写法</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> userId = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">`/user/<span class="hljs-subst">$&#123;userId&#125;</span>`</span>&#125;)  <span class="hljs-comment">// /user/123</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;userId&#125;) <span class="hljs-comment">// user/123</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;userId&#125;&#125;) <span class="hljs-comment">// /user params不生效</span><br></code></pre></td></tr></table></figure></li><li><p>路由的传参方式</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>、手写完整的 path:<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>: <span class="hljs-string">`/user/<span class="hljs-subst">$&#123;userId&#125;</span>`</span>&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.params.userId<br><span class="hljs-number">2</span>、用 params 传递：<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.params.userId<br> <br>    url 形式：url 不带参数，http:localhost:<span class="hljs-number">8080</span>/#/user<br><span class="hljs-number">3</span>、用 query 传递：<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>, <span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.query.userId<br> <br>    url 形式：url 带参数，http:localhost:<span class="hljs-number">8080</span>/#/user?userId=<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure><p>==query== 相当于 ==get== 请求，页面跳转的时候可以在地址栏看到请求参数，==params== 相当于 ==post== 请求，参数不在地址栏中显示。</p><p>以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>实战练习</category>
+      
+      <category>vue</category>
+      
+      <category>vue-admin</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实战练习</tag>
+      
+      <tag>vue-admin</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vue-admin-03路由拦截</title>
+    <link href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA/"/>
+    <url>/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、分析permission-js"><a href="#一、分析permission-js" class="headerlink" title="一、分析permission.js"></a>一、分析permission.js</h2><ol><li><p>分析导入文件</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store&#x27;</span><br><span class="hljs-keyword">import</span> &#123; Message &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span><br><span class="hljs-keyword">import</span> NProgress <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;nprogress&#x27;</span> <span class="hljs-comment">// progress bar 进度条插件</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;nprogress/nprogress.css&#x27;</span> <span class="hljs-comment">// progress bar style 进度条样式</span><br><span class="hljs-keyword">import</span> &#123; getToken &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/auth&#x27;</span> <span class="hljs-comment">// get token from cookie 拿到token</span><br><span class="hljs-keyword">import</span> getPageTitle <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/get-page-title&#x27;</span> <span class="hljs-comment">// 更改页面title</span><br></code></pre></td></tr></table></figure></li><li><p>路由拦截逻辑</p><ul><li><p>判断是否有token,有进行后续操作</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (hasToken) &#123;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li><p>如果有token，说明用户已经登录，如果用户要跳转去login，一律跳转到home界面</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">&#x27;/login&#x27;</span>) &#123; <span class="hljs-comment">// 在登录的情况下，用户在导航栏输入login，统一重定向到home界面</span><br>      <span class="hljs-comment">// if is logged in, redirect to the home page</span><br>      next(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/home&#x27;</span> &#125;)<br>      NProgress.done()<br>  &#125;<br></code></pre></td></tr></table></figure></li><li><p>如果用户输入其他页面的地址，就需要判断权限</p><ul><li><p>获取用户信息，如果有用户信息，放行</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> hasGetUserInfo = store.getters.name<br>     <span class="hljs-keyword">if</span> (hasGetUserInfo) &#123; <span class="hljs-comment">// 如果用户name存在state中，放行</span><br>         next()<br>     &#125;<br></code></pre></td></tr></table></figure></li><li><p>没有用户信息，获取用户信息，如果成功，放行</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>               <span class="hljs-keyword">try</span> &#123;<br>                   <span class="hljs-comment">// 获取用户信息之后，放行</span><br>                   <span class="hljs-keyword">await</span> store.dispatch(<span class="hljs-string">&#x27;user/getInfo&#x27;</span>)<br>                   next()<br>               &#125;<br></code></pre></td></tr></table></figure></li><li><p>如果没有成功，重置Token，跳转到login</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">catch</span> (error) &#123;<br>                    <span class="hljs-comment">// remove token and go to login page to re-login</span><br>                    <span class="hljs-keyword">await</span> store.dispatch(<span class="hljs-string">&#x27;user/resetToken&#x27;</span>)<br>                    Message.error(error || <span class="hljs-string">&#x27;Has Error&#x27;</span>)<br>                    next(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;to.path&#125;</span>`</span>)<br>                    NProgress.done()<br>                &#125;<br>            &#125;<br></code></pre></td></tr></table></figure></li></ul></li></ul></li><li><p>没有token，查看是否在白名单里,如果在白名单里，放行</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">/* has no token*/</span> <span class="hljs-comment">// 如果没登录，查看用户去的地方在不在白名单</span><br>        <span class="hljs-keyword">if</span> (whiteList.indexOf(to.path) !== -<span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 白名单中是不需要登录就可以访问的界面</span><br>            <span class="hljs-comment">// in the free login whitelist, go directly</span><br>            next()<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure><ul><li><p>如果没有在白名单里，一律跳转到登录页面</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 既没有token又没在白名单，直接定位到login界面</span><br>            next(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;to.path&#125;</span>`</span>)<br>            NProgress.done()<br>        &#125;<br></code></pre></td></tr></table></figure></li></ul></li></ul></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>实战练习</category>
+      
+      <category>vue</category>
+      
+      <category>vue-admin</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实战练习</tag>
+      
+      <tag>vue-admin</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vue-admin-03动态菜单栏</title>
+    <link href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E6%A0%8F/"/>
+    <url>/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E6%A0%8F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、得到路由表"><a href="#一、得到路由表" class="headerlink" title="一、得到路由表"></a>一、得到路由表</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">routes</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">// 得到路由表</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$router.options.routes[<span class="hljs-number">2</span>].children;<br>&#125;,<br></code></pre></td></tr></table></figure><h2 id="二、循环路由表"><a href="#二、循环路由表" class="headerlink" title="二、循环路由表"></a>二、循环路由表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu-item v-for=&quot;route in routes&quot; :key=&quot;route.path&quot; :index=&quot;route.path&quot;&gt;<br>  &lt;svg-icon :icon-class=&quot;route.meta.icon&quot;&gt;&lt;/svg-icon&gt;<br>  &lt;span slot=&quot;title&quot;&gt;&#123;&#123; route.meta.title &#125;&#125;&lt;/span&gt;<br>&lt;/el-menu-item&gt;<br></code></pre></td></tr></table></figure><h2 id="三、实现刷新时，高亮不变"><a href="#三、实现刷新时，高亮不变" class="headerlink" title="三、实现刷新时，高亮不变"></a>三、实现刷新时，高亮不变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">activeMenu</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">//页面刷新后，还是高亮选择的菜单项</span><br>  <span class="hljs-keyword">const</span> route = <span class="hljs-built_in">this</span>.$route;<br>  <span class="hljs-keyword">const</span> &#123; meta, path &#125; = route;<br>  <span class="hljs-keyword">return</span> path;<br>&#125;,<br></code></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu<br>  class=&quot;el-menu-vertical-demo&quot;<br>  background-color=&quot;#304156&quot;<br>  text-color=&quot;#BFCBD9&quot;<br>  router<br>  :default-active=&quot;activeMenu&quot;<br>  active-text-color=&quot;#409EFF&quot;<br>&gt;<br></code></pre></td></tr></table></figure><div class="note note-success">            <ul><li> this.$router:我们可以在任何组件内，通过 this.$router访问路由器</li><li> this.$route:可以通过 this.$route访问当前路由</li></ul>          </div><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/u014395524/article/details/88194842">Vue 中 this.$router 与 this.$route 的区别 以及 push() 方法</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>实战练习</category>
+      
+      <category>vue</category>
+      
+      <category>vue-admin</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实战练习</tag>
+      
+      <tag>vue-admin</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>vue-admin 03退出登录</title>
+    <link href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95/"/>
+    <url>/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、退出"><a href="#一、退出" class="headerlink" title="一、退出"></a>一、退出</h2><ol><li><p>先发出退出请求</p></li><li><p>退出时，清空cookie</p></li><li><p>退出时，重置路由表</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params">&#123; commit, state &#125;</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        logout(state.token).then(<span class="hljs-function">() =&gt;</span> &#123;<br>            removeToken(); <span class="hljs-comment">//  移出token</span><br>            resetRouer(); <span class="hljs-comment">// 重置路由表</span><br>            commit(<span class="hljs-string">&#x27;RESET_STATE&#x27;</span>);<br>            resolve();<br>        &#125;).catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>            reject(error);<br>        &#125;)<br>    &#125;)<br>&#125;,<br></code></pre></td></tr></table></figure></li><li><p>完成后，跳转</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.$store.dispatch(<span class="hljs-string">&quot;user/logout&quot;</span>);<br>  <span class="hljs-comment">// this.$router.push(&quot;/&quot;);</span><br>  <span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.$route.fullPath&#125;</span>`</span>);<br>&#125;,<br></code></pre></td></tr></table></figure></li><li></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>实战练习</category>
+      
+      <category>vue</category>
+      
+      <category>vue-admin</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>实战练习</tag>
+      
+      <tag>vue-admin</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>vue-admin-02实现mockjs</title>
     <link href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2002%E5%AE%9E%E7%8E%B0mockjs/"/>
     <url>/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2002%E5%AE%9E%E7%8E%B0mockjs/</url>
