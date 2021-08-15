@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * XXS转义</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>markup 传入的字符</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回转义后的字符</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">replaceXss</span>(<span class="hljs-params">markup</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> regList = &#123;<br>        <span class="hljs-string">&quot;&amp;&quot;</span>: <span class="hljs-string">&quot;&amp;amp;&quot;</span>,<br>        <span class="hljs-string">&quot;&lt;&quot;</span>: <span class="hljs-string">&quot;&amp;lt;&quot;</span>,<br>        <span class="hljs-string">&quot;&gt;&quot;</span>: <span class="hljs-string">&quot;&amp;gt;&quot;</span>,<br>        <span class="hljs-string">&#x27;&quot;&#x27;</span>: <span class="hljs-string">&quot;&amp;#34;&quot;</span>,<br>        <span class="hljs-string">&quot;&#x27;&quot;</span>: <span class="hljs-string">&quot;&amp;#39;&quot;</span><br>    &#125;;<br>    <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[&amp;&lt;&gt;&quot;&#x27;]/g</span>;  <span class="hljs-comment">// 正则表达式</span><br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">encode_char</span>(<span class="hljs-params">c</span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> regList[c] || c;<br>    &#125;;<br>    <span class="hljs-keyword">return</span> markup == <span class="hljs-literal">undefined</span> ? <span class="hljs-string">&#x27;&#x27;</span> : <span class="hljs-built_in">String</span>(markup).replace(reg, encode_char);<br>&#125;<br><span class="hljs-built_in">console</span>.log(replaceXss(<span class="hljs-string">&quot;&lt;&gt;&quot;</span>)); <span class="hljs-comment">//&amp;lt;&amp;gt;</span><br><span class="hljs-built_in">console</span>.log(replaceXss(<span class="hljs-string">&quot;a&quot;</span>)); <span class="hljs-comment">//a</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * XXS转义</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>markup 传入的字符</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回转义后的字符</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceXss</span>(<span class="params">markup</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> regList = &#123;</span><br><span class="line">        <span class="string">&quot;&amp;&quot;</span>: <span class="string">&quot;&amp;amp;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&lt;&quot;</span>: <span class="string">&quot;&amp;lt;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&gt;&quot;</span>: <span class="string">&quot;&amp;gt;&quot;</span>,</span><br><span class="line">        <span class="string">&#x27;&quot;&#x27;</span>: <span class="string">&quot;&amp;#34;&quot;</span>,</span><br><span class="line">        <span class="string">&quot;&#x27;&quot;</span>: <span class="string">&quot;&amp;#39;&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/[&amp;&lt;&gt;&quot;&#x27;]/g</span>;  <span class="comment">// 正则表达式</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">encode_char</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> regList[c] || c;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> markup == <span class="literal">undefined</span> ? <span class="string">&#x27;&#x27;</span> : <span class="built_in">String</span>(markup).replace(reg, encode_char);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(replaceXss(<span class="string">&quot;&lt;&gt;&quot;</span>)); <span class="comment">//&amp;lt;&amp;gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(replaceXss(<span class="string">&quot;a&quot;</span>)); <span class="comment">//a</span></span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -294,7 +288,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-11%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%88%90%E5%9C%B0%E5%9D%80%E6%A0%8F%E5%8F%82%E6%95%B0%E5%BD%A2%E5%BC%8F/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-11对象转成地址栏参数形式</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -303,7 +297,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-10%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E5%86%85%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0/">
                         <span class="hidden-mobile">js-10生成指定范围内的随机数</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -320,7 +314,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -346,7 +340,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +349,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -490,8 +484,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -579,8 +571,6 @@
   
 
 
-
-  
 
 
 

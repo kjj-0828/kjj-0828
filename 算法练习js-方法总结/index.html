@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,15 +245,15 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、every"><a href="#一、every" class="headerlink" title="一、every"></a>一、every</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 1.every()方法：判断年龄是否都大于18岁</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">everyFun</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> arr.every(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> item &gt;= <span class="hljs-number">18</span>;<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h2 id="一、every"><a href="#一、every" class="headerlink" title="一、every"></a>一、every</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.every()方法：判断年龄是否都大于18岁</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">everyFun</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.every(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> item &gt;= <span class="number">18</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>案例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr1 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr2 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrsEqual</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-comment">// 1.数组长度相等的基础</span><br>    <span class="hljs-comment">// 2.判断数组1和数组2的成员是否相同</span><br>    <span class="hljs-comment">// 3.every()函数对数组的每一项执行函数，如果都满足返回true</span><br>    <span class="hljs-comment">// 4.some()函数对数组的每一项执行函数，如果有一项满足返回true</span><br>    <span class="hljs-keyword">return</span> arr1.length === arr2.length &amp;&amp; arr1.every(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> item === arr2[index];<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-built_in">console</span>.log(arrsEqual(arr1, arr2));<span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法二：</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>arr1 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>arr2 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrsEqual</span>(<span class="params">arr1, arr2</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 1.数组长度相等的基础</span></span><br><span class="line">    <span class="comment">// 2.判断数组1和数组2的成员是否相同</span></span><br><span class="line">    <span class="comment">// 3.every()函数对数组的每一项执行函数，如果都满足返回true</span></span><br><span class="line">    <span class="comment">// 4.some()函数对数组的每一项执行函数，如果有一项满足返回true</span></span><br><span class="line">    <span class="keyword">return</span> arr1.length === arr2.length &amp;&amp; arr1.every(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> item === arr2[index];</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arrsEqual(arr1, arr2));<span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="二、reduce"><a href="#二、reduce" class="headerlink" title="二、reduce"></a>二、reduce</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 2.reduce()方法，输出数组的总和</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reduceFun</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">result, item</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> result + item;<br>    &#125;, <span class="hljs-number">0</span>);<br>&#125;<br><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];<br><span class="hljs-built_in">console</span>.log(reduceFun(arr1));<span class="hljs-comment">//10</span><br></code></pre></td></tr></table></figure>
+<h2 id="二、reduce"><a href="#二、reduce" class="headerlink" title="二、reduce"></a>二、reduce</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2.reduce()方法，输出数组的总和</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduceFun</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">result, item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> result + item;</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(reduceFun(arr1));<span class="comment">//10</span></span><br></pre></td></tr></table></figure>
 
 <p>案例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">flattens</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-comment">// reduce()函数</span><br>    <span class="hljs-comment">// 1.reduce 包含2个参数，回调函数，初始值arr.reduce(callback,[initialValue])</span><br>    <span class="hljs-comment">// 2.回调函数包含4个参数 </span><br>    <span class="hljs-comment">// total初始值，或者计算结束后的返回值 必须</span><br>    <span class="hljs-comment">// currentValue 当前元素             必须</span><br>    <span class="hljs-comment">// currentIndex 当前元素的下标</span><br>    <span class="hljs-comment">// arr          当前元素所属的数组对象</span><br>    <span class="hljs-keyword">return</span> arr.reduce(<span class="hljs-function">(<span class="hljs-params">result, item</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// console.log(&#x27;result:&#x27;+ result);</span><br>        <span class="hljs-comment">// console.log(&#x27;item:&#x27;+ item);</span><br>        <span class="hljs-keyword">return</span> result.concat(<span class="hljs-built_in">Array</span>.isArray(item) ? flatten(item) : item)<br>    &#125;, [])<br>&#125;<br><span class="hljs-built_in">console</span>.log(flattens([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]])); <span class="hljs-comment">//[1,2,2,3]</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 方法二：</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flattens</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// reduce()函数</span></span><br><span class="line">    <span class="comment">// 1.reduce 包含2个参数，回调函数，初始值arr.reduce(callback,[initialValue])</span></span><br><span class="line">    <span class="comment">// 2.回调函数包含4个参数 </span></span><br><span class="line">    <span class="comment">// total初始值，或者计算结束后的返回值 必须</span></span><br><span class="line">    <span class="comment">// currentValue 当前元素             必须</span></span><br><span class="line">    <span class="comment">// currentIndex 当前元素的下标</span></span><br><span class="line">    <span class="comment">// arr          当前元素所属的数组对象</span></span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">result, item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// console.log(&#x27;result:&#x27;+ result);</span></span><br><span class="line">        <span class="comment">// console.log(&#x27;item:&#x27;+ item);</span></span><br><span class="line">        <span class="keyword">return</span> result.concat(<span class="built_in">Array</span>.isArray(item) ? flatten(item) : item)</span><br><span class="line">    &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flattens([<span class="number">1</span>, <span class="number">2</span>, [<span class="number">2</span>, <span class="number">3</span>]])); <span class="comment">//[1,2,2,3]</span></span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -278,9 +272,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
-                    
                       <a class="hover-with-bg" href="/tags/js/">js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
                     
                   </div>
                 
@@ -300,7 +294,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-红宝书-什么是javascript</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -309,7 +303,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
                         <span class="hidden-mobile">js-02快速排序</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -326,7 +320,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -352,7 +346,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -361,7 +355,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -496,8 +490,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -585,8 +577,6 @@
   
 
 
-
-  
 
 
 

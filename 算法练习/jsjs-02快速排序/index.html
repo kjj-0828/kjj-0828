@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 方法一：</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">quickSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (arr.length &lt;= <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;<br>    <span class="hljs-keyword">var</span> left = []; <span class="hljs-comment">// 左边小容器</span><br>    <span class="hljs-keyword">var</span> right = []; <span class="hljs-comment">// 右边大容器</span><br>    <span class="hljs-keyword">var</span> k = arr.splice(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 第一个值是基准</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (arr[i] &lt;= k) &#123;<br>            left.push(arr[i]);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            right.push(arr[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 继续递归左右容器</span><br>    <span class="hljs-keyword">return</span> quickSort(left).concat([k], quickSort(right));<br><span class="hljs-comment">// &#125;方法二：</span><br><span class="hljs-keyword">const</span> quickSort = <span class="hljs-function">(<span class="hljs-params">array</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> sort = <span class="hljs-function">(<span class="hljs-params">arr, left = <span class="hljs-number">0</span>, right = arr.length - <span class="hljs-number">1</span></span>) =&gt;</span> &#123;<br>     <span class="hljs-keyword">if</span> (left &gt;= right) &#123;<span class="hljs-comment">//如果左边的索引大于等于右边的索引说明整理完毕</span><br>      <span class="hljs-keyword">return</span><br>     &#125;<br>    <span class="hljs-keyword">let</span> i = left<br>    <span class="hljs-keyword">let</span> j = right<br>    <span class="hljs-keyword">const</span> baseVal = arr[j] <span class="hljs-comment">// 取无序数组最后一个数为基准值</span><br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<span class="hljs-comment">//把所有比基准值小的数放在左边大的数放在右边</span><br>     <span class="hljs-keyword">while</span> (i &lt; j &amp;&amp; arr[i] &lt;= baseVal) &#123; <span class="hljs-comment">//找到一个比基准值大的数交换</span><br>      i++<br>     &#125;<br>     arr[j] = arr[i] <span class="hljs-comment">// 将较大的值放在右边如果没有比基准值大的数就是将自己赋值给自己（i 等于 j）</span><br>     <span class="hljs-keyword">while</span> (j &gt; i &amp;&amp; arr[j] &gt;= baseVal) &#123; <span class="hljs-comment">//找到一个比基准值小的数交换</span><br>      j--<br>    &#125;<br>     arr[i] = arr[j] <span class="hljs-comment">// 将较小的值放在左边如果没有找到比基准值小的数就是将自己赋值给自己（i 等于 j）</span><br>    &#125;<br>    arr[j] = baseVal <span class="hljs-comment">// 将基准值放至中央位置完成一次循环（这时候 j 等于 i ）</span><br>    sort(arr, left, j-<span class="hljs-number">1</span>) <span class="hljs-comment">// 将左边的无序数组重复上面的操作</span><br>    sort(arr, j+<span class="hljs-number">1</span>, right) <span class="hljs-comment">// 将右边的无序数组重复上面的操作</span><br>    &#125;<br>    <span class="hljs-keyword">const</span> newArr = array.concat() <span class="hljs-comment">// 为了保证这个函数是纯函数拷贝一次数组</span><br>    sort(newArr)<br>    <span class="hljs-keyword">return</span> newArr<br>   &#125;<br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">49</span>, <span class="hljs-number">38</span>, <span class="hljs-number">65</span>, <span class="hljs-number">97</span>, <span class="hljs-number">76</span>, <span class="hljs-number">13</span>, <span class="hljs-number">27</span>, <span class="hljs-number">49</span>];<br><span class="hljs-built_in">console</span>.log(quickSort(arr)); <span class="hljs-comment">// [13, 27, 38, 49,49, 65, 76, 97 ]</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> left = []; <span class="comment">// 左边小容器</span></span><br><span class="line">    <span class="keyword">var</span> right = []; <span class="comment">// 右边大容器</span></span><br><span class="line">    <span class="keyword">var</span> k = arr.splice(<span class="number">0</span>, <span class="number">1</span>)[<span class="number">0</span>]; <span class="comment">// 第一个值是基准</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &lt;= k) &#123;</span><br><span class="line">            left.push(arr[i]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            right.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 继续递归左右容器</span></span><br><span class="line">    <span class="keyword">return</span> quickSort(left).concat([k], quickSort(right));</span><br><span class="line"><span class="comment">// &#125;方法二：</span></span><br><span class="line"><span class="keyword">const</span> quickSort = <span class="function">(<span class="params">array</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> sort = <span class="function">(<span class="params">arr, left = <span class="number">0</span>, right = arr.length - <span class="number">1</span></span>) =&gt;</span> &#123;</span><br><span class="line">     <span class="keyword">if</span> (left &gt;= right) &#123;<span class="comment">//如果左边的索引大于等于右边的索引说明整理完毕</span></span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">let</span> i = left</span><br><span class="line">    <span class="keyword">let</span> j = right</span><br><span class="line">    <span class="keyword">const</span> baseVal = arr[j] <span class="comment">// 取无序数组最后一个数为基准值</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;<span class="comment">//把所有比基准值小的数放在左边大的数放在右边</span></span><br><span class="line">     <span class="keyword">while</span> (i &lt; j &amp;&amp; arr[i] &lt;= baseVal) &#123; <span class="comment">//找到一个比基准值大的数交换</span></span><br><span class="line">      i++</span><br><span class="line">     &#125;</span><br><span class="line">     arr[j] = arr[i] <span class="comment">// 将较大的值放在右边如果没有比基准值大的数就是将自己赋值给自己（i 等于 j）</span></span><br><span class="line">     <span class="keyword">while</span> (j &gt; i &amp;&amp; arr[j] &gt;= baseVal) &#123; <span class="comment">//找到一个比基准值小的数交换</span></span><br><span class="line">      j--</span><br><span class="line">    &#125;</span><br><span class="line">     arr[i] = arr[j] <span class="comment">// 将较小的值放在左边如果没有找到比基准值小的数就是将自己赋值给自己（i 等于 j）</span></span><br><span class="line">    &#125;</span><br><span class="line">    arr[j] = baseVal <span class="comment">// 将基准值放至中央位置完成一次循环（这时候 j 等于 i ）</span></span><br><span class="line">    sort(arr, left, j-<span class="number">1</span>) <span class="comment">// 将左边的无序数组重复上面的操作</span></span><br><span class="line">    sort(arr, j+<span class="number">1</span>, right) <span class="comment">// 将右边的无序数组重复上面的操作</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newArr = array.concat() <span class="comment">// 为了保证这个函数是纯函数拷贝一次数组</span></span><br><span class="line">    sort(newArr)</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">49</span>, <span class="number">38</span>, <span class="number">65</span>, <span class="number">97</span>, <span class="number">76</span>, <span class="number">13</span>, <span class="number">27</span>, <span class="number">49</span>];</span><br><span class="line"><span class="built_in">console</span>.log(quickSort(arr)); <span class="comment">// [13, 27, 38, 49,49, 65, 76, 97 ]</span></span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -272,9 +266,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
-                    
                       <a class="hover-with-bg" href="/tags/js/">js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
                     
                   </div>
                 
@@ -294,7 +288,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0js-%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-方法总结</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -303,7 +297,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/">
                         <span class="hidden-mobile">js-02数组相等</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -320,7 +314,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -346,7 +340,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +349,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -490,8 +484,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -579,8 +571,6 @@
   
 
 
-
-  
 
 
 

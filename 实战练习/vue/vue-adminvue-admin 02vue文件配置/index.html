@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,14 +245,14 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、端口的配置"><a href="#一、端口的配置" class="headerlink" title="一、端口的配置"></a>一、端口的配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> port = process.env.port || process.env.npm_config_port || <span class="hljs-number">9528</span> <span class="hljs-comment">// process.env.port 环境变量的端口，环境变量要是设置了端口，就用环境变量的</span><br><br></code></pre></td></tr></table></figure>
+              <h2 id="一、端口的配置"><a href="#一、端口的配置" class="headerlink" title="一、端口的配置"></a>一、端口的配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> port = process.env.port || process.env.npm_config_port || <span class="number">9528</span> <span class="comment">// process.env.port 环境变量的端口，环境变量要是设置了端口，就用环境变量的</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>在根目录文件夹下创建3个文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// .env.development</span><br>NODE_ENV = production<br><br># just a flag<br>ENV = <span class="hljs-string">&#x27;staging&#x27;</span><br><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/stage-api&#x27;</span><br>#port<br>port = <span class="hljs-number">8088</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// .env.development</span></span><br><span class="line">NODE_ENV = production</span><br><span class="line"></span><br><span class="line"># just a flag</span><br><span class="line">ENV = <span class="string">&#x27;staging&#x27;</span></span><br><span class="line"></span><br><span class="line"># base api</span><br><span class="line">VUE_APP_BASE_API = <span class="string">&#x27;/stage-api&#x27;</span></span><br><span class="line">#port</span><br><span class="line">port = <span class="number">8088</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-comment">//.env.production</span><br># just a flag<br>ENV = <span class="hljs-string">&#x27;production&#x27;</span><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/prod-api&#x27;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.env.production</span></span><br><span class="line"># just a flag</span><br><span class="line">ENV = <span class="string">&#x27;production&#x27;</span></span><br><span class="line"># base api</span><br><span class="line">VUE_APP_BASE_API = <span class="string">&#x27;/prod-api&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//.env.staging</span><br># just a flag<br>ENV = <span class="hljs-string">&#x27;production&#x27;</span><br><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/prod-api&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.env.staging</span></span><br><span class="line"># just a flag</span><br><span class="line">ENV = <span class="string">&#x27;production&#x27;</span></span><br><span class="line"></span><br><span class="line"># base api</span><br><span class="line">VUE_APP_BASE_API = <span class="string">&#x27;/prod-api&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li> 当我们使用<code>npm run dev</code>的时候环境变量使用的是.env.development 中的配置</li><li> 使用<code>npm run build</code> 的时候使用的是.env.production中的配置</li></ul>
@@ -311,7 +305,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2002%E5%AE%9E%E7%8E%B0mockjs/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin-02实现mockjs</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -320,7 +314,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2001%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">
                         <span class="hidden-mobile">vue-admin 01权限控制</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -337,7 +331,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -363,7 +357,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -372,7 +366,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -507,8 +501,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -596,8 +588,6 @@
   
 
 
-
-  
 
 
 

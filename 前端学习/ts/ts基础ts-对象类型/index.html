@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -255,7 +249,7 @@
 <li><p>ts中对象通过接口来实现</p>
 </li>
 <li><p>确定属性：</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> Person &#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-built_in">string</span>;<br>    age:<span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> tom:Person = &#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;Tom&#x27;</span>,<br>    <span class="hljs-attr">age</span>:<span class="hljs-number">25</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface Person &#123;</span><br><span class="line">    name:string;</span><br><span class="line">    age:number;</span><br><span class="line">&#125;</span><br><span class="line">let tom:Person = &#123;</span><br><span class="line">    name:&#x27;Tom&#x27;,</span><br><span class="line">    age:25</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>定义了一个接口Person,定义了一个变量：tom ,他的类型是Person，约束了变量的形状必须和接口保持一致</p>
 </li>
 <li><p>接口一般会大写</p>
@@ -267,17 +261,17 @@
 <li><p>可选属性：</p>
 </li>
 <li><p>如果我们不希望完全匹配一个形状，我们可以设置可选属性（但是并不允许添加未定义的属性）</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">interface</span> Car &#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-built_in">string</span>;<br>    age?:<span class="hljs-built_in">number</span>;<br>&#125;<br><span class="hljs-keyword">let</span> car1:Car = &#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;小车&#x27;</span>,<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface Car &#123;</span><br><span class="line">    name:string;</span><br><span class="line">    age?:number;</span><br><span class="line">&#125;</span><br><span class="line">let car1:Car = &#123;</span><br><span class="line">    name:&#x27;小车&#x27;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>任意属性：</p>
 </li>
 <li><p>任意属性有固定的写法：[propName:string]:xxx;</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Cat &#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-built_in">string</span>;<br>    age?:<span class="hljs-built_in">number</span>; <span class="hljs-comment">// 可选属性</span><br>    [propName:<span class="hljs-built_in">string</span>]:<span class="hljs-built_in">any</span>; <span class="hljs-comment">// 任意属性</span><br>&#125;<br><span class="hljs-keyword">let</span> cat:Cat = &#123;<br>    <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;小车&#x27;</span>,<br>    <span class="hljs-attr">age</span>:<span class="hljs-number">12</span>,<br>    <span class="hljs-attr">leg</span>:<span class="hljs-number">4</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Cat &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="built_in">string</span>;</span><br><span class="line">    age?:<span class="built_in">number</span>; <span class="comment">// 可选属性</span></span><br><span class="line">    [propName:<span class="built_in">string</span>]:<span class="built_in">any</span>; <span class="comment">// 任意属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> cat:Cat = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;小车&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">12</span>,</span><br><span class="line">    <span class="attr">leg</span>:<span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>只要定义了任意属性，那确定属性和可选属性只能是他的子属性</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">// 报错，因为number不是string的子属性</span><br><span class="hljs-keyword">interface</span> Tree &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>    age?: <span class="hljs-built_in">number</span>; <span class="hljs-comment">// 可选属性</span><br>    [propName: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// 任意属性</span><br>&#125;<br><span class="hljs-keyword">let</span> tree: Tree = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;小车&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">12</span>,<br>    <span class="hljs-attr">leave</span>: <span class="hljs-string">&#x27;12个&#x27;</span><br>&#125;<br><span class="hljs-comment">// 正常运行</span><br><span class="hljs-keyword">interface</span> Tree &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;<br>    age?: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// 可选属性</span><br>    [propName: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>; <span class="hljs-comment">// 任意属性</span><br>&#125;<br><span class="hljs-keyword">let</span> tree: Tree = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;小车&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-string">&#x27;12岁了&#x27;</span>,<br>    <span class="hljs-attr">leave</span>: <span class="hljs-string">&#x27;12个&#x27;</span><br>&#125; 	<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 报错，因为number不是string的子属性</span><br><span class="line">interface Tree &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    age?: number; // 可选属性</span><br><span class="line">    [propName: string]: string; // 任意属性</span><br><span class="line">&#125;</span><br><span class="line">let tree: Tree = &#123;</span><br><span class="line">    name: &#x27;小车&#x27;,</span><br><span class="line">    age: 12,</span><br><span class="line">    leave: &#x27;12个&#x27;</span><br><span class="line">&#125;</span><br><span class="line">// 正常运行</span><br><span class="line">interface Tree &#123;</span><br><span class="line">    name: string;</span><br><span class="line">    age?: string; // 可选属性</span><br><span class="line">    [propName: string]: string; // 任意属性</span><br><span class="line">&#125;</span><br><span class="line">let tree: Tree = &#123;</span><br><span class="line">    name: &#x27;小车&#x27;,</span><br><span class="line">    age: &#x27;12岁了&#x27;,</span><br><span class="line">    leave: &#x27;12个&#x27;</span><br><span class="line">&#125; 	</span><br></pre></td></tr></table></figure></li>
 <li><p>只读属性：(只能在创建时被赋值)</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xquery">// 报错，因<span class="hljs-built_in">为id</span>已经被初始化，在赋值会报错<br>interface Person &#123;<br>    readonly<span class="hljs-built_in"> id</span>:<span class="hljs-built_in"> number</span>;<br>   <span class="hljs-built_in"> name</span>:<span class="hljs-built_in"> string</span>;<br>    age?:<span class="hljs-built_in"> number</span>;<br>    [propName:<span class="hljs-built_in"> string</span>]: any;<br>&#125;<br><br><span class="hljs-keyword">let</span> tom: Person = &#123;<br>   <span class="hljs-built_in"> id</span>: <span class="hljs-number">89757</span>,<br>   <span class="hljs-built_in"> name</span>: <span class="hljs-string">&#x27;Tom&#x27;</span>,<br>    gender: <span class="hljs-string">&#x27;male&#x27;</span><br>&#125;;<br><br>tom<span class="hljs-built_in">.id</span> = <span class="hljs-number">9527</span>;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 报错，因为id已经被初始化，在赋值会报错</span><br><span class="line">interface Person &#123;</span><br><span class="line">    readonly id: number;</span><br><span class="line">    name: string;</span><br><span class="line">    age?: number;</span><br><span class="line">    [propName: string]: any;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let tom: Person = &#123;</span><br><span class="line">    id: 89757,</span><br><span class="line">    name: &#x27;Tom&#x27;,</span><br><span class="line">    gender: &#x27;male&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">tom.id = 9527;</span><br></pre></td></tr></table></figure></li>
 <li><p>只读属性的约束在第一次给对象赋值的时候，不是第一次给只读属性赋值的时候</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Person &#123;<br>    <span class="hljs-keyword">readonly</span> id: <span class="hljs-built_in">number</span>;<br>    name: <span class="hljs-built_in">string</span>;<br>    age?: <span class="hljs-built_in">number</span>;<br>    [propName: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>;<br>&#125;<br><br><span class="hljs-keyword">let</span> tom: Person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Tom&#x27;</span>,   <span class="hljs-comment">// 第一次错误：初始化的时候，没有给只读属性赋值</span><br>    <span class="hljs-attr">gender</span>: <span class="hljs-string">&#x27;male&#x27;</span><br>&#125;;<br><br>tom.id = <span class="hljs-number">89757</span>; <span class="hljs-comment">// 无法赋值，他是只读属性， 只能在创建时赋值</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    <span class="keyword">readonly</span> id: <span class="built_in">number</span>;</span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    age?: <span class="built_in">number</span>;</span><br><span class="line">    [propName: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tom: Person = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Tom&#x27;</span>,   <span class="comment">// 第一次错误：初始化的时候，没有给只读属性赋值</span></span><br><span class="line">    <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">tom.id = <span class="number">89757</span>; <span class="comment">// 无法赋值，他是只读属性， 只能在创建时赋值</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -322,7 +316,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80ts-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ts-数组类型</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -331,7 +325,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80ts-%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
                         <span class="hidden-mobile">ts-原始数据类型</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -348,7 +342,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -374,7 +368,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -383,7 +377,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -518,8 +512,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -607,8 +599,6 @@
   
 
 
-
-  
 
 
 

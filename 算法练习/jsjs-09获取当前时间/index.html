@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取当前时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回当前时间的格式化</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getCurrentDate</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    <span class="hljs-keyword">let</span> year = date.getFullYear();<br>    <span class="hljs-keyword">let</span> month = date.getMonth() + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> day = add_zero(date.getDate());<br>    <span class="hljs-keyword">let</span> hour = add_zero(date.getHours());<br>    <span class="hljs-keyword">let</span> minutes = add_zero(date.getMinutes());<br>    <span class="hljs-keyword">let</span> second = add_zero(date.getSeconds());<br>    <span class="hljs-keyword">let</span> str = year + <span class="hljs-string">&#x27;-&#x27;</span> + month + <span class="hljs-string">&#x27;-&#x27;</span> + day + <span class="hljs-string">&#x27; &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + minutes + <span class="hljs-string">&#x27;:&#x27;</span> + second;<br>    <span class="hljs-keyword">return</span> str;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add_zero</span>(<span class="hljs-params">num</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> num = num &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + num : num;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getCurrentDate()); <span class="hljs-comment">//2021-8-03 21:28:44</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取当前时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回当前时间的格式化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCurrentDate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">let</span> year = date.getFullYear();</span><br><span class="line">    <span class="keyword">let</span> month = date.getMonth() + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> day = add_zero(date.getDate());</span><br><span class="line">    <span class="keyword">let</span> hour = add_zero(date.getHours());</span><br><span class="line">    <span class="keyword">let</span> minutes = add_zero(date.getMinutes());</span><br><span class="line">    <span class="keyword">let</span> second = add_zero(date.getSeconds());</span><br><span class="line">    <span class="keyword">let</span> str = year + <span class="string">&#x27;-&#x27;</span> + month + <span class="string">&#x27;-&#x27;</span> + day + <span class="string">&#x27; &#x27;</span> + hour + <span class="string">&#x27;:&#x27;</span> + minutes + <span class="string">&#x27;:&#x27;</span> + second;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add_zero</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num = num &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + num : num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getCurrentDate()); <span class="comment">//2021-8-03 21:28:44</span></span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -294,7 +288,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E8%8E%B7%E5%8F%96%E5%89%8Dnum%E5%A4%A9%E7%9A%84%E6%97%A5%E6%9C%9F/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-09获取前num天的日期</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -303,7 +297,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E6%9B%BF%E6%8D%A2%E9%9D%9E%E6%B3%95%E5%AD%97%E7%AC%A6/">
                         <span class="hidden-mobile">js-09替换非法字符</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -320,7 +314,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -346,7 +340,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +349,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -490,8 +484,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -579,8 +571,6 @@
   
 
 
-
-  
 
 
 

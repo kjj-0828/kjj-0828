@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -252,7 +246,7 @@
             
             <div class="markdown-body">
               <h2 id="一、强制转换"><a href="#一、强制转换" class="headerlink" title="一、强制转换"></a>一、强制转换</h2><p>强制转化的基本类型 Number、String、Boolean</p>
-<h2 id="二、Number比parseInt更加严格"><a href="#二、Number比parseInt更加严格" class="headerlink" title="二、Number比parseInt更加严格"></a>二、Number比parseInt更加严格</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">Number</span>(<span class="hljs-string">&#x27;42Cat&#x27;</span>)<br><span class="hljs-literal">NaN</span><br><span class="hljs-built_in">parseInt</span>(<span class="hljs-string">&#x27;42Cat&#x27;</span>)<br><span class="hljs-number">42</span><br></code></pre></td></tr></table></figure>
+<h2 id="二、Number比parseInt更加严格"><a href="#二、Number比parseInt更加严格" class="headerlink" title="二、Number比parseInt更加严格"></a>二、Number比parseInt更加严格</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="string">&#x27;42Cat&#x27;</span>)</span><br><span class="line"><span class="literal">NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">&#x27;42Cat&#x27;</span>)</span><br><span class="line"><span class="number">42</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -307,7 +301,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E6%A0%87%E5%87%86%E5%BA%93/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-标准库</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -316,7 +310,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E8%BF%90%E7%AE%97%E7%AC%A6/">
                         <span class="hidden-mobile">js-运算符</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -333,7 +327,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -359,7 +353,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -368,7 +362,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -503,8 +497,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -592,8 +584,6 @@
   
 
 
-
-  
 
 
 

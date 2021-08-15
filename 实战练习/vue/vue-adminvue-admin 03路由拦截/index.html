@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -253,33 +247,33 @@
             <div class="markdown-body">
               <h2 id="一、分析permission-js"><a href="#一、分析permission-js" class="headerlink" title="一、分析permission.js"></a>一、分析permission.js</h2><ol>
 <li><p>分析导入文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store&#x27;</span><br><span class="hljs-keyword">import</span> &#123; Message &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span><br><span class="hljs-keyword">import</span> NProgress <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;nprogress&#x27;</span> <span class="hljs-comment">// progress bar 进度条插件</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;nprogress/nprogress.css&#x27;</span> <span class="hljs-comment">// progress bar style 进度条样式</span><br><span class="hljs-keyword">import</span> &#123; getToken &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/auth&#x27;</span> <span class="hljs-comment">// get token from cookie 拿到token</span><br><span class="hljs-keyword">import</span> getPageTitle <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/get-page-title&#x27;</span> <span class="hljs-comment">// 更改页面title</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; Message &#125; <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span></span><br><span class="line"><span class="keyword">import</span> NProgress <span class="keyword">from</span> <span class="string">&#x27;nprogress&#x27;</span> <span class="comment">// progress bar 进度条插件</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;nprogress/nprogress.css&#x27;</span> <span class="comment">// progress bar style 进度条样式</span></span><br><span class="line"><span class="keyword">import</span> &#123; getToken &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/auth&#x27;</span> <span class="comment">// get token from cookie 拿到token</span></span><br><span class="line"><span class="keyword">import</span> getPageTitle <span class="keyword">from</span> <span class="string">&#x27;@/utils/get-page-title&#x27;</span> <span class="comment">// 更改页面title</span></span><br></pre></td></tr></table></figure></li>
 <li><p>路由拦截逻辑</p>
 <ul>
 <li><p>判断是否有token,有进行后续操作</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (hasToken) &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (hasToken) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>如果有token，说明用户已经登录，如果用户要跳转去login，一律跳转到home界面</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (to.path === <span class="hljs-string">&#x27;/login&#x27;</span>) &#123; <span class="hljs-comment">// 在登录的情况下，用户在导航栏输入login，统一重定向到home界面</span><br>      <span class="hljs-comment">// if is logged in, redirect to the home page</span><br>      next(&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/home&#x27;</span> &#125;)<br>      NProgress.done()<br>  &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (to.path === <span class="string">&#x27;/login&#x27;</span>) &#123; <span class="comment">// 在登录的情况下，用户在导航栏输入login，统一重定向到home界面</span></span><br><span class="line">      <span class="comment">// if is logged in, redirect to the home page</span></span><br><span class="line">      next(&#123; <span class="attr">path</span>: <span class="string">&#x27;/home&#x27;</span> &#125;)</span><br><span class="line">      NProgress.done()</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>如果用户输入其他页面的地址，就需要判断权限</p>
 <ul>
 <li><p>获取用户信息，如果有用户信息，放行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> hasGetUserInfo = store.getters.name<br>     <span class="hljs-keyword">if</span> (hasGetUserInfo) &#123; <span class="hljs-comment">// 如果用户name存在state中，放行</span><br>         next()<br>     &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hasGetUserInfo = store.getters.name</span><br><span class="line">     <span class="keyword">if</span> (hasGetUserInfo) &#123; <span class="comment">// 如果用户name存在state中，放行</span></span><br><span class="line">         next()</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>没有用户信息，获取用户信息，如果成功，放行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>               <span class="hljs-keyword">try</span> &#123;<br>                   <span class="hljs-comment">// 获取用户信息之后，放行</span><br>                   <span class="hljs-keyword">await</span> store.dispatch(<span class="hljs-string">&#x27;user/getInfo&#x27;</span>)<br>                   next()<br>               &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   <span class="comment">// 获取用户信息之后，放行</span></span><br><span class="line">                   <span class="keyword">await</span> store.dispatch(<span class="string">&#x27;user/getInfo&#x27;</span>)</span><br><span class="line">                   next()</span><br><span class="line">               &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>如果没有成功，重置Token，跳转到login</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">catch</span> (error) &#123;<br>                    <span class="hljs-comment">// remove token and go to login page to re-login</span><br>                    <span class="hljs-keyword">await</span> store.dispatch(<span class="hljs-string">&#x27;user/resetToken&#x27;</span>)<br>                    Message.error(error || <span class="hljs-string">&#x27;Has Error&#x27;</span>)<br>                    next(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;to.path&#125;</span>`</span>)<br>                    NProgress.done()<br>                &#125;<br>            &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span> (error) &#123;</span><br><span class="line">                    <span class="comment">// remove token and go to login page to re-login</span></span><br><span class="line">                    <span class="keyword">await</span> store.dispatch(<span class="string">&#x27;user/resetToken&#x27;</span>)</span><br><span class="line">                    Message.error(error || <span class="string">&#x27;Has Error&#x27;</span>)</span><br><span class="line">                    next(<span class="string">`/login?redirect=<span class="subst">$&#123;to.path&#125;</span>`</span>)</span><br><span class="line">                    NProgress.done()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>没有token，查看是否在白名单里,如果在白名单里，放行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">/* has no token*/</span> <span class="hljs-comment">// 如果没登录，查看用户去的地方在不在白名单</span><br>        <span class="hljs-keyword">if</span> (whiteList.indexOf(to.path) !== -<span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 白名单中是不需要登录就可以访问的界面</span><br>            <span class="hljs-comment">// in the free login whitelist, go directly</span><br>            next()<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">/* has no token*/</span> <span class="comment">// 如果没登录，查看用户去的地方在不在白名单</span></span><br><span class="line">        <span class="keyword">if</span> (whiteList.indexOf(to.path) !== -<span class="number">1</span>) &#123; <span class="comment">// 白名单中是不需要登录就可以访问的界面</span></span><br><span class="line">            <span class="comment">// in the free login whitelist, go directly</span></span><br><span class="line">            next()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>如果没有在白名单里，一律跳转到登录页面</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 既没有token又没在白名单，直接定位到login界面</span><br>            next(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;to.path&#125;</span>`</span>)<br>            NProgress.done()<br>        &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 既没有token又没在白名单，直接定位到login界面</span></span><br><span class="line">            next(<span class="string">`/login?redirect=<span class="subst">$&#123;to.path&#125;</span>`</span>)</span><br><span class="line">            NProgress.done()</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -328,7 +322,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003Router/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin-03router</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -337,7 +331,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E6%A0%8F/">
                         <span class="hidden-mobile">vue-admin-03动态菜单栏</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -354,7 +348,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -380,7 +374,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -389,7 +383,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -524,8 +518,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -613,8 +605,6 @@
   
 
 
-
-  
 
 
 

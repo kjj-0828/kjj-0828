@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -253,9 +247,9 @@
             <div class="markdown-body">
               <h2 id="一、内置对象"><a href="#一、内置对象" class="headerlink" title="一、内置对象"></a>一、内置对象</h2><ol>
 <li><p>ECMAScript的内置对象:Boolean、Error、Date、RegExp</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tsx">let b:Boolean = new Boolean(1);<br>let e:Error = new Error(&#x27;Error occurred&#x27;);<br>let d:Date = new Date();<br>let r:RegExp = /[a-z]/;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let b:Boolean = new Boolean(1);</span><br><span class="line">let e:Error = new Error(&#x27;Error occurred&#x27;);</span><br><span class="line">let d:Date = new Date();</span><br><span class="line">let r:RegExp = /[a-z]/;</span><br></pre></td></tr></table></figure></li>
 <li><p>DOM和BOM的内置对象：Document、HTMLElement、Event、NodeList</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> body: HTMLElement = <span class="hljs-built_in">document</span>.body;<br><span class="hljs-keyword">let</span> allDiv: NodeList = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">&#x27;div&#x27;</span>);<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e:MouseEvent</span>)</span>&#123;<br><span class="hljs-comment">// </span><br>&#125;);<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let body: HTMLElement = document.body;</span><br><span class="line">let allDiv: NodeList = document.querySelectorAll(&#x27;div&#x27;);</span><br><span class="line">document.addEventListener(&#x27;click&#x27;,function(e:MouseEvent)&#123;</span><br><span class="line">// </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -300,7 +294,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E8%BF%9B%E9%98%B6ts-%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ts-类型别名</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -309,7 +303,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/ts/ts%E5%9F%BA%E7%A1%80ts-%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80/">
                         <span class="hidden-mobile">ts-类型断言</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -326,7 +320,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -352,7 +346,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -361,7 +355,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -496,8 +490,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -585,8 +577,6 @@
   
 
 
-
-  
 
 
 

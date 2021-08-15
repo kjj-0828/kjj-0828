@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -253,13 +247,13 @@
             <div class="markdown-body">
               <h2 id="一、在根目录下新建mock文件夹"><a href="#一、在根目录下新建mock文件夹" class="headerlink" title="一、在根目录下新建mock文件夹"></a>一、在根目录下新建mock文件夹</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210811181345.png" srcset="/img/loading.gif" lazyload alt="image-20210811181344216"></p>
 <h2 id="二、模块分类"><a href="#二、模块分类" class="headerlink" title="二、模块分类"></a>二、模块分类</h2><p>├── mock                      // mock 模拟数据 与src同级<br>│   ├── index.js              // 数据总入口<br>│   ├── mock-server.js        // 数据服务层<br>│   ├── table.js              // 数据块</p>
-<h2 id="三、分析-mock-server-js"><a href="#三、分析-mock-server-js" class="headerlink" title="三、分析 mock-server.js"></a>三、分析 mock-server.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> chokidar = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;chokidar&#x27;</span>) <span class="hljs-comment">// 监听文件的变化</span><br><span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;body-parser&#x27;</span>) <span class="hljs-comment">// j解析http请求</span><br><span class="hljs-keyword">const</span> chalk = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;chalk&#x27;</span>) <span class="hljs-comment">// 颜色插件</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>) <span class="hljs-comment">// 模块提供了一些用于处理文件路径的小工具</span><br><span class="hljs-keyword">const</span> Mock = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mockjs&#x27;</span>)<br><span class="hljs-comment">// process.cwd() 方法返回 Node.js 进程的当前工作目录</span><br><span class="hljs-comment">// path.join(path1，path2，path3.......)将路径片段使用特定的分隔符（window：\）连接起来形成路径，并规范化生成的路径</span><br><span class="hljs-keyword">const</span> mockDir = path.join(process.cwd(), <span class="hljs-string">&#x27;mock&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="三、分析-mock-server-js"><a href="#三、分析-mock-server-js" class="headerlink" title="三、分析 mock-server.js"></a>三、分析 mock-server.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> chokidar = <span class="built_in">require</span>(<span class="string">&#x27;chokidar&#x27;</span>) <span class="comment">// 监听文件的变化</span></span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>) <span class="comment">// j解析http请求</span></span><br><span class="line"><span class="keyword">const</span> chalk = <span class="built_in">require</span>(<span class="string">&#x27;chalk&#x27;</span>) <span class="comment">// 颜色插件</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>) <span class="comment">// 模块提供了一些用于处理文件路径的小工具</span></span><br><span class="line"><span class="keyword">const</span> Mock = <span class="built_in">require</span>(<span class="string">&#x27;mockjs&#x27;</span>)</span><br><span class="line"><span class="comment">// process.cwd() 方法返回 Node.js 进程的当前工作目录</span></span><br><span class="line"><span class="comment">// path.join(path1，path2，path3.......)将路径片段使用特定的分隔符（window：\）连接起来形成路径，并规范化生成的路径</span></span><br><span class="line"><span class="keyword">const</span> mockDir = path.join(process.cwd(), <span class="string">&#x27;mock&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li><p>路由的批量注册</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registerRoutes</span>(<span class="hljs-params">app</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> mockLastIndex<br>    <span class="hljs-keyword">const</span> &#123; mocks &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./index.js&#x27;</span>)<br>    <span class="hljs-keyword">const</span> mocksForServer = mocks.map(<span class="hljs-function"><span class="hljs-params">route</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> responseFake(route.url, route.type, route.response)<br>    &#125;)<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> mock <span class="hljs-keyword">of</span> mocksForServer) &#123;<br>      app[mock.type](mock.url, mock.response)<br>      mockLastIndex = app._router.stack.length<br>    &#125;<br>    <span class="hljs-keyword">const</span> mockRoutesLength = <span class="hljs-built_in">Object</span>.keys(mocksForServer).length<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">mockRoutesLength</span>: mockRoutesLength,<br>      <span class="hljs-attr">mockStartIndex</span>: mockLastIndex - mockRoutesLength<br>    &#125;<br>  &#125;<br><span class="hljs-comment">//删除路由</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unregisterRoutes</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">Object</span>.keys(<span class="hljs-built_in">require</span>.cache).forEach(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span> (i.includes(mockDir)) &#123;<br>        <span class="hljs-keyword">delete</span> <span class="hljs-built_in">require</span>.cache[<span class="hljs-built_in">require</span>.resolve(i)]<br>      &#125;<br>    &#125;)<br>  &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">registerRoutes</span>(<span class="params">app</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> mockLastIndex</span><br><span class="line">    <span class="keyword">const</span> &#123; mocks &#125; = <span class="built_in">require</span>(<span class="string">&#x27;./index.js&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> mocksForServer = mocks.map(<span class="function"><span class="params">route</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> responseFake(route.url, route.type, route.response)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> mock <span class="keyword">of</span> mocksForServer) &#123;</span><br><span class="line">      app[mock.type](mock.url, mock.response)</span><br><span class="line">      mockLastIndex = app._router.stack.length</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> mockRoutesLength = <span class="built_in">Object</span>.keys(mocksForServer).length</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">mockRoutesLength</span>: mockRoutesLength,</span><br><span class="line">      <span class="attr">mockStartIndex</span>: mockLastIndex - mockRoutesLength</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//删除路由</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">unregisterRoutes</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">Object</span>.keys(<span class="built_in">require</span>.cache).forEach(<span class="function"><span class="params">i</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i.includes(mockDir)) &#123;</span><br><span class="line">        <span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(i)]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>返回对应的请求值，针对中间件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> responseFake = <span class="hljs-function">(<span class="hljs-params">url, type, respond</span>) =&gt;</span> &#123;<br>   <span class="hljs-keyword">return</span> &#123;<br>     <span class="hljs-attr">url</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;process.env.VUE_APP_BASE_API&#125;</span><span class="hljs-subst">$&#123;url&#125;</span>`</span>),<br>     <span class="hljs-attr">type</span>: type || <span class="hljs-string">&#x27;get&#x27;</span>,<br>     <span class="hljs-function"><span class="hljs-title">response</span>(<span class="hljs-params">req, res</span>)</span> &#123;<br>       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;request invoke:&#x27;</span> + req.path)<br>       res.json(Mock.mock(respond <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Function</span> ? respond(req, res) : respond))<br>     &#125;<br>   &#125;<br> &#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> responseFake = <span class="function">(<span class="params">url, type, respond</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">     <span class="attr">url</span>: <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">`<span class="subst">$&#123;process.env.VUE_APP_BASE_API&#125;</span><span class="subst">$&#123;url&#125;</span>`</span>),</span><br><span class="line">     <span class="attr">type</span>: type || <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">     <span class="function"><span class="title">response</span>(<span class="params">req, res</span>)</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;request invoke:&#x27;</span> + req.path)</span><br><span class="line">       res.json(Mock.mock(respond <span class="keyword">instanceof</span> <span class="built_in">Function</span> ? respond(req, res) : respond))</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>实现步骤</p>
 <p>├──vue.config.js配置devServer</p>
 <p> <img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210811183213.png" srcset="/img/loading.gif" lazyload alt="image-20210811183212659"></p>
@@ -311,7 +305,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin 03退出登录</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -320,7 +314,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2002vue%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE/">
                         <span class="hidden-mobile">vue-admin 02vue文件配置</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -337,7 +331,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -363,7 +357,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -372,7 +366,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -507,8 +501,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -596,8 +588,6 @@
   
 
 
-
-  
 
 
 

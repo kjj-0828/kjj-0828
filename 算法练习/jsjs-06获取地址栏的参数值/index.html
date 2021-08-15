@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取地址栏的参数值</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>url // 地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>name // 参数名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回值或者null</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUrlParam</span>(<span class="hljs-params">url, name</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;(^|&amp;)&quot;</span> + name + <span class="hljs-string">&quot;=([^&amp;]*)(&amp;|$)&quot;</span>);<br>    <span class="hljs-comment">// var r = window.location.search.substr(1).match(reg); // 基于浏览器环境</span><br>    <span class="hljs-keyword">var</span> r = url.substr(<span class="hljs-number">7</span>).match(reg); <span class="hljs-comment">// 自动获取成？之后的内容 t1=1&amp;t2=2&amp;t3=3</span><br>    <span class="hljs-keyword">if</span> (r != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">unescape</span>(r[<span class="hljs-number">2</span>]); <span class="hljs-comment">// 0是t1 1是= 2是值 unescape() 函数可对通过 escape() 编码的字符串进行解码。</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> url = <span class="hljs-string">&quot;a.html?t1=1&amp;t2=2&amp;t3=3&quot;</span>;<br><span class="hljs-keyword">let</span> name = <span class="hljs-string">&quot;t1&quot;</span>;<br><span class="hljs-built_in">console</span>.log(getUrlParam(url, name));<br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取地址栏的参数值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>url // 地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>name // 参数名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回值或者null</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">url, name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;(^|&amp;)&quot;</span> + name + <span class="string">&quot;=([^&amp;]*)(&amp;|$)&quot;</span>);</span><br><span class="line">    <span class="comment">// var r = window.location.search.substr(1).match(reg); // 基于浏览器环境</span></span><br><span class="line">    <span class="keyword">var</span> r = url.substr(<span class="number">7</span>).match(reg); <span class="comment">// 自动获取成？之后的内容 t1=1&amp;t2=2&amp;t3=3</span></span><br><span class="line">    <span class="keyword">if</span> (r != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">unescape</span>(r[<span class="number">2</span>]); <span class="comment">// 0是t1 1是= 2是值 unescape() 函数可对通过 escape() 编码的字符串进行解码。</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">&quot;a.html?t1=1&amp;t2=2&amp;t3=3&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;t1&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(getUrlParam(url, name));</span><br></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>^匹配字符串开头,&amp;就是&amp;字符 (^|&amp;)匹配字符串开头或者&amp;字符,</li><li>加上name变量的内容,[^&amp;]再加上任意个不含&amp;的字符,(&amp;|$)以&amp;或字符串结尾</li><li>*表示可以重复0或N次</li><li>这个正则是寻找&amp;+url参数名字=值+&amp;  (&amp;可以不存在)</li><li>match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。</li><li>test() 方法用于检测一个字符串是否匹配某个模式</li><li> location是包含了相关的url的信息，它是windown的一部分。</li><li>search是一个可以查询的属性，可以查询？之后的部分。</li></ul>
@@ -296,7 +290,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E7%8E%B0%E9%87%91%E8%BD%AC%E5%A4%A7%E5%86%99/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-07现金转大写</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -305,7 +299,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%AD%E6%96%87/">
                         <span class="hidden-mobile">js-06判断是否是中文</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -322,7 +316,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -348,7 +342,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -357,7 +351,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -492,8 +486,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -581,8 +573,6 @@
   
 
 
-
-  
 
 
 

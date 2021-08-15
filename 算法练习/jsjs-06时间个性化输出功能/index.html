@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 时间个性化输出功能</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>time 传入时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回个性化的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeFormat</span>(<span class="hljs-params">time</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(time),<br>        curDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),<br>        year = date.getFullYear(),<br>        month = date.getMonth() + <span class="hljs-number">1</span>,<br>        day = date.getDate(),<br>        hour = date.getHours(),<br>        minute = date.getMinutes(),<br>        curYear = curDate.getFullYear(),<br>        curHour = curDate.getHours(),<br>        timeStr;<br>    <span class="hljs-keyword">let</span> M = minute &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&#x27;0&#x27;</span> + minute : minute;<br>    <span class="hljs-keyword">if</span> (year &lt; curYear) &#123;<br>        timeStr = year + <span class="hljs-string">&#x27;年&#x27;</span> + month + <span class="hljs-string">&#x27;月&#x27;</span> + day + <span class="hljs-string">&#x27;日 &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + M;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">var</span> pastTime = curDate - date,<br>            pastH = pastTime / <span class="hljs-number">3600000</span>; <span class="hljs-comment">//60*60*1000</span><br>        <span class="hljs-built_in">console</span>.log(pastH);<br>        <span class="hljs-keyword">if</span> (pastH &gt; curHour) &#123;<br>            timeStr = month + <span class="hljs-string">&#x27;月&#x27;</span> + day + <span class="hljs-string">&#x27;日 &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + M;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (pastH &gt;= <span class="hljs-number">1</span>) &#123;<br>            timeStr = <span class="hljs-string">&#x27;今天 &#x27;</span> + hour + <span class="hljs-string">&#x27;:&#x27;</span> + M + <span class="hljs-string">&#x27;分&#x27;</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">var</span> pastM = curDate.getMinutes() - M;<br>            <span class="hljs-keyword">if</span> (pastM &gt; <span class="hljs-number">1</span>) &#123;<br>                timeStr = pastM + <span class="hljs-string">&#x27;分钟前&#x27;</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                timeStr = <span class="hljs-string">&#x27;刚刚&#x27;</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> timeStr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>())); <span class="hljs-comment">// 刚刚</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2021/07/31 16:05:00&#x27;</span>)); <span class="hljs-comment">// 今天 16:05分</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2021/07/30 16:10:00&#x27;</span>)); <span class="hljs-comment">// 7月30日 16:10</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2020/07/30 16:05:00&#x27;</span>)); <span class="hljs-comment">// 2020年7月30日 16:05</span><br><span class="hljs-built_in">console</span>.log(timeFormat(<span class="hljs-string">&#x27;2021/07/31 22:05:00&#x27;</span>)); <span class="hljs-comment">// 21分钟前</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 时间个性化输出功能</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>time 传入时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回个性化的值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeFormat</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>(time),</span><br><span class="line">        curDate = <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">        year = date.getFullYear(),</span><br><span class="line">        month = date.getMonth() + <span class="number">1</span>,</span><br><span class="line">        day = date.getDate(),</span><br><span class="line">        hour = date.getHours(),</span><br><span class="line">        minute = date.getMinutes(),</span><br><span class="line">        curYear = curDate.getFullYear(),</span><br><span class="line">        curHour = curDate.getHours(),</span><br><span class="line">        timeStr;</span><br><span class="line">    <span class="keyword">let</span> M = minute &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + minute : minute;</span><br><span class="line">    <span class="keyword">if</span> (year &lt; curYear) &#123;</span><br><span class="line">        timeStr = year + <span class="string">&#x27;年&#x27;</span> + month + <span class="string">&#x27;月&#x27;</span> + day + <span class="string">&#x27;日 &#x27;</span> + hour + <span class="string">&#x27;:&#x27;</span> + M;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> pastTime = curDate - date,</span><br><span class="line">            pastH = pastTime / <span class="number">3600000</span>; <span class="comment">//60*60*1000</span></span><br><span class="line">        <span class="built_in">console</span>.log(pastH);</span><br><span class="line">        <span class="keyword">if</span> (pastH &gt; curHour) &#123;</span><br><span class="line">            timeStr = month + <span class="string">&#x27;月&#x27;</span> + day + <span class="string">&#x27;日 &#x27;</span> + hour + <span class="string">&#x27;:&#x27;</span> + M;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pastH &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            timeStr = <span class="string">&#x27;今天 &#x27;</span> + hour + <span class="string">&#x27;:&#x27;</span> + M + <span class="string">&#x27;分&#x27;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> pastM = curDate.getMinutes() - M;</span><br><span class="line">            <span class="keyword">if</span> (pastM &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                timeStr = pastM + <span class="string">&#x27;分钟前&#x27;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                timeStr = <span class="string">&#x27;刚刚&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> timeStr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(timeFormat(<span class="keyword">new</span> <span class="built_in">Date</span>())); <span class="comment">// 刚刚</span></span><br><span class="line"><span class="built_in">console</span>.log(timeFormat(<span class="string">&#x27;2021/07/31 16:05:00&#x27;</span>)); <span class="comment">// 今天 16:05分</span></span><br><span class="line"><span class="built_in">console</span>.log(timeFormat(<span class="string">&#x27;2021/07/30 16:10:00&#x27;</span>)); <span class="comment">// 7月30日 16:10</span></span><br><span class="line"><span class="built_in">console</span>.log(timeFormat(<span class="string">&#x27;2020/07/30 16:05:00&#x27;</span>)); <span class="comment">// 2020年7月30日 16:05</span></span><br><span class="line"><span class="built_in">console</span>.log(timeFormat(<span class="string">&#x27;2021/07/31 22:05:00&#x27;</span>)); <span class="comment">// 21分钟前</span></span><br></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <p>// 使用 - 为连接符，就会转换为GMT为基准，会被解析成ISO格式的字符串</p><p>// 使用 / 为连接符，是以本地时区为准</p><p>// 如果时间字符串中存在 - ，都转为 / 之后 new Date</p>
@@ -298,7 +292,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-06%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%AD%E6%96%87/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-06判断是否是中文</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -307,7 +301,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0/">
                         <span class="hidden-mobile">js-05日期格式化函数</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -324,7 +318,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -350,7 +344,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -359,7 +353,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -494,8 +488,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -583,8 +575,6 @@
   
 
 
-
-  
 
 
 

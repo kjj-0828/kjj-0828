@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化金额(没有分析)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>money 输入的钱数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>type 是否带小数点</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convert</span>(<span class="hljs-params">money , type</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/[^0-9\.]/</span>.test(money))<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>    <span class="hljs-keyword">if</span> (money == <span class="hljs-literal">null</span> || money == <span class="hljs-string">&quot;&quot;</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;<br>    money = money.toString().replace(<span class="hljs-regexp">/^(\d*)$/</span>, <span class="hljs-string">&quot;$1.&quot;</span>);<br>    money = (money + <span class="hljs-string">&quot;00&quot;</span>).replace(<span class="hljs-regexp">/(\d*\.\d\d)\d*/</span>, <span class="hljs-string">&quot;$1&quot;</span>);<br>    money = money.replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;,&quot;</span>);<br>    <span class="hljs-keyword">var</span> re = <span class="hljs-regexp">/(\d)(\d&#123;3&#125;,)/</span>;<br>    <span class="hljs-keyword">while</span> (re.test(money))<br>        money = money.replace(re, <span class="hljs-string">&quot;$1,$2&quot;</span>);<br>    money = money.replace(<span class="hljs-regexp">/,(\d\d)$/</span>, <span class="hljs-string">&quot;.$1&quot;</span>);<br>    <span class="hljs-keyword">if</span> (type == <span class="hljs-number">0</span>) &#123;<span class="hljs-comment">// 不带小数位(默认是有小数位)</span><br>        <span class="hljs-keyword">var</span> a = money.split(<span class="hljs-string">&quot;.&quot;</span>);<br>        <span class="hljs-keyword">if</span> (a[<span class="hljs-number">1</span>] == <span class="hljs-string">&quot;00&quot;</span>) &#123;<br>            money = a[<span class="hljs-number">0</span>];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> money;<br>&#125;<br><span class="hljs-built_in">console</span>.log(convert(<span class="hljs-number">123</span>)); <span class="hljs-comment">// 123.00</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 格式化金额(没有分析)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>money 输入的钱数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>type 是否带小数点</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convert</span>(<span class="params">money , type</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/[^0-9\.]/</span>.test(money))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (money == <span class="literal">null</span> || money == <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>;</span><br><span class="line">    money = money.toString().replace(<span class="regexp">/^(\d*)$/</span>, <span class="string">&quot;$1.&quot;</span>);</span><br><span class="line">    money = (money + <span class="string">&quot;00&quot;</span>).replace(<span class="regexp">/(\d*\.\d\d)\d*/</span>, <span class="string">&quot;$1&quot;</span>);</span><br><span class="line">    money = money.replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;,&quot;</span>);</span><br><span class="line">    <span class="keyword">var</span> re = <span class="regexp">/(\d)(\d&#123;3&#125;,)/</span>;</span><br><span class="line">    <span class="keyword">while</span> (re.test(money))</span><br><span class="line">        money = money.replace(re, <span class="string">&quot;$1,$2&quot;</span>);</span><br><span class="line">    money = money.replace(<span class="regexp">/,(\d\d)$/</span>, <span class="string">&quot;.$1&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (type == <span class="number">0</span>) &#123;<span class="comment">// 不带小数位(默认是有小数位)</span></span><br><span class="line">        <span class="keyword">var</span> a = money.split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">1</span>] == <span class="string">&quot;00&quot;</span>) &#123;</span><br><span class="line">            money = a[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> money;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(convert(<span class="number">123</span>)); <span class="comment">// 123.00</span></span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -294,7 +288,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-03数组去重</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -303,7 +297,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%88%A4%E6%96%AD2%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9B%B8%E7%AD%89/">
                         <span class="hidden-mobile">js-02判断2个数组相等</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -320,7 +314,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -346,7 +340,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +349,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -490,8 +484,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -579,8 +571,6 @@
   
 
 
-
-  
 
 
 

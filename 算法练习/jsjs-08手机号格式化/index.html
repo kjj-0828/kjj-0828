@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -251,7 +245,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回格式化的手机号</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">phoneToStar</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-comment">// return str.replace(/(\d&#123;3&#125;)\d&#123;4&#125;(\d&#123;4&#125;)/,&quot;$1****$2&quot;);    // $1就是第一个() 188 $2就是第二个() 9948 没有$3 </span><br>     <span class="hljs-keyword">return</span> str.replace(<span class="hljs-regexp">/(\d&#123;3&#125;)(\d&#123;4&#125;)(\d&#123;4&#125;)/</span>,<span class="hljs-string">&quot;$1****$3&quot;</span>); <span class="hljs-comment">// $1就是第一个() 188 $2就是第二个() 3100 $3就是第三个() 9948</span><br>&#125;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;18831009948&quot;</span>;<br><span class="hljs-built_in">console</span>.log(phoneToStar(str));<br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 格式化手机号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>str 手机号</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回格式化的手机号</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">phoneToStar</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// return str.replace(/(\d&#123;3&#125;)\d&#123;4&#125;(\d&#123;4&#125;)/,&quot;$1****$2&quot;);    // $1就是第一个() 188 $2就是第二个() 9948 没有$3 </span></span><br><span class="line">     <span class="keyword">return</span> str.replace(<span class="regexp">/(\d&#123;3&#125;)(\d&#123;4&#125;)(\d&#123;4&#125;)/</span>,<span class="string">&quot;$1****$3&quot;</span>); <span class="comment">// $1就是第一个() 188 $2就是第二个() 3100 $3就是第三个() 9948</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;18831009948&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(phoneToStar(str));</span><br></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>正则表达式中的括号即可用于分组，同时也用于定义子模式串</li><li>在replace()方法中，参数二中可以使用$n(n为数字)来依次引用模式串中用括号定义的字串。</li></ul>
@@ -296,7 +290,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%93%B6%E8%A1%8C%E5%8D%A1%E5%8F%B7/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-08验证银行卡号</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -305,7 +299,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%82%AE%E7%AE%B1/">
                         <span class="hidden-mobile">js-08验证邮箱</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -322,7 +316,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -348,7 +342,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -357,7 +351,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -492,8 +486,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -581,8 +573,6 @@
   
 
 
-
-  
 
 
 

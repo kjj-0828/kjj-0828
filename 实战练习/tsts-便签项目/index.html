@@ -27,12 +27,6 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
-    
-  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -253,17 +247,17 @@
             <div class="markdown-body">
               <h2 id="一、搭建项目环境"><a href="#一、搭建项目环境" class="headerlink" title="一、搭建项目环境"></a>一、搭建项目环境</h2><ol>
 <li><p>本人安装的是vue 2.x的环境,先卸载本地的vue-cli</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts">npm uninstall vue-cli -g<br>npm uninstall vue-cli<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall vue-cli -g</span><br><span class="line">npm uninstall vue-cli</span><br></pre></td></tr></table></figure></li>
 <li><p>安装 vue 3.x的脚手架</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts">npm install <span class="hljs-meta">@vue</span>/cli -g<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="meta">@vue</span>/cli -g</span><br></pre></td></tr></table></figure></li>
 <li><p>创建项目</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts">vue create XXX(xxx可任意取名，是自己的项目名)<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create XXX(xxx可任意取名，是自己的项目名)</span><br></pre></td></tr></table></figure></li>
 <li><p>创建完成,在vscode环境下，编译</p>
 </li>
 <li><p>安装vue/typescript</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts">vue add <span class="hljs-meta">@vue</span>/typescript<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue add <span class="meta">@vue</span>/typescript</span><br></pre></td></tr></table></figure></li>
 <li><p>安装vuex</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ts">npm i vuex<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i vuex</span><br></pre></td></tr></table></figure></li>
 <li><p>npm run serve 运行项目</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210718111441.png" srcset="/img/loading.gif" lazyload alt="image-20210718111431874"></p>
 </li>
@@ -479,7 +473,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/tsts-vue2.0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">ts-vue2.0</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -488,7 +482,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue%20vue2.x/">
                         <span class="hidden-mobile">vue vue2.x</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -505,7 +499,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -531,7 +525,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -540,7 +534,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -675,8 +669,6 @@
 
 
 
-  
-
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -764,8 +756,6 @@
   
 
 
-
-  
 
 
 
