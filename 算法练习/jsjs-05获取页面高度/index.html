@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取页面的高度</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回当前页面的高度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPageHeight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// document.compatMode用来判断当前浏览器采用的渲染方式。</span></span><br><span class="line">    <span class="comment">// BackCompat：标准兼容模式关闭。浏览器客户区宽度是document.body.clientWidth；</span></span><br><span class="line">    <span class="comment">// CSS1Compat：标准兼容模式开启。浏览器客户区宽度是 document.documentElement.clientWidth；</span></span><br><span class="line">    <span class="keyword">let</span>  d = <span class="built_in">document</span>.compatMode == <span class="string">&quot;BackCompat&quot;</span> ? <span class="built_in">document</span>.body : <span class="built_in">document</span>.documentElement;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max(<span class="built_in">document</span>.documentElement.scrollHeight, <span class="built_in">document</span>.body.scrollHeight, d.clientHeight);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getPageHeight());</span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取页面的高度</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回当前页面的高度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPageHeight</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// document.compatMode用来判断当前浏览器采用的渲染方式。</span><br>    <span class="hljs-comment">// BackCompat：标准兼容模式关闭。浏览器客户区宽度是document.body.clientWidth；</span><br>    <span class="hljs-comment">// CSS1Compat：标准兼容模式开启。浏览器客户区宽度是 document.documentElement.clientWidth；</span><br>    <span class="hljs-keyword">let</span>  d = <span class="hljs-built_in">document</span>.compatMode == <span class="hljs-string">&quot;BackCompat&quot;</span> ? <span class="hljs-built_in">document</span>.body : <span class="hljs-built_in">document</span>.documentElement;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.documentElement.scrollHeight, <span class="hljs-built_in">document</span>.body.scrollHeight, d.clientHeight);<br>&#125;<br><span class="hljs-built_in">console</span>.log(getPageHeight());<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210730142338.png" srcset="/img/loading.gif" lazyload alt="image-20210730142337653"></p>
 
@@ -485,6 +491,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -572,6 +580,8 @@
   
 
 
+
+  
 
 
 

@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -248,7 +254,7 @@
               <h2 id="一、加法运算符（算术运算符）"><a href="#一、加法运算符（算术运算符）" class="headerlink" title="一、加法运算符（算术运算符）"></a>一、加法运算符（算术运算符）</h2><p>boolean会转换成数值型，在做加法</p>
 <p>string类型做加法就是进行连接操作</p>
 <p>到底是执行加法还是连接会在运行时决定，这种现象叫做”重载”,</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> + <span class="number">4</span> + <span class="string">&#x27;5&#x27;</span></span><br><span class="line"><span class="string">&quot;75&quot;</span></span><br><span class="line"><span class="string">&#x27;3&#x27;</span> + <span class="number">4</span> +<span class="number">5</span></span><br><span class="line"><span class="string">&quot;345&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-number">3</span> + <span class="hljs-number">4</span> + <span class="hljs-string">&#x27;5&#x27;</span><br><span class="hljs-string">&quot;75&quot;</span><br><span class="hljs-string">&#x27;3&#x27;</span> + <span class="hljs-number">4</span> +<span class="hljs-number">5</span><br><span class="hljs-string">&quot;345&quot;</span><br></code></pre></td></tr></table></figure>
 
 <p>只有加法有重载，其他的算术运算没有</p>
 <p>对象相加会先转换成原始类型的值在相加</p>
@@ -261,7 +267,7 @@
 <p>undefined和null他们自身比较，或者互相比较是true，其他时候都是false</p>
 <p>相等运算符存在问题，推荐使用严格相等</p>
 <p>比如: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> == <span class="keyword">true</span></span><br><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="number">2</span> == <span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-number">2</span> == <span class="hljs-keyword">true</span><br><span class="hljs-keyword">false</span><br><span class="hljs-number">2</span> == <span class="hljs-keyword">false</span><br><span class="hljs-keyword">false</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -518,6 +524,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -605,6 +613,8 @@
   
 
 
+
+  
 
 
 

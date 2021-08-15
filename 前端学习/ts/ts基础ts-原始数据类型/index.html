@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -248,13 +254,13 @@
               <h2 id="一、boolean类型"><a href="#一、boolean类型" class="headerlink" title="一、boolean类型"></a>一、boolean类型</h2><ol>
 <li> boolean是最基本的数据类型，boolean是js的基本类型，Boolean是js的构造函数</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var createdByNewBoolean = new Boolean(1);</span><br><span class="line">console.log(typeof createdByNewBoolean);</span><br><span class="line">输出：object</span><br><span class="line">//直接调用Boolean 也可以返回一个boolean类型</span><br><span class="line">let createdByboolean :boolean = Boolean(1);</span><br><span class="line">console.log(typeof createdByboolean);</span><br><span class="line">输出：boolean</span><br><span class="line">// 但是多一个new关键字，就会报错</span><br><span class="line">let createdByNewBoolean: boolean = new Boolean(1);(报错)</span><br><span class="line">因为使用构造函数创建的对象不是Boolean值</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">var</span> createdByNewBoolean = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> createdByNewBoolean);<br>输出：<span class="hljs-built_in">object</span><br><span class="hljs-comment">//直接调用Boolean 也可以返回一个boolean类型</span><br><span class="hljs-keyword">let</span> createdByboolean :<span class="hljs-built_in">boolean</span> = <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> createdByboolean);<br>输出：<span class="hljs-built_in">boolean</span><br><span class="hljs-comment">// 但是多一个new关键字，就会报错</span><br><span class="hljs-keyword">let</span> createdByNewBoolean: <span class="hljs-built_in">boolean</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Boolean</span>(<span class="hljs-number">1</span>);(报错)<br>因为使用构造函数创建的对象不是<span class="hljs-built_in">Boolean</span>值<br></code></pre></td></tr></table></figure>
 
 <h2 id="二、数值"><a href="#二、数值" class="headerlink" title="二、数值"></a>二、数值</h2><h2 id="三、字符串"><a href="#三、字符串" class="headerlink" title="三、字符串"></a>三、字符串</h2><ol>
 <li><p>ts生成模板string</p>
 </li>
 <li><p>``用来定义es6的模板字符串，${expr} 用来</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myName : <span class="built_in">string</span> = <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> Myage : <span class="built_in">number</span> = <span class="number">23</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sentence : <span class="built_in">string</span> = <span class="string">`hello , my name is <span class="subst">$&#123;myName&#125;</span>. I am <span class="subst">$&#123;Myage+<span class="number">1</span>&#125;</span> years old`</span></span><br><span class="line"><span class="built_in">console</span>.log(sentence)</span><br><span class="line"><span class="comment">// 输出hello , my name is Tom. I am 24 years old</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> myName : <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;Tom&#x27;</span>;<br><span class="hljs-keyword">let</span> Myage : <span class="hljs-built_in">number</span> = <span class="hljs-number">23</span>;<br><br><span class="hljs-keyword">let</span> sentence : <span class="hljs-built_in">string</span> = <span class="hljs-string">`hello , my name is <span class="hljs-subst">$&#123;myName&#125;</span>. I am <span class="hljs-subst">$&#123;Myage+<span class="hljs-number">1</span>&#125;</span> years old`</span><br><span class="hljs-built_in">console</span>.log(sentence)<br><span class="hljs-comment">// 输出hello , my name is Tom. I am 24 years old</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="四、空值"><a href="#四、空值" class="headerlink" title="四、空值"></a>四、空值</h2><ol>
 <li>js中没有空值的概念，在ts中可以用void表示没有任何返回值的函数</li>
@@ -268,7 +274,7 @@
 <li><p>一个普通类型，在赋值过程中改变类型是不被允许的</p>
 </li>
 <li><p>但是如果是任意类型，就可以被赋值成任何类型</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myFavoriteNumber: <span class="built_in">any</span> = <span class="string">&#x27;seven&#x27;</span>;</span><br><span class="line">myFavoriteNumber = <span class="number">7</span>;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> myFavoriteNumber: <span class="hljs-built_in">any</span> = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>myFavoriteNumber = <span class="hljs-number">7</span>;<br></code></pre></td></tr></table></figure></li>
 <li><p>任意值上可以访问任意的属性</p>
 </li>
 <li><p>任意值上也可以调用任何的方法</p>
@@ -280,7 +286,7 @@
 </ol>
 <h2 id="七、类型推论"><a href="#七、类型推论" class="headerlink" title="七、类型推论"></a>七、类型推论</h2><ol>
 <li><p>如果在定义的时候没有赋值，那么会识别成any类型</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 会报错</span></span><br><span class="line"><span class="keyword">let</span> myName = <span class="string">&#x27;serven&#x27;</span>;</span><br><span class="line">myName = <span class="number">7</span>;</span><br><span class="line"><span class="comment">// 不会报错</span></span><br><span class="line"><span class="keyword">let</span> myAge;</span><br><span class="line">Myage = <span class="string">&#x27;serven&#x27;</span>;</span><br><span class="line">myAge = <span class="number">7</span>;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 会报错</span><br><span class="hljs-keyword">let</span> myName = <span class="hljs-string">&#x27;serven&#x27;</span>;<br>myName = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// 不会报错</span><br><span class="hljs-keyword">let</span> myAge;<br>Myage = <span class="hljs-string">&#x27;serven&#x27;</span>;<br>myAge = <span class="hljs-number">7</span>;<br></code></pre></td></tr></table></figure></li>
 <li><p>如果在定义的时候赋值了，会进行类型推论</p>
 </li>
 <li><p>总结：赋值是推论，没赋值是any</p>
@@ -288,13 +294,13 @@
 </ol>
 <h2 id="八、联合类型"><a href="#八、联合类型" class="headerlink" title="八、联合类型"></a>八、联合类型</h2><ol>
 <li><p>联合类型的写法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let myName: string | number;</span><br><span class="line">myName = &#x27;seven&#x27;;</span><br><span class="line">myName = 7;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">let</span> myName: string | number;<br><span class="hljs-attribute">myName</span> = <span class="hljs-string">&#x27;seven&#x27;</span>;<br><span class="hljs-attribute">myName</span> = <span class="hljs-number">7</span>;<br></code></pre></td></tr></table></figure></li>
 <li><p>只可以识别联合类型里有的类型，没有的类型，会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let myName: string | number;</span><br><span class="line">myName = &#x27;seven&#x27;;</span><br><span class="line">myName = 7;</span><br><span class="line">// 会报错</span><br><span class="line">// myName = true; </span><br></pre></td></tr></table></figure></li>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">let</span> myName: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br>myName = <span class="hljs-string">&#x27;seven&#x27;</span>;<br>myName = <span class="hljs-number">7</span>;<br><span class="hljs-comment">// 会报错</span><br><span class="hljs-comment">// myName = true; </span><br></code></pre></td></tr></table></figure></li>
 <li><p>访问联合类型的属性或者方法，只能访问联合类型共有的类型和方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 会报错，因为number没有length属性</span><br><span class="line">function getLength(something : string | number) : number&#123;</span><br><span class="line">   return something.length;</span><br><span class="line"> &#125;</span><br><span class="line">// 运行成功</span><br><span class="line">function getLength(something : string | number) : string&#123;</span><br><span class="line">    return something.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">// 会报错，因为number没有length属性</span><br><span class="hljs-keyword">function</span> get<span class="hljs-constructor">Length(<span class="hljs-params">something</span> : <span class="hljs-params">string</span> | <span class="hljs-params">number</span>)</span> : number&#123;<br>   return something.length;<br> &#125;<br><span class="hljs-comment">// 运行成功</span><br><span class="hljs-keyword">function</span> get<span class="hljs-constructor">Length(<span class="hljs-params">something</span> : <span class="hljs-params">string</span> | <span class="hljs-params">number</span>)</span> : <span class="hljs-built_in">string</span>&#123;<br>    return something.<span class="hljs-keyword">to</span><span class="hljs-constructor">String()</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>联合类型的变量在被赋值的时候，会根据类型推断的规则推断出一个类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/* 运行成功 */</span><br><span class="line">let myTest: string | number;</span><br><span class="line">myTest = &#x27;server&#x27;;</span><br><span class="line">console.log(myTest.length);</span><br><span class="line">// 根据类型推论得到myTest的类型是number，会报错</span><br><span class="line">myTest = 7;</span><br><span class="line">console.log(myTest.length)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">/* 运行成功 */</span><br><span class="hljs-keyword">let</span> myTest: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;<br>myTest = <span class="hljs-string">&#x27;server&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(myTest.length);<br><span class="hljs-comment">// 根据类型推论得到myTest的类型是number，会报错</span><br>myTest = <span class="hljs-number">7</span>;<br><span class="hljs-built_in">console</span>.log(myTest.length)<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://ts.xcatliu.com/">TypeScript入门教程</a></p>
 
@@ -536,6 +542,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -623,6 +631,8 @@
   
 
 
+
+  
 
 
 

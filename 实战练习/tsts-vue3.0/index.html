@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -269,13 +275,13 @@
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210720092859.png" srcset="/img/loading.gif" lazyload alt="image-20210720092858938"></p>
 </li>
 <li><p>编辑文件是会出现红色提示，可能是变量未赋值等，更改package.json</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;rules&quot;: &#123;</span><br><span class="line">   &quot;no-unused-vars&quot;: 0,</span><br><span class="line">   &quot;vue/no-unused-components&quot;: [</span><br><span class="line">     &quot;off&quot;,</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;ignoreWhenBindingPresent&quot;: true</span><br><span class="line">     &#125;</span><br><span class="line">   ],</span><br><span class="line">   &quot;prefer-const&quot;: &quot;off&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-string">&quot;rules&quot;</span>: &#123;<br>   <span class="hljs-string">&quot;no-unused-vars&quot;</span>: <span class="hljs-number">0</span>,<br>   <span class="hljs-string">&quot;vue/no-unused-components&quot;</span>: [<br>     <span class="hljs-string">&quot;off&quot;</span>,<br>     &#123;<br>       <span class="hljs-string">&quot;ignoreWhenBindingPresent&quot;</span>: <span class="hljs-literal">true</span><br>     &#125;<br>   ],<br>   <span class="hljs-string">&quot;prefer-const&quot;</span>: <span class="hljs-string">&quot;off&quot;</span><br> &#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>在书写css样式时，采用了scss语法，安装相关组件，注意版本问题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;node-sass&quot;: &quot;^4.14.1&quot;,</span><br><span class="line"> &quot;sass-loader&quot;: &quot;^7.3.1&quot;,</span><br><span class="line"> npm install node-sass@4.14.1 -D</span><br><span class="line"> npm install sass-loader@7.3.1 -D</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-string">&quot;node-sass&quot;</span>: <span class="hljs-string">&quot;^4.14.1&quot;</span>,<br> <span class="hljs-string">&quot;sass-loader&quot;</span>: <span class="hljs-string">&quot;^7.3.1&quot;</span>,<br> npm install <span class="hljs-keyword">node</span><span class="hljs-title">-sass</span>@<span class="hljs-number">4.14</span>.<span class="hljs-number">1</span> -D<br> npm install sass-loader@<span class="hljs-number">7.3</span>.<span class="hljs-number">1</span> -D<br></code></pre></td></tr></table></figure></li>
 <li><p>main.ts文件内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123;createApp&#125; from &#x27;vue&#x27;</span><br><span class="line">import &#123;Elementplus&#125; from &#x27;./element-ui&#x27;</span><br><span class="line">import App from &#x27;./App.vue&#x27;;</span><br><span class="line">import &#x27;./assets/css/global.css&#x27;</span><br><span class="line"></span><br><span class="line">const app = createApp(App);</span><br><span class="line">// 调用</span><br><span class="line">Elementplus(app);</span><br><span class="line">// 使用</span><br><span class="line">createApp(App).use(Elementplus).mount(&#x27;#app&#x27;)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;createApp&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> &#123;Elementplus&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./element-ui&#x27;</span><br><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./assets/css/global.css&#x27;</span><br><br><span class="hljs-keyword">const</span> app = createApp(App);<br><span class="hljs-comment">// 调用</span><br>Elementplus(app);<br><span class="hljs-comment">// 使用</span><br>createApp(App).use(Elementplus).mount(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure></li>
 <li><p>vue3.0采用按需引入element-plus的方式，安装插件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;babel-plugin-import&quot;: &quot;^1.13.3&quot;,</span><br><span class="line">npm install babel-plugin-import -D</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-string">&quot;babel-plugin-import&quot;</span>: <span class="hljs-string">&quot;^1.13.3&quot;</span>,<br><span class="hljs-built_in">npm</span> install babel-plugin-<span class="hljs-keyword">import</span> -D<br></code></pre></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -514,6 +520,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -601,6 +609,8 @@
   
 
 
+
+  
 
 
 

@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 时间戳转化成时间</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>time 时间戳</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns  </span>返回时间格式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeStamp2String</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> dateTime = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    dateTime.setTime(time); <span class="comment">//我们将向 1970年01月01日 添加 time毫秒，并显示新的日期和时间</span></span><br><span class="line">    <span class="built_in">console</span>.log(dateTime); <span class="comment">// 2018-05-17T10:20:38.244Z</span></span><br><span class="line">    <span class="keyword">let</span> year = dateTime.getFullYear();</span><br><span class="line">    <span class="keyword">let</span> month = dateTime.getMonth() + <span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + (dateTime.getMonth() + <span class="number">1</span>) : dateTime.getMonth() + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> day = dateTime.getDate() &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + dateTime.getDate() : dateTime.getDate();</span><br><span class="line">    <span class="keyword">let</span> hour = dateTime.getHours() &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + dateTime.getHours() : dateTime.getHours();</span><br><span class="line">    <span class="keyword">let</span> minute = dateTime.getMinutes() &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + dateTime.getMinutes() : dateTime.getMinutes();</span><br><span class="line">    <span class="keyword">let</span> second = dateTime.getSeconds() &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + dateTime.getSeconds() : dateTime.getSeconds();</span><br><span class="line">    <span class="keyword">return</span> year + <span class="string">&quot;-&quot;</span> + month + <span class="string">&quot;-&quot;</span> + day + <span class="string">&quot; &quot;</span> + hour + <span class="string">&quot;:&quot;</span> + minute + <span class="string">&quot;:&quot;</span> + second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(timeStamp2String(<span class="number">1526552438244</span>)); <span class="comment">// 2018-05-17 18:20:38</span></span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 时间戳转化成时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>time 时间戳</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns  </span>返回时间格式</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeStamp2String</span>(<span class="hljs-params">time</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> dateTime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    dateTime.setTime(time); <span class="hljs-comment">//我们将向 1970年01月01日 添加 time毫秒，并显示新的日期和时间</span><br>    <span class="hljs-built_in">console</span>.log(dateTime); <span class="hljs-comment">// 2018-05-17T10:20:38.244Z</span><br>    <span class="hljs-keyword">let</span> year = dateTime.getFullYear();<br>    <span class="hljs-keyword">let</span> month = dateTime.getMonth() + <span class="hljs-number">1</span> &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + (dateTime.getMonth() + <span class="hljs-number">1</span>) : dateTime.getMonth() + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> day = dateTime.getDate() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getDate() : dateTime.getDate();<br>    <span class="hljs-keyword">let</span> hour = dateTime.getHours() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getHours() : dateTime.getHours();<br>    <span class="hljs-keyword">let</span> minute = dateTime.getMinutes() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getMinutes() : dateTime.getMinutes();<br>    <span class="hljs-keyword">let</span> second = dateTime.getSeconds() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getSeconds() : dateTime.getSeconds();<br>    <span class="hljs-keyword">return</span> year + <span class="hljs-string">&quot;-&quot;</span> + month + <span class="hljs-string">&quot;-&quot;</span> + day + <span class="hljs-string">&quot; &quot;</span> + hour + <span class="hljs-string">&quot;:&quot;</span> + minute + <span class="hljs-string">&quot;:&quot;</span> + second;<br>&#125;<br><span class="hljs-built_in">console</span>.log(timeStamp2String(<span class="hljs-number">1526552438244</span>)); <span class="hljs-comment">// 2018-05-17 18:20:38</span><br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -484,6 +490,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -571,6 +579,8 @@
   
 
 
+
+  
 
 
 

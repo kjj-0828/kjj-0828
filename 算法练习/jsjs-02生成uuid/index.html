@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生成uuid</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateUUID</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//返回13位的毫秒数 从1970年1月1日到现在的北京时间</span></span><br><span class="line">    <span class="keyword">let</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="comment">//  /[xy]/g 是匹配字符串中的x或者y或者多个xy</span></span><br><span class="line">    <span class="comment">// /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</span></span><br><span class="line">    <span class="keyword">var</span> uuid = <span class="string">&#x27;xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx&#x27;</span>.replace(<span class="regexp">/[xy]/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// console.log(c); // c的值是替换后的值xxxxxxxxxxxxxxxyxxxxxxxxxxxxxxx</span></span><br><span class="line">        <span class="keyword">let</span> r = (d + <span class="built_in">Math</span>.random() * <span class="number">16</span>) % <span class="number">16</span> | <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> (c == <span class="string">&#x27;x&#x27;</span> ? r : (r &amp; <span class="number">0x7</span> | <span class="number">0x8</span>)).toString(<span class="number">16</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> uuid;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(generateUUID()); <span class="comment">//ee465953237b4f16a500bb4b1b96c0ff</span></span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成uuid</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateUUID</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">//返回13位的毫秒数 从1970年1月1日到现在的北京时间</span><br>    <span class="hljs-keyword">let</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();<br>    <span class="hljs-comment">//  /[xy]/g 是匹配字符串中的x或者y或者多个xy</span><br>    <span class="hljs-comment">// /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</span><br>    <span class="hljs-keyword">var</span> uuid = <span class="hljs-string">&#x27;xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx&#x27;</span>.replace(<span class="hljs-regexp">/[xy]/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) </span>&#123;<br>        <span class="hljs-comment">// console.log(c); // c的值是替换后的值xxxxxxxxxxxxxxxyxxxxxxxxxxxxxxx</span><br>        <span class="hljs-keyword">let</span> r = (d + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">16</span>) % <span class="hljs-number">16</span> | <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> (c == <span class="hljs-string">&#x27;x&#x27;</span> ? r : (r &amp; <span class="hljs-number">0x7</span> | <span class="hljs-number">0x8</span>)).toString(<span class="hljs-number">16</span>);<br>    &#125;)<br>    <span class="hljs-keyword">return</span> uuid;<br>&#125;<br><span class="hljs-built_in">console</span>.log(generateUUID()); <span class="hljs-comment">//ee465953237b4f16a500bb4b1b96c0ff</span><br></code></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <p> 对/[xy]/g的理解：</p><p> /[xy]/g 是匹配字符串中的x或者y或者多个xy</p><p> /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</p><p>如果上述的程序不加/g得到结果是： 5xxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx 只会匹配一个字符</p>
@@ -486,6 +492,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -573,6 +581,8 @@
   
 
 
+
+  
 
 
 

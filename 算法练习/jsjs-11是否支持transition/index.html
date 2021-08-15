@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检测某个是否支持transition属性</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回布尔值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">supportTransition</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> s = <span class="built_in">document</span>.createElement(<span class="string">&#x27;p&#x27;</span>).style;</span><br><span class="line">    <span class="built_in">console</span>.log(s);</span><br><span class="line">    r = <span class="string">&#x27;transition&#x27;</span> <span class="keyword">in</span> s ||</span><br><span class="line">        <span class="string">&#x27;WebkitTransition&#x27;</span> <span class="keyword">in</span> s ||</span><br><span class="line">        <span class="string">&#x27;MozTransition&#x27;</span> <span class="keyword">in</span> s ||</span><br><span class="line">        <span class="string">&#x27;msTransition&#x27;</span> <span class="keyword">in</span> s ||</span><br><span class="line">        <span class="string">&#x27;OTransition&#x27;</span> <span class="keyword">in</span> s;</span><br><span class="line">    s = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line">supportTransition();</span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 检测某个是否支持transition属性</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">supportTransition</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> s = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;p&#x27;</span>).style;<br>    <span class="hljs-built_in">console</span>.log(s);<br>    r = <span class="hljs-string">&#x27;transition&#x27;</span> <span class="hljs-keyword">in</span> s ||<br>        <span class="hljs-string">&#x27;WebkitTransition&#x27;</span> <span class="hljs-keyword">in</span> s ||<br>        <span class="hljs-string">&#x27;MozTransition&#x27;</span> <span class="hljs-keyword">in</span> s ||<br>        <span class="hljs-string">&#x27;msTransition&#x27;</span> <span class="hljs-keyword">in</span> s ||<br>        <span class="hljs-string">&#x27;OTransition&#x27;</span> <span class="hljs-keyword">in</span> s;<br>    s = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">return</span> r;<br>&#125;<br>supportTransition();<br></code></pre></td></tr></table></figure>
 
 <img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210807180405.png" srcset="/img/loading.gif" lazyload alt="image-20210807180352316" style="zoom:67%;" />
             </div>
@@ -484,6 +490,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -571,6 +579,8 @@
   
 
 
+
+  
 
 
 

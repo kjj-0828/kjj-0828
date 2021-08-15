@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生成指定位数的随机整数(可用于验证码)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>count 指定位数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回指定位数的随机数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRandomNum</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arr = []; <span class="comment">// 随机数存放到这个数组中</span></span><br><span class="line">    <span class="keyword">let</span> strNum = <span class="string">&quot;&quot;</span>;  <span class="comment">// 返回值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">        arr[i] = <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">10</span>); <span class="comment">// 生成的随机数放入数组</span></span><br><span class="line">        strNum += <span class="built_in">String</span>(arr[i]); <span class="comment">// 随机数拼接</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> strNum;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getRandomNum(<span class="number">4</span>)); <span class="comment">// 2462</span></span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成指定位数的随机整数(可用于验证码)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>count 指定位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回指定位数的随机数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRandomNum</span>(<span class="hljs-params">count</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> arr = []; <span class="hljs-comment">// 随机数存放到这个数组中</span><br>    <span class="hljs-keyword">let</span> strNum = <span class="hljs-string">&quot;&quot;</span>;  <span class="hljs-comment">// 返回值</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; count; i++) &#123;<br>        arr[i] = <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>); <span class="hljs-comment">// 生成的随机数放入数组</span><br>        strNum += <span class="hljs-built_in">String</span>(arr[i]); <span class="hljs-comment">// 随机数拼接</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> strNum;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getRandomNum(<span class="hljs-number">4</span>)); <span class="hljs-comment">// 2462</span><br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -484,6 +490,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -571,6 +579,8 @@
   
 
 
+
+  
 
 
 

@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据文件名获取文件格式</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>str 文件名</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>文件类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFileTypeByFileName</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.substring(str.indexOf(<span class="string">&#x27;.&#x27;</span>) + <span class="number">1</span>).toLowerCase();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getFileTypeByFileName(<span class="string">&quot;index.html&quot;</span>)); <span class="comment">//html</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getFileTypeByFileName(<span class="string">&quot;index.js&quot;</span>)); <span class="comment">// js</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getFileTypeByFileName(<span class="string">&quot;index.php&quot;</span>)); <span class="comment">//php </span></span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 根据文件名获取文件格式</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 文件名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>文件类型</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFileTypeByFileName</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> str.substring(str.indexOf(<span class="hljs-string">&#x27;.&#x27;</span>) + <span class="hljs-number">1</span>).toLowerCase();<br>&#125;<br><span class="hljs-built_in">console</span>.log(getFileTypeByFileName(<span class="hljs-string">&quot;index.html&quot;</span>)); <span class="hljs-comment">//html</span><br><br><span class="hljs-built_in">console</span>.log(getFileTypeByFileName(<span class="hljs-string">&quot;index.js&quot;</span>)); <span class="hljs-comment">// js</span><br><br><span class="hljs-built_in">console</span>.log(getFileTypeByFileName(<span class="hljs-string">&quot;index.php&quot;</span>)); <span class="hljs-comment">//php </span><br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -484,6 +490,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -571,6 +579,8 @@
   
 
 
+
+  
 
 
 

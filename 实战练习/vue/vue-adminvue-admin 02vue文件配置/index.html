@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,14 +251,14 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、端口的配置"><a href="#一、端口的配置" class="headerlink" title="一、端口的配置"></a>一、端口的配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> port = process.env.port || process.env.npm_config_port || <span class="number">9528</span> <span class="comment">// process.env.port 环境变量的端口，环境变量要是设置了端口，就用环境变量的</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+              <h2 id="一、端口的配置"><a href="#一、端口的配置" class="headerlink" title="一、端口的配置"></a>一、端口的配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> port = process.env.port || process.env.npm_config_port || <span class="hljs-number">9528</span> <span class="hljs-comment">// process.env.port 环境变量的端口，环境变量要是设置了端口，就用环境变量的</span><br><br></code></pre></td></tr></table></figure>
 
 <p>在根目录文件夹下创建3个文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// .env.development</span></span><br><span class="line">NODE_ENV = production</span><br><span class="line"></span><br><span class="line"># just a flag</span><br><span class="line">ENV = <span class="string">&#x27;staging&#x27;</span></span><br><span class="line"></span><br><span class="line"># base api</span><br><span class="line">VUE_APP_BASE_API = <span class="string">&#x27;/stage-api&#x27;</span></span><br><span class="line">#port</span><br><span class="line">port = <span class="number">8088</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-comment">// .env.development</span><br>NODE_ENV = production<br><br># just a flag<br>ENV = <span class="hljs-string">&#x27;staging&#x27;</span><br><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/stage-api&#x27;</span><br>#port<br>port = <span class="hljs-number">8088</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.env.production</span></span><br><span class="line"># just a flag</span><br><span class="line">ENV = <span class="string">&#x27;production&#x27;</span></span><br><span class="line"># base api</span><br><span class="line">VUE_APP_BASE_API = <span class="string">&#x27;/prod-api&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-comment">//.env.production</span><br># just a flag<br>ENV = <span class="hljs-string">&#x27;production&#x27;</span><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/prod-api&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.env.staging</span></span><br><span class="line"># just a flag</span><br><span class="line">ENV = <span class="string">&#x27;production&#x27;</span></span><br><span class="line"></span><br><span class="line"># base api</span><br><span class="line">VUE_APP_BASE_API = <span class="string">&#x27;/prod-api&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//.env.staging</span><br># just a flag<br>ENV = <span class="hljs-string">&#x27;production&#x27;</span><br><br># base api<br>VUE_APP_BASE_API = <span class="hljs-string">&#x27;/prod-api&#x27;</span><br><br></code></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li> 当我们使用<code>npm run dev</code>的时候环境变量使用的是.env.development 中的配置</li><li> 使用<code>npm run build</code> 的时候使用的是.env.production中的配置</li></ul>
@@ -501,6 +507,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -588,6 +596,8 @@
   
 
 
+
+  
 
 
 

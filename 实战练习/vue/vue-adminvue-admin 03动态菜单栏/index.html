@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,13 +251,13 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、得到路由表"><a href="#一、得到路由表" class="headerlink" title="一、得到路由表"></a>一、得到路由表</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">routes</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="comment">// 得到路由表</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.$router.options.routes[<span class="number">2</span>].children;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+              <h2 id="一、得到路由表"><a href="#一、得到路由表" class="headerlink" title="一、得到路由表"></a>一、得到路由表</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">routes</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">// 得到路由表</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$router.options.routes[<span class="hljs-number">2</span>].children;<br>&#125;,<br></code></pre></td></tr></table></figure>
 
-<h2 id="二、循环路由表"><a href="#二、循环路由表" class="headerlink" title="二、循环路由表"></a>二、循环路由表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu-item v-for=&quot;route in routes&quot; :key=&quot;route.path&quot; :index=&quot;route.path&quot;&gt;</span><br><span class="line">  &lt;svg-icon :icon-class=&quot;route.meta.icon&quot;&gt;&lt;/svg-icon&gt;</span><br><span class="line">  &lt;span slot=&quot;title&quot;&gt;&#123;&#123; route.meta.title &#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/el-menu-item&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="二、循环路由表"><a href="#二、循环路由表" class="headerlink" title="二、循环路由表"></a>二、循环路由表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu-item v-for=&quot;route in routes&quot; :key=&quot;route.path&quot; :index=&quot;route.path&quot;&gt;<br>  &lt;svg-icon :icon-class=&quot;route.meta.icon&quot;&gt;&lt;/svg-icon&gt;<br>  &lt;span slot=&quot;title&quot;&gt;&#123;&#123; route.meta.title &#125;&#125;&lt;/span&gt;<br>&lt;/el-menu-item&gt;<br></code></pre></td></tr></table></figure>
 
-<h2 id="三、实现刷新时，高亮不变"><a href="#三、实现刷新时，高亮不变" class="headerlink" title="三、实现刷新时，高亮不变"></a>三、实现刷新时，高亮不变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">activeMenu</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">  <span class="comment">//页面刷新后，还是高亮选择的菜单项</span></span><br><span class="line">  <span class="keyword">const</span> route = <span class="built_in">this</span>.$route;</span><br><span class="line">  <span class="keyword">const</span> &#123; meta, path &#125; = route;</span><br><span class="line">  <span class="keyword">return</span> path;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="三、实现刷新时，高亮不变"><a href="#三、实现刷新时，高亮不变" class="headerlink" title="三、实现刷新时，高亮不变"></a>三、实现刷新时，高亮不变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">activeMenu</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">//页面刷新后，还是高亮选择的菜单项</span><br>  <span class="hljs-keyword">const</span> route = <span class="hljs-built_in">this</span>.$route;<br>  <span class="hljs-keyword">const</span> &#123; meta, path &#125; = route;<br>  <span class="hljs-keyword">return</span> path;<br>&#125;,<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu</span><br><span class="line">  class=&quot;el-menu-vertical-demo&quot;</span><br><span class="line">  background-color=&quot;#304156&quot;</span><br><span class="line">  text-color=&quot;#BFCBD9&quot;</span><br><span class="line">  router</span><br><span class="line">  :default-active=&quot;activeMenu&quot;</span><br><span class="line">  active-text-color=&quot;#409EFF&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu<br>  class=&quot;el-menu-vertical-demo&quot;<br>  background-color=&quot;#304156&quot;<br>  text-color=&quot;#BFCBD9&quot;<br>  router<br>  :default-active=&quot;activeMenu&quot;<br>  active-text-color=&quot;#409EFF&quot;<br>&gt;<br></code></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li> this.$router:我们可以在任何组件内，通过 this.$router访问路由器</li><li> this.$route:可以通过 this.$route访问当前路由</li></ul>
@@ -497,6 +503,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -584,6 +592,8 @@
   
 
 
+
+  
 
 
 

@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * url参数转对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>url url地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回json格式的对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseQueryString</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">    url = url == <span class="literal">null</span> ? <span class="built_in">window</span>.location.href : url;</span><br><span class="line">    <span class="keyword">let</span> search = url.substring(url.indexOf(<span class="string">&#x27;?&#x27;</span>) + <span class="number">1</span>); <span class="comment">// id=1&amp;name=ye21st</span></span><br><span class="line">    <span class="keyword">if</span> (!search) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;&#123;&quot;&#x27;</span> + <span class="built_in">decodeURIComponent</span>(search).replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;\\&quot;&#x27;</span>).replace(<span class="regexp">/&amp;/g</span>, <span class="string">&#x27;&quot;,&quot;&#x27;</span>).replace(<span class="regexp">/=/g</span>, <span class="string">&#x27;&quot;:&quot;&#x27;</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span>); <span class="comment">// &#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;ye21st&quot;&#125;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(<span class="string">&#x27;&#123;&quot;&#x27;</span> + <span class="built_in">decodeURIComponent</span>(search).replace(<span class="regexp">/&quot;/g</span>, <span class="string">&#x27;\\&quot;&#x27;</span>).replace(<span class="regexp">/&amp;/g</span>, <span class="string">&#x27;&quot;,&quot;&#x27;</span>).replace(<span class="regexp">/=/g</span>, <span class="string">&#x27;&quot;:&quot;&#x27;</span>) + <span class="string">&#x27;&quot;&#125;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(parseQueryString(<span class="string">&quot;http://www.baidu.com?id=1&amp;name=ye21st&quot;</span>)); <span class="comment">// &#123; id: &#x27;1&#x27;, name: &#x27;ye21st&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * url参数转对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>url url地址</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回json格式的对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseQueryString</span>(<span class="hljs-params">url</span>) </span>&#123;<br>    url = url == <span class="hljs-literal">null</span> ? <span class="hljs-built_in">window</span>.location.href : url;<br>    <span class="hljs-keyword">let</span> search = url.substring(url.indexOf(<span class="hljs-string">&#x27;?&#x27;</span>) + <span class="hljs-number">1</span>); <span class="hljs-comment">// id=1&amp;name=ye21st</span><br>    <span class="hljs-keyword">if</span> (!search) &#123;<br>        <span class="hljs-keyword">return</span> &#123;&#125;;<br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;&#123;&quot;&#x27;</span> + <span class="hljs-built_in">decodeURIComponent</span>(search).replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>).replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&#x27;&quot;,&quot;&#x27;</span>).replace(<span class="hljs-regexp">/=/g</span>, <span class="hljs-string">&#x27;&quot;:&quot;&#x27;</span>) + <span class="hljs-string">&#x27;&quot;&#125;&#x27;</span>); <span class="hljs-comment">// &#123;&quot;id&quot;:&quot;1&quot;,&quot;name&quot;:&quot;ye21st&quot;&#125;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-string">&#x27;&#123;&quot;&#x27;</span> + <span class="hljs-built_in">decodeURIComponent</span>(search).replace(<span class="hljs-regexp">/&quot;/g</span>, <span class="hljs-string">&#x27;\\&quot;&#x27;</span>).replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">&#x27;&quot;,&quot;&#x27;</span>).replace(<span class="hljs-regexp">/=/g</span>, <span class="hljs-string">&#x27;&quot;:&quot;&#x27;</span>) + <span class="hljs-string">&#x27;&quot;&#125;&#x27;</span>);<br><br>&#125;<br><span class="hljs-built_in">console</span>.log(parseQueryString(<span class="hljs-string">&quot;http://www.baidu.com?id=1&amp;name=ye21st&quot;</span>)); <span class="hljs-comment">// &#123; id: &#x27;1&#x27;, name: &#x27;ye21st&#x27; &#125;</span><br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -484,6 +490,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -571,6 +579,8 @@
   
 
 
+
+  
 
 
 

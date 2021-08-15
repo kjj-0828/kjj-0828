@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证邮箱格式</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>str 传入的邮箱</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回布尔值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmail</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> emailReg = <span class="regexp">/^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-z0-9A-Z]&#123;2,&#125;$/</span>;</span><br><span class="line">    <span class="keyword">return</span> emailReg.test(str);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// let str = &quot;11090@qq.com&quot;; //true</span></span><br><span class="line"><span class="comment">// let str = &quot;hjkjhk@645654.2121-6878.com.wcn&quot; //true</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hjkjhk@645654.2121_6878.com.wcn&quot;</span> <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(isEmail(str));</span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证邮箱格式</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入的邮箱</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmail</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> emailReg = <span class="hljs-regexp">/^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-z0-9A-Z]&#123;2,&#125;$/</span>;<br>    <span class="hljs-keyword">return</span> emailReg.test(str);<br>&#125;<br><span class="hljs-comment">// let str = &quot;11090@qq.com&quot;; //true</span><br><span class="hljs-comment">// let str = &quot;hjkjhk@645654.2121-6878.com.wcn&quot; //true</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hjkjhk@645654.2121_6878.com.wcn&quot;</span> <span class="hljs-comment">//false</span><br><span class="hljs-built_in">console</span>.log(isEmail(str));<br></code></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>? 表示匹配前面的字表达式零次或者一次，是非贪婪模式的，尽可能少的匹配所搜索的字符串</li><li>邮箱的格式规定</li><li>@之前必须有内容且只能是字母（大小写）、数字、下划线(_)、减号（-）、点（.）</li><li>@和最后一个点（.）之间必须有内容且只能是字母（大小写）、数字、点（.）、减号（-），且两个点不能挨着</li><li> 最后一个点（.）之后必须有内容且内容只能是字母（大小写）、数字且长度为大于等于2个字节，小于等于6个字节</li></ul>
@@ -486,6 +492,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -573,6 +581,8 @@
   
 
 
+
+  
 
 
 

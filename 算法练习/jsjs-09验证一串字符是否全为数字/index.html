@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检查输入的一串字符是否全部是数字</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>str 字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>布尔值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkNum</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.match(<span class="regexp">/\D/</span>) == <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// let str = &quot;21315，．：&quot;;//false</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;489641&quot;</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(checkNum(str));</span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 检查输入的一串字符是否全部是数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkNum</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> str.match(<span class="hljs-regexp">/\D/</span>) == <span class="hljs-literal">null</span>;<br>&#125;<br><span class="hljs-comment">// let str = &quot;21315，．：&quot;;//false</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;489641&quot;</span> <span class="hljs-comment">// true</span><br><span class="hljs-built_in">console</span>.log(checkNum(str));<br></code></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>\D匹配一个非数字字符</li></ul>
@@ -486,6 +492,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -573,6 +581,8 @@
   
 
 
+
+  
 
 
 

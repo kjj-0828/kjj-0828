@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证密码必须是字母和数字的组合</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>password  密码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回布尔值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkPasswordValidate</span>(<span class="params">password</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="regexp">/^(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]&#123;6,20&#125;$/</span>.test(password);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// let password = &quot;kjj123&quot;; // true</span></span><br><span class="line"><span class="comment">// let password = &quot;kjj&quot;; // false</span></span><br><span class="line"><span class="keyword">let</span> password = <span class="string">&quot;123&quot;</span>; <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(checkPasswordValidate(password));</span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证密码必须是字母和数字的组合</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>password  密码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkPasswordValidate</span>(<span class="hljs-params">password</span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]&#123;6,20&#125;$/</span>.test(password);<br>&#125;<br><span class="hljs-comment">// let password = &quot;kjj123&quot;; // true</span><br><span class="hljs-comment">// let password = &quot;kjj&quot;; // false</span><br><span class="hljs-keyword">let</span> password = <span class="hljs-string">&quot;123&quot;</span>; <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(checkPasswordValidate(password));<br></code></pre></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>(?!正则):表示在这个位置之后不能出现这个正则</li><li>^(?!^\d+$)<br>表示字符串不能完全由数字组成，即必须包含其他字符</li></ul>
@@ -486,6 +492,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -573,6 +581,8 @@
   
 
 
+
+  
 
 
 

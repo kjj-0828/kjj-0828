@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生成随机时间戳</span></span><br><span class="line"><span class="comment"> * 十三位时间毫秒值+3位随机数(0-10之间,不包括10)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueId</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(<span class="keyword">new</span> <span class="built_in">Date</span>()).toString() + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">10</span>) + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">10</span>) + <span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueId());</span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成随机时间戳</span><br><span class="hljs-comment"> * 十三位时间毫秒值+3位随机数(0-10之间,不包括10)</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uniqueId</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()).toString() + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>);<br>&#125;<br><span class="hljs-built_in">console</span>.log(uniqueId());<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -482,6 +488,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -569,6 +577,8 @@
   
 
 
+
+  
 
 
 

@@ -27,6 +27,12 @@
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
 
   
     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -245,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 四舍五入指定位数的小数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>num  数值</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param <span class="type">&#123;*&#125;</span> </span>len 保留位数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns </span>返回四舍五入后指定的小数位数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRound</span>(<span class="params">num, len</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.round(num * <span class="built_in">Math</span>.pow(<span class="number">10</span>, len)) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, len);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(getRound(<span class="number">6.123456</span>, <span class="number">4</span>)); <span class="comment">//6.1235</span></span><br></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 四舍五入指定位数的小数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>num  数值</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>len 保留位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回四舍五入后指定的小数位数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRound</span>(<span class="hljs-params">num, len</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.round(num * <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, len)) / <span class="hljs-built_in">Math</span>.pow(<span class="hljs-number">10</span>, len);<br>&#125;<br><span class="hljs-built_in">console</span>.log(getRound(<span class="hljs-number">6.123456</span>, <span class="hljs-number">4</span>)); <span class="hljs-comment">//6.1235</span><br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -482,6 +488,8 @@
 
 
 
+  
+
 
 
   <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
@@ -569,6 +577,8 @@
   
 
 
+
+  
 
 
 
