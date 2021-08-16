@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="vue实战练习-动态菜单">
+  <meta name="description" content="vue实战练习-退出登录">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>vue-admin 03动态菜单栏 - kjj</title>
+  <title>vue-admin-03退出登录 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -167,7 +167,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="vue-admin 03动态菜单栏">
+            <span class="h2" id="subtitle" title="vue-admin-03退出登录">
               
             </span>
 
@@ -182,7 +182,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-14 10:25" pubdate>
+      <time datetime="2021-08-14 10:10" pubdate>
         August 14, 2021 am
       </time>
     </span>
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      213 字
+      100 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      1
        分钟
     </span>
   
@@ -242,28 +242,26 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vue-admin 03动态菜单栏</h1>
+            <h1 style="display: none">vue-admin-03退出登录</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 15, 2021 pm
+                  本文最后更新于：August 16, 2021 am
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、得到路由表"><a href="#一、得到路由表" class="headerlink" title="一、得到路由表"></a>一、得到路由表</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">routes</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">// 得到路由表</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$router.options.routes[<span class="hljs-number">2</span>].children;<br>&#125;,<br></code></pre></td></tr></table></figure>
-
-<h2 id="二、循环路由表"><a href="#二、循环路由表" class="headerlink" title="二、循环路由表"></a>二、循环路由表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu-item v-for=&quot;route in routes&quot; :key=&quot;route.path&quot; :index=&quot;route.path&quot;&gt;<br>  &lt;svg-icon :icon-class=&quot;route.meta.icon&quot;&gt;&lt;/svg-icon&gt;<br>  &lt;span slot=&quot;title&quot;&gt;&#123;&#123; route.meta.title &#125;&#125;&lt;/span&gt;<br>&lt;/el-menu-item&gt;<br></code></pre></td></tr></table></figure>
-
-<h2 id="三、实现刷新时，高亮不变"><a href="#三、实现刷新时，高亮不变" class="headerlink" title="三、实现刷新时，高亮不变"></a>三、实现刷新时，高亮不变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">activeMenu</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">//页面刷新后，还是高亮选择的菜单项</span><br>  <span class="hljs-keyword">const</span> route = <span class="hljs-built_in">this</span>.$route;<br>  <span class="hljs-keyword">const</span> &#123; meta, path &#125; = route;<br>  <span class="hljs-keyword">return</span> path;<br>&#125;,<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu<br>  class=&quot;el-menu-vertical-demo&quot;<br>  background-color=&quot;#304156&quot;<br>  text-color=&quot;#BFCBD9&quot;<br>  router<br>  :default-active=&quot;activeMenu&quot;<br>  active-text-color=&quot;#409EFF&quot;<br>&gt;<br></code></pre></td></tr></table></figure>
-
-<div class="note note-success">
-            <ul><li> this.$router:我们可以在任何组件内，通过 this.$router访问路由器</li><li> this.$route:可以通过 this.$route访问当前路由</li></ul>
-          </div>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014395524/article/details/88194842">Vue 中 this.$router 与 this.$route 的区别 以及 push() 方法</a></p>
+              <h2 id="一、退出"><a href="#一、退出" class="headerlink" title="一、退出"></a>一、退出</h2><ol>
+<li><p>先发出退出请求</p>
+</li>
+<li><p>退出时，清空cookie</p>
+</li>
+<li><p>退出时，重置路由表</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params">&#123; commit, state &#125;</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        logout(state.token).then(<span class="hljs-function">() =&gt;</span> &#123;<br>            removeToken(); <span class="hljs-comment">//  移出token</span><br>            resetRouer(); <span class="hljs-comment">// 重置路由表</span><br>            commit(<span class="hljs-string">&#x27;RESET_STATE&#x27;</span>);<br>            resolve();<br>        &#125;).catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>            reject(error);<br>        &#125;)<br>    &#125;)<br>&#125;,<br></code></pre></td></tr></table></figure></li>
+<li><p>完成后，跳转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.$store.dispatch(<span class="hljs-string">&quot;user/logout&quot;</span>);<br>  <span class="hljs-comment">// this.$router.push(&quot;/&quot;);</span><br>  <span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.$route.fullPath&#125;</span>`</span>);<br>&#125;,<br></code></pre></td></tr></table></figure></li>
+<li></li>
+</ol>
 
             </div>
             <hr>
@@ -304,19 +302,19 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA/">
+                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-03%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E6%A0%8F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue-admin 03路由拦截</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="hidden-mobile">vue-admin-03动态菜单栏</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin%2003%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95/">
-                        <span class="hidden-mobile">vue-admin 03退出登录</span>
-                        <span class="visible-mobile">Next</span>
+                      <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-02%E5%AE%9E%E7%8E%B0mockjs/">
+                        <span class="hidden-mobile">vue-admin-02实现mockjs</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -359,7 +357,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -368,7 +366,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -556,10 +554,6 @@
 
 
 
-  
-<script src="/js/xaioxingxing.js"></script>
-
-
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
@@ -644,10 +638,6 @@
 
 
 
-
-
-  
-<script src="/js/xaioxingxing.js"></script>
 
 
 
