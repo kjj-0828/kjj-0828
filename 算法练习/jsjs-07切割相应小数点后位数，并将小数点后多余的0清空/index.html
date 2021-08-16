@@ -246,12 +246,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 1, 2021 pm
+                  本文最后更新于：August 16, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
               <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 切割相应小数点后位数并将小数点后多余的0清空</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>num 带小数的值</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>len 小数位数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回制定的小数位数，且自动去除多余的0</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cutRoundNum</span>(<span class="hljs-params">num, len</span>) </span>&#123;<br>    num = num.toString(); <span class="hljs-comment">// 将数字转成字符串 自动去零 2.333</span><br>    num = num.substr(<span class="hljs-number">0</span>, num.indexOf(<span class="hljs-string">&#x27;.&#x27;</span>) + <span class="hljs-number">1</span>) + num.substr(num.indexOf(<span class="hljs-string">&#x27;.&#x27;</span>) + <span class="hljs-number">1</span>, len);<br>    <span class="hljs-keyword">let</span> regx = num.match(<span class="hljs-regexp">/\d+\.\d+/g</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> index <span class="hljs-keyword">in</span> regx) &#123;<br>        num = num.replace(regx[index], <span class="hljs-built_in">parseFloat</span>(regx[index]));<br>    &#125;<br>    <span class="hljs-keyword">return</span> num;<br>&#125;<br><span class="hljs-built_in">console</span>.log(cutRoundNum(<span class="hljs-number">2.333000</span>, <span class="hljs-number">4</span>));<span class="hljs-comment">// 2.333</span><br></code></pre></td></tr></table></figure>
+
             </div>
             <hr>
             <div>

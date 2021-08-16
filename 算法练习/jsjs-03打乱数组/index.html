@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 1, 2021 pm
+                  本文最后更新于：August 16, 2021 pm
                 
               </p>
             
@@ -256,6 +256,7 @@
 <div class="note note-success">
             <p>对Object.assign()的理解：</p><ul><li>合并目标数组和原数组，,目标数组相同的键会被原数组覆盖</li></ul><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">const</span> target = &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">2</span> &#125;;<br><span class="hljs-attribute">const</span> source = &#123; b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;;<br><span class="hljs-attribute">const</span> returnedTarget = Object.assign(target, source);<br><span class="hljs-attribute">console</span>.log(target);//  &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;<br><span class="hljs-attribute">console</span>.log(returnedTarget);//  &#123; a: <span class="hljs-number">1</span>, b: <span class="hljs-number">4</span>, c: <span class="hljs-number">5</span> &#125;<br></code></pre></td></tr></table></figure><ul><li><p> 此方法只会拷贝源对象自身的并且可枚举的属性到目标对象</p></li><li><p>Object.assign进行的拷贝是浅拷贝</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj1 = &#123;<span class="hljs-attr">a</span>: &#123;<span class="hljs-attr">b</span>: <span class="hljs-number">1</span>&#125;&#125;;<br><span class="hljs-keyword">const</span> obj2 = <span class="hljs-built_in">Object</span>.assign(&#123;&#125;, obj1);<br> <br>obj1.a.b = <span class="hljs-number">2</span>;<br>obj2.a.b <span class="hljs-comment">// 2</span><br>由于是浅拷贝，所以属性a的内部有任何变化，都会在目标对象上呈现出来。<br></code></pre></td></tr></table></figure></li></ul>
           </div>
+
             </div>
             <hr>
             <div>
