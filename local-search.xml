@@ -8,7 +8,7 @@
     <link href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-04%E6%BB%91%E5%85%A5%E5%8A%A8%E7%94%BB/"/>
     <url>/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-04%E6%BB%91%E5%85%A5%E5%8A%A8%E7%94%BB/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、改变el-main界面"><a href="#一、改变el-main界面" class="headerlink" title="一、改变el-main界面"></a>一、改变el-main界面</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816114747.png" alt="image-20210816114742657"></p><h2 id="二、封装一个AppMain组件"><a href="#二、封装一个AppMain组件" class="headerlink" title="二、封装一个AppMain组件"></a>二、封装一个AppMain组件</h2><ol><li><p>在<code>router-view</code>中加入动画</p></li><li><p>选择动画模式渐入渐出<code>mode=&quot;out-in&quot;</code> mode 只适用于一个transition内同标签的内容，比如都是button</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;transition name=&quot;on&quot; mode=&quot;out-in&quot;&gt;&lt;!--mode只适用于一个transition内的同标签切换--&gt;<br>    &lt;button v-if=&quot;show&quot; key=&quot;but1&quot;&gt;on&lt;/button&gt;<br>    &lt;button v-else key=&quot;but2&quot;&gt;off&lt;/button&gt;&lt;!--key为了防止只是修改内容不重新渲染--&gt;<br>  &lt;/transition&gt;<br></code></pre></td></tr></table></figure></li><li><p>对动画的理解，过渡模式是建立在多组件切换模式的基础上的，也就是<code>动态组件的切换</code>,并且当被切换的元素是2个相同的标签（比如这里都是button），需要加key进行区分。</p></li><li><p>否则由于vue机制的原因，为了性能会使用同一个元素，也就是说你切换是不会换掉整个元素，而是替换元素中内容的值，所以需要添加key为了防止只修改内容而不重新渲染</p></li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vue">//  AppMain.vue<br>&lt;template&gt;<br>    &lt;section class=&quot;app-main&quot;&gt;<br>        &lt;!--mode=&quot;out-in&quot;动画的渐入渐出模式--&gt;<br>        &lt;transition name=&quot;fade-transform&quot; mode=&quot;out-in&quot;&gt;<br>            &lt;!--两种方法都可以实现--&gt;<br>            &lt;router-view :key=&quot;key&quot;/&gt;<br>            &lt;!--但是防止只改变值，不重新渲染 加入key--&gt;<br>            &lt;!--&lt;router-view/&gt;--&gt;<br>        &lt;/transition&gt;<br>    &lt;/section&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/lhyxq/p/9643619.html">Vue过渡mode属性踩坑</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、改变el-main界面"><a href="#一、改变el-main界面" class="headerlink" title="一、改变el-main界面"></a>一、改变el-main界面</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816114747.png" alt="image-20210816114742657"></p><h2 id="二、封装一个AppMain组件"><a href="#二、封装一个AppMain组件" class="headerlink" title="二、封装一个AppMain组件"></a>二、封装一个AppMain组件</h2><ol><li><p>在<code>router-view</code>中加入动画</p></li><li><p>选择动画模式渐入渐出<code>mode=&quot;out-in&quot;</code> mode 只适用于一个transition内同标签的内容，比如都是button</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;transition name=&quot;on&quot; mode=&quot;out-in&quot;&gt;&lt;!--mode只适用于一个transition内的同标签切换--&gt;<br>    &lt;button v-if=&quot;show&quot; key=&quot;but1&quot;&gt;on&lt;/button&gt;<br>    &lt;button v-else key=&quot;but2&quot;&gt;off&lt;/button&gt;&lt;!--key为了防止只是修改内容不重新渲染--&gt;<br>  &lt;/transition&gt;<br></code></pre></td></tr></table></figure></li><li><p>对动画的理解，过渡模式是建立在多组件切换模式的基础上的，也就是<code>动态组件的切换</code>,并且当被切换的元素是2个相同的标签（比如这里都是button），需要加key进行区分。</p></li><li><p>否则由于vue机制的原因，为了性能会使用同一个元素，也就是说你切换是不会换掉整个元素，而是替换元素中内容的值，所以需要添加key为了防止只修改内容而不重新渲染</p></li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vue">//  AppMain.vue<br>&lt;template&gt;<br>    &lt;section class=&quot;app-main&quot;&gt;<br>        &lt;!--mode=&quot;out-in&quot;动画的渐入渐出模式--&gt;<br>        &lt;transition name=&quot;fade-transform&quot; mode=&quot;out-in&quot;&gt;<br>            &lt;!--两种方法都可以实现--&gt;<br>            &lt;router-view :key=&quot;key&quot;/&gt;<br>            &lt;!--但是防止只改变值，不重新渲染 加入key--&gt;<br>            &lt;!--&lt;router-view/&gt;--&gt;<br>        &lt;/transition&gt;<br>    &lt;/section&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure><h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><iframe height="500" width="670" src="\gif\3.gif"><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/lhyxq/p/9643619.html">Vue过渡mode属性踩坑</a></p>]]></content>
     
     
     <categories>
@@ -2631,9 +2631,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>算法练习</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -2751,9 +2751,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>算法练习</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -2780,9 +2780,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>算法练习</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -2809,9 +2809,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>算法练习</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -2838,9 +2838,9 @@
     
     <tags>
       
-      <tag>js</tag>
-      
       <tag>算法练习</tag>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -3397,6 +3397,31 @@
   
   
   <entry>
+    <title>师姐分享</title>
+    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
+    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
+    
+    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>师姐分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>师姐分享</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>项目列表</title>
     <link href="/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/"/>
     <url>/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/</url>
@@ -3416,31 +3441,6 @@
     <tags>
       
       <tag>研究生项目</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>师姐分享</title>
-    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
-    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
-    
-    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>师姐分享</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>师姐分享</tag>
       
     </tags>
     
