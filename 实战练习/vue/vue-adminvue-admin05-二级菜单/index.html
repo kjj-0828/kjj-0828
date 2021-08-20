@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      523 字
+      515 字
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 18, 2021 pm
+                  本文最后更新于：August 20, 2021 pm
                 
               </p>
             
@@ -271,7 +271,7 @@
 </ol>
 </li>
 <li><p>Layout组件实现路由跳转</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>&lt;div&gt;<br>    &lt;!--路由跳转--&gt;<br>    &lt;app-main&gt;&lt;/app-main&gt;<br>&lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>    import AppMain from &quot;./AppMain&quot;;<br>    import Nav from &quot;./nav/Nav&quot;;<br>    export default &#123;<br>        name: &quot;Layout&quot;,<br>        components: &#123;Nav, AppMain&#125;<br>    &#125;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;<br><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>&lt;div&gt;<br>    &lt;!--路由跳转--&gt;<br>    &lt;app-main&gt;&lt;/app-main&gt;<br>&lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>    import AppMain from &quot;./AppMain&quot;;<br>    export default &#123;<br>        name: &quot;Layout&quot;,<br>        components: &#123;AppMain&#125;<br>    &#125;<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br><br>&lt;/style&gt;<br><br></code></pre></td></tr></table></figure></li>
 <li><p>比如<code>/dashboard</code>会指向<code>Layout</code>,<code>Layout</code>做了路由跳转，children页面会显示</p>
 </li>
 </ol>
