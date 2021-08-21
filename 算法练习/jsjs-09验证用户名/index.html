@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JS检查用户名是否满足要求，只能是英文或英文数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>loginName 登录名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkLoginName</span>(<span class="hljs-params">loginName</span>) </span>&#123;<br>    <span class="hljs-comment">// (^\d*$)全是数字的情况 (^\S+\s+\S+$) 用户名中间全是空白字符 </span><br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^[A-Za-z0-9]*$/</span>.test(loginName) &amp;&amp; !<span class="hljs-regexp">/(^\d*$)|(^\S+\s+\S+$)/</span>.test(loginName);<br>&#125;<br><span class="hljs-comment">// let loginName = &quot;kjj&quot;; // true</span><br><span class="hljs-comment">// let loginName = &quot;kjj!&quot; // false</span><br><span class="hljs-comment">// let loginName = &quot;kjj123&quot; // true</span><br><span class="hljs-comment">// let loginName = &quot;kjj    &quot;; // false</span><br><span class="hljs-comment">// let loginName = &quot;123&quot;;// false</span><br><span class="hljs-comment">// let loginName = &quot;   &quot; // false</span><br><span class="hljs-keyword">let</span> loginName = <span class="hljs-string">&quot;kjj    kjj&quot;</span> <span class="hljs-comment">// false </span><br><span class="hljs-built_in">console</span>.log(checkLoginName(loginName));<br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * JS检查用户名是否满足要求，只能是英文或英文数字</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>loginName 登录名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkLoginName</span>(<span class="hljs-params">loginName</span>) </span>&#123;<br>    <span class="hljs-comment">// (^\d*$)全是数字的情况 (^\S+\s+\S+$) 用户名中间全是空白字符 </span><br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^[A-Za-z0-9]*$/</span>.test(loginName) &amp;&amp; !<span class="hljs-regexp">/(^\d*$)|(^\S+\s+\S+$)/</span>.test(loginName);<br>&#125;<br><span class="hljs-comment">// let loginName = &quot;kjj&quot;; // true</span><br><span class="hljs-comment">// let loginName = &quot;kjj!&quot; // false</span><br><span class="hljs-comment">// let loginName = &quot;kjj123&quot; // true</span><br><span class="hljs-comment">// let loginName = &quot;kjj    &quot;; // false</span><br><span class="hljs-comment">// let loginName = &quot;123&quot;;// false</span><br><span class="hljs-comment">// let loginName = &quot;   &quot; // false</span><br><span class="hljs-keyword">let</span> loginName = <span class="hljs-string">&quot;kjj    kjj&quot;</span> <span class="hljs-comment">// false </span><br><span class="hljs-built_in">console</span>.log(checkLoginName(loginName));<br></code></pre></div></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>(^\d*$) </li><li>^表示以…开始，\d表示数字 * 表示匹配0次或者多次 $表示…结束</li><li>^用在[] 表示非的意思，反面的意思 表示不接受该方括号表达式中的字符集合</li><li>所以正则的意思是：多位数字</li><li>\s匹配任何空白字符。</li><li>\S匹配任何非空白字符。</li></ul>
@@ -297,7 +297,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E5%AF%86%E7%A0%81%E5%8F%AA%E8%83%BD%E6%98%AF%E6%95%B0%E5%AD%97%E5%92%8C%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-09验证密码只能是数字和字母组合</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -306,7 +306,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-08%E9%AA%8C%E8%AF%81%E9%93%B6%E8%A1%8C%E5%8D%A1%E5%8F%B7/">
                         <span class="hidden-mobile">js-08验证银行卡号</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -349,7 +349,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -358,7 +358,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成uuid</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateUUID</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">//返回13位的毫秒数 从1970年1月1日到现在的北京时间</span><br>    <span class="hljs-keyword">let</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();<br>    <span class="hljs-comment">//  /[xy]/g 是匹配字符串中的x或者y或者多个xy</span><br>    <span class="hljs-comment">// /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</span><br>    <span class="hljs-keyword">var</span> uuid = <span class="hljs-string">&#x27;xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx&#x27;</span>.replace(<span class="hljs-regexp">/[xy]/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) </span>&#123;<br>        <span class="hljs-comment">// console.log(c); // c的值是替换后的值xxxxxxxxxxxxxxxyxxxxxxxxxxxxxxx</span><br>        <span class="hljs-keyword">let</span> r = (d + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">16</span>) % <span class="hljs-number">16</span> | <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> (c == <span class="hljs-string">&#x27;x&#x27;</span> ? r : (r &amp; <span class="hljs-number">0x7</span> | <span class="hljs-number">0x8</span>)).toString(<span class="hljs-number">16</span>);<br>    &#125;)<br>    <span class="hljs-keyword">return</span> uuid;<br>&#125;<br><span class="hljs-built_in">console</span>.log(generateUUID()); <span class="hljs-comment">//ee465953237b4f16a500bb4b1b96c0ff</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 生成uuid</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateUUID</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">//返回13位的毫秒数 从1970年1月1日到现在的北京时间</span><br>    <span class="hljs-keyword">let</span> d = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();<br>    <span class="hljs-comment">//  /[xy]/g 是匹配字符串中的x或者y或者多个xy</span><br>    <span class="hljs-comment">// /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</span><br>    <span class="hljs-keyword">var</span> uuid = <span class="hljs-string">&#x27;xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx&#x27;</span>.replace(<span class="hljs-regexp">/[xy]/g</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">c</span>) </span>&#123;<br>        <span class="hljs-comment">// console.log(c); // c的值是替换后的值xxxxxxxxxxxxxxxyxxxxxxxxxxxxxxx</span><br>        <span class="hljs-keyword">let</span> r = (d + <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">16</span>) % <span class="hljs-number">16</span> | <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> (c == <span class="hljs-string">&#x27;x&#x27;</span> ? r : (r &amp; <span class="hljs-number">0x7</span> | <span class="hljs-number">0x8</span>)).toString(<span class="hljs-number">16</span>);<br>    &#125;)<br>    <span class="hljs-keyword">return</span> uuid;<br>&#125;<br><span class="hljs-built_in">console</span>.log(generateUUID()); <span class="hljs-comment">//ee465953237b4f16a500bb4b1b96c0ff</span><br></code></pre></div></td></tr></table></figure>
 
 <div class="note note-success">
             <p> 对/[xy]/g的理解：</p><p> /[xy]/g 是匹配字符串中的x或者y或者多个xy</p><p> /g表示查找所以可能的匹配，返回结果是多个，如果不加/g最多只会匹配一个</p><p>如果上述的程序不加/g得到结果是： 5xxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx 只会匹配一个字符</p>
@@ -297,7 +297,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E9%AA%8C%E8%AF%81%E6%89%8B%E6%9C%BA%E5%8F%B7/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-02验证手机号</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -306,7 +306,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-01%E4%BA%A7%E7%94%9F%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                         <span class="hidden-mobile">js-01产生随机字符串</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -349,7 +349,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -358,7 +358,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

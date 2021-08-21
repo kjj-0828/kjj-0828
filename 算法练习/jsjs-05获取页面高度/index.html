@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取页面的高度</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回当前页面的高度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPageHeight</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// document.compatMode用来判断当前浏览器采用的渲染方式。</span><br>    <span class="hljs-comment">// BackCompat：标准兼容模式关闭。浏览器客户区宽度是document.body.clientWidth；</span><br>    <span class="hljs-comment">// CSS1Compat：标准兼容模式开启。浏览器客户区宽度是 document.documentElement.clientWidth；</span><br>    <span class="hljs-keyword">let</span>  d = <span class="hljs-built_in">document</span>.compatMode == <span class="hljs-string">&quot;BackCompat&quot;</span> ? <span class="hljs-built_in">document</span>.body : <span class="hljs-built_in">document</span>.documentElement;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.documentElement.scrollHeight, <span class="hljs-built_in">document</span>.body.scrollHeight, d.clientHeight);<br>&#125;<br><span class="hljs-built_in">console</span>.log(getPageHeight());<br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取页面的高度</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回当前页面的高度</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPageHeight</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// document.compatMode用来判断当前浏览器采用的渲染方式。</span><br>    <span class="hljs-comment">// BackCompat：标准兼容模式关闭。浏览器客户区宽度是document.body.clientWidth；</span><br>    <span class="hljs-comment">// CSS1Compat：标准兼容模式开启。浏览器客户区宽度是 document.documentElement.clientWidth；</span><br>    <span class="hljs-keyword">let</span>  d = <span class="hljs-built_in">document</span>.compatMode == <span class="hljs-string">&quot;BackCompat&quot;</span> ? <span class="hljs-built_in">document</span>.body : <span class="hljs-built_in">document</span>.documentElement;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.documentElement.scrollHeight, <span class="hljs-built_in">document</span>.body.scrollHeight, d.clientHeight);<br>&#125;<br><span class="hljs-built_in">console</span>.log(getPageHeight());<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210730142338.png" srcset="/img/loading.gif" lazyload alt="image-20210730142337653"></p>
 
@@ -295,7 +295,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%97%B6%E9%97%B4%E6%88%B3/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-05生成随机时间戳</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -304,7 +304,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-05%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%98%AF%E7%BD%91%E5%9D%80/">
                         <span class="hidden-mobile">js-05判断是否是网址</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -347,7 +347,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -356,7 +356,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

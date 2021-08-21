@@ -251,13 +251,13 @@
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、得到路由表"><a href="#一、得到路由表" class="headerlink" title="一、得到路由表"></a>一、得到路由表</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">routes</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">// 得到路由表</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$router.options.routes[<span class="hljs-number">2</span>].children;<br>&#125;,<br></code></pre></td></tr></table></figure>
+              <h2 id="一、得到路由表"><a href="#一、得到路由表" class="headerlink" title="一、得到路由表"></a>一、得到路由表</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">routes</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">// 得到路由表</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.$router.options.routes[<span class="hljs-number">2</span>].children;<br>&#125;,<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="二、循环路由表"><a href="#二、循环路由表" class="headerlink" title="二、循环路由表"></a>二、循环路由表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu-item v-for=&quot;route in routes&quot; :key=&quot;route.path&quot; :index=&quot;route.path&quot;&gt;<br>  &lt;svg-icon :icon-class=&quot;route.meta.icon&quot;&gt;&lt;/svg-icon&gt;<br>  &lt;span slot=&quot;title&quot;&gt;&#123;&#123; route.meta.title &#125;&#125;&lt;/span&gt;<br>&lt;/el-menu-item&gt;<br></code></pre></td></tr></table></figure>
+<h2 id="二、循环路由表"><a href="#二、循环路由表" class="headerlink" title="二、循环路由表"></a>二、循环路由表</h2><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">&lt;el-menu-item v-for=&quot;route in routes&quot; :key=&quot;route.path&quot; :index=&quot;route.path&quot;&gt;<br>  &lt;svg-icon :icon-class=&quot;route.meta.icon&quot;&gt;&lt;/svg-icon&gt;<br>  &lt;span slot=&quot;title&quot;&gt;&#123;&#123; route.meta.title &#125;&#125;&lt;/span&gt;<br>&lt;/el-menu-item&gt;<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="三、实现刷新时，高亮不变"><a href="#三、实现刷新时，高亮不变" class="headerlink" title="三、实现刷新时，高亮不变"></a>三、实现刷新时，高亮不变</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">activeMenu</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">//页面刷新后，还是高亮选择的菜单项</span><br>  <span class="hljs-keyword">const</span> route = <span class="hljs-built_in">this</span>.$route;<br>  <span class="hljs-keyword">const</span> &#123; meta, path &#125; = route;<br>  <span class="hljs-keyword">return</span> path;<br>&#125;,<br></code></pre></td></tr></table></figure>
+<h2 id="三、实现刷新时，高亮不变"><a href="#三、实现刷新时，高亮不变" class="headerlink" title="三、实现刷新时，高亮不变"></a>三、实现刷新时，高亮不变</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">activeMenu</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-comment">//页面刷新后，还是高亮选择的菜单项</span><br>  <span class="hljs-keyword">const</span> route = <span class="hljs-built_in">this</span>.$route;<br>  <span class="hljs-keyword">const</span> &#123; meta, path &#125; = route;<br>  <span class="hljs-keyword">return</span> path;<br>&#125;,<br></code></pre></div></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-menu<br>  class=&quot;el-menu-vertical-demo&quot;<br>  background-color=&quot;#304156&quot;<br>  text-color=&quot;#BFCBD9&quot;<br>  router<br>  :default-active=&quot;activeMenu&quot;<br>  active-text-color=&quot;#409EFF&quot;<br>&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">&lt;el-menu<br>  class=&quot;el-menu-vertical-demo&quot;<br>  background-color=&quot;#304156&quot;<br>  text-color=&quot;#BFCBD9&quot;<br>  router<br>  :default-active=&quot;activeMenu&quot;<br>  active-text-color=&quot;#409EFF&quot;<br>&gt;<br></code></pre></div></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li> this.$router:我们可以在任何组件内，通过 this.$router访问路由器</li><li> this.$route:可以通过 this.$route访问当前路由</li></ul>
@@ -307,7 +307,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-03%E8%B7%AF%E7%94%B1%E6%8B%A6%E6%88%AA/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin-03路由拦截</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -316,7 +316,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-03%E9%80%80%E5%87%BA%E7%99%BB%E5%BD%95/">
                         <span class="hidden-mobile">vue-admin-03退出登录</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -359,7 +359,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -368,7 +368,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

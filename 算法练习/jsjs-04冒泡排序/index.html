@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 冒泡排序：每次排序都把最大的放到最后</span><br><span class="hljs-comment"> * 细节：内层j遍历的时候，是当前值j和后一个j+1进行比较，所以j当前值最大控制在length-1</span><br><span class="hljs-comment"> * 当把最大值放到最后，下次遍历就不需要在去比较了，所以控制j=length-1-i</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr 原数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回排序后的数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maoPaoSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr.length - <span class="hljs-number">1</span> - i; j++) &#123; <span class="hljs-comment">//当j=length-1时，j+1 = length 最大是length</span><br>            <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-keyword">let</span> temp = arr[j];<br>                arr[j] = arr[j + <span class="hljs-number">1</span>];<br>                arr[j + <span class="hljs-number">1</span>] = temp;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">85</span>, <span class="hljs-number">24</span>, <span class="hljs-number">63</span>, <span class="hljs-number">17</span>, <span class="hljs-number">31</span>, <span class="hljs-number">17</span>, <span class="hljs-number">86</span>, <span class="hljs-number">50</span>]; <span class="hljs-comment">//[17, 17, 24, 31, 50, 63, 85, 86 ]</span><br><span class="hljs-built_in">console</span>.log(maoPaoSort(arr));<br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 冒泡排序：每次排序都把最大的放到最后</span><br><span class="hljs-comment"> * 细节：内层j遍历的时候，是当前值j和后一个j+1进行比较，所以j当前值最大控制在length-1</span><br><span class="hljs-comment"> * 当把最大值放到最后，下次遍历就不需要在去比较了，所以控制j=length-1-i</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr 原数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回排序后的数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maoPaoSort</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr.length - <span class="hljs-number">1</span> - i; j++) &#123; <span class="hljs-comment">//当j=length-1时，j+1 = length 最大是length</span><br>            <span class="hljs-keyword">if</span> (arr[j] &gt; arr[j + <span class="hljs-number">1</span>]) &#123;<br>                <span class="hljs-keyword">let</span> temp = arr[j];<br>                arr[j] = arr[j + <span class="hljs-number">1</span>];<br>                arr[j + <span class="hljs-number">1</span>] = temp;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">85</span>, <span class="hljs-number">24</span>, <span class="hljs-number">63</span>, <span class="hljs-number">17</span>, <span class="hljs-number">31</span>, <span class="hljs-number">17</span>, <span class="hljs-number">86</span>, <span class="hljs-number">50</span>]; <span class="hljs-comment">//[17, 17, 24, 31, 50, 63, 85, 86 ]</span><br><span class="hljs-built_in">console</span>.log(maoPaoSort(arr));<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -294,7 +294,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-04截取字符串</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -303,7 +303,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/">
                         <span class="hidden-mobile">js-红宝书-基本引用类型</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -346,7 +346,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +355,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

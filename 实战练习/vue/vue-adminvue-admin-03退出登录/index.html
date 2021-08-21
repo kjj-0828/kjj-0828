@@ -257,9 +257,9 @@
 <li><p>退出时，清空cookie</p>
 </li>
 <li><p>退出时，重置路由表</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params">&#123; commit, state &#125;</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        logout(state.token).then(<span class="hljs-function">() =&gt;</span> &#123;<br>            removeToken(); <span class="hljs-comment">//  移出token</span><br>            resetRouer(); <span class="hljs-comment">// 重置路由表</span><br>            commit(<span class="hljs-string">&#x27;RESET_STATE&#x27;</span>);<br>            resolve();<br>        &#125;).catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>            reject(error);<br>        &#125;)<br>    &#125;)<br>&#125;,<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params">&#123; commit, state &#125;</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        logout(state.token).then(<span class="hljs-function">() =&gt;</span> &#123;<br>            removeToken(); <span class="hljs-comment">//  移出token</span><br>            resetRouer(); <span class="hljs-comment">// 重置路由表</span><br>            commit(<span class="hljs-string">&#x27;RESET_STATE&#x27;</span>);<br>            resolve();<br>        &#125;).catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>            reject(error);<br>        &#125;)<br>    &#125;)<br>&#125;,<br></code></pre></div></td></tr></table></figure></li>
 <li><p>完成后，跳转</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.$store.dispatch(<span class="hljs-string">&quot;user/logout&quot;</span>);<br>  <span class="hljs-comment">// this.$router.push(&quot;/&quot;);</span><br>  <span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.$route.fullPath&#125;</span>`</span>);<br>&#125;,<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-title">logout</span>(<span class="hljs-params"></span>)</span> &#123;<br>  <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.$store.dispatch(<span class="hljs-string">&quot;user/logout&quot;</span>);<br>  <span class="hljs-comment">// this.$router.push(&quot;/&quot;);</span><br>  <span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">`/login?redirect=<span class="hljs-subst">$&#123;<span class="hljs-built_in">this</span>.$route.fullPath&#125;</span>`</span>);<br>&#125;,<br></code></pre></div></td></tr></table></figure></li>
 <li><p>展示</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816162746.gif" srcset="/img/loading.gif" lazyload alt="2"></p>
 </li>
@@ -307,7 +307,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-03%E5%8A%A8%E6%80%81%E8%8F%9C%E5%8D%95%E6%A0%8F/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin-03动态菜单栏</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -316,7 +316,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-02%E5%AE%9E%E7%8E%B0mockjs/">
                         <span class="hidden-mobile">vue-admin-02实现mockjs</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -359,7 +359,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -368,7 +368,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

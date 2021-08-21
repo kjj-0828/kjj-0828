@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入的手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyPhoneNumberFormat</span>(<span class="hljs-params">str</span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> myreg = <span class="hljs-regexp">/^((13[0-9]&#123;1&#125;)|(15[0-9]&#123;1&#125;)|(17[0-9]&#123;1&#125;)|(18[0-9]&#123;1&#125;))+\d&#123;8&#125;$/</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(verifyPhoneNumberFormat(<span class="hljs-string">&quot;15031679910&quot;</span>)); <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 传入的手机号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">verifyPhoneNumberFormat</span>(<span class="hljs-params">str</span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> myreg = <span class="hljs-regexp">/^((13[0-9]&#123;1&#125;)|(15[0-9]&#123;1&#125;)|(17[0-9]&#123;1&#125;)|(18[0-9]&#123;1&#125;))+\d&#123;8&#125;$/</span>;<br>    <span class="hljs-keyword">return</span> myreg.test(str);<br>&#125;<br><span class="hljs-built_in">console</span>.log(verifyPhoneNumberFormat(<span class="hljs-string">&quot;15031679910&quot;</span>)); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure>
 
 <div class="note note-success">
             <p>对正则的理解：</p><p>/^((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8}$/;</p><p>^ 正则的开始</p><p>$ 正则的结束</p><p>13[0-9]{1} 表示数值可以是130、131、132…这样子，{1}表示匹配一位</p><p>\d：匹配一个数字字符。等价于[0-9]</p><p>{8}：匹配次数8次</p><p>\d{8}：任意的8个数字</p>
@@ -297,7 +297,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E9%AA%8C%E8%AF%81%E8%BA%AB%E4%BB%BD%E8%AF%81/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-02验证身份证</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -306,7 +306,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E7%94%9F%E6%88%90uuid/">
                         <span class="hidden-mobile">js-02生成uuid</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -349,7 +349,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -358,7 +358,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

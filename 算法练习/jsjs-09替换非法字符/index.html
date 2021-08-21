@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 替换非法字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>替换值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">URLencode</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">escape</span>(str).replace(<span class="hljs-regexp">/\+/g</span>, <span class="hljs-string">&#x27;%2B&#x27;</span>).replace(<span class="hljs-regexp">/\&quot;/g</span>, <span class="hljs-string">&#x27;%22&#x27;</span>).replace(<span class="hljs-regexp">/\&#x27;g/</span>, <span class="hljs-string">&#x27;%27&#x27;</span>).replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">&#x27;%2F&#x27;</span>);<br>&#125;<br><span class="hljs-comment">//escape() 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串。</span><br><span class="hljs-built_in">console</span>.log(URLencode(<span class="hljs-string">&quot;212+113&quot;</span>));<span class="hljs-comment">//212%2B113</span><br><span class="hljs-built_in">console</span>.log(URLencode(<span class="hljs-string">&quot;=&quot;</span>));<span class="hljs-comment">//%3D</span><br><span class="hljs-built_in">console</span>.log(URLencode(<span class="hljs-string">&quot;&#x27;&quot;</span>)); <span class="hljs-comment">// %27</span><br><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 替换非法字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str 字符串</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>替换值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">URLencode</span>(<span class="hljs-params">str</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">escape</span>(str).replace(<span class="hljs-regexp">/\+/g</span>, <span class="hljs-string">&#x27;%2B&#x27;</span>).replace(<span class="hljs-regexp">/\&quot;/g</span>, <span class="hljs-string">&#x27;%22&#x27;</span>).replace(<span class="hljs-regexp">/\&#x27;g/</span>, <span class="hljs-string">&#x27;%27&#x27;</span>).replace(<span class="hljs-regexp">/\\/g</span>, <span class="hljs-string">&#x27;%2F&#x27;</span>);<br>&#125;<br><span class="hljs-comment">//escape() 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串。</span><br><span class="hljs-built_in">console</span>.log(URLencode(<span class="hljs-string">&quot;212+113&quot;</span>));<span class="hljs-comment">//212%2B113</span><br><span class="hljs-built_in">console</span>.log(URLencode(<span class="hljs-string">&quot;=&quot;</span>));<span class="hljs-comment">//%3D</span><br><span class="hljs-built_in">console</span>.log(URLencode(<span class="hljs-string">&quot;&#x27;&quot;</span>)); <span class="hljs-comment">// %27</span><br><br></code></pre></div></td></tr></table></figure>
 
 <h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a target="_blank" rel="noopener" href="http://www.blogjava.net/juhongtao/archive/2007/12/19/168639.html">request.getParameter(“变量名”)获取的字符串中原来的加号变成了空格，url传值</a></p>
 
@@ -295,7 +295,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-09获取当前时间</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -304,7 +304,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E5%88%A4%E6%96%AD%E6%89%8B%E6%9C%BA%E7%B1%BB%E5%9E%8B/">
                         <span class="hidden-mobile">js-09判断手机类型</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -347,7 +347,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -356,7 +356,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

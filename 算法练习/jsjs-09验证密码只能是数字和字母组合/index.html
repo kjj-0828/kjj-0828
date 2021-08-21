@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证密码必须是字母和数字的组合</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>password  密码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkPasswordValidate</span>(<span class="hljs-params">password</span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]&#123;6,20&#125;$/</span>.test(password);<br>&#125;<br><span class="hljs-comment">// let password = &quot;kjj123&quot;; // true</span><br><span class="hljs-comment">// let password = &quot;kjj&quot;; // false</span><br><span class="hljs-keyword">let</span> password = <span class="hljs-string">&quot;123&quot;</span>; <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(checkPasswordValidate(password));<br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 验证密码必须是字母和数字的组合</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>password  密码</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span>返回布尔值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkPasswordValidate</span>(<span class="hljs-params">password</span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^(?!^\d+$)(?!^[a-zA-Z]+$)[0-9a-zA-Z]&#123;6,20&#125;$/</span>.test(password);<br>&#125;<br><span class="hljs-comment">// let password = &quot;kjj123&quot;; // true</span><br><span class="hljs-comment">// let password = &quot;kjj&quot;; // false</span><br><span class="hljs-keyword">let</span> password = <span class="hljs-string">&quot;123&quot;</span>; <span class="hljs-comment">// false</span><br><span class="hljs-built_in">console</span>.log(checkPasswordValidate(password));<br></code></pre></div></td></tr></table></figure>
 
 <div class="note note-success">
             <ul><li>(?!正则):表示在这个位置之后不能出现这个正则</li><li>^(?!^\d+$)<br>表示字符串不能完全由数字组成，即必须包含其他字符</li></ul>
@@ -297,7 +297,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E9%82%AE%E6%94%BF%E7%BC%96%E7%A0%81/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-09验证邮政编码</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -306,7 +306,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7%E5%90%8D/">
                         <span class="hidden-mobile">js-09验证用户名</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -349,7 +349,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -358,7 +358,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

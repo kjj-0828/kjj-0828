@@ -256,13 +256,13 @@
 <li><p>在<code>router-view</code>中加入动画</p>
 </li>
 <li><p>选择动画模式渐入渐出<code>mode=&quot;out-in&quot;</code> mode 只适用于一个transition内同标签的内容，比如都是button</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;transition name=&quot;on&quot; mode=&quot;out-in&quot;&gt;&lt;!--mode只适用于一个transition内的同标签切换--&gt;<br>    &lt;button v-if=&quot;show&quot; key=&quot;but1&quot;&gt;on&lt;/button&gt;<br>    &lt;button v-else key=&quot;but2&quot;&gt;off&lt;/button&gt;&lt;!--key为了防止只是修改内容不重新渲染--&gt;<br>  &lt;/transition&gt;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">&lt;transition name=&quot;on&quot; mode=&quot;out-in&quot;&gt;&lt;!--mode只适用于一个transition内的同标签切换--&gt;<br>    &lt;button v-if=&quot;show&quot; key=&quot;but1&quot;&gt;on&lt;/button&gt;<br>    &lt;button v-else key=&quot;but2&quot;&gt;off&lt;/button&gt;&lt;!--key为了防止只是修改内容不重新渲染--&gt;<br>  &lt;/transition&gt;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>对动画的理解，过渡模式是建立在多组件切换模式的基础上的，也就是<code>动态组件的切换</code>,并且当被切换的元素是2个相同的标签（比如这里都是button），需要加key进行区分。</p>
 </li>
 <li><p>否则由于vue机制的原因，为了性能会使用同一个元素，也就是说你切换是不会换掉整个元素，而是替换元素中内容的值，所以需要添加key为了防止只修改内容而不重新渲染</p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vue">//  AppMain.vue<br>&lt;template&gt;<br>    &lt;section class=&quot;app-main&quot;&gt;<br>        &lt;!--mode=&quot;out-in&quot;动画的渐入渐出模式--&gt;<br>        &lt;transition name=&quot;fade-transform&quot; mode=&quot;out-in&quot;&gt;<br>            &lt;!--两种方法都可以实现--&gt;<br>            &lt;router-view :key=&quot;key&quot;/&gt;<br>            &lt;!--但是防止只改变值，不重新渲染 加入key--&gt;<br>            &lt;!--&lt;router-view/&gt;--&gt;<br>        &lt;/transition&gt;<br>    &lt;/section&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">//  AppMain.vue<br>&lt;template&gt;<br>    &lt;section class=&quot;app-main&quot;&gt;<br>        &lt;!--mode=&quot;out-in&quot;动画的渐入渐出模式--&gt;<br>        &lt;transition name=&quot;fade-transform&quot; mode=&quot;out-in&quot;&gt;<br>            &lt;!--两种方法都可以实现--&gt;<br>            &lt;router-view :key=&quot;key&quot;/&gt;<br>            &lt;!--但是防止只改变值，不重新渲染 加入key--&gt;<br>            &lt;!--&lt;router-view/&gt;--&gt;<br>        &lt;/transition&gt;<br>    &lt;/section&gt;<br>&lt;/template&gt;<br></code></pre></div></td></tr></table></figure>
 
 <h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816163101.gif" srcset="/img/loading.gif" lazyload alt="3"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lhyxq/p/9643619.html">Vue过渡mode属性踩坑</a></p>
@@ -309,7 +309,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin05-%E6%8E%92%E5%BA%8F%E8%A1%A8%E6%A0%BC/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin05-排序表格</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -318,7 +318,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-04%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">
                         <span class="hidden-mobile">vue-admin-04网格布局</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -361,7 +361,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -370,7 +370,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

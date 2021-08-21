@@ -251,7 +251,7 @@
               </p>
             
             <div class="markdown-body">
-              <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 时间戳转化成时间2</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>time 时间戳</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns  </span>返回时间格式</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeStamp2String</span>(<span class="hljs-params">time</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> dateTime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(time); <span class="hljs-comment">// 时间戳转成时间</span><br>    <span class="hljs-keyword">let</span> year = dateTime.getFullYear();<br>    <span class="hljs-keyword">let</span> month = dateTime.getMonth() + <span class="hljs-number">1</span> &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + (dateTime.getMonth() + <span class="hljs-number">1</span>) : dateTime.getMonth() + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> day = dateTime.getDate() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getDate() : dateTime.getDate();<br>    <span class="hljs-keyword">let</span> hour = dateTime.getHours() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getHours() : dateTime.getHours();<br>    <span class="hljs-keyword">let</span> minute = dateTime.getMinutes() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getMinutes() : dateTime.getMinutes();<br>    <span class="hljs-keyword">let</span> second = dateTime.getSeconds() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getSeconds() : dateTime.getSeconds();<br>    <span class="hljs-keyword">return</span> year + <span class="hljs-string">&quot;-&quot;</span> + month + <span class="hljs-string">&quot;-&quot;</span> + day + <span class="hljs-string">&quot; &quot;</span> + hour + <span class="hljs-string">&quot;:&quot;</span> + minute + <span class="hljs-string">&quot;:&quot;</span> + second;<br>&#125;<br><span class="hljs-built_in">console</span>.log(timeStamp2String(<span class="hljs-number">1526552438244</span>)); <span class="hljs-comment">// 2018-05-17 18:20:38</span><br></code></pre></td></tr></table></figure>
+              <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 时间戳转化成时间2</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>time 时间戳</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns  </span>返回时间格式</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeStamp2String</span>(<span class="hljs-params">time</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> dateTime = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(time); <span class="hljs-comment">// 时间戳转成时间</span><br>    <span class="hljs-keyword">let</span> year = dateTime.getFullYear();<br>    <span class="hljs-keyword">let</span> month = dateTime.getMonth() + <span class="hljs-number">1</span> &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + (dateTime.getMonth() + <span class="hljs-number">1</span>) : dateTime.getMonth() + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> day = dateTime.getDate() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getDate() : dateTime.getDate();<br>    <span class="hljs-keyword">let</span> hour = dateTime.getHours() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getHours() : dateTime.getHours();<br>    <span class="hljs-keyword">let</span> minute = dateTime.getMinutes() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getMinutes() : dateTime.getMinutes();<br>    <span class="hljs-keyword">let</span> second = dateTime.getSeconds() &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&quot;0&quot;</span> + dateTime.getSeconds() : dateTime.getSeconds();<br>    <span class="hljs-keyword">return</span> year + <span class="hljs-string">&quot;-&quot;</span> + month + <span class="hljs-string">&quot;-&quot;</span> + day + <span class="hljs-string">&quot; &quot;</span> + hour + <span class="hljs-string">&quot;:&quot;</span> + minute + <span class="hljs-string">&quot;:&quot;</span> + second;<br>&#125;<br><span class="hljs-built_in">console</span>.log(timeStamp2String(<span class="hljs-number">1526552438244</span>)); <span class="hljs-comment">// 2018-05-17 18:20:38</span><br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -294,7 +294,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-12%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-12判断是否为空</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -303,7 +303,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-12%E6%97%B6%E9%97%B4%E6%88%B3%E8%BD%AC%E5%8C%96%E6%88%90%E6%97%B6%E9%97%B4/">
                         <span class="hidden-mobile">js-12时间戳转化成时间</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -346,7 +346,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +355,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

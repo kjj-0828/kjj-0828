@@ -253,9 +253,9 @@
             <div class="markdown-body">
               <h2 id="一、按照checkbox的顺序"><a href="#一、按照checkbox的顺序" class="headerlink" title="一、按照checkbox的顺序"></a>一、按照checkbox的顺序</h2><ol>
 <li><p>表格绑定<code>formHead</code>数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-table-column v-for=&quot;fruit in formHead&quot; :key=&quot;fruit&quot; :label=&quot;fruit&quot;&gt;<br>    &lt;template slot-scope=&quot;scope&quot;&gt;<br>        &#123;&#123;scope.row[fruit]&#125;&#125;<br>    &lt;/template&gt;<br>&lt;/el-table-column&gt;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">&lt;el-table-column v-for=&quot;fruit in formHead&quot; :key=&quot;fruit&quot; :label=&quot;fruit&quot;&gt;<br>    &lt;template slot-scope=&quot;scope&quot;&gt;<br>        &#123;&#123;scope.row[fruit]&#125;&#125;<br>    &lt;/template&gt;<br>&lt;/el-table-column&gt;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>监听checkbox的变化，设置formHead的数据</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">watch: &#123; <span class="hljs-comment">// 监听check的变化</span><br>    <span class="hljs-function"><span class="hljs-title">checkList</span>(<span class="hljs-params">valArr</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.formHead = <span class="hljs-built_in">this</span>.formTheadOptions.filter(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> valArr.indexOf(i) &gt;= <span class="hljs-number">0</span>)<br>        <span class="hljs-built_in">this</span>.key = key + <span class="hljs-number">1</span> <span class="hljs-comment">// 保证表格每次都会被重新渲染</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">watch: &#123; <span class="hljs-comment">// 监听check的变化</span><br>    <span class="hljs-function"><span class="hljs-title">checkList</span>(<span class="hljs-params">valArr</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.formHead = <span class="hljs-built_in">this</span>.formTheadOptions.filter(<span class="hljs-function"><span class="hljs-params">i</span> =&gt;</span> valArr.indexOf(i) &gt;= <span class="hljs-number">0</span>)<br>        <span class="hljs-built_in">this</span>.key = key + <span class="hljs-number">1</span> <span class="hljs-comment">// 保证表格每次都会被重新渲染</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 </ol>
 <h2 id="二、按照点击顺序"><a href="#二、按照点击顺序" class="headerlink" title="二、按照点击顺序"></a>二、按照点击顺序</h2><ol>
 <li>表格和checkbox绑定同一个数据(数组)</li>
@@ -305,7 +305,7 @@
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-06%E5%A4%8D%E6%9D%82%E8%A1%A8%E6%A0%BC/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-admin-06复杂表格</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -314,7 +314,7 @@
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/vue-adminvue-admin-06%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E8%A1%A8%E6%A0%BC/">
                         <span class="hidden-mobile">vue-admin-06在线编辑表格</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -357,7 +357,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -366,7 +366,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
