@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      980 字
+      1.1k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      15
        分钟
     </span>
   
@@ -273,7 +273,7 @@
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210821151135.png" srcset="/img/loading.gif" lazyload alt="image-20210821151135196"></p>
 <p>(7) 继续执行同步代码console.<strong>log</strong>(“script end”);</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210821151234.png" srcset="/img/loading.gif" lazyload alt="image-20210821151233656"></p>
-<p>(8) 同步代码全部执行完成，回到async内部，await返回的是非promise，执行await Promise.resolve(undefined) ，执行完成，执行await后面的代码 console.<strong>log</strong>(“async1 end”);</p>
+<p>(8) 同步代码全部执行完成，回到async内部，await执行完成，执行await后面的代码 console.<strong>log</strong>(“async1 end”);</p>
 <p>(9) 全部的宏任务1执行完成，在执行微任务，输出  console.<strong>log</strong>(“promise2”); </p>
 <p>(10) 宏任务1和宏任务1中微任务全部完成，进行下一个宏任务，输出console.<strong>log</strong>(“setTimeout”);</p>
 </li>
@@ -304,7 +304,10 @@
 <p>(13) 这时候，then执行完成，await async2()语句结束，后面的代码不再被阻塞，所以打印 console.<strong>log</strong>(‘async1 end’);</p>
 <p>(14) 执行宏任务2console.<strong>log</strong>(‘setTimeout’);</p>
 </li>
+<li><p>await等待的不同处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * await 等待的是一个非promise 1 2 3 4 5 6</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">await</span> async2()<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);<br>&#125;<br>async1();<br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>    resolve()<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">6</span>);<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>);<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * await等待的是一个promise 1 2 3 4 5 6</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">await</span> async2()<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">6</span>);<br>&#125;<br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        resolve();<br>    &#125;)<br>&#125;<br>async1();<br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>    resolve()<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>);<br>&#125;)<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>);<br></code></pre></td></tr></table></figure></li>
 </ol>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210821161353.png" srcset="/img/loading.gif" lazyload alt="image-20210821161352585"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/10/event_loop.html">什么是 Event Loop？</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25407758">Excuse me？这个前端面试在搞事！</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fundebug/p/10095355.html">8张图让你一步步看清 async/await 和 promise 的执行顺序</a></p>
@@ -350,7 +353,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-02%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
                         <span class="hidden-mobile">js-02执行顺序</span>
-                        <span class="visible-mobile">次の記事</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -367,7 +370,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;ディレクトリ</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -393,7 +396,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -402,7 +405,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">キーワード</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
