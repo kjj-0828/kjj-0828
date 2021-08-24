@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>js-05翻转复杂数组</title>
+    <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-05%E7%BF%BB%E8%BD%AC%E5%A4%8D%E6%9D%82%E6%95%B0%E7%BB%84/"/>
+    <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-05%E7%BF%BB%E8%BD%AC%E5%A4%8D%E6%9D%82%E6%95%B0%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>题目： [1, [2, [3, [4, [5, ‘null’]]]]] =&gt; [5, [4, [3, [2, [1, ‘null’]]]]] </p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reserve</span>(<span class="hljs-params">data</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> res = []; <span class="hljs-comment">//保存每一层数组</span><br>    <span class="hljs-keyword">let</span> list = data;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">Array</span>.isArray(list[<span class="hljs-number">1</span>])) &#123;<br>        res.push(list);<br>        list = list[<span class="hljs-number">1</span>]; <span class="hljs-comment">// 有指针移动的思想</span><br>    &#125;<br>    res.push(list) <span class="hljs-comment">//放入最后一个类数组[5,&#x27;null&#x27;]</span><br>    <span class="hljs-keyword">let</span> max = res.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> half = <span class="hljs-built_in">Math</span>.floor(max / <span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; half; i++) &#123;<br>        <span class="hljs-keyword">const</span> left = res[i];<br>        <span class="hljs-keyword">const</span> right = res[max - i];  <span class="hljs-comment">// 2边向中间逼近</span><br>        [left[<span class="hljs-number">0</span>], right[<span class="hljs-number">0</span>]] = [right[<span class="hljs-number">0</span>], left[<span class="hljs-number">0</span>]]; <span class="hljs-comment">// 交换</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> array = [<span class="hljs-number">1</span>,[<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,[<span class="hljs-number">4</span>,[<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;null&#x27;</span>]]]]];<br>reserve(array);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(array));<br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试笔记</category>
+      
+      <category>js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面试笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js-05反转链表</title>
     <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%B1%BBjs-05%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
     <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%B1%BBjs-05%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
@@ -3957,31 +3984,6 @@
   
   
   <entry>
-    <title>师姐分享</title>
-    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
-    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
-    
-    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>师姐分享</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>师姐分享</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>项目列表</title>
     <link href="/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/"/>
     <url>/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/</url>
@@ -4001,6 +4003,31 @@
     <tags>
       
       <tag>研究生项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>师姐分享</title>
+    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
+    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
+    
+    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>师姐分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>师姐分享</tag>
       
     </tags>
     
