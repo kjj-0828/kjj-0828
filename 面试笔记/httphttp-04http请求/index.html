@@ -1,0 +1,729 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816203334.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="面试笔记-http请求">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816200709.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-23 22:06" pubdate>
+        August 23, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：August 24, 2021 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <ol>
+<li><p>请求类型</p>
+<p>请求类型有8种：</p>
+<p>get:(select)从服务器请求数据，(给的少拿的多)</p>
+<p>post:(create)向服务器发送数据,(给的多拿的少)</p>
+<p>put:向服务器存放一些内容</p>
+<p>delete:删除服务器的一些内容</p>
+<p>head:只请求页面的头部<br>trace:回显服务器收到的请求，主要用于测试或诊断</p>
+<p>options:允许客户端查看服务器的性能</p>
+<p>connect:HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210823222040.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>同源策略(理解不深)</p>
+<p>必须是同协议、同域名、同端口</p>
+</li>
+<li><p>跨域解决方案</p>
+<p>(1)Jsonp 分为原生的jsonp和jQuery的jsonp</p>
+<p>(2)跨域资源共享 CORS,主要设置在后端，只要后端实现了跨域，就实现了跨域</p>
+<p>(3)Node中间件代理(两次跨域)</p>
+<p>(4) Nginx反向代理</p>
+</li>
+<li><p>同源策略限制的内容</p>
+<p>(1)Cookie、LocalStorage、IndexedDB等存储性内容</p>
+<p>(2) DOM节点</p>
+<p>(3) AJAX请求不能发送</p>
+</li>
+<li><p>不受同源限制(允许跨境加载)</p>
+<p>(1) <code>&lt;img src=xxx&gt;</code></p>
+<p>(2) <code>&lt;link href=xxx&gt;</code></p>
+<p>(3)<code>&lt;script src=xxx&gt;</code></p>
+</li>
+<li><p>jsonp的解决方式</p>
+<p>最常用的解决跨域的方法用jsonp、CORS</p>
+<p>(1) 使用jsonp解决跨域</p>
+<p>实现原理，如果a页面(a.com/jsonp.html) 想要得到b页面(b.com/main.js)里的数据(很明显a，b在不同的域名下，需要跨域)在jsonp.html页面创建一个回调函数，动态的添加<code>script</code>元素，向服务器发送请求，请求地址为<code> http://b.com/main.js?callbcak=xxx,</code>在main.js里面调用这个回调函数，并且以json的数据格式作为参数传递，完成回调。</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * jsonp.html</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">//创建script标签</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addScriptTag</span>(<span class="hljs-params">src</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);<br>    script.setAttribute(<span class="hljs-string">&#x27;type&#x27;</span>, <span class="hljs-string">&#x27;text/javascript&#x27;</span>);<br>    script.src = src;<br>    <span class="hljs-built_in">document</span>.body.appendChild(script);<br>&#125;<br><span class="hljs-comment">//回调函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span> (<span class="hljs-params">data</span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(data.name +<span class="hljs-string">&#x27;xxx&#x27;</span>);<br>&#125;<br><span class="hljs-comment">// 页面加载完成，创建一个script标签</span><br><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    addScriptTag(<span class="hljs-string">&#x27;http://b.com/main.js?callback=foo&#x27;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * main.js</span><br><span class="hljs-comment"> */</span><br>foo(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;tom&#x27;</span>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<li><p>jsonp的缺点</p>
+<p>(1) 任只要用这种方式，任何页面都可以访问b页面的数据，存在安全性问题</p>
+<p>(2)只能发送get请求，不能发送post请求</p>
+<p>(3)可能会被注入恶意代码，篡改页面内容</p>
+</li>
+<li><p>使用CROS方式</p>
+<p>(1)允许浏览器向跨域资源服务器发送XMLHttpRequest请求</p>
+<p>(2) 刚才的例子中，可以在b页面中添加响应头，允许a页面访问</p>
+<p><code>　Access-Control-Allow-Origin:http://a.com</code></p>
+<p>(3)然后a就可以用ajax获取b里面的数据了</p>
+</li>
+<li><p>webpack解决跨域</p>
+<p>(1) webpack proxy </p>
+<p>(2) 接受客户端发送的请求以后转发给其他服务器，目的是便于开发者在开发的模式下解决跨域问题</p>
+<p>(3) 实现代理，必须有一个中间件服务器，webpack提供的中间件服务器webpack-dev-server只适用于开发阶段</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ./webpack.config.js</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>  <span class="hljs-attr">devServer</span>: &#123;<br>        <span class="hljs-comment">// host: &#x27;0.0.0.0&#x27;,</span><br>        <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启热点 */</span><br>        <span class="hljs-attr">inline</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启页面自动刷新 */</span><br>        <span class="hljs-attr">progress</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 显示打包的进度 */</span><br>        <span class="hljs-attr">disableHostCheck</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">// port:8080,</span><br>        <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">watchOptions</span>: &#123;<br>            <span class="hljs-attr">aggregateTimeout</span>: <span class="hljs-number">300</span><br>        &#125;,<br>        <span class="hljs-attr">proxy</span>: &#123;<br>            <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>                <span class="hljs-comment">// target: &#x27;http://100.64.34.171:8081&#x27;, /* 后台服务器地址 */</span><br>                <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;http://127.0.0.1:8086&#x27;</span>,<br>                <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">ws</span>: <span class="hljs-literal">false</span>,<br>                <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span><br>                 <span class="hljs-comment">/* pathRewrite: &#123;</span><br><span class="hljs-comment">                    &#x27;^/api&#x27;: &#x27;&#x27; // 这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用&#x27;http://40.00.100.100:3002/user/add&#x27;，直接写‘/api/user/add’即可</span><br><span class="hljs-comment">                &#125;*/</span><br>            &#125;<br>        &#125;<br>    &#125;,<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>target:表示代理到的目标地址</li>
+<li>pathWrite:默认情况下，我们在/api也会被写到url中，希望删除，需要配置</li>
+<li>secure默认情况下不接受转发到https服务器上，如果需要，设为false</li>
+<li>changeOrigin: 它是表示是否更新代理后请求的 headers 中的 host 地址</li>
+</ul>
+<p>(4)实现原理</p>
+<ul>
+<li><p>proxy实际上利用<code>http-proxy-middleware </code>这个中间件，实现请求转发给其他服务器</p>
+</li>
+<li><p>在开发阶段，本地的地址是<code>Http://loaclhost:3000</code>,该请求发送一个前缀带有/api标识的去向服务器发送请求，但是这个服务器只是将请求发送给另一个请求</p>
+</li>
+<li><p>在开发阶段，<code>webpack-dev-server</code>会自动启动一个本地开发服务器，</p>
+</li>
+<li><p>我们应用在开发阶段是独立运行在localhost的一个端口上的，而后端服务器又运行在另一个地址上，由于同源策略，会出现跨域</p>
+</li>
+<li><p>所以使用代理，【浏览器发送请求】—&gt; 【中间服务器】—-&gt;【服务器】</p>
+</li>
+<li><p>服务器和服务器之间是不会存在跨域资源问题</p>
+</li>
+</ul>
+</li>
+<li><p>设置了 Access-Control-Allow-Credentials和withCredentials为什么cookie还是没能成功跨域?</p>
+<p>浏览器端要跨域</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111620.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>服务器端要检查</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111712.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>最重要的是<code>Access-Control-Allow-Origin</code>,标识允许哪个域的请求</p>
+<p>(1) <code>Access-Control-Allow-Origin:*</code>设置*浏览器将不会发送cookies，即使设置了<code>withCredentials</code></p>
+<div class="note note-secondary">
+            <p>因为这意味着把cookies开放给所有网站</p><p>假设当前是A网站,并且在cookie里写入了身份凭证 用户同时打开了B网站, 那么B网站给A网站的服务器发的所有请求都是以A用户的身份进行的, 这将导致CSRF问题</p>
+          </div>
+
+<p><code>withCredentials</code>：表示<code>XHR</code>是否接收cookies和发送cookies</p>
+<p>(2) <code>Access-Control-Allow-Origin:xxx</code>指定域</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhilili/p/14738262.html">webpack(六）——webpack 解决跨域的原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/89a377c52b48">没错，就是Access-Control-Allow-Origin，跨域</a></p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/http/">http</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss-04%E6%A0%B7%E5%BC%8F%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">css-04样式执行顺序</span>
+                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss-04%E7%9B%92%E6%A8%A1%E5%9E%8B/">
+                        <span class="hidden-mobile">css-04盒模型</span>
+                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">ŝlosivorto</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>我只想安静的</span></a> <i class="iconfont icon-love"></i> <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>做一个堕落的富婆</span></a> 
+  </div>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2020,03,14,18,12,20); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+      <span class="post-meta-divider">|</span>
+    </span>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </span>
+    <!--
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      本站博客共 <span class="post-count">{{ totalcount(site) }}</span> 字
+    </span>
+    -->
+</div>
+
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+	</body>
+</html>
