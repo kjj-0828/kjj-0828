@@ -32,8 +32,8 @@
   
   <entry>
     <title>js-05反转链表</title>
-    <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%B1%BBjs-05%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
-    <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%B1%BBjs-05%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
+    <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-05%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
+    <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-05%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
     
     <content type="html"><![CDATA[<ol><li><p>反转链表</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 反转链表</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>phead </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">reserve</span>(<span class="hljs-params">li.print()</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> phead = li.print();<br>    <span class="hljs-built_in">console</span>.log(phead);<br>    <span class="hljs-keyword">var</span> pre = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">var</span> cur = phead;<br>    <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">var</span> next = cur.next; <span class="hljs-comment">// 保存下一个节点</span><br>        cur.next = pre; <span class="hljs-comment">//断链</span><br>        pre = cur; <span class="hljs-comment">// 保证pre一直指向链头</span><br>        cur = next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> pre;<br>&#125;<br></code></pre></div></td></tr></table></figure></li><li><p>构建链表</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LinkList</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> Node = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>        <span class="hljs-built_in">this</span>.next = <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-keyword">var</span> length = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">var</span> head = <span class="hljs-literal">null</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 加节点</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param <span class="hljs-type">&#123;&#125;</span> </span>val </span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-built_in">this</span>.append = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> node = <span class="hljs-keyword">new</span> Node(val);<br>        <span class="hljs-keyword">var</span> cur;<br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span>) &#123;<br>            head = node;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            cur = head;<br>            <span class="hljs-keyword">while</span> (cur.next) &#123;<br>                cur = cur.next<br>            &#125;<br>            cur.next = node;<br><br>        &#125;<br>        length++;<br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 输出节点</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-built_in">this</span>.print = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> head;<br><br>    &#125;<br>&#125;<br><span class="hljs-keyword">var</span> li = <span class="hljs-keyword">new</span> LinkList();<br>li.append(<span class="hljs-number">1</span>);<br>li.append(<span class="hljs-number">2</span>);<br>li.append(<span class="hljs-number">3</span>);<br><span class="hljs-built_in">console</span>.log(li.print());<br><span class="hljs-comment">// Node &#123;val: 1, next: Node &#123; val: 2, next: Node &#123; val: 3, next: null &#125; &#125; &#125;</span><br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
     
@@ -42,7 +42,7 @@
       
       <category>面试笔记</category>
       
-      <category>小类</category>
+      <category>js</category>
       
     </categories>
     
@@ -3984,6 +3984,31 @@
   
   
   <entry>
+    <title>师姐分享</title>
+    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
+    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
+    
+    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>师姐分享</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>师姐分享</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>项目列表</title>
     <link href="/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/"/>
     <url>/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/%E7%A0%94%E7%A9%B6%E7%94%9F%E9%A1%B9%E7%9B%AE%E9%A1%B9%E7%9B%AE%E5%88%97%E8%A1%A8/</url>
@@ -4003,31 +4028,6 @@
     <tags>
       
       <tag>研究生项目</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>师姐分享</title>
-    <link href="/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/"/>
-    <url>/%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB%E5%B8%88%E5%A7%90%E5%88%86%E4%BA%AB/</url>
-    
-    <content type="html"><![CDATA[<ol><li><a href="https://zhuanlan.zhihu.com/p/60279001">前端面试：谈谈 JS 垃圾回收机制 - 知乎</a></li><li><a href="https://www.cnblogs.com/xaun/p/13673798.html">关于height:100%和height:100vh的区别 - 六人行 - 博客园</a></li><li><a href="https://www.cnblogs.com/yxkNotes/p/13931717.html">浏览器设置强缓存和协商缓存 - Judicious - 博客园</a></li><li><a href="https://zhuanlan.zhihu.com/p/138490697">ajax请求的五个步骤 - 知乎</a></li><li><a href="https://blog.csdn.net/qq_41261490/article/details/82966077">js中正则表达式test()方法_DiuDiu_yang的博客-CSDN博客_js test</a></li><li><a href="https://mp.weixin.qq.com/s/FnN0cIhhS8Y7mJADFCdfqQ">面经字节校招四轮技术面</a></li><li><a href="https://mp.weixin.qq.com/s/GnTIlJ80bfI28NrwwZmNLw">你真的了解 GET 和 POST 吗，它们的区别是什么？</a></li><li><a href="https://www.kwgg2020.com/">前端导航</a></li><li><a href="https://zhuanlan.zhihu.com/p/39903074">Web前端知识体系梳理 - 知乎</a></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>师姐分享</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>师姐分享</tag>
       
     </tags>
     
