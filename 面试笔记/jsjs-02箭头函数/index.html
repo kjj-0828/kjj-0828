@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      1k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      15
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 27, 2021 pm
+                  本文最后更新于：August 30, 2021 pm
                 
               </p>
             
@@ -263,7 +263,7 @@
 <li><p><strong>es5 this</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * es5 this</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">let</span> person = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>,<br>    <span class="hljs-attr">getName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.name;<br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(person.getName()); <span class="hljs-comment">// tom</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p><strong>es6 this</strong></p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * es6 this</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> person1 = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>,<br>    <span class="hljs-attr">getName</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.name <span class="hljs-comment">//获得的值是undefined</span><br>    <span class="hljs-comment">// getName: function () &#123; // 但是这种写法并没有达到简化的目的</span><br>    <span class="hljs-comment">//     let fn = () =&gt; this.name;</span><br>    <span class="hljs-comment">//     return fn();</span><br>    <span class="hljs-comment">// &#125;</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(person1.getName()); <span class="hljs-comment">// undefined 在ES6中，会默认采用严格模式，因此this也不会自动指向window对象了，而箭头函数本身并没有this，因此this就只能是undefined</span><br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * es6 this</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> person1 = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>,<br>    <span class="hljs-attr">getName</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.name <span class="hljs-comment">//方法的箭头函数，this指向window window对象正好有name属性，所以输出的是&#x27;&#x27;</span><br>&#125;<br><span class="hljs-built_in">console</span>.log(person1.getName()); <br></code></pre></div></td></tr></table></figure></li>
 <li><p><strong>this指向</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-attr">birth</span>: <span class="hljs-number">1990</span>,<br>    <span class="hljs-attr">getAge</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">this</span>.birth; <span class="hljs-comment">// 1990</span><br>        <span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getFullYear() - <span class="hljs-built_in">this</span>.birth; <span class="hljs-comment">// this指向window或undefined</span><br>            <span class="hljs-comment">// return new Date().getFullYear() - b; // 得到值 1990</span><br>        &#125;;<br>        <span class="hljs-keyword">return</span> fn();<br>    &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(obj.getAge()); <span class="hljs-comment">//NaN</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p><strong>箭头函数修改this的指向</strong></p>
