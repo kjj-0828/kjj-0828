@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      681 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      10
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 30, 2021 pm
+                  本文最后更新于：August 31, 2021 am
                 
               </p>
             
@@ -260,22 +260,27 @@
 <li><p>call和apply</p>
 <ul>
 <li><p>调用函数</p>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 调用函数</span><br><span class="hljs-comment"> */</span><br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">123</span>);<br>   &#125;<br>   fn.call(); <span class="hljs-comment">// 123</span><br>   fn.apply(); <span class="hljs-comment">// 123</span><br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x, y</span>) </span>&#123;<br>       <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);<br>       <span class="hljs-built_in">console</span>.log(x + y);<br>   &#125;<br>   <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>   sum.apply(<span class="hljs-literal">null</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>]); <span class="hljs-comment">// 5 第一个参数传入null,this指向js的全局对象，浏览器中是window</span><br>   sum.call(<span class="hljs-literal">null</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>); <span class="hljs-comment">// 5 </span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>传参数</p>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *  调用函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">18</span>, <span class="hljs-number">29</span>, <span class="hljs-number">89</span>, <span class="hljs-number">73</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">8</span>, <span class="hljs-number">99</span>, <span class="hljs-number">105</span>, <span class="hljs-number">52</span>];<br><span class="hljs-keyword">let</span> max1 = <span class="hljs-built_in">Math</span>.max.call(<span class="hljs-literal">null</span>, <span class="hljs-number">18</span>, <span class="hljs-number">29</span>, <span class="hljs-number">89</span>, <span class="hljs-number">73</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">8</span>, <span class="hljs-number">99</span>, <span class="hljs-number">105</span>, <span class="hljs-number">52</span>);<br><span class="hljs-built_in">console</span>.log(max1); <span class="hljs-comment">//105</span><br><span class="hljs-keyword">let</span> max2 = <span class="hljs-built_in">Math</span>.max.apply(<span class="hljs-literal">null</span>, arr)<br><span class="hljs-built_in">console</span>.log(max2);<span class="hljs-comment">// 105</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>修改this指向</p>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 改变this指向</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> dog = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;小青&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">3</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animal</span>(<span class="hljs-params">a, b</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(a + b);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// js全局对象 浏览器window</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.age);<br>&#125;<br>animal(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<br>animal.call(dog, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);<span class="hljs-comment">// this指向dog对象&#123; name: &#x27;小青&#x27;, age: 3 &#125;</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>借用对象方法</p>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 创建伪数组:常见的伪数组 argments、jQuery对象、document.querySelectorAll的返回值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-number">0</span>: <span class="hljs-string">&quot;卡卡西&quot;</span>,<br>    <span class="hljs-number">1</span>: <span class="hljs-string">&quot;佐助&quot;</span>,<br>    <span class="hljs-number">2</span>: <span class="hljs-string">&quot;鸣人&quot;</span>,<br>    <span class="hljs-attr">length</span>: <span class="hljs-number">3</span><br>&#125;;<br>[].push.call(obj, <span class="hljs-string">&#x27;小孩&#x27;</span>); <span class="hljs-comment">// 利用数组的方法，往伪数组后面添加一项</span><br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123; &#x27;0&#x27;: &#x27;卡卡西&#x27;, &#x27;1&#x27;: &#x27;佐助&#x27;, &#x27;2&#x27;: &#x27;鸣人&#x27;, &#x27;3&#x27;: &#x27;小孩&#x27;, length: 4 &#125;</span><br><span class="hljs-keyword">var</span> arr = [].slice.call(obj); <span class="hljs-comment">// 数组的slice方法可以把未数组转换成真数组</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">//[ &#x27;卡卡西&#x27;, &#x27;佐助&#x27;, &#x27;鸣人&#x27;, &#x27;小孩&#x27; ]</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 借用max求数组而定最大值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">18</span>, <span class="hljs-number">29</span>, <span class="hljs-number">89</span>, <span class="hljs-number">73</span>, <span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">8</span>, <span class="hljs-number">99</span>, <span class="hljs-number">105</span>, <span class="hljs-number">52</span>];<br><span class="hljs-keyword">var</span> ret = <span class="hljs-built_in">Math</span>.max.apply(arr, arr);<br><span class="hljs-built_in">console</span>.log(ret); <span class="hljs-comment">// 105</span><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>bind</p>
 <ul>
-<li>修改定时器指向</li>
+<li><p>改变this指向</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * bind改变this指向</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);<br>&#125;<br><span class="hljs-keyword">var</span> fn2 = fn.bind([<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>]); <span class="hljs-comment">// thi固定指定值[10,20,30]</span><br><span class="hljs-built_in">console</span>.log(fn === fn2);<br>fn2();<br></code></pre></div></td></tr></table></figure></li>
+<li><p>修改定时器指向</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * bind修改定时器指向</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">13</span>,<br>    <span class="hljs-attr">hi</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">//this指向obj</span><br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.age);<br>        &#125;.bind(<span class="hljs-built_in">this</span>), <span class="hljs-number">1000</span>)<span class="hljs-comment">// this不在定时器内部，指向的是对象obj</span><br>    &#125;<br>&#125;<br>obj.hi(); <span class="hljs-comment">// 13</span><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>拓展</p>
-</li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * var that = this 解决定时器指向</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">13</span>,<br>    <span class="hljs-attr">hi</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-keyword">var</span> that = <span class="hljs-built_in">this</span>;<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">//this指向window</span><br>            <span class="hljs-built_in">console</span>.log(that.age);<span class="hljs-comment">// that 指向obj</span><br>        &#125;, <span class="hljs-number">1000</span>)<br>    &#125;<br>&#125;<br>obj.hi(); <span class="hljs-comment">// 13</span><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 箭头函数</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> obj = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;yom&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">12</span>,<br>    <span class="hljs-attr">hi</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123; <span class="hljs-comment">//箭头函数没有自己的this,使用的是外部函数的this 由于箭头函数不绑定this， 它会捕获其所在（即定义的位置）上下文的this值， 作为自己的this值，</span><br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// this指向obj</span><br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.age);<br>        &#125;, <span class="hljs-number">0</span>)<br>    &#125;<br>&#125;<br>obj.hi();<span class="hljs-comment">// 12</span><br></code></pre></div></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -296,7 +301,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/js/">js</a>
+                      <a class="hover-with-bg" href="/tags/Js/">Js</a>
                     
                   </div>
                 
@@ -313,13 +318,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/vuevue-11vue%E6%8F%92%E6%A7%BD/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue-vue插槽</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-09js%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/">
                         <span class="hidden-mobile">js-09js函数调用模式</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -336,7 +347,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -362,7 +373,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -371,7 +382,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
