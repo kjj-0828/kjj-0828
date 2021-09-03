@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="面试笔记-js-12js实现indexOf方法">
+  <meta name="description" content="面试笔记-http-13转态吗">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>js-12js实现indexOf方法 - kjj</title>
+  <title>http-13转态吗 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -167,7 +167,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="js-12js实现indexOf方法">
+            <span class="h2" id="subtitle" title="http-13转态吗">
               
             </span>
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-02 21:27" pubdate>
-        September 2, 2021 pm
+      <time datetime="2021-09-03 22:15" pubdate>
+        September 3, 2021 pm
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      348 字
+      141 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      1
        分钟
     </span>
   
@@ -242,20 +242,41 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">js-12js实现indexOf方法</h1>
+            <h1 style="display: none">http-13转态吗</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：September 2, 2021 pm
+                  本文最后更新于：September 3, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
               <ol>
-<li><p>实现自己的indexOf</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">indexOf</span>(<span class="hljs-params">str, subStr, n</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> index = -<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">let</span> i = n ? n : <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; str.length) &#123;<br>        <span class="hljs-keyword">if</span> (str[i] === subStr[j]) &#123; <span class="hljs-comment">//找到第一个字符以后，比较长度</span><br>            <span class="hljs-keyword">if</span> (str.slice(i, i + subStr.length) === subStr) &#123;<br>                index = i;<br>                <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 第一次找到循环就结束</span><br>            &#125;<br>        &#125;<br>        i++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> index;<br>&#125;<br><span class="hljs-comment">// let str = &quot;acanacd&quot;;</span><br><span class="hljs-comment">// let subStr = &quot;acd&quot;;</span><br><span class="hljs-comment">// let str = &quot;asddffrg&quot;;</span><br><span class="hljs-comment">// let subStr = &quot;frg&quot;;</span><br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;acadecamic&quot;</span>;<br><span class="hljs-keyword">let</span> subStr = <span class="hljs-string">&quot;ca&quot;</span>;<br><span class="hljs-built_in">console</span>.log(indexOf(str, subStr,<span class="hljs-number">3</span>)); <span class="hljs-comment">// 4 5 5</span><br></code></pre></div></td></tr></table></figure></li>
-<li><p>实现自己的indexOf</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">String</span>.prototype.myIndexOf = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">str, n</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> len1 = <span class="hljs-built_in">this</span>.length;<br>    <span class="hljs-keyword">let</span> len2 = str.length;<br>    <span class="hljs-keyword">let</span> i = n || <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (i; i &lt; len1; i++) &#123; <span class="hljs-comment">//遍历原字符串</span><br>        <span class="hljs-keyword">if</span> (str[<span class="hljs-number">0</span>] === <span class="hljs-built_in">this</span>[i]) &#123; <span class="hljs-comment">//找到了第一次首字符匹配的地方</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; len2; j++) &#123; <span class="hljs-comment">//遍历目标字符串</span><br>                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>[i + j] !== str[j]) &#123; <span class="hljs-comment">// 如果遍历开始出现不匹配</span><br>                    <span class="hljs-keyword">if</span> (i === len1 - <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 找完了所有首字符匹配的情况返回-1</span><br>                        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 不匹配，重新开始查找首字母</span><br>                    &#125;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-keyword">if</span> (j == len2 - <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">//每一个都匹配，且遍历完了str</span><br>                        <span class="hljs-keyword">return</span> i;<br>                    &#125;<br>                &#125;<br><br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (i === len1 - <span class="hljs-number">1</span>) &#123;<span class="hljs-comment">//找完也没找到，就是不存在</span><br>                <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br><br>    &#125;<br><br>&#125;<br><span class="hljs-keyword">let</span> a = <span class="hljs-string">&quot;acanacd&quot;</span>.myIndexOf(<span class="hljs-string">&quot;acd&quot;</span>);<br><span class="hljs-keyword">let</span> b = <span class="hljs-string">&quot;acadecamic&quot;</span>.myIndexOf(<span class="hljs-string">&quot;cai&quot;</span>);<br><span class="hljs-keyword">let</span> c = <span class="hljs-string">&quot;asddffrg&quot;</span>.myIndexOf(<span class="hljs-string">&quot;frg&quot;</span>);<br><span class="hljs-keyword">let</span> d = <span class="hljs-string">&quot;acadecamic&quot;</span>.myIndexOf(<span class="hljs-string">&quot;ca&quot;</span>, <span class="hljs-number">3</span>);<br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//4</span><br><span class="hljs-built_in">console</span>.log(b);<span class="hljs-comment">//-1</span><br><span class="hljs-built_in">console</span>.log(c);<span class="hljs-comment">//5</span><br><span class="hljs-built_in">console</span>.log(d);<span class="hljs-comment">//5</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>301</p>
+<ul>
+<li>永久移动，指请求的资源已经被永久的移动到新的url，返回的信息会包含新的url，浏览器还会自动定向到新的url</li>
+</ul>
+</li>
+<li><p>302</p>
+<ul>
+<li>临时移动，与301类似，但是资源只是被临时的移动，客户端继续使用原有的url</li>
+</ul>
+</li>
+<li><p>304</p>
+<ul>
+<li>未修改，所访问的资源没有修改，服务器端返回此状态码时，不会返回任何资源，常用于缓存机制</li>
+</ul>
+</li>
+<li><p>4xx</p>
+<ul>
+<li>一般是客户端问题，代码错误</li>
+</ul>
+</li>
+<li><p>5xx</p>
+<ul>
+<li>一般是服务端问题</li>
+</ul>
+</li>
 </ol>
 
             </div>
@@ -268,7 +289,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E5%B0%8F%E7%B1%BB/">小类</a>
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/http/">http</a>
                     
                   </div>
                 
@@ -276,7 +297,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a>
+                      <a class="hover-with-bg" href="/tags/http/">http</a>
                     
                   </div>
                 
@@ -293,13 +314,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/httphttp-13%E5%BC%BA%E7%BC%93%E5%AD%98%E5%92%8C%E5%BC%B1%E7%BC%93%E5%AD%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">http-13强缓存和弱缓存</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/Vuevue-12vue%E4%B8%AD-nextTick/">
-                        <span class="hidden-mobile">vue-12vue中$nextTick</span>
-                        <span class="visible-mobile">下一篇</span>
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss-13css%E4%BD%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">css-13css位置</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -316,7 +343,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -342,7 +369,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -351,7 +378,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

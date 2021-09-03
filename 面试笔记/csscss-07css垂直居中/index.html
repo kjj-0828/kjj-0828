@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      151 字
+      396 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      7
        分钟
     </span>
   
@@ -246,12 +246,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 30, 2021 pm
+                  本文最后更新于：September 3, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
+              <h2 id="一、固定宽高"><a href="#一、固定宽高" class="headerlink" title="一、固定宽高"></a>一、固定宽高</h2><ol>
 <li><p>水平居中margin+ 垂直居中：transform</p>
 <figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.diva</span> &#123;<br>   <br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">background-color</span>: aquamarine;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;<br>    <span class="hljs-comment">/* 水平居中*/</span><br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-comment">/* 垂直居中 */</span><br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>水平居中：margin+垂直居中：margin-top负值</p>
@@ -260,6 +260,28 @@
 <figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-tag">html</span>,<br><span class="hljs-selector-tag">body</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">align-items</span>: center;<br>    <span class="hljs-comment">/*垂直居中*/</span><br>    <span class="hljs-attribute">justify-content</span>: center;<br>    <span class="hljs-comment">/*水平居中*/</span><br>&#125;<br>   <br><span class="hljs-selector-class">.diva</span> &#123;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">background-color</span>: aquamarine;<br>   <br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>水平和垂直都使用transform</p>
 <figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.diva</span> &#123;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">background-color</span>: aquamarine;<br>    <span class="hljs-attribute">position</span>:absolute;<br>    <span class="hljs-attribute">top</span>:<span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>,-<span class="hljs-number">50%</span>);<br>   <br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="二、不知道宽高"><a href="#二、不知道宽高" class="headerlink" title="二、不知道宽高"></a>二、不知道宽高</h2><ol>
+<li><p>弹性布局</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.index</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">background-color</span>: gray;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">align-items</span>: center;<br>    <span class="hljs-attribute">justify-content</span>: center;<br>   <br>&#125;<br><span class="hljs-selector-class">.index-dialog</span>&#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">background-color</span>: red;<br>&#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;index&quot;&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;index-dialog&quot;&gt;<span class="hljs-number">22222222</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903212936.png" srcset="/img/loading.gif" lazyload alt="image-20210903212928423"></p>
+</li>
+<li><p>transform+absolute</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.index</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">background-color</span>: gray;<br>    <span class="hljs-attribute">position</span>: relative;<br>   <br>&#125;<br><span class="hljs-selector-class">.index-dialog</span>&#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;<br>    box-align: center;<br>    <span class="hljs-attribute">background-color</span>: red;<br>    <span class="hljs-attribute">position</span>:absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">top</span>:<span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>,-<span class="hljs-number">50%</span>);<br>&#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;index&quot;&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;index-dialog&quot;&gt;<span class="hljs-number">22222222</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903213129.png" srcset="/img/loading.gif" lazyload alt="image-20210903213128601"><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903213153.png" srcset="/img/loading.gif" lazyload alt="image-20210903213152163"></p>
+</li>
+<li><p>table实现</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">  <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">background-color</span>: gray;<br>    <span class="hljs-attribute">display</span>: table;<br>   <br>&#125;<br>   <br><span class="hljs-selector-class">.index-dialog</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">display</span>: table-cell;<br>    <span class="hljs-attribute">vertical-align</span>: middle;<br>   <br>&#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;index&quot;&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;index-dialog&quot;&gt;<span class="hljs-number">22222222</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903213247.png" srcset="/img/loading.gif" lazyload alt="image-20210903213246565"></p>
+</li>
+<li><p>伪类实现</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.index</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">400px</span>;<br>    <span class="hljs-attribute">background-color</span>: gray;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">align-items</span>: center;<br>    <span class="hljs-attribute">justify-content</span>: center;<br>   <br>&#125;<br>   <br><span class="hljs-selector-class">.index</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;<br>    <span class="hljs-attribute">display</span>: inline-block;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">vertical-align</span>: middle;<br>&#125;<br>   <br><span class="hljs-selector-class">.index-dialog</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: rebeccapurple;<br>&#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;index&quot;&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;index-dialog&quot;&gt;<span class="hljs-number">222</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903213324.png" srcset="/img/loading.gif" lazyload alt="image-20210903213324051"></p>
+</li>
 </ol>
 
             </div>
@@ -300,7 +322,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/vuevue-07vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">vue-07vue双向绑定原理</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -309,7 +331,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss-07css%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/">
                         <span class="hidden-mobile">css-07css伪类和伪元素</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -326,7 +348,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -352,7 +374,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -361,7 +383,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
