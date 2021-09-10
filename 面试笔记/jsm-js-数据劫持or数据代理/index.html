@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      782 字
+      981 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      15
        分钟
     </span>
   
@@ -272,6 +272,20 @@
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> array = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">let</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(array, &#123;<br>    <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">target, key, receiver</span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;get&#x27;</span>, key);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(target, key, receiver);<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">target, key, value, receiver</span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;set&#x27;</span>, key, value);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.set(target, key, value, receiver);<br>    &#125;<br>&#125;)<br>proxy.push(<span class="hljs-number">4</span>);<br><span class="hljs-comment">// get push 得到方法名是push</span><br><span class="hljs-comment">// get length // 得到数组的长度属性</span><br><span class="hljs-comment">// set 3 4 // 设置下标 3 值是4</span><br><span class="hljs-comment">// set length 4 // 改变长度是4</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>不支持嵌套，需要在get方法里递归调用proxy</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>    <span class="hljs-attr">info</span>: &#123;<br>        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>,<br>        <span class="hljs-attr">blogs</span>: [<span class="hljs-string">&#x27;webpack&#x27;</span>, <span class="hljs-string">&#x27;babel&#x27;</span>, <span class="hljs-string">&#x27;cahce&#x27;</span>]<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> handler = &#123;<br>    <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">target, key, receiver</span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;get&#x27;</span>, key)<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> target[key] === <span class="hljs-string">&#x27;object&#x27;</span> &amp;&amp; target[key] !== <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(target[key], handler); <span class="hljs-comment">//递归调用</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.get(target, key, receiver);<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">target, key, value, receiver</span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;set&#x27;</span>, key, value);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Reflect</span>.set(target, key, value, receiver);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> proxy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(obj,handler);<br>proxy.info.name = <span class="hljs-string">&#x27;tom&#x27;</span>;<br>proxy.info.blogs.push(<span class="hljs-string">&#x27;proxy&#x27;</span>)<br><span class="hljs-comment">// get info</span><br><span class="hljs-comment">// set name tom</span><br><span class="hljs-comment">// get info</span><br><span class="hljs-comment">// get blogs</span><br><span class="hljs-comment">// get push</span><br><span class="hljs-comment">// get length</span><br><span class="hljs-comment">// set 3 proxy</span><br><span class="hljs-comment">// set length 4</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>proxy的第二个参数，支持13种拦截方法，比Object.defineProperty()更加丰富</p>
+</li>
+<li><p>proxy做为新标准，受到了关注和性能优化</p>
+</li>
+<li><p>proxy的兼容性不如Object.defineProperty()</p>
+</li>
+</ul>
+</li>
+<li><p>相关面试题</p>
+<ul>
+<li><p>什么样的 a 可以满足 (a === 1 &amp;&amp; a === 2 &amp;&amp; a === 3) === true 呢？(注意是 3 个 =，也就是严格相等)</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> current = <span class="hljs-number">0</span>;<br><span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-built_in">window</span>, <span class="hljs-string">&#x27;a&#x27;</span>, &#123;<br>    <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;<br>        current++;<br>        <span class="hljs-keyword">return</span> current;<br>    &#125;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(a === <span class="hljs-number">1</span> &amp;&amp; a === <span class="hljs-number">2</span> &amp;&amp; a === <span class="hljs-number">3</span>); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>多继承</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> foo = &#123;<br>    <span class="hljs-function"><span class="hljs-title">foo</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;foo&#x27;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> bar = &#123;<br>    <span class="hljs-function"><span class="hljs-title">bar</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;bar&#x27;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 正常情况下，对象只能继承一个对象</span><br><span class="hljs-keyword">let</span> sonOfFoo = <span class="hljs-built_in">Object</span>.create(foo);<br>sonOfFoo.foo(); <span class="hljs-comment">//foo</span><br><span class="hljs-keyword">let</span> sonOfBar = <span class="hljs-built_in">Object</span>.create(bar);<br>sonOfBar.bar(); <span class="hljs-comment">//bar</span><br><span class="hljs-keyword">let</span> sonOfFooBar = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Proxy</span>(&#123;&#125;, &#123;<br>    <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params">target, key</span>)</span> &#123;<br>        <span class="hljs-keyword">return</span> target[key] || foo[key] || bar[key];<br>    &#125;<br>&#125;)<br>sonOfFooBar.foo(); <span class="hljs-comment">//既有foo</span><br>sonOfFooBar.bar(); <span class="hljs-comment">//还有bar</span><br></code></pre></div></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -311,13 +325,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsm-js-%E5%90%88%E5%B9%B62%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">m-js-合并2个有序数组</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsm-js-promise-any/">
                         <span class="hidden-mobile">m-js-promise.any</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -360,7 +380,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -369,7 +389,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

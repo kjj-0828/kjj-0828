@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      75 字
+      809 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      9
        分钟
     </span>
   
@@ -246,23 +246,83 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：September 3, 2021 pm
+                  本文最后更新于：September 10, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
               <ol>
-<li><p>flex 0 0 1的含义：flex-grow 、flex-shrink、flex-basis</p>
+<li><p>什么是flex</p>
 <ul>
-<li><p>flex-grow ：设置当前flex元素在main-size中的伸缩系数，flex的值越大，代表占得空间越大</p>
-<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903214300.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<li>flex 是W3C提出的新的布局方式，也叫弹性布局</li>
+</ul>
 </li>
-<li><p>flex-shrink：设置flex元素的收缩系数，值越大，收缩的越大</p>
-<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903214416.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<li><p>特性</p>
+<ul>
+<li>任何元素都可以设置弹性布局</li>
+<li>设置flex布局以后，子元素的<code>float</code>、<code>clear</code>、<code>vertical-align</code>属性都无效</li>
+</ul>
 </li>
-<li><p>flex-basis：设置flex元素的初始大小</p>
+<li><p>属性</p>
+<ul>
+<li><p>所有子元素自动成为容器的一部分，可以叫做项目</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910210442.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>单个项目占据的主轴的空间叫做mian-size</p>
 </li>
 </ul>
+</li>
+<li><p>6个基本属性</p>
+<ul>
+<li><p>flex-direction：设置主轴的方向，4个值：row | row-reverse | column | column-reverse</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910211100.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+</ul>
+<figure class="highlight autohotkey"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs autohotkey">- `row`（默认值）：主轴为水平方向，起点在左端。<br>- `row-reverse`：主轴为水平方向，起点在右端。<br>- `column`：主轴为垂直方向，起点在上沿。<br>- `column-reverse`：主轴为垂直方向，起点在下沿。<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><p>flex-wrap:控制项目是否换行，3个值：  flex-wrap: nowrap | wrap | wrap-reverse;</p>
+<p>（1）<code>nowrap</code>（默认）：不换行。</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910211332.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>（2）<code>wrap</code>：换行，第一行在上方</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910211340.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>（3）<code>wrap-reverse</code>：换行，第一行在下方。</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910211349.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>flex-flow：是flex-direction、flex-warp的缩写，默认值是 row nowrap 水平排列不换行</p>
+</li>
+<li><p>justify-content：定义项目的对齐方式，5个值：justify-content: flex-start | flex-end | center | space-between | space-around;</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910211645.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">flex-start（默认值）：左对齐<br>flex-end：右对齐<br>center： 居中<br>space-between：两端对齐，项目之间的间隔都相等。<br>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br></code></pre></div></td></tr></table></figure></li>
+<li><p>align-items :交叉轴（可以理解成一般情况下的垂直轴）5个值：flex-start | flex-end | center | baseline | stretch;</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910211958.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">flex-start：交叉轴的起点对齐。<br>flex-end：交叉轴的终点对齐。<br>center：交叉轴的中点对齐。<br><span class="hljs-attr">baseline</span>: 项目的第一行文字的基线对齐。<br>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。<br></code></pre></div></td></tr></table></figure></li>
+<li><p>align-content:定义多个维度的对齐方式，如果只有一个轴线，不起作用</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910212221.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">flex-start：与交叉轴的起点对齐。<br>flex-end：与交叉轴的终点对齐。<br>center：与交叉轴的中点对齐。<br>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。<br>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。<br>stretch（默认值）：轴线占满整个交叉轴。<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>子元素(项目)属性</p>
+<ul>
+<li><p>order定义项目的排列属性，值越小，越在前面</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910213203.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>flex-gorw：定义项目的放大比例，默认为0，不放大，如果都是1，就平分，如果有一个是2，则占据的空间比其他的大一倍</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910213434.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>flex-shink：定义项目的缩小比例，默认是1，如果空间不够，就被挤小，如果值是0，则不会被挤小</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210910213641.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>flex-basis：定义项目占据的主轴空间，默认是auto，就是项目本来的大小</p>
+</li>
+<li><p>flex :是flex-grow、flex-shink、flex-basis的缩写，默认值是 0 1 auto </p>
+</li>
+<li><p>align-self：允许单个项目有不同的对齐方式 6个值：auto | flex-start | flex-end | center | baseline | stretch;默认值是auto，继承父元素的属性，如果没有父元素，等同于stretch</p>
+</li>
+</ul>
+</li>
+<li><p>总结<br>容器的属性：flex-direction、flex-wrap、flex-flow（flex-direction+flex-wrap）、justify-content、align-items、align-content</p>
+<p>项目的属性：order、flex-grow、flex-shink、flex-basis、flex（flex-grow+flex-shink+flex-basis）、align-self</p>
 </li>
 </ol>
 
@@ -306,7 +366,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss-13css%E4%BD%8D%E7%BD%AE/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">css-13css位置</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -315,7 +375,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs-13js%E5%85%A8%E6%8E%92%E5%88%97/">
                         <span class="hidden-mobile">js-13js全排列</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -358,7 +418,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -367,7 +427,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

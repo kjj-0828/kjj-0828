@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      821 字
+      820 字
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：September 7, 2021 pm
+                  本文最后更新于：September 9, 2021 pm
                 
               </p>
             
@@ -283,7 +283,7 @@
 </ul>
 </li>
 <li><p>手写一个Promise.any方法</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//手写实现promise.any</span><br><span class="hljs-keyword">let</span> Mypromise.any = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">promises</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        promises = <span class="hljs-built_in">Array</span>.isArray(promises) ? promises : []; <span class="hljs-comment">//判断传入的promises是不是数组</span><br>        <span class="hljs-keyword">let</span> len = promises.length;<br>        <span class="hljs-keyword">let</span> errs = []; <span class="hljs-comment">// 收集错误的信息</span><br>        <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">//空数组</span><br>            <span class="hljs-keyword">return</span> reject(<span class="hljs-keyword">new</span> AggregateError(<span class="hljs-string">&#x27;all promises were rejects&#x27;</span>))<br>        &#125;<br>        promises.forEach(<span class="hljs-function">(<span class="hljs-params">promise</span>) =&gt;</span> &#123;<br>            promise.then(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;<br>                resolve(value); <span class="hljs-comment">// 成功的情况</span><br>            &#125;, <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>                len--;<br>                errs.push(err);<br>                <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) &#123;<br>                    reject(errs);<span class="hljs-comment">//失败的情况</span><br>                &#125;<br>            &#125;)<br>        &#125;)<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">const</span> promises = [<br>    <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;error a&#x27;</span>),<br>    <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;error b&#x27;</span>),<br>    <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;result&#x27;</span>),<br>]<br>Mypromise.any(promises).then(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(value);<br>&#125;).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//手写实现promise.any</span><br><span class="hljs-built_in">Promise</span>.any = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">promises</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        promises = <span class="hljs-built_in">Array</span>.isArray(promises) ? promises : []; <span class="hljs-comment">//判断传入的promises是不是数组</span><br>        <span class="hljs-keyword">let</span> len = promises.length;<br>        <span class="hljs-keyword">let</span> errs = []; <span class="hljs-comment">// 收集错误的信息</span><br>        <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">//空数组</span><br>            <span class="hljs-keyword">return</span> reject(<span class="hljs-keyword">new</span> AggregateError(<span class="hljs-string">&#x27;all promises were rejects&#x27;</span>))<br>        &#125;<br>        promises.forEach(<span class="hljs-function">(<span class="hljs-params">promise</span>) =&gt;</span> &#123;<br>            promise.then(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;<br>                resolve(value); <span class="hljs-comment">// 成功的情况</span><br>            &#125;, <span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>                len--;<br>                errs.push(err);<br>                <span class="hljs-keyword">if</span> (len === <span class="hljs-number">0</span>) &#123;<br>                    reject(errs);<span class="hljs-comment">//失败的情况</span><br>                &#125;<br>            &#125;)<br>        &#125;)<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">const</span> promises = [<br>    <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;error a&#x27;</span>),<br>    <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;error b&#x27;</span>),<br>    <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">&#x27;result&#x27;</span>),<br>]<br><span class="hljs-built_in">Promise</span>.any(promises).then(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(value);<br>&#125;).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(err);<br>&#125;)<br><br></code></pre></div></td></tr></table></figure></li>
 <li><p>应用解决</p>
 <ul>
 <li>Promise.all 前端发起多个请求并根据请求顺序获取和使用数据</li>
@@ -332,7 +332,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsm-js-%E6%95%B0%E6%8D%AE%E5%8A%AB%E6%8C%81or%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">m-js-数据劫持or数据代理</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -341,7 +341,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/vuevue-vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/">
                         <span class="hidden-mobile">vue-vue响应式原理</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -384,7 +384,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -393,7 +393,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
