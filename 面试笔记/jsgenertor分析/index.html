@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="面试笔记-m-js-new一个对象的过程">
+  <meta name="description" content="面试笔记-m-js-genertor分析">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>new一个对象的过程 - kjj</title>
+  <title>genertor分析 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -167,7 +167,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="new一个对象的过程">
+            <span class="h2" id="subtitle" title="genertor分析">
               
             </span>
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-11 16:07" pubdate>
-        September 11, 2021 pm
+      <time datetime="2021-09-12 10:33" pubdate>
+        September 12, 2021 am
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      417 字
+      933 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      12
        分钟
     </span>
   
@@ -242,36 +242,92 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">new一个对象的过程</h1>
+            <h1 style="display: none">genertor分析</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：September 11, 2021 pm
+                  本文最后更新于：September 12, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
               <ol>
-<li><p>es5的构造函数</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// es5的构造函数</span><br><span class="hljs-keyword">let</span> Parent = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,age</span>)</span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>&#125;<br>Parent.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);<br>&#125;<br><span class="hljs-keyword">const</span> child = <span class="hljs-keyword">new</span> Parent(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">11</span>);<br>child.sayName(); <span class="hljs-comment">//tom</span><br></code></pre></div></td></tr></table></figure></li>
-<li><p>es6的类</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// es6的class</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parent</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name,age</span>)</span>&#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">sayName</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> child = <span class="hljs-keyword">new</span> Parent(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">12</span>);<br>child.sayName(); <span class="hljs-comment">//tom</span><br></code></pre></div></td></tr></table></figure></li>
-<li><p>new一个过程的解析</p>
+<li><p>genertor是什么</p>
 <ul>
-<li>创建一个空对象，赋值给this，继承函数的原型</li>
-<li>通过this将属性和方法添加到这个空对象</li>
-<li>返回这个this指向的新对象</li>
+<li>genertor是es6引入的新的数据类型，看着像一个函数，不过定义是由<code> function * xxxx（）&#123;&#125;</code>组成，并且可以利用yield返回多次</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> Parent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-comment">// 1.创建一个新对象，赋值给this</span><br>    <span class="hljs-built_in">this</span> = &#123;&#125;;<br>    <span class="hljs-comment">// 2.将this指向的对象赋值构造函数的属性</span><br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>, age = age;<br>    <span class="hljs-number">3.</span> 没有手动返回的对象，默认返回<span class="hljs-built_in">this</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br><span class="hljs-keyword">const</span> child = <span class="hljs-keyword">new</span> Parent();<br></code></pre></div></td></tr></table></figure></li>
-<li><p>实现一个new方法:new过程中会<strong>新建对象</strong>，此对象会继承<strong>构造器的原型与原型上的属性</strong>，最后它会被<strong>作为实例返回</strong>这样一个过程。</p>
+</li>
+<li><p>genertor的语法</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">genFn</span>(<span class="hljs-params">x</span>) </span>&#123;<br>    y = <span class="hljs-keyword">yield</span> x + <span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">console</span>.log(y);<br>&#125;<br><span class="hljs-keyword">let</span> g = genFn(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">console</span>.log(g.next()); <span class="hljs-comment">// &#123; value: 2, done: false &#125;</span><br><span class="hljs-built_in">console</span>.log(g.next()); <span class="hljs-comment">// &#123; value: undefined, done: true &#125;</span><br></code></pre></div></td></tr></table></figure>
+
 <ul>
-<li>以构造器的prototype为原型创造新对象</li>
-<li>将this(新对象)传给构造函数执行</li>
-<li>返回对象</li>
+<li>第一步<code>let g = genFn(1);</code>调用genFn时,返回的是一个指针对象，此时并没有执行函数，只是简单的调用</li>
+<li>第二步，采用next语法，会移动内部指针，指向第一个遇到yield的语句，就暂停执行，交出函数的执行权</li>
+<li>第三步，再次采用next语法，会从上一次的暂停之后继续执行（就像保留了记忆一样）</li>
+<li>next返回一个对象，包含value，done2个属性，value是yield语句后面表达式的值，done表示整个genertor函数是否执行完毕</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> Parent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>&#125;<br>Parent.prototype.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);<br>&#125;<br>Parent.prototype.sayAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.age);<br>&#125;<br><span class="hljs-keyword">let</span> newMethod = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">Parent, ...rest</span>) </span>&#123;<br>    <span class="hljs-comment">// 1.以构造器的prototype为原型，创建新的对象</span><br>    <span class="hljs-keyword">let</span> child = <span class="hljs-built_in">Object</span>.create(Parent.prototype);<br>    <span class="hljs-comment">// 2.将this(child)和参数传给构造器执行</span><br>    <span class="hljs-keyword">let</span> result = Parent.apply(child, rest);<br>    <span class="hljs-comment">// 3. 返回对象</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> result === <span class="hljs-string">&#x27;object&#x27;</span> ? result : child;<br>&#125;<br><span class="hljs-keyword">const</span>  child = newMethod(Parent,<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-string">&#x27;21&#x27;</span>);<br>child.sayName();<br>child.sayAge();<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">genFn</span>(<span class="hljs-params">x</span>) </span>&#123;<br>    y = <span class="hljs-keyword">yield</span> x + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> y;<br>&#125;<br><span class="hljs-keyword">let</span> g = genFn(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">console</span>.log(g.next()); <span class="hljs-comment">// &#123; value: 2, done: false &#125;</span><br><span class="hljs-built_in">console</span>.log(g.next(<span class="hljs-number">4</span>)); <span class="hljs-comment">// &#123; value: 4, done: true &#125;</span><br><span class="hljs-built_in">console</span>.log(g.next()); <span class="hljs-comment">// &#123; value: undefined, done: true &#125;</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>next(xxx)，入参会被当做上一个异步任务返回的结果，被y接受并返回</li>
+</ul>
+</li>
+<li><p>genertor执行机制</p>
+<ul>
+<li>genertor是es6引入的新的数据类型</li>
+<li>genertor函数调用之后并没有执行函数，只是返回一个遍历器对象，必须调用遍历器对象的next的方法，才可以使指针指向下一个状态</li>
+<li>直到遇到下一个yield语句或者return语句才结束</li>
+</ul>
+</li>
+<li><p>yield表达式</p>
+<ul>
+<li>yield是暂停执行的标志</li>
+<li>遇到yield就暂停执行，并且把yield后面表达式的值，作为返回对象的value值</li>
+<li>下一次调用next()，在继续往下执行，直到遇到下一个yield表达式</li>
+<li>如果没有遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return后面表达式的值作为返回对象的value值</li>
+<li>如果没有return语句，则返回对象的value值是undefined</li>
+</ul>
+</li>
+<li><p>yield和return的区别</p>
+<ul>
+<li>区别在与每次遇到yield表达式，函数会暂停执行，下一次在从该位置之后继续执行</li>
+<li>return语句不具备记忆功能</li>
+<li>每个函数里只能执行一次return语句，但是可以执行多次yield表达式</li>
+<li>yield只能用在genertor里，用到其他地方会报错</li>
+</ul>
+</li>
+<li><p>next()</p>
+<ul>
+<li>next()本身没有返回值，或者说总是返回undefined</li>
+<li>next可以带一个参数，这个参数会被当做上一个yield表达式的返回值</li>
+<li>在第一次使用next()传参是无效的，V8引擎会直接忽略第一次使用next()的参数，只用第二次传参才是有效的</li>
+</ul>
+</li>
+<li><p>genertor处理异步</p>
+</li>
 </ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/echolun/p/10903290.html">js new一个对象的过程，实现一个简单的new方法</a></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">genFn</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">yield</span> fetch(<span class="hljs-string">&#x27;https://zhuanlan.zhihu.com/p/114374428&#x27;</span>);<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;result&quot;</span>,result);<br>&#125;<br><span class="hljs-keyword">let</span> g = genFn();<br><span class="hljs-keyword">let</span> result = g.next();<br>result.value.then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> data;<br>&#125;).then(<span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> &#123;<br>    g.next(data);<br>&#125;)<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210912105417.png" srcset="/img/loading.gif" lazyload alt="image-20210912105409435"></p>
+<ol start="8">
+<li><p>async和await</p>
+<ul>
+<li><p>async是genertor的语法糖</p>
+</li>
+<li><p>async函数就是把*换成了async，把yield换成了await</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210912163721.png" srcset="/img/loading.gif" lazyload alt="image-20210912163720764"></p>
+</li>
+</ul>
+</li>
+<li><p>async函数的实现原理：就是将genertor函数和自动自动执行器封装封装到一个函数里</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">args</span>) </span>&#123;<br>  <span class="hljs-comment">// ...</span><br>&#125;<br><br><span class="hljs-comment">// 等同于</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">args</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> spawn(<span class="hljs-function"><span class="hljs-keyword">function</span>* (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// ...</span><br>  &#125;);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>所有的async函数都可以写成第2种形式，spawn就是自动执行函数</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">spawn</span>(<span class="hljs-params">genF</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> gen = genF();<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">step</span>(<span class="hljs-params">nextF</span>) </span>&#123;<br>      <span class="hljs-keyword">let</span> next;<br>      <span class="hljs-keyword">try</span> &#123;<br>        next = nextF();<br>      &#125; <span class="hljs-keyword">catch</span>(e) &#123;<br>        <span class="hljs-keyword">return</span> reject(e);<br>      &#125;<br>      <span class="hljs-keyword">if</span>(next.done) &#123;<br>        <span class="hljs-keyword">return</span> resolve(next.value);<br>      &#125;<br>      <span class="hljs-built_in">Promise</span>.resolve(next.value).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v</span>) </span>&#123;<br>        step(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> gen.next(v); &#125;);<br>      &#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;<br>        step(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> gen.throw(e); &#125;);<br>      &#125;);<br>    &#125;<br>    step(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> gen.next(<span class="hljs-literal">undefined</span>); &#125;);<br>  &#125;);<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/114374428">Generator详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f40cdf41e43c">Generator</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Merciwen/article/details/80963279/">async await 的原理</a></p>
 
             </div>
             <hr>
@@ -291,7 +347,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/new%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B/">new一个对象的过程</a>
+                      <a class="hover-with-bg" href="/tags/genertor%E5%88%86%E6%9E%90/">genertor分析</a>
                     
                   </div>
                 
@@ -308,12 +364,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsmjs-ajax%E5%88%9D%E5%AD%A6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mjs-ajax初学</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsmjs-this%E7%BB%91%E5%AE%9A%E6%96%B9%E5%BC%8F/">
-                        <span class="hidden-mobile">this绑定方式</span>
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsmjs-new%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B/">
+                        <span class="hidden-mobile">mjs-new一个对象的过程</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
