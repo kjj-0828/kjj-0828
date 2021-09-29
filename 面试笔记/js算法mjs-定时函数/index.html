@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="面试笔记-js-08js封装console">
+  <meta name="description" content="面试笔记-定时函数">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>mjs-js封装console - kjj</title>
+  <title>mjs-定时函数 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -167,7 +167,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="mjs-js封装console">
+            <span class="h2" id="subtitle" title="mjs-定时函数">
               
             </span>
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-29 16:37" pubdate>
-        August 29, 2021 pm
+      <time datetime="2021-08-21 21:45" pubdate>
+        August 21, 2021 pm
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      772 字
+      74 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      1
        分钟
     </span>
   
@@ -242,31 +242,20 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">mjs-js封装console</h1>
+            <h1 style="display: none">mjs-定时函数</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：September 12, 2021 pm
+                  本文最后更新于：September 29, 2021 pm
                 
               </p>
             
             <div class="markdown-body">
               <ol>
-<li><p>封装一个console</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logInfo</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log.apply(<span class="hljs-built_in">console</span>, <span class="hljs-built_in">arguments</span>);<br>&#125;<br>logInfo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>) <span class="hljs-comment">// 1 2 3</span><br></code></pre></div></td></tr></table></figure>
-
-<ul>
-<li>argments 是一个类数组对象</li>
-<li>argments 不是数组，除了length和索引元素，没有数组的任何属性</li>
-<li>apply会将数组(arguments)中的每个元素作为参数传递给函数(console.log)</li>
-</ul>
+<li><p>定时函数</p>
 </li>
-<li><p>promise实现异步操作</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">Promise</span>.resolve()<br>    .then(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-comment">// 第一步要执行的任务</span><br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-keyword">const</span> data1 = ... <span class="hljs-comment">//往下传递的数据</span><br>    <span class="hljs-built_in">Promise</span>.resolve(data1)<br>&#125;)<br>    .then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 上一步传过来的数据</span><br>        <span class="hljs-comment">//第二步要执行的任务</span><br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-keyword">const</span> data2 = ... <span class="hljs-comment">// 要往下传递的数据</span><br>    <span class="hljs-built_in">Promise</span>.resolve(data2); <br><br>&#125;)<br>.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 上一步传过来的数据</span><br>        <span class="hljs-comment">// 最后异步要执行的任务</span><br>        <span class="hljs-comment">// ...</span><br>    &#125;)<br></code></pre></div></td></tr></table></figure></li>
-<li><p>组合结果</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><br><span class="hljs-comment">//  * 初始值：[[&quot;红色&quot;, &quot;绿色&quot;], [&quot;大号&quot;, &quot;小号&quot;]]</span><br><span class="hljs-comment">//  * 返回值：[[&quot;红色&quot;, &quot;大号&quot;], [&quot;红色&quot;, &quot;小号&quot;], [&quot;绿色&quot;, &quot;大号&quot;], [&quot;绿色&quot;, &quot;小号&quot;]]</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">group</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>        result = resGroup(result, arr[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resGroup</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr2.length; j++) &#123;<br>            result.push([arr1[i], arr2[j]])<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [[<span class="hljs-string">&quot;红色&quot;</span>, <span class="hljs-string">&quot;绿色&quot;</span>], [<span class="hljs-string">&quot;大号&quot;</span>, <span class="hljs-string">&quot;小号&quot;</span>]];<br><span class="hljs-built_in">console</span>.log(group(arr)); <span class="hljs-comment">// [ [ &#x27;红色&#x27;, &#x27;大号&#x27; ], [ &#x27;红色&#x27;, &#x27;小号&#x27; ], [ &#x27;绿色&#x27;, &#x27;大号&#x27; ], [ &#x27;绿色&#x27;, &#x27;小号&#x27; ] ]</span><br></code></pre></div></td></tr></table></figure></li>
-<li><p>组合结果优化,上面的输出格式适合2*2的数组，如果是m*n的组合，输出不正确</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><br><span class="hljs-comment">//  * 初始值：[[&quot;红色&quot;, &quot;绿色&quot;], [&quot;大号&quot;, &quot;小号&quot;]]</span><br><span class="hljs-comment">//  * 返回值：[[&quot;红色&quot;, &quot;大号&quot;], [&quot;红色&quot;, &quot;小号&quot;], [&quot;绿色&quot;, &quot;大号&quot;], [&quot;绿色&quot;, &quot;小号&quot;]]</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">group</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>        result = resGroup(result, arr[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resGroup</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr2.length; j++) &#123;<br>            <span class="hljs-keyword">var</span> arr = (arr1[i] + <span class="hljs-string">&quot;,&quot;</span> + arr2[j]).split(<span class="hljs-string">&#x27;,&#x27;</span>)<br>            result.push(arr)<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [[<span class="hljs-string">&quot;红色&quot;</span>, <span class="hljs-string">&quot;绿色&quot;</span>], [<span class="hljs-string">&quot;大号&quot;</span>, <span class="hljs-string">&quot;小号&quot;</span>], [<span class="hljs-string">&quot;你&quot;</span>, <span class="hljs-string">&quot;我&quot;</span>],[<span class="hljs-string">&quot;男&quot;</span>,<span class="hljs-string">&quot;女&quot;</span>]];<br><span class="hljs-built_in">console</span>.log(group(arr)); <br>[<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ]<br>]<br></code></pre></div></td></tr></table></figure></li>
+<li><p>输出四次helloworld，每次间隔3秒</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">repeat</span>(<span class="hljs-params">func, times, wait</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">...arg</span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(...arg); <span class="hljs-comment">// =&gt;hello world</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; times; i++) &#123;<br>            <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res, rej</span>) </span>&#123;<br>                <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>                    func.apply(<span class="hljs-built_in">this</span>, arg)<br>                    res()<br>                &#125;, wait);<br>            &#125;)<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">const</span> repeatFunc = repeat(<span class="hljs-built_in">console</span>.log, <span class="hljs-number">4</span>, <span class="hljs-number">3000</span>);<br>repeatFunc(<span class="hljs-string">&#x27;hello world&#x27;</span>)<br></code></pre></div></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -279,7 +268,7 @@
                     
                       <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a>
                     
-                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/js/">js</a>
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/js%E7%AE%97%E6%B3%95/">js算法</a>
                     
                   </div>
                 
@@ -287,7 +276,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Js/">Js</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9A%E6%97%B6%E5%87%BD%E6%95%B0/">定时函数</a>
                     
                   </div>
                 
@@ -304,9 +293,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/httphttp-08http%E7%BD%91%E7%BB%9C/">
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/js%E7%AE%97%E6%B3%95mjs-%E8%B7%B3%E5%8F%B0%E9%98%B6/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">http-08http网络</span>
+                        <span class="hidden-mobile">mjs-跳台阶</span>
                         <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
@@ -314,8 +303,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/vuevue-07vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/">
-                        <span class="hidden-mobile">vue-vue双向绑定原理</span>
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsmjs-%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0/">
+                        <span class="hidden-mobile">mjs-立即执行函数</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
