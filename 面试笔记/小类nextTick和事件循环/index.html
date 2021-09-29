@@ -316,10 +316,15 @@
 
 <p>小结：</p>
 <ol>
-<li>执行一个宏任务（如果没有就从事件队列中读取）</li>
-<li>执行过程中如果遇到微任务，就添加到微任务的事件队列中</li>
-<li>宏任务执行完成，立即执行当前微任务队列中的所有微任务（依次执行）</li>
-<li>当前宏任务执行完成，开始检查渲染，然后GUI线程接管渲染，渲染完成后，js线程继续接管，开始下一个宏任务</li>
+<li><p>执行一个宏任务（如果没有就从事件队列中读取）</p>
+</li>
+<li><p>执行过程中如果遇到微任务，就添加到微任务的事件队列中</p>
+</li>
+<li><p>宏任务执行完成，立即执行当前微任务队列中的所有微任务（依次执行）</p>
+</li>
+<li><p>当前宏任务执行完成，开始检查渲染，然后GUI线程接管渲染，渲染完成后，js线程继续接管，开始下一个宏任务</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929111831.png" srcset="/img/loading.gif" lazyload alt="image-20210929111830215"></p>
+</li>
 </ol>
 </li>
 </ol>
@@ -347,6 +352,7 @@
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929104527.png" srcset="/img/loading.gif" lazyload alt="image-20210929104526335"></p>
 </li>
 </ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43737327/article/details/107578891">nextTick和JS的事件循环机制</a></p>
 
             </div>
             <hr>
@@ -389,7 +395,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/vuevue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
                         <span class="hidden-mobile">vue-vue生命周期</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -406,7 +412,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -432,7 +438,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -441,7 +447,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
