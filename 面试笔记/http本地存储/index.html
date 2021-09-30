@@ -14,13 +14,29 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="面试笔记-http-本地存储">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>Archiv - kjj</title>
+  <title>kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -52,7 +68,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -151,9 +167,59 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="真挚且热烈 乐观且向上">
+            <span class="h2" id="subtitle" title="">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-30 09:34" pubdate>
+        September 30, 2021 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      665 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -166,100 +232,146 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">Insgesamt 200 Artikel.</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-04判断是否以某个字符串结束</span>
-      <time style="float: right;">07-29</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%80%E5%A4%B4/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-04判断是否以某个字符串开头</span>
-      <time style="float: right;">07-29</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-04截取字符串</span>
-      <time style="float: right;">07-29</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-04%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-04冒泡排序</span>
-      <time style="float: right;">07-29</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%9F%BA%E6%9C%AC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-红宝书-基本引用类型</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-红宝书-变量、作用域与内存</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-03打乱数组</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-07%E5%8F%8D%E5%BA%8F%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-07反序字符串</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-03数组去重</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-03%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%87%91%E9%A2%9D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-03格式化金额</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：September 30, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、浏览器缓存分类"><a href="#一、浏览器缓存分类" class="headerlink" title="一、浏览器缓存分类"></a>一、浏览器缓存分类</h2><ul>
+<li>http缓存和本地存储：本篇主要讲解本地存储</li>
+</ul>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930135815.png" srcset="/img/loading.gif" lazyload alt="image-20210930135813684"></p>
+<h2 id="二、Cookie"><a href="#二、Cookie" class="headerlink" title="二、Cookie"></a>二、Cookie</h2><ol>
+<li>cookie机制：</li>
+</ol>
+<blockquote>
+<p>如果没有在浏览器端设置cookie的过期时间，cookie保存在内存中，生命周期随着浏览器的关闭而结束，这种cookie简称回话cookie。如果设置了过期时间，cookie保存在硬盘中，关闭浏览器以后cookie还会存在，到过期时间才会消失。</p>
+</blockquote>
+<ol start="2">
+<li>cookie的缺点<ul>
+<li>单个cookie的存储大小不能超过4kb，大小受到限制</li>
+<li>安全性较低，cookie欺骗、cookie截获</li>
+<li>有些状态不可能保存在客户端</li>
+<li>每次访问都要携带cookie给服务器，浪费带宽</li>
+<li>cookie数据有路径的概念，可以限制cookie只属于某个路径下</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、服务器端的session机制"><a href="#三、服务器端的session机制" class="headerlink" title="三、服务器端的session机制"></a>三、服务器端的session机制</h2><ol>
+<li>session机制</li>
+</ol>
+<blockquote>
+<p>当服务器收到请求需要创建session对象时，首先会检查客户端请求中是否有sessionId，如果有id，服务器根据该id返回对应的session对象。</p>
+<p>如果客户端请求中没有session对象，服务器会创建新的session对象，并且把sessionId在本次响应中返回给客户端。</p>
+<p>通常使用cookie的方式把sessionId存储到客户端，如果用户禁用了cookie，则要使用URL重写，当浏览器支持cookie时，url不做任何处理，当浏览器不支持cookie的时候，将会重写URL将sessionId拼接到访问地址之后。</p>
+</blockquote>
+<ol start="2">
+<li>session的安全性大于cookie<ul>
+<li>session存储在cookie，要攻破session先攻破cookie</li>
+<li>sessionId要有人登录，或者启动session_start才会有，所以攻破也不一定得到sessionId</li>
+<li>第二次启动session_start后，前一次的sessionId就失效了，session过期以后，sessionId也就消失了</li>
+<li>sessionId是加密的</li>
+</ul>
+</li>
+<li>session的缺点<ul>
+<li>session保存的东西越多，就越占用服务器内存，对于在线人数比较多的网站，服务器的压力比较大</li>
+<li>依赖cookie，如果不支持cookie，就要进行url重写，不安全</li>
+<li>过度使用session变量会导致代码不可读而且不好维护</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、LocalStorage"><a href="#四、LocalStorage" class="headerlink" title="四、LocalStorage"></a>四、LocalStorage</h2><blockquote>
+<p>将数据保存在客户端本地的硬件设备（通常指硬盘，也可以是其他硬件设备），即使浏览器关闭了，数据任然存在，除非手动删除。</p>
+</blockquote>
+<h2 id="五、SessionStorage"><a href="#五、SessionStorage" class="headerlink" title="五、SessionStorage"></a>五、SessionStorage</h2><blockquote>
+<p>将数据保存在session对象中，session指的是用户浏览某个网站，从进入这个网站到浏览器关闭所经过的时间，session对象可以保存这段时间内的所有数据</p>
+</blockquote>
+<h2 id="五、webSql（已经弃用）"><a href="#五、webSql（已经弃用）" class="headerlink" title="五、webSql（已经弃用）"></a>五、webSql（已经弃用）</h2><h2 id="六、IndexDB（类似于前端数据库）"><a href="#六、IndexDB（类似于前端数据库）" class="headerlink" title="六、IndexDB（类似于前端数据库）"></a>六、IndexDB（类似于前端数据库）</h2><h2 id="七、本地存储的对比"><a href="#七、本地存储的对比" class="headerlink" title="七、本地存储的对比"></a>七、本地存储的对比</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930162805.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/2021/07/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2021/07/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2021/07/page/3/#board">3</a><a class="page-number" href="/archives/2021/07/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/07/page/7/#board">7</a><a class="extend next" rel="next" href="/archives/2021/07/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/">面试笔记</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/http/">http</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/">浏览器缓存</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss%E4%B9%8BBFC/">
+                        <span class="hidden-mobile">css之BFC</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -422,9 +534,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
@@ -502,9 +620,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
