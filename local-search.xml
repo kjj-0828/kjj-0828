@@ -4,11 +4,38 @@
   
   
   <entry>
+    <title>http-XSS攻击</title>
+    <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/httpXSS%E6%94%BB%E5%87%BB/"/>
+    <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/httpXSS%E6%94%BB%E5%87%BB/</url>
+    
+    <content type="html"><![CDATA[<h2 id="一、什么是XSS攻击"><a href="#一、什么是XSS攻击" class="headerlink" title="一、什么是XSS攻击"></a>一、什么是XSS攻击</h2><blockquote><p>XSS是跨站脚本攻击，恶意攻击者在web页面中插入恶意的script代码，当用户访问该页面时，恶意的script会执行，达到恶意攻击的目的</p><p>XSS的攻击方式就是“教唆”网站去执行本来不存在于这个网页中的前端代码</p></blockquote><h2 id="二、XSS的危害"><a href="#二、XSS的危害" class="headerlink" title="二、XSS的危害"></a>二、XSS的危害</h2><ol><li>窃取网页浏览中的cookie值</li><li>劫持流量实现恶意跳转</li><li>配合csrf攻击完成恶意请求</li></ol><h2 id="三、xss的分类"><a href="#三、xss的分类" class="headerlink" title="三、xss的分类"></a>三、xss的分类</h2><p>反射型XSS：</p><ul><li>“反射”主要指的是服务器把恶意代码反射注入到浏览器端</li><li>攻击是一次性的</li></ul><p>攻击步骤：</p><ul><li>攻击者在url后面的参数中加入恶意攻击代码</li><li>当用户打开带有恶意代码的url链接的时候，网站的服务器将恶意代码从url中取出，然后拼接到html中返回给浏览器端</li><li>用户浏览器接受到后相应并解析代码，其中的恶意代码也会被执行到</li></ul><p>常见的反射型XSS：</p><ul><li>恶意链接</li></ul><p>存储型XSS：</p><ul><li>攻击是持久性的</li></ul><p>攻击步骤：</p><ul><li>攻击者将恶意代码存放到目标网站的数据库中</li><li>用户浏览目标网站的时候，网站服务器从数据库中把恶意代码取出，然后拼接到html后返回给浏览器</li><li>浏览器接受到响应后解析并执行，其中恶意代码也会被执行</li></ul><p>如何解决：</p><ul><li>后端对提交的数据进行过滤</li><li>前端做一些处理，对script等标签，将特殊字符替换成html编码等</li></ul><p>DOM-based型xss：</p><p>攻击步骤：</p><ul><li>攻击者构造出特殊的url，其中url中含有恶意代码</li><li>用户打开含有恶意代码的url</li><li>用户浏览器响应解析并执行，前端使用js取出url中恶意代码并执行</li></ul><h2 id="四、解决方案"><a href="#四、解决方案" class="headerlink" title="四、解决方案"></a>四、解决方案</h2><ol><li>cookie安全策略</li><li>X-XSS-Protection设置</li><li>XSS防御HTML编码</li><li>XSS 防御HTML Attribute编码</li><li>XSS防御之javascript编码</li><li>XSS 防御之 URL 编码</li><li>XSS 防御之 CSS 编码</li><li>开启CSP网页安全政策防止XSS攻击</li></ol><h2 id="五、sql注入"><a href="#五、sql注入" class="headerlink" title="五、sql注入"></a>五、sql注入</h2><p>在登录界面的时候，都需要输入用户名和密码，如果我输入的密码是‘or’ ‘123’ = ‘123’，在我们查询数据库的时候，拼接以后的sql语句是<code>select * from user where username =&#39;&#39;and password =&#39;&#39; or &#39;123&#39; =&#39;123&#39;</code>,这样用户名和密码的校验是没有意义的。</p><p>sql注入攻击：sql语句伪造参数，然后对参数拼接以后形成xss攻击的sql语句，最后就会导致数据库被攻击了。</p><p>解决方案：</p><ul><li>使用预编译语句，伪造的参数到达服务器端的时候只是简单的字符串，不会形成sql攻击</li><li>数据库中的密码不应该明文存储，最好采取加密的方式</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/26177815">浅谈XSS攻击的那些事（附常用绕过姿势）</a></p><p><a href="https://www.cnblogs.com/tugenhua0707/p/10909284.html">web安全之XSS攻击原理及防范</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试笔记</category>
+      
+      <category>http</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>XSS攻击</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>计算机网络-UDP和TCP</title>
     <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CUDP%E5%92%8CTCP/"/>
     <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CUDP%E5%92%8CTCP/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、UDP"><a href="#一、UDP" class="headerlink" title="一、UDP"></a>一、UDP</h2><ol><li>UDP处在传输层</li><li>不提供数据包分组、组装</li><li>不对数据包进行排序</li><li>不关心发送的数据是否安全完整到达</li><li>不像TCP在发送数据之前进行3次握手，无连接的，想发数据就发</li><li>UDP支持一对一、一对多、多对多、多对一的方式</li><li>UDP是面向报文的</li><li>UDP具有明显的不可靠性（网络不好的情况下会发生丢包，但是网络好的情况下能够达到高效的实时的传输）</li></ol><h2 id="二、TCP"><a href="#二、TCP" class="headerlink" title="二、TCP"></a>二、TCP</h2><ol><li>TCP是一种面向连接的、可靠的、基于字节流的传输层通讯协议</li><li>TCP连接的含义是建立3次握手</li><li>TCP断开连接是要进行4次挥手</li><li>TCP连接是端对端的，只支持一对一的传输</li><li>TCP提供拥塞控制，当网络出现拥塞时，TCP能够减少向网络发送数据的数量和速度</li><li>TCP会处理丢包，确认丢包会进行重传</li></ol><h2 id="三、3次握手"><a href="#三、3次握手" class="headerlink" title="三、3次握手"></a>三、3次握手</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930213906.png" alt="image-20210930213905113"></p><h2 id="四、4次挥手"><a href="#四、4次挥手" class="headerlink" title="四、4次挥手"></a>四、4次挥手</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930214023.png" alt="image-20210930214022564"></p><h2 id="五、为什么是3次握手"><a href="#五、为什么是3次握手" class="headerlink" title="五、为什么是3次握手"></a>五、为什么是3次握手</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930213836.png" alt="image-20210930213835881"></p><p>第一次握手：确认客户端的发送能力</p><p>第二次握手：确认服务器端的收发能力</p><p>第三次握手：确认客户端的接收能力</p><p>二次握手无法确认客户端的接收能力，所以最少是3次握手</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、UDP"><a href="#一、UDP" class="headerlink" title="一、UDP"></a>一、UDP</h2><ol><li>UDP处在传输层</li><li>不提供数据包分组、组装</li><li>不对数据包进行排序</li><li>不关心发送的数据是否安全完整到达</li><li>不像TCP在发送数据之前进行3次握手，无连接的，想发数据就发</li><li>UDP支持一对一、一对多、多对多、多对一的方式</li><li>UDP是面向报文的</li><li>UDP具有明显的不可靠性（网络不好的情况下会发生丢包，但是网络好的情况下能够达到高效的实时的传输）</li></ol><h2 id="二、TCP"><a href="#二、TCP" class="headerlink" title="二、TCP"></a>二、TCP</h2><ol><li>TCP是一种面向连接的、可靠的、基于字节流的传输层通讯协议</li><li>TCP连接的含义是建立3次握手</li><li>TCP断开连接是要进行4次挥手</li><li>TCP连接是端对端的，只支持一对一的传输</li><li>TCP提供拥塞控制，当网络出现拥塞时，TCP能够减少向网络发送数据的数量和速度</li><li>TCP会处理丢包，确认丢包会进行重传</li></ol><h2 id="三、3次握手"><a href="#三、3次握手" class="headerlink" title="三、3次握手"></a>三、3次握手</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930213906.png" alt="image-20210930213905113"></p><h2 id="四、4次挥手"><a href="#四、4次挥手" class="headerlink" title="四、4次挥手"></a>四、4次挥手</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930214023.png" alt="image-20210930214022564"></p><h2 id="五、为什么是3次握手"><a href="#五、为什么是3次握手" class="headerlink" title="五、为什么是3次握手"></a>五、为什么是3次握手</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930213836.png" alt="image-20210930213835881"></p><p>第一次握手：确认客户端的发送能力</p><p>第二次握手：确认服务器端的收发能力</p><p>第三次握手：确认客户端的接收能力</p><p>二次握手无法确认客户端的接收能力，所以最少是3次握手</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/78244069">一篇搞懂TCP的三次握手 四次挥手</a></p>]]></content>
     
     
     <categories>
