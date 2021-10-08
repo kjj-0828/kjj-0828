@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>mjs-页面输入url</title>
+    <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/http%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5url/"/>
+    <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/http%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5url/</url>
+    
+    <content type="html"><![CDATA[<ol><li>URL解析</li></ol><blockquote><p>首先判断你输入的是一个合法的URL还是一个待搜索的关键字，进行对应操作</p></blockquote><ol start="2"><li>DNS查询</li></ol><blockquote><p>获取域名对应的服务器ip地址</p></blockquote><ol start="3"><li>TCP连接</li></ol><blockquote><p>首先3次握手建立TCP连接</p></blockquote><ol start="4"><li>http请求</li></ol><blockquote><p>浏览器发送http到目标服务器</p></blockquote><ol start="5"><li>响应请求</li></ol><blockquote><p>服务器收到请求后，进行逻辑操作，之后进行http响应，响应完成，当页面关闭，TCP经过4次挥手断开连接</p></blockquote><ol start="6"><li>页面渲染</li></ol><blockquote><p>浏览器拿到服务器响应的资源，先对资源进行解析，比如重定向，存储cookie，解压gzip等</p><p>在根据不同的资源采用不同的解析方式</p><p>解析html，构建DOM树</p><p>解析css，生成css规则树</p><p>合并DOM树和css规则树，生成render树</p><p>布局render树，绘制render树，绘制页面像素信息等</p><p>最后浏览器把信息给GPU（图形处理器），GPU再将各层信息合并显示在屏幕上</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试笔记</category>
+      
+      <category>http</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>页面输入url</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>http-cookie原理</title>
     <link href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/httpcookie%E5%8E%9F%E7%90%86/"/>
     <url>/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/httpcookie%E5%8E%9F%E7%90%86/</url>
