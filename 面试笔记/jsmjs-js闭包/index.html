@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      642 字
+      699 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      10
        分钟
     </span>
   
@@ -256,6 +256,7 @@
 <ul>
 <li>闭包：一个函数和对其周围状态的引用捆绑在一起，这样的组合就是闭包</li>
 <li>闭包可以使你在一个内层函数中访问到外层函数的作用域</li>
+<li>在js中，每当函数被创建，就会在函数生成时创建闭包</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 词法作用域</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;yom&quot;</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayName</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-comment">//闭包</span><br>        <span class="hljs-built_in">console</span>.log(name);<br>    &#125;<br>    displayName();<br>&#125;<br>init();<br></code></pre></div></td></tr></table></figure>
 
@@ -268,6 +269,10 @@
 </li>
 <li><p>闭包</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 闭包</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeFun</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;tom&quot;</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayName</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(name);<br>    &#125;<br>    <span class="hljs-keyword">return</span> displayName;<br>&#125;<br><span class="hljs-keyword">var</span> myFunc = makeFun();<br>myFunc();<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 立即执行闭包（2次立即执行函数的写法）</span><br><span class="hljs-comment"> */</span><br>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fout</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fin</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(a);<br>    &#125;<br>    <span class="hljs-keyword">return</span> fin;<br>&#125;)()(); <span class="hljs-comment">// 1</span><br></code></pre></div></td></tr></table></figure>
+
+
 
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 闭包</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeAdder</span>(<span class="hljs-params">x</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">y</span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> x + y;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">var</span> makeA = makeAdder(<span class="hljs-number">5</span>);<br><span class="hljs-keyword">var</span> makeB = makeAdder(<span class="hljs-number">7</span>);<br><span class="hljs-built_in">console</span>.log(makeA(<span class="hljs-number">2</span>));<br><span class="hljs-built_in">console</span>.log(makeB(<span class="hljs-number">2</span>));<br></code></pre></div></td></tr></table></figure>
 
@@ -333,7 +338,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/csscss-07css%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">css-css伪类和伪元素</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -342,7 +347,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsmjs-%E5%87%A0%E7%A7%8D%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95/">
                         <span class="hidden-mobile">mjs-几种异步方法</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -385,7 +390,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -394,7 +399,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
