@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2k 字
+      1.7k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      25
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 30, 2021 pm
+                  本文最后更新于：October 15, 2021 pm
                 
               </p>
             
@@ -340,35 +340,7 @@
 <li>当组件混入对象时,所有混入对象选项将被混入组件本身</li>
 <li>慎用全局混入</li>
 </ol>
-<h2 id="十一、ajax和axios的区别"><a href="#十一、ajax和axios的区别" class="headerlink" title="十一、ajax和axios的区别"></a>十一、ajax和axios的区别</h2><ol>
-<li><p>ajax</p>
-<p>优点：</p>
-<p>传统的Ajax指的是XMLHttpRequest，最早出现的发送后端请求技术，核心使用的是XMLHttpRequest对象</p>
-<p>JQuery ajax是对原生XHR的封装，除此之外还提供了对JSONP的支持</p>
-<p>缺点：</p>
-<p>本身是针对MVC编程，不符合现在前端MVVM的浪潮</p>
-<p>基于原生的XHR开发， XHR本身的架构不清晰</p>
-<p>JQuery整个项目太大，为了使用Ajax就引入JQuery非常的不合理</p>
-<p>不关注分离原则</p>
-<p>配置和调用非常混乱</p>
-<p>用法：</p>
-<figure class="highlight fortran"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs fortran">$.ajax(&#123;<br>    <span class="hljs-keyword">type</span>:<span class="hljs-string">&#x27;POST&#x27;</span>,<br>    url:url,<br>    <span class="hljs-keyword">data</span>:<span class="hljs-keyword">data</span>,<br>    dataType:dataType,<br>    success:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;&#125;,<br>    error:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>&#123;&#125;<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
-<li><p>axios</p>
-<p>优点：</p>
-<p>基于promise用于浏览器和nodejs的HTTP客户端</p>
-<p>本质也是对原生XHR的封装，但是是Promise的实现，</p>
-<p>从浏览器创建XMLHttpRequest</p>
-<p>支持promise API</p>
-<p>客户端支持防止CSRF</p>
-<p>提供一些并发请求的接口</p>
-<p>从nodejs创建http请求</p>
-<p>转换请求数据和响应数据</p>
-<p>取消请求</p>
-<p>自动转换json数据</p>
-<p>用法：</p>
-<figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim">axios(&#123;<br>method:<span class="hljs-string">&#x27;post&#x27;</span>,<br>ur<span class="hljs-variable">l:</span><span class="hljs-string">&#x27;/user/1245&#x27;</span>,<br>dat<span class="hljs-variable">a:</span>&#123;<br>firstname:<span class="hljs-string">&#x27;tom&#x27;</span>,<br>lastname:<span class="hljs-string">&#x27;jack&#x27;</span><br>&#125;,<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span>&#123;</span><br><br>&#125;).<span class="hljs-keyword">catch</span>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error)</span>&#123;</span><br><br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
-</ol>
-<h2 id="十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）"><a href="#十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）" class="headerlink" title="十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）"></a>十二、MVC（model-view-controller）和MVVM（model-view-viewmodel）</h2><p>MVVM</p>
+<h2 id="十一、MVC（model-view-controller）和MVVM（model-view-viewmodel）"><a href="#十一、MVC（model-view-controller）和MVVM（model-view-viewmodel）" class="headerlink" title="十一、MVC（model-view-controller）和MVVM（model-view-viewmodel）"></a>十一、MVC（model-view-controller）和MVVM（model-view-viewmodel）</h2><p>MVVM</p>
 <ol>
 <li><p>MVVM源自经典的MVC模式</p>
 </li>
