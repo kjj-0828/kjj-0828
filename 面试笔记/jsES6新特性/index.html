@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：October 16, 2021 am
+                  本文最后更新于：October 17, 2021 am
                 
               </p>
             
@@ -255,8 +255,8 @@
 <p>let和var的作用域不同，let的作用域是块级作用域，var的作用域是全局作用域</p>
 <p>let和var对待变量提升不同，let不存在变量提升，必须先定义在使用，var存在变量提升</p>
 <p>let定义变量，const定义常量</p>
-<p>const在定义的时候，必须赋值，一定赋值，后面值是不可以改变的</p>
-<p>const 定义的是对象，对象内的值发生改变是允许的，因为可以理解成const定义对象的指针地址并没有变</p>
+<p>const在定义的时候，必须赋值，一但赋值，后面值是不可以改变的</p>
+<p>const 如果定义的是对象，对象内的值发生改变是允许的，因为可以理解成const定义对象的指针地址并没有变</p>
 </blockquote>
 <h2 id="二、模板字符串"><a href="#二、模板字符串" class="headerlink" title="二、模板字符串"></a>二、模板字符串</h2><p>在ES6之前处理字符串用到<code>/</code>、<code>+</code>，在ES6之后我们这样处理字符串：反问号、<code>$&#123;&#125;</code></p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> name = <span class="hljs-string">&#x27;小米&#x27;</span>;<br><span class="hljs-keyword">let</span> seatNumber = <span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-keyword">let</span> sex = <span class="hljs-string">&quot;女&quot;</span>;<br><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;This demonstrates the output of HTML content to the page, including student&#x27;s&quot;</span> + name + <span class="hljs-string">&quot;, &quot;</span> + seatNumber + <span class="hljs-string">&quot;, &quot;</span> + sex + <span class="hljs-string">&quot; and so on.&quot;</span><br><span class="hljs-built_in">console</span>.log(str); <span class="hljs-comment">// This demonstrates the output of HTML content to the page, including student&#x27;s小米, 123, 女 and so on.</span><br></code></pre></div></td></tr></table></figure>
@@ -274,7 +274,7 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ES5</span><br><span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> a + b;<br>&#125;;<br><span class="hljs-comment">// ES6</span><br><span class="hljs-keyword">var</span> add = <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> &#123; a + b &#125;;<br><span class="hljs-comment">// ES5</span><br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> x + <span class="hljs-number">1</span>;<br>&#125;)<br><span class="hljs-comment">// ES6</span><br>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].map(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x + <span class="hljs-number">1</span>);<br></code></pre></div></td></tr></table></figure>
 
-<h2 id="四、函数参数的默认值"><a href="#四、函数参数的默认值" class="headerlink" title="四、函数参数的默认值"></a>四、函数参数的默认值</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ES5</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printText</span>(<span class="hljs-params">text</span>)</span>&#123;<br>  text = text || <span class="hljs-string">&#x27;defalut&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(text); <span class="hljs-comment">// hello </span><br>&#125;<br>printText(<span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-comment">//ES6</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printText</span>(<span class="hljs-params">text = <span class="hljs-string">&#x27;defalut&#x27;</span></span>)</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(text);<br>&#125;<br>printText(); <span class="hljs-comment">// defalut</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="四、函数参数的默认值"><a href="#四、函数参数的默认值" class="headerlink" title="四、函数参数的默认值"></a>四、函数参数的默认值</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ES5</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printText</span>(<span class="hljs-params">text</span>)</span>&#123;<br>  text = text || <span class="hljs-string">&#x27;default&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(text); <span class="hljs-comment">// hello </span><br>&#125;<br>printText(<span class="hljs-string">&quot;hello&quot;</span>)<br><span class="hljs-comment">//ES6</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printText</span>(<span class="hljs-params">text = <span class="hljs-string">&#x27;default&#x27;</span></span>)</span>&#123;<br>  <span class="hljs-built_in">console</span>.log(text);<br>&#125;<br>printText(); <span class="hljs-comment">// defalut</span><br></code></pre></div></td></tr></table></figure>
 
 <h2 id="五、操作符（…）"><a href="#五、操作符（…）" class="headerlink" title="五、操作符（…）"></a>五、操作符（…）</h2><blockquote>
 <p>Spread / Rest 操作符指的是 …，具体是 Spread 还是 Rest 需要看上下文语境。</p>
@@ -347,13 +347,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsimport%E5%92%8Crequire%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mjs-import和require的区别</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jsjs%E5%92%8Cnode%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E5%8C%BA%E5%88%AB/">
                         <span class="hidden-mobile">mjs-js和node的事件循环区别</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -396,7 +402,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -405,7 +411,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
