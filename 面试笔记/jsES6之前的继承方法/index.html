@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      739 字
+      1.3k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      18
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：October 22, 2021 pm
+                  本文最后更新于：October 26, 2021 am
                 
               </p>
             
@@ -256,7 +256,7 @@
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211022215349.png" srcset="/img/loading.gif" lazyload alt="image-20211022215341354"></p>
 <blockquote>
 <p>这样实现的实质是将子类的原型指向父类的实例，所以子类可以将父类的私有，公有方法和属性都当做子类的公有属性</p>
-<p>我们知道在操作基本数据类型的时候操作的是值，在操作引用数据类型的时候操作的是地址，如果父类的私有属性中有引用类型的属性，那么他被子类继承时候会作为公有属性，这样子类1操作这个属性的时候，就会影响到属性2</p>
+<p>我们知道在操作基本数据类型的时候操作的是值，在操作引用数据类型的时候操作的是地址，如果父类的私有属性中有引用类型的属性，那么他被子类继承时候会作为公有属性，这样子类1操作这个属性的时候，就会影响到子类2</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">s1.play.push(<span class="hljs-number">4</span>);<br><span class="hljs-built_in">console</span>.log(s1.play,s2.play); <span class="hljs-comment">// [ 1, 2, 3, 4 ] [ 1, 2, 3, 4 ]</span><br></code></pre></div></td></tr></table></figure>
 
@@ -296,6 +296,43 @@
 <li>只能继承父类的方法和属性，不能继承原型的属性和方法</li>
 <li>无法实现函数复用，每一个子类都有父类实例函数的副本，影响性能</li>
 </ul>
+<h2 id="三、原型链-构造函数"><a href="#三、原型链-构造函数" class="headerlink" title="三、原型链+构造函数"></a>三、原型链+构造函数</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">this</span>.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age) <span class="hljs-comment">// 构造函数</span><br>    <span class="hljs-built_in">this</span>.price = price<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Student.prototype = <span class="hljs-keyword">new</span> Person(); <span class="hljs-comment">// 原型链 </span><br>Student.prototype.constructor = Student; <span class="hljs-comment">// 修复构造函数指向</span><br>Student.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;&#125;;<br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">20</span>,<span class="hljs-number">14000</span>);<br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025205118.png" srcset="/img/loading.gif" lazyload alt="image-20211025205110184"></p>
+<p>特点：</p>
+<ul>
+<li>可以继承实例属性/方法 也可以继承原型属性/方法</li>
+<li>不存在引用属性共享问题</li>
+<li>可传参</li>
+<li>函数可以复用</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>调用了两次父类构造函数，生成了两份实例</li>
+</ul>
+<h2 id="四、组合继承优化1"><a href="#四、组合继承优化1" class="headerlink" title="四、组合继承优化1"></a>四、组合继承优化1</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">this</span>.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age);<br>    <span class="hljs-built_in">this</span>.price = price;<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Student.prototype = Person.prototype; <span class="hljs-comment">// 父类原型和子类原型指向同一个对象</span><br>Student.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;;<br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;ton&#x27;</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1212</span>);<br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025210138.png" srcset="/img/loading.gif" lazyload alt="image-20211025210137343"></p>
+<p>优点：</p>
+<ul>
+<li>不会初始化两次实例方法/属性 避免组合继承的缺点</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>没有办法辨别实例是子类还是父类创建的，子类和父类的构造函数指向同一个</li>
+</ul>
+<h2 id="五、组合继承优化2"><a href="#五、组合继承优化2" class="headerlink" title="五、组合继承优化2"></a>五、组合继承优化2</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age);<br>    <span class="hljs-built_in">this</span>.price = price;<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>student.prototype = <span class="hljs-built_in">Object</span>.create(Person.prototype); <span class="hljs-comment">// 核心代码</span><br><span class="hljs-comment">// var B = Object.create(A)以A对象为原型，生成了B对象。B继承了A的所有属性和方法。</span><br>student.prototype.constructor = student; <span class="hljs-comment">//核心代码</span><br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> student(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-number">19002</span>);<br><span class="hljs-built_in">console</span>.log(s1 <span class="hljs-keyword">instanceof</span> student , s1 <span class="hljs-keyword">instanceof</span> Person); <span class="hljs-comment">// true true</span><br><span class="hljs-built_in">console</span>.log(s1.constructor); <span class="hljs-comment">// student</span><br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025211109.png" srcset="/img/loading.gif" lazyload alt="image-20211025211108526"></p>
+<p>优点：</p>
+<ul>
+<li>继承了父类原型对象的属性和方法，最完美的继承方法</li>
+</ul>
+<h2 id="六、ES6中的class继承"><a href="#六、ES6中的class继承" class="headerlink" title="六、ES6中的class继承"></a>六、ES6中的class继承</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, age</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">showName</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;调用父类的方法&quot;</span>);<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name, <span class="hljs-built_in">this</span>.age);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> p1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">18</span>);<br><span class="hljs-built_in">console</span>.log(p1);<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, age, salary</span>)</span> &#123;<br>        <span class="hljs-built_in">super</span>(name, age);<br>        <span class="hljs-built_in">this</span>.salary = salary;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">showName</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;调用子类的方法&#x27;</span>);<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name, <span class="hljs-built_in">this</span>.age, <span class="hljs-built_in">this</span>.salary);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">18</span>,<span class="hljs-number">100000</span>);<br><span class="hljs-built_in">console</span>.log(s1);<br>s1.showName();<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025213222.png" srcset="/img/loading.gif" lazyload alt="image-20211025213221722"></p>
 
             </div>
             <hr>
@@ -331,6 +368,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/jstypeof%E5%92%8Cinstanceof/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mjs-typeof和instanceof</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
