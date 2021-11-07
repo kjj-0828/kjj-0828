@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      39 字
+      626 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
@@ -251,12 +251,36 @@
               </p>
             
             <div class="markdown-body">
-              <p>一、数据驱动视图</p>
-<p>UI=render(state)</p>
+              <h2 id="一、数据驱动视图"><a href="#一、数据驱动视图" class="headerlink" title="一、数据驱动视图"></a>一、数据驱动视图</h2><p>UI=render(state)</p>
 <p>数据驱动视图的理解：</p>
 <blockquote>
-<p>当数据发生变化的时候，页面也随着发生了变化</p>
+<p>当数据状态发生变化的时候，页面也随着发生了变化</p>
 </blockquote>
+<h2 id="二、Object的变化侦测"><a href="#二、Object的变化侦测" class="headerlink" title="二、Object的变化侦测"></a>二、Object的变化侦测</h2><p>使用js提供的Object.defineProperty可以观测到对象的中数据变化</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> car = &#123;&#125;;<br><span class="hljs-keyword">let</span> val = <span class="hljs-number">3000</span>;<br><span class="hljs-built_in">Object</span>.defineProperty(car, <span class="hljs-string">&#x27;price&#x27;</span>, &#123;<br>    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-function"><span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;price的值被读取了&#x27;</span>);<br>        <span class="hljs-keyword">return</span> val;<br>    &#125;,<br>    <span class="hljs-function"><span class="hljs-title">set</span>(<span class="hljs-params">newVal</span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;price的值被修改了&#x27;</span>);<br>        val = newVal;<br>    &#125;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(car.price); <span class="hljs-comment">// price的值被读取了  // 3000</span><br><span class="hljs-built_in">console</span>.log(car.price = <span class="hljs-number">8000</span>); <span class="hljs-comment">// price的值被修改了// 8000</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="三、依赖收集"><a href="#三、依赖收集" class="headerlink" title="三、依赖收集"></a>三、依赖收集</h2><blockquote>
+<p>通过上面的学习，已经知道如何获得数据的变化，那么下一步就是通知视图，我们只通知依赖数据的视图，所以给每个数据建立依赖数组，把依赖数据的视图放入依赖数组中，如果数据发生变化，就去通知依赖数组中的视图，【哎，你依赖的数据发生变化了哦~，你该更新了】这个过程就是依赖收集。</p>
+</blockquote>
+<ul>
+<li><p>什么时候收集依赖，什么时候通知依赖更新</p>
+<p>我们知道数据被获取的时候，会触发getter方法，就可以在getter中进行依赖收集，</p>
+<p>当数据变化时，会触发setter方法，可以在setter中通知依赖更新。</p>
+</li>
+</ul>
+<blockquote>
+<p>一句话：在getter中进行依赖收集，在setter中通知依赖更新</p>
+</blockquote>
+<p>用数组做依赖过于简单，必然要对数组做一些扩展，那么就有了依赖管理器Dep</p>
+<p>在getter中通过dep.depend()收集依赖，在setter通过dep.notify()通知依赖更新</p>
+<h2 id="四、谁是依赖"><a href="#四、谁是依赖" class="headerlink" title="四、谁是依赖"></a>四、谁是依赖</h2><p>谁用到了数据，谁就是那个依赖，但是这只是一个通俗的讲法，在vue中，还有一个Watcher类，他的实例就是那个“谁”</p>
+<p>谁用了数据，谁就是那个依赖，我们就为他创建一个Watcher实例，在之后数据变化后，我们不去通知依赖更新，而是通知依赖对应的实例，由Watcher实例去通知真正的视图。</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><ul>
+<li>通过Observer将数据变成可侦测性的，通过getter和setter来追踪数据的变化</li>
+<li>当外界通过Watcher读取数据时，会触发getter方法，把Watcher添加到依赖中</li>
+<li>通过依赖管理器Dep完成依赖收集，通知依赖更新</li>
+<li>当数据发生变化时，会触发setter方法，通知依赖也就是Watcher完成依赖更新</li>
+</ul>
 
             </div>
             <hr>
@@ -299,7 +323,7 @@
                     
                       <a href="/%E8%AE%BA%E6%96%87/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%BA%E6%96%87/">
                         <span class="hidden-mobile">论文-论文</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -342,7 +366,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -351,7 +375,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
