@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      288 字
+      408 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      5
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：November 9, 2021 pm
+                  本文最后更新于：November 11, 2021 pm
                 
               </p>
             
@@ -263,12 +263,18 @@
 <h2 id="二、Vue中的虚拟DOM"><a href="#二、Vue中的虚拟DOM" class="headerlink" title="二、Vue中的虚拟DOM"></a>二、Vue中的虚拟DOM</h2><p>vue中的虚拟DOM通过VNode类实现，Vnode中定义了一个真实的DOM所需要的一系列的属性，通过属性之间的不同搭配，可以描述出各种类型的真实DOM节点。</p>
 <p>VNode的类型</p>
 <ul>
-<li>注释节点</li>
-<li>文本节点</li>
-<li>克隆节点</li>
-<li>元素节点</li>
-<li>组件节点</li>
-<li>函数式组件节点</li>
+<li><p>注释节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/*孔：创建注释节点 只需要2个属性*/</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> createEmptyVNode = <span class="hljs-function">(<span class="hljs-params">text: string = <span class="hljs-string">&#x27;&#x27;</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> node = <span class="hljs-keyword">new</span> VNode()<br>  node.text = text<br>  node.isComment = <span class="hljs-literal">true</span><br>  <span class="hljs-keyword">return</span> node<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>文本节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/*孔： 创建文本节点 只需要一个属性*/</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createTextVNode</span> (<span class="hljs-params">val: string | number</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> VNode(<span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-built_in">String</span>(val))<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>克隆节点</p>
+</li>
+<li><p>元素节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 真实DOM节点</span><br>&lt;div id=<span class="hljs-string">&#x27;a&#x27;</span>&gt;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>难凉热血<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>&lt;/div&gt;<br><br><span class="hljs-comment">// VNode节点</span><br>&#123;<br>  <span class="hljs-attr">tag</span>:<span class="hljs-string">&#x27;div&#x27;</span>,<br>  <span class="hljs-attr">data</span>:&#123;&#125;,<br>  <span class="hljs-attr">children</span>:[<br>    &#123;<br>      <span class="hljs-attr">tag</span>:<span class="hljs-string">&#x27;span&#x27;</span>,<br>      <span class="hljs-attr">text</span>:<span class="hljs-string">&#x27;难凉热血&#x27;</span><br>    &#125;<br>  ]<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>组件节点</p>
+</li>
+<li><p>函数式组件节点</p>
+</li>
 </ul>
 
             </div>
@@ -305,6 +311,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81DOM-Diff/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue-DOM-Dif</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
