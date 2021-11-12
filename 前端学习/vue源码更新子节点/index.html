@@ -14,13 +14,29 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="vue-更新子节点">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>Archiv - kjj</title>
+  <title>vue-更新子节点 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -52,7 +68,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -151,9 +167,59 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="真挚且热烈 乐观且向上">
+            <span class="h2" id="subtitle" title="vue-更新子节点">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-11 22:28" pubdate>
+        November 11, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      744 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -166,76 +232,115 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">Insgesamt 226 Artikel.</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/jsjs-%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js-入门介绍</span>
-      <time style="float: right;">07-10</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/htmlhtml/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">html</span>
-      <time style="float: right;">07-09</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/csscss/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">css</span>
-      <time style="float: right;">07-09</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vuevue%20%E7%9F%A5%E8%AF%86%E7%82%B9/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">vue 知识点</span>
-      <time style="float: right;">07-09</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/componentvue%20svg%E7%BB%84%E4%BB%B6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">vue svg组件</span>
-      <time style="float: right;">07-09</time>
-    </a>
-  
-    
-    <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/webpackwebpack/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">webpack</span>
-      <time style="float: right;">07-09</time>
-    </a>
-  
-</div>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue-更新子节点</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：November 12, 2021 am
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、更新子节点"><a href="#一、更新子节点" class="headerlink" title="一、更新子节点"></a>一、更新子节点</h2><p>当新的节点VNode和旧的节点OldVNode都包含子节点时，他的children属性就是包含所有子节点的数组。通过对2个节点进行循环，外层循环newChildren，内层循环oldChildren，每次循环一个newChildren，就去看内存有没有相同的oldChildren节点。</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; newChildren.length; i++) &#123;<br>  <span class="hljs-keyword">const</span> newChild = newChildren[i];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; oldChildren.length; j++) &#123;<br>    <span class="hljs-keyword">const</span> oldChild = oldChildren[j];<br>    <span class="hljs-keyword">if</span> (newChild === oldChild) &#123;<br>      <span class="hljs-comment">// ...</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>在循环的过程中会发生4个情况：</p>
+<ul>
+<li>创建子节点：如果newChildren存在，oldChildren不存在，那就创建子节点</li>
+<li>删除子节点：如果newChildren不存在，oldChildren存在，那就删除oldChildren子节点：</li>
+<li>移动子节点：如果newChildren存在，oldChildren存在，但是所处的位置不一样，那就oldChildren移动子节点</li>
+<li>更新子节点：如果newChildren存在，oldChildren存在，但是所处的位置一样，那就更新oldChildren子节点</li>
+</ul>
+<h2 id="二、创建子节点"><a href="#二、创建子节点" class="headerlink" title="二、创建子节点"></a>二、创建子节点</h2><p>创建一个子节点的语法很简单，之前在DOM-DIff中已经应用过，比较难的是，如何找到正确插入节点的位置，通过分析如果每次在OldVNode中都能找到子节点，那么就可以标记VNode为已处理，把插入节点放入后面，但是这里会出现问题，如果同时存在多个插入的节点，就会出现位置错误，所以采用逆向思维，把每次插入的节点放到未处理节点的前面，这样保证每次插入的位置都是正确的。</p>
+<blockquote>
+<p>总结：插入节点的位置是每次未处理节点的前面，不是已处理节点的后面</p>
+</blockquote>
+<h2 id="三、删除子节点"><a href="#三、删除子节点" class="headerlink" title="三、删除子节点"></a>三、删除子节点</h2><p>把VNode的所有子节点都遍历一遍后，发现OldVNode中还存在未处理的节点，那么这些节点是需要废弃的节点，删除它。</p>
+<h2 id="四、更新子节点"><a href="#四、更新子节点" class="headerlink" title="四、更新子节点"></a>四、更新子节点</h2><p>如果在OldVNode和VNode中都找到了相同的节点，并且所处的位置也相同，那就更新OldVNode节点</p>
+<h2 id="五、移动子节点"><a href="#五、移动子节点" class="headerlink" title="五、移动子节点"></a>五、移动子节点</h2><p>如果在OldVNode和VNode中都找到了相同的节点，但是所处的位置不同，那就要移动子节点，通过分析，跟创建子节点一样，所有未处理节点之前的位置就是要移动的目标位置。</p>
+<h2 id="六、源码分析"><a href="#六、源码分析" class="headerlink" title="六、源码分析"></a>六、源码分析</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：更新子节点的相关操作*/</span><br><span class="hljs-keyword">if</span> (isUndef(idxInOld)) &#123; <span class="hljs-comment">// New element /*孔：如果在旧节点中没有找到新节点*/</span><br>  <span class="hljs-comment">/*孔：创建新的节点*/</span><br>  createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="hljs-literal">false</span>, newCh, newStartIdx)<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  vnodeToMove = oldCh[idxInOld] <span class="hljs-comment">/*孔：保存节点的下标*/</span><br>  <span class="hljs-keyword">if</span> (sameVnode(vnodeToMove, newStartVnode)) &#123; <span class="hljs-comment">/*孔：旧节点和新节点一样*/</span><br>    <span class="hljs-comment">/*孔：更新旧节点*/</span><br>    patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)<br>    oldCh[idxInOld] = <span class="hljs-literal">undefined</span><br>    <span class="hljs-comment">/*判断是否需要移动旧节点*/</span><br>    canMove &amp;&amp; nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)<br>  &#125; <span class="hljs-keyword">else</span> &#123;<span class="hljs-comment">/*孔：旧节点和新节点不一样，直接创建节点*/</span><br>    <span class="hljs-comment">// same key but different element. treat as new element</span><br>    createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, <span class="hljs-literal">false</span>, newCh, newStartIdx)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/page/22/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/#board">21</a><a class="page-number" href="/archives/page/22/#board">22</a><span class="page-number current">23</span>
-    </span>
-  </nav>
-
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81/">vue源码</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9B%B4%E6%96%B0%E5%AD%90%E8%8A%82%E7%82%B9/">更新子节点</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81DOM-Diff/">
+                        <span class="hidden-mobile">vue-DOM-Dif</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -398,9 +503,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
@@ -478,9 +589,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
