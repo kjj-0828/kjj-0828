@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      430 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      5
        分钟
     </span>
   
@@ -251,7 +251,38 @@
               </p>
             
             <div class="markdown-body">
-              
+              <ol>
+<li>什么是模板编译</li>
+</ol>
+<blockquote>
+<p>我们把<code>&lt;template&gt;&lt;/template&gt;</code>标签中类似原生html的内容称之为模板</p>
+</blockquote>
+<blockquote>
+<p>vue会把<code>&lt;template&gt;&lt;/template&gt;</code>中原生的html找出来，也会把非原生的html找出来，经过一系列的逻辑处理生成渲染函数，也就是render函数，而render函数会把模板内容生成对应的VNode，VNode经过我学习的patch过程得到将要渲染到视图中的VNode，最后根据VNode创建真实的DOM节点并插入到视图中，完成视图的渲染更新</p>
+</blockquote>
+<blockquote>
+<p>vue把<code>&lt;template&gt;&lt;/template&gt;</code>中原生的html找出来，也会把非原生的html找出来，经过一系列的逻辑处理生成渲染函数，也就是render函数这一阶段成为模板编译</p>
+</blockquote>
+<ol start="2">
+<li><p>整体的渲染过程</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211208203713.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+<li><p>模板编译的具体过程</p>
+</li>
+</ol>
+<blockquote>
+<p>模板解析阶段：将一堆字符串用正则等方式解析成AST树</p>
+<p>优化阶段：遍历AST树，找出其中的静态节点，打上标记</p>
+<p>代码生成阶段：将AST树转换成render树</p>
+</blockquote>
+<ol start="4">
+<li><p>vue源码</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * kong:1. 模板解析阶段</span><br><span class="hljs-comment"> *      2. 优化阶段</span><br><span class="hljs-comment"> *      3. 代码生成阶段</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@type <span class="hljs-type">&#123;Function&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> createCompiler = createCompilerCreator(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">baseCompile</span> (<span class="hljs-params"></span></span><br><span class="hljs-params"><span class="hljs-function">  template: string,</span></span><br><span class="hljs-params"><span class="hljs-function">  options: CompilerOptions</span></span><br><span class="hljs-params"><span class="hljs-function"></span>): <span class="hljs-title">CompiledResult</span> </span>&#123;<br>  <span class="hljs-comment">/*孔:parse()可以将template利用正则解析成AST树*/</span><br>  <span class="hljs-keyword">const</span> ast = parse(template.trim(), options)<br>  <span class="hljs-keyword">if</span> (options.optimize !== <span class="hljs-literal">false</span>) &#123;<br>    <span class="hljs-comment">/*孔：优化AST树，主要是给静态节点打标签，这里也提升了DOM-Diff的性能，不需要再比较静态节点*/</span><br>    optimize(ast, options)<br>  &#125;<br>  <span class="hljs-comment">/*孔：代码生成阶段*/</span><br>  <span class="hljs-keyword">const</span> code = generate(ast, options)<br>  <span class="hljs-comment">/*孔：返回AST树，render函数，静态render函数*/</span><br>  <span class="hljs-keyword">return</span> &#123;<br>    ast,<br>    <span class="hljs-attr">render</span>: code.render,<br>    <span class="hljs-attr">staticRenderFns</span>: code.staticRenderFns<br>  &#125;<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<li><p>模板编译内部的具体流程</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211208211347.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+</li>
+</ol>
+
             </div>
             <hr>
             <div>
@@ -287,13 +318,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E6%A8%A1%E6%9D%BF%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue-模板解析过程</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/vue/%E6%96%87%E4%BB%B6%E5%88%87%E7%89%87/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%96%87%E4%BB%B6%E5%88%87%E7%89%87/">
                         <span class="hidden-mobile">文件切片</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -336,7 +373,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -345,7 +382,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

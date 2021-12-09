@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816203334.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="vue-模板解析过程">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>vue-模板解析过程 - kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816200709.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="vue-模板解析过程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-08 21:49" pubdate>
+        December 8, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue-模板解析过程</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：December 9, 2021 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <ol>
+<li>整体流程</li>
+</ol>
+<blockquote>
+<p><code>&lt;template&gt;&lt;/template&gt;</code>中除了包含html的信息，还包含文本信息，以及文本信息中还会包含过滤器</p>
+</blockquote>
+<blockquote>
+<p>所以解析的流程就是：html解析器是主线，碰到文本就调用文本解析器，文本中如果有过滤器就调用过滤器解析器</p>
+</blockquote>
+<p>vue源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">  <span class="hljs-comment">/**</span><br><span class="hljs-comment">   * kong:html解析器</span><br><span class="hljs-comment">   */</span><br>  parseHTML(template, &#123;<br>    warn,<br>    <span class="hljs-attr">expectHTML</span>: options.expectHTML,<br>    <span class="hljs-attr">isUnaryTag</span>: options.isUnaryTag,<br>    <span class="hljs-attr">canBeLeftOpenTag</span>: options.canBeLeftOpenTag,<br>    <span class="hljs-attr">shouldDecodeNewlines</span>: options.shouldDecodeNewlines,<br>    <span class="hljs-attr">shouldDecodeNewlinesForHref</span>: options.shouldDecodeNewlinesForHref,<br>    <span class="hljs-attr">shouldKeepComment</span>: options.comments,<br>    <span class="hljs-attr">outputSourceRange</span>: options.outputSourceRange,<br>    <span class="hljs-comment">/*孔：当解析到开始标签，调用该函数 unary参数是否闭合*/</span><br>    <span class="hljs-function"><span class="hljs-title">start</span>(<span class="hljs-params">tag, attrs, unary, start, end</span>)</span> &#123;<br>    &#125;,<br>    <span class="hljs-comment">/*孔：当解析到结束标签，调用该函数*/</span><br>    <span class="hljs-function"><span class="hljs-title">end</span>(<span class="hljs-params">tag, start, end</span>)</span> &#123;<br>    &#125;,<br>    <span class="hljs-comment">/*孔：当遇到解析到文本，调用该函数*/</span><br>    <span class="hljs-function"><span class="hljs-title">chars</span>(<span class="hljs-params">text: string, start: number, end: number</span>)</span> &#123;<br>    &#125;,<br>    <span class="hljs-comment">/*孔：当解析到注释时，调用该函数*/</span><br>    <span class="hljs-function"><span class="hljs-title">comment</span>(<span class="hljs-params">text: string, start, end</span>)</span> &#123;<br>    &#125;<br>  &#125;)<br>  <span class="hljs-keyword">return</span> root<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>(1) 当解析到开始标签时，调用start函数</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">start</span>(<span class="hljs-params">tag, attrs, unary, start, end</span>)</span> &#123;<br>  <span class="hljs-comment">/*孔：调用方法创建元素类型对应的AST树*/</span><br>  <span class="hljs-keyword">let</span> element: ASTElement = createASTElement(tag, attrs, currentParent)<br>&#125;<br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createASTElement</span>(<span class="hljs-params"></span></span><br><span class="hljs-params"><span class="hljs-function">  tag: string,</span></span><br><span class="hljs-params"><span class="hljs-function">  attrs: <span class="hljs-built_in">Array</span>&lt;ASTAttr&gt;,</span></span><br><span class="hljs-params"><span class="hljs-function">  parent: ASTElement | <span class="hljs-keyword">void</span></span></span><br><span class="hljs-params"><span class="hljs-function"></span>): <span class="hljs-title">ASTElement</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-number">1</span>,<br>    tag,<br>    <span class="hljs-attr">attrsList</span>: attrs,<br>    <span class="hljs-attr">attrsMap</span>: makeAttrsMap(attrs),<br>    <span class="hljs-attr">rawAttrsMap</span>: &#123;&#125;,<br>    parent,<br>    <span class="hljs-attr">children</span>: []<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>(2) 当解析到结束标签时，调用end函数</p>
+<p>(3) 当解析到文本时，调用chars函数生成文本类型的AST节点</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">chars</span>(<span class="hljs-params">text: string, start: number, end: number</span>)</span> &#123;<br>    <span class="hljs-comment">/*孔：如果是动态文本，创建动态文本类型的AST节点*/</span><br>    <span class="hljs-keyword">if</span> (!inVPre &amp;&amp; text !== <span class="hljs-string">&#x27; &#x27;</span> &amp;&amp; (res = parseText(text, delimiters))) &#123;<br>      child = &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-number">2</span>,<br>        <span class="hljs-attr">expression</span>: res.expression,<br>        <span class="hljs-attr">tokens</span>: res.tokens,<br>        text<br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (text !== <span class="hljs-string">&#x27; &#x27;</span> || !children.length || children[children.length - <span class="hljs-number">1</span>].text !== <span class="hljs-string">&#x27; &#x27;</span>) &#123;<br>      child = &#123;<br>        <span class="hljs-attr">type</span>: <span class="hljs-number">3</span>,<br>        text<br>      &#125;<br>    &#125;<br>&#125;,<br></code></pre></div></td></tr></table></figure>
+
+<p>(4) 如果解析到注释节点，调用comment函数</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">comment</span>(<span class="hljs-params">text: string, start, end</span>)</span> &#123;<br>    <span class="hljs-keyword">const</span> child: ASTText = &#123;<br>      <span class="hljs-attr">type</span>: <span class="hljs-number">3</span>,<br>      text,<br>      <span class="hljs-attr">isComment</span>: <span class="hljs-literal">true</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>一边解析不同的内容，一边调用对应的钩子函数生成对应的AST节点，最终将整个模板字符串解析成AST，这就是html解析器要做的工作。</p>
+</blockquote>
+<ol start="2">
+<li>解析不同的内容</li>
+</ol>
+<blockquote>
+<p>模板中一般包括以下不同的内容</p>
+<ul>
+<li>文本，例如：“你好”</li>
+<li>html注释，例如：“<code>&lt;!-- --&gt;</code>”</li>
+<li>条件注释，例如:”<code>&lt;!--[if!IE]&gt; --&gt;我是注释&lt;!--[endif]--&gt;</code>”</li>
+<li>DOCTYPE，例如：<code>&lt;!DOCTYPE html&gt;</code></li>
+<li>开始标签：例如：<code>&lt;div&gt;</code></li>
+<li>结束标签：例如：<code>&lt;/div&gt;</code></li>
+</ul>
+</blockquote>
+<ol start="3">
+<li>解析html注释</li>
+</ol>
+<blockquote>
+<p>html注释是有特色的，通过正则匹配<code>&lt;!-- --&gt;</code>就可以解析成注释类型的AST节点</p>
+</blockquote>
+<p>vue源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔:正则匹配html注释*/</span><br><span class="hljs-keyword">const</span> comment = <span class="hljs-regexp">/^&lt;!\--/</span><br><span class="hljs-comment">/*孔：解析html注释的核心代码*/</span><br><span class="hljs-keyword">if</span> (comment.test(html)) &#123;<br>  <span class="hljs-comment">/*孔：如果是注释，则继续查找是否存在--&gt;*/</span><br>  <span class="hljs-keyword">const</span> commentEnd = html.indexOf(<span class="hljs-string">&#x27;--&gt;&#x27;</span>)<br>  <span class="hljs-comment">/*孔：如果存在*/</span><br>  <span class="hljs-keyword">if</span> (commentEnd &gt;= <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-comment">/*孔：如果设置保存注释*/</span><br>    <span class="hljs-keyword">if</span> (options.shouldKeepComment) &#123;<br>      <span class="hljs-comment">/*孔：截取出注释部分，传给options.comment 创建注释类型的节点*/</span><br>      options.comment(html.substring(<span class="hljs-number">4</span>, commentEnd), index, index + commentEnd + <span class="hljs-number">3</span>)<br>    &#125;<br>    <span class="hljs-comment">/*孔：如果设置不保存注释，游标后移，继续解析*/</span><br>    advance(commentEnd + <span class="hljs-number">3</span>)<br>    <span class="hljs-keyword">continue</span><br>  &#125;<br>&#125;<br><span class="hljs-comment">/*孔：游标函数，index是解析游标*/</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">advance</span>(<span class="hljs-params">n</span>) </span>&#123;<br>    index += n<br>    html = html.substring(n)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ol start="4">
+<li><p>解析条件注释</p>
+<blockquote>
+<p>条件注释的原则和规则和html注释如出一辙</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">      <span class="hljs-comment">/*孔：正则匹配条件注释*/</span><br><span class="hljs-keyword">const</span> conditionalComment = <span class="hljs-regexp">/^&lt;!\[/</span><br>   <span class="hljs-comment">/*孔：解析条件注释核心代码和html注释判断一样，如果存在开头，就去找结尾*/</span><br>      <span class="hljs-keyword">if</span> (conditionalComment.test(html)) &#123;<br>        <span class="hljs-keyword">const</span> conditionalEnd = html.indexOf(<span class="hljs-string">&#x27;]&gt;&#x27;</span>)<br>        <span class="hljs-comment">/*孔：如果结尾存在，因为条件注释不存在于真正的DOM中，所以把注释内容从原来的html字符串中截掉，继续向后匹配*/</span><br>        <span class="hljs-keyword">if</span> (conditionalEnd &gt;= <span class="hljs-number">0</span>) &#123;<br>          advance(conditionalEnd + <span class="hljs-number">2</span>)<br>          <span class="hljs-keyword">continue</span><br>        &#125;<br>      &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ol start="5">
+<li>解析DOCTYPE</li>
+</ol>
+<blockquote>
+<p>解析DOCTYPE和条件注释的逻辑一致</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：解析DOCTYPE的核心代码 逻辑和条件注释一致*/</span><br><span class="hljs-comment">// Doctype:</span><br><span class="hljs-keyword">const</span> doctypeMatch = html.match(doctype)<br><span class="hljs-keyword">if</span> (doctypeMatch) &#123;<br>  advance(doctypeMatch[<span class="hljs-number">0</span>].length)<br>  <span class="hljs-keyword">continue</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ol start="6">
+<li>解析开始标签</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">  <span class="hljs-comment">// Start tag:</span><br>  <span class="hljs-comment">/*孔：解析开始标签的核心代码 parseStartTag()方法处理开始标签，比如标签属性 是否自闭合 handleStartTag()对parseStartTag()提取的标签数组做进一步处理，内部调用start方法*/</span><br>  <span class="hljs-keyword">const</span> startTagMatch = parseStartTag()<br>  <span class="hljs-keyword">if</span> (startTagMatch) &#123;<br>    handleStartTag(startTagMatch)<br>    <span class="hljs-keyword">if</span> (shouldIgnoreFirstNewline(startTagMatch.tagName, html)) &#123;<br>      advance(<span class="hljs-number">1</span>)<br>    &#125;<br>    <span class="hljs-keyword">continue</span><br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>(1)匹配开始标签的正则</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：正则匹配开始标签*/</span><br><span class="hljs-keyword">const</span> ncname = <span class="hljs-string">`[a-zA-Z_][\\-\\.0-9_a-zA-Z<span class="hljs-subst">$&#123;unicodeRegExp.source&#125;</span>]*`</span><br><span class="hljs-keyword">const</span> qnameCapture = <span class="hljs-string">`((?:<span class="hljs-subst">$&#123;ncname&#125;</span>\\:)?<span class="hljs-subst">$&#123;ncname&#125;</span>)`</span><br><span class="hljs-keyword">const</span> startTagOpen = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^&lt;<span class="hljs-subst">$&#123;qnameCapture&#125;</span>`</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseStartTag</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> start = html.match(startTagOpen)<br>    <span class="hljs-keyword">if</span> (start) &#123;<br>        <span class="hljs-keyword">const</span> match = &#123;<br>            <span class="hljs-attr">tagName</span>: start[<span class="hljs-number">1</span>],<br>            <span class="hljs-attr">attrs</span>: [],<br>            <span class="hljs-attr">start</span>: index<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试代码</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">/*孔：正则匹配开始标签*/</span><br><span class="hljs-keyword">const</span> ncname = <span class="hljs-string">&#x27;[a-zA-Z_][\\w\\-\\.]*&#x27;</span><br><span class="hljs-keyword">const</span> qnameCapture = <span class="hljs-string">`((?:<span class="hljs-subst">$&#123;ncname&#125;</span>\\:)?<span class="hljs-subst">$&#123;ncname&#125;</span>)`</span><br><span class="hljs-keyword">const</span> startTagOpen = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^&lt;<span class="hljs-subst">$&#123;qnameCapture&#125;</span>`</span>)<br><span class="hljs-comment">// 以开始标签开始的模板：</span><br><span class="hljs-keyword">var</span> res = <span class="hljs-string">&#x27;&lt;div&gt;&lt;/div&gt;&#x27;</span>.match(startTagOpen)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// [ &#x27;&lt;div&#x27;, &#x27;div&#x27;, index: 0, input: &#x27;&lt;div&gt;&lt;/div&gt;&#x27;, groups: undefined ]</span><br><span class="hljs-comment">// 以结束标签开始的模板：</span><br><span class="hljs-keyword">var</span> res1 = <span class="hljs-string">&#x27;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&#x27;</span>.match(startTagOpen)<br><span class="hljs-built_in">console</span>.log(res1); <span class="hljs-comment">// null</span><br><span class="hljs-comment">// 以文本开始的模板：</span><br><span class="hljs-keyword">var</span> res2 = <span class="hljs-string">&#x27;我是文本&lt;/p&gt;&#x27;</span>.match(startTagOpen)<br><span class="hljs-built_in">console</span>.log(res2); <span class="hljs-comment">// null</span><br></code></pre></div></td></tr></table></figure>
+
+<p>(2)解析标签属性</p>
+<blockquote>
+<p>标签属性一般是写在开始标签之后</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;a&quot;</span> id=<span class="hljs-string">&quot;b&quot;</span>&gt;&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>在第一步中我们可以拿到开始标签的标签名，即上面代码的start[0]，我们可以把这一部分从模板字符串中截掉，则剩下的部分：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;a&quot;</span> id=<span class="hljs-string">&quot;b&quot;</span>&gt;&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>用剩下的这部分去匹配正则，就可以把标签属性提取出来了</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔:正则匹配标签属性*/</span><br><span class="hljs-keyword">const</span> attribute = <span class="hljs-regexp">/^\s*([^\s&quot;&#x27;&lt;&gt;\/=]+)(?:\s*(=)\s*(?:&quot;([^&quot;]*)&quot;+|&#x27;([^&#x27;]*)&#x27;+|([^\s&quot;&#x27;=&lt;&gt;`]+)))?/</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试代码</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">/*孔:正则匹配标签属性*/</span><br><span class="hljs-keyword">const</span> attribute = <span class="hljs-regexp">/^\s*([^\s&quot;&#x27;&lt;&gt;\/=]+)(?:\s*(=)\s*(?:&quot;([^&quot;]*)&quot;+|&#x27;([^&#x27;]*)&#x27;+|([^\s&quot;&#x27;=&lt;&gt;`]+)))?/</span><br><span class="hljs-keyword">let</span> html = <span class="hljs-string">&#x27;class=&quot;a&quot; id=&quot;b&quot;&gt;&lt;/div&gt;&#x27;</span><br><span class="hljs-keyword">let</span> attr = html.match(attribute)<br><span class="hljs-built_in">console</span>.log(attr)<br><span class="hljs-comment">// [&#x27;class=&quot;a&quot;&#x27;,&#x27;class&#x27;, &#x27;=&#x27;, &#x27;a&#x27;,undefined,undefined,index: 0,input: &#x27;class=&quot;a&quot; id=&quot;b&quot;&gt;&lt;/div&gt;&#x27;, groups: undefined]</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>如果有多个标签属性，就利用循环匹配，匹配出第一个标签属性后，就把该属性截掉，用剩下的字符串继续匹配，直到不满足要求</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：正则匹配开始标签*/</span><br><span class="hljs-keyword">const</span> ncname = <span class="hljs-string">`[a-zA-Z_][\\-\\.0-9_a-zA-Z<span class="hljs-subst">$&#123;unicodeRegExp.source&#125;</span>]*`</span><br><span class="hljs-keyword">const</span> qnameCapture = <span class="hljs-string">`((?:<span class="hljs-subst">$&#123;ncname&#125;</span>\\:)?<span class="hljs-subst">$&#123;ncname&#125;</span>)`</span><br><span class="hljs-keyword">const</span> startTagOpen = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^&lt;<span class="hljs-subst">$&#123;qnameCapture&#125;</span>`</span>)<br><span class="hljs-comment">/*孔：正则匹配开始标签的结束特征*/</span><br><span class="hljs-keyword">const</span> startTagClose = <span class="hljs-regexp">/^\s*(\/?)&gt;/</span><br>      <span class="hljs-keyword">const</span> match = &#123;<br>        <span class="hljs-attr">tagName</span>: start[<span class="hljs-number">1</span>],<br>        <span class="hljs-attr">attrs</span>: [],<br>        <span class="hljs-attr">start</span>: index<br>      &#125;<br> <span class="hljs-keyword">while</span> (!(end = html.match(startTagClose)) &amp;&amp; (attr = html.match(dynamicArgAttribute) || html.match(attribute))) &#123;<br>        attr.start = index<br>        advance(attr[<span class="hljs-number">0</span>].length)<br>        attr.end = index<br>        match.attrs.push(attr)<br>      &#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>如果标签不符合开始标签的结束特征，但是符合标签的属性的特征时候，说明还有标签属性没有提取完毕</p>
+</blockquote>
+<blockquote>
+<p>不符合开始标签的结束特征是指当前的字符串不是以开始标签的结束标签开头的，开始标签的结束标签可能是<code>&lt;</code>非闭合标签，也可能是<code>/&gt;</code>自闭合标签，如果当前的标签是<code>&gt;&lt;/div&gt;</code>说明标签属性提取完毕了。</p>
+</blockquote>
+<ol start="7">
+<li>解析标签是否闭合</li>
+</ol>
+<blockquote>
+<p>标签分为自闭合标签<code>&lt;img src=&quot;&quot;/&gt;</code>,也分为非自闭合标签<code>&lt;div&gt;&lt;/div&gt;</code>这两种标签在创建AST树的时候，是有区别的</p>
+</blockquote>
+<p>vue源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：正则匹配开始标签的结束特征*/</span><br><span class="hljs-keyword">const</span> startTagClose = <span class="hljs-regexp">/^\s*(\/?)&gt;/</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试代码</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">let</span> end = <span class="hljs-string">&#x27;&gt;&lt;/div&gt;&#x27;</span>.match(startTagClose)<br><span class="hljs-built_in">console</span>.log(end);<span class="hljs-comment">// [ &#x27;&gt;&#x27;, &#x27;&#x27;, index: 0, input: &#x27;&gt;&lt;/div&gt;&#x27;, groups: undefined ]</span><br><span class="hljs-keyword">let</span> end1 = <span class="hljs-string">&#x27;/&gt;&#x27;</span>.match(startTagClose)<br><span class="hljs-built_in">console</span>.log(end1);<span class="hljs-comment">// [ &#x27;/&gt;&#x27;, &#x27;/&#x27;, index: 0, input: &#x27;/&gt;&#x27;, groups: undefined ]</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>通过测试可以看到，非自闭合标签的end[1]是<code>‘’</code>, 自闭合标签的end[1]是<code>/</code>,那个可以根据匹配结果的end[1]是不是<code>’‘</code>判断是不是非自闭合标签了</p>
+</blockquote>
+<p>vue 源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：正则匹配开始标签的结束特征*/</span><br><span class="hljs-keyword">const</span> startTagClose = <span class="hljs-regexp">/^\s*(\/?)&gt;/</span><br><span class="hljs-keyword">let</span> end = html.match(startTagClose)<br><span class="hljs-keyword">if</span> (end) &#123;<br> match.unarySlash = end[<span class="hljs-number">1</span>]<br> advance(end[<span class="hljs-number">0</span>].length)<br> match.end = index<br> <span class="hljs-keyword">return</span> match<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>经过上述的对标签属性的解析和对自闭合标签的解析，开始标签的解析就完成了，可以调用start函数去创建AST树了</p>
+</blockquote>
+<blockquote>
+<p>但是在vue源码中，并没有直接调用start函数，而是调用handleStartTag函数做一下处理，最后才完成AST树的创建</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">  <span class="hljs-comment">// Start tag:</span><br>  <span class="hljs-comment">/*孔：解析开始标签的核心代码 parseStartTag()方法处理开始标签，比如标签属性 是否自闭合 handleStartTag()对parseStartTag()提取的标签数组做进一步处理，内部调用start方法*/</span><br>  <span class="hljs-keyword">const</span> startTagMatch = parseStartTag()<br>  <span class="hljs-keyword">if</span> (startTagMatch) &#123;<br>    handleStartTag(startTagMatch)<br>    <span class="hljs-keyword">if</span> (shouldIgnoreFirstNewline(startTagMatch.tagName, html)) &#123;<br>      advance(<span class="hljs-number">1</span>)<br>    &#125;<br>    <span class="hljs-keyword">continue</span><br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ol start="8">
+<li>解析结束标签</li>
+</ol>
+<blockquote>
+<p>解析结束标签比较简单，判断剩下的模板字符串是否符合结束标签的特征</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> ncname = <span class="hljs-string">`[a-zA-Z_][\\-\\.0-9_a-zA-Z<span class="hljs-subst">$&#123;unicodeRegExp.source&#125;</span>]*`</span><br><span class="hljs-keyword">const</span> qnameCapture = <span class="hljs-string">`((?:<span class="hljs-subst">$&#123;ncname&#125;</span>\\:)?<span class="hljs-subst">$&#123;ncname&#125;</span>)`</span><br><span class="hljs-comment">/*孔：正则匹配结束标签*/</span><br><span class="hljs-keyword">const</span> endTag = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^&lt;\\/<span class="hljs-subst">$&#123;qnameCapture&#125;</span>[^&gt;]*&gt;`</span>)<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试代码</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> ncname = <span class="hljs-string">&#x27;[a-zA-Z_][\\w\\-\\.]*&#x27;</span><br><span class="hljs-keyword">const</span> qnameCapture = <span class="hljs-string">`((?:<span class="hljs-subst">$&#123;ncname&#125;</span>\\:)?<span class="hljs-subst">$&#123;ncname&#125;</span>)`</span><br><span class="hljs-comment">/*孔：正则匹配结束标签*/</span><br><span class="hljs-keyword">const</span> endTag = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">`^&lt;\\/<span class="hljs-subst">$&#123;qnameCapture&#125;</span>[^&gt;]*&gt;`</span>)<br><span class="hljs-keyword">let</span> end = <span class="hljs-string">&#x27;&lt;/div&gt;&#x27;</span>.match(endTag)<br><span class="hljs-built_in">console</span>.log(end);<span class="hljs-comment">// [ &#x27;&lt;/div&gt;&#x27;, &#x27;div&#x27;, index: 0, input: &#x27;&lt;/div&gt;&#x27;, groups: undefined ]</span><br><span class="hljs-keyword">let</span> end1 = <span class="hljs-string">&#x27;&lt;div&gt;&lt;/div&gt;&#x27;</span>.match(endTag)<br><span class="hljs-built_in">console</span>.log(end1);<span class="hljs-comment">// null</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>解析出结束标签的代码之后，在调用end钩子函数，生成AST树，但是vue源码中并没有直接调用end方法，而是调用了parseEndTag方法，在parseEndTag方法内调用了end方法</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：解析结束标签的核心代码*/</span><br><span class="hljs-comment">// End tag:</span><br><span class="hljs-keyword">const</span> endTagMatch = html.match(endTag)<br><span class="hljs-keyword">if</span> (endTagMatch) &#123;<br>  <span class="hljs-keyword">const</span> curIndex = index<br>  advance(endTagMatch[<span class="hljs-number">0</span>].length)<br>  parseEndTag(endTagMatch[<span class="hljs-number">1</span>], curIndex, index)<br>  <span class="hljs-keyword">continue</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ol start="9">
+<li>解析文本</li>
+</ol>
+<blockquote>
+<p>解析文本的思路，判断<code>&lt;</code>是否在第一个位置，如果在第一个位置，说明是其他5种类型开头的，如果<code>&lt;</code>不在第一个位置而在模板字符串中间的某个位置，说明模板字符串是以文本开头的，从开头到第一个<code>&lt;</code>出现的位置就是文本的内容了，如果在模板字符串中没有找到<code>&lt;</code>说明整个模板都是文本内容</p>
+</blockquote>
+<p>vue源码：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*孔：解析文本的核心代码*/</span><br><span class="hljs-keyword">let</span> textEnd = html.indexOf(<span class="hljs-string">&#x27;&lt;&#x27;</span>)<br><span class="hljs-comment">/*孔：&lt;存在第一个位置，是其他的5种类型*/</span><br><span class="hljs-keyword">if</span> (textEnd === <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-comment">//....</span><br>&#125;<br><span class="hljs-keyword">let</span> text, rest, next<br><span class="hljs-comment">/*孔：&lt;不在开头，以文本开始*/</span><br><span class="hljs-keyword">if</span> (textEnd &gt;= <span class="hljs-number">0</span>) &#123;<br>  <span class="hljs-comment">/*孔：把&lt;以后的内容拿出来赋值给rest，&lt;之前的文本内容不用处理*/</span><br>  rest = html.slice(textEnd)<br>  <span class="hljs-comment">/*孔：用&lt;之后的内容去匹配之前的几种情况，如果匹配不到，说明&lt;是文本自身的内容例如：1&lt;2&lt;/div&gt; */</span><br>  <span class="hljs-keyword">while</span> (<br>    !endTag.test(rest) &amp;&amp;<br>    !startTagOpen.test(rest) &amp;&amp;<br>    !comment.test(rest) &amp;&amp;<br>    !conditionalComment.test(rest)<br>    ) &#123;<br>    <span class="hljs-comment">// &lt; in plain text, be forgiving and treat it as text</span><br>    <span class="hljs-comment">/*孔：查找是否还有第二个&lt;*/</span><br>    next = rest.indexOf(<span class="hljs-string">&#x27;&lt;&#x27;</span>, <span class="hljs-number">1</span>)<br>    <span class="hljs-comment">/*如果没有了表示&lt;后面也都是文本*/</span><br>    <span class="hljs-keyword">if</span> (next &lt; <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span><br>    <span class="hljs-comment">/*孔：如果有，就把&lt;之后的内容截取出来，进行下一次循环*/</span><br>    textEnd += next<br>    rest = html.slice(textEnd)<br>  &#125;<br>  <span class="hljs-comment">/*孔：text接收的全是文本内容*/</span><br>  text = html.substring(<span class="hljs-number">0</span>, textEnd)<br>&#125;<br><span class="hljs-comment">/*孔：如果&lt;不存在，那么整个模板字符串都是文本*/</span><br><span class="hljs-keyword">if</span> (textEnd &lt; <span class="hljs-number">0</span>) &#123;<br>  text = html<br>&#125;<br><span class="hljs-keyword">if</span> (text) &#123;<br>  advance(text.length)<br>&#125;<br><span class="hljs-comment">/*调用chars钩子函数，完成AST树的创建*/</span><br><span class="hljs-keyword">if</span> (options.chars &amp;&amp; text) &#123;<br>  options.chars(text, index - text.length, index)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>10.如何保证AST树的层级关系</p>
+<p>vue源码，宏观看html解析器</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseHTML</span>(<span class="hljs-params">html, options</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> stack = [] <span class="hljs-comment">/*控制AST层级关系的栈*/</span><br>  <span class="hljs-keyword">const</span> expectHTML = options.expectHTML<br>  <span class="hljs-keyword">const</span> isUnaryTag = options.isUnaryTag || no<br>  <span class="hljs-keyword">const</span> canBeLeftOpenTag = options.canBeLeftOpenTag || no<span class="hljs-comment">/*检测可以简写的自闭合标签*/</span><br>  <span class="hljs-keyword">let</span> index = <span class="hljs-number">0</span><span class="hljs-comment">/*解析游标，当前从何出开始解析模板字符串*/</span><br>  <span class="hljs-keyword">let</span> last, lastTag<span class="hljs-comment">/*last 剩余还没有解析的字符串，lastTag存储栈顶元素*/</span><br>  <span class="hljs-comment">/*开启一个while循环，结束的条件是html为空，即解析完毕*/</span><br>  <span class="hljs-keyword">while</span> (html) &#123;<br>    last = html<br>    <span class="hljs-comment">/*确保解析的模板字符串不是纯文本 (script、style、textarea)*/</span><br>    <span class="hljs-keyword">if</span> (!lastTag || !isPlainTextElement(lastTag)) &#123;<br>      <span class="hljs-comment">/*孔：解析文本的核心代码*/</span><br>      <span class="hljs-keyword">let</span> textEnd = html.indexOf(<span class="hljs-string">&#x27;&lt;&#x27;</span>)<br>      <span class="hljs-comment">/**</span><br><span class="hljs-comment">       * 如果html字符串是以&#x27;&lt;&#x27;开头,则有以下几种可能</span><br><span class="hljs-comment">       * 开始标签:&lt;div&gt;</span><br><span class="hljs-comment">       * 结束标签:&lt;/div&gt;</span><br><span class="hljs-comment">       * 注释:&lt;!-- 我是注释 --&gt;</span><br><span class="hljs-comment">       * 条件注释:&lt;!-- [if !IE] --&gt; &lt;!-- [endif] --&gt;</span><br><span class="hljs-comment">       * DOCTYPE:&lt;!DOCTYPE html&gt;</span><br><span class="hljs-comment">       * 需要一一去匹配尝试</span><br><span class="hljs-comment">       */</span><br>      <span class="hljs-keyword">if</span> (textEnd === <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">/*孔：解析html注释的核心代码*/</span><br>        <span class="hljs-keyword">if</span> (comment.test(html)) &#123;<br>        &#125;<br>        <span class="hljs-comment">/*孔：解析条件注释核心代码*/</span><br>        <span class="hljs-keyword">if</span> (conditionalComment.test(html)) &#123;<br>        &#125;<br>        <span class="hljs-comment">/*孔：解析DOCTYPE的核心代码*/</span><br>        <span class="hljs-keyword">const</span> doctypeMatch = html.match(doctype)<br>        <span class="hljs-keyword">if</span> (doctypeMatch) &#123;<br>        &#125;<br>        <span class="hljs-comment">/*孔：解析结束标签的核心代码*/</span><br>        <span class="hljs-keyword">const</span> endTagMatch = html.match(endTag)<br>        <span class="hljs-keyword">if</span> (endTagMatch) &#123;<br>        &#125;<br>        <span class="hljs-comment">/*孔：解析开始标签的核心代码*/</span><br>        <span class="hljs-keyword">const</span> startTagMatch = parseStartTag()<br>        <span class="hljs-keyword">if</span> (startTagMatch) &#123;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">let</span> text, rest, next<br>      <span class="hljs-comment">/*孔：&lt;不在开头，解析文本*/</span><br>      <span class="hljs-keyword">if</span> (textEnd &gt;= <span class="hljs-number">0</span>) &#123;<br>      &#125;<br>      <span class="hljs-comment">/*孔：如果&lt;不存在，那么整个模板字符串都是文本*/</span><br>      <span class="hljs-keyword">if</span> (textEnd &lt; <span class="hljs-number">0</span>) &#123;<br>        text = html<br>      &#125;<br>      <span class="hljs-comment">/*调用chars钩子函数，完成文本AST树的创建*/</span><br>      <span class="hljs-keyword">if</span> (options.chars &amp;&amp; text) &#123;<br>        options.chars(text, index - text.length, index)<br>      &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 父元素为script、style、textarea时，其内部的内容全部当做纯文本处理</span><br>    &#125;<br>    <span class="hljs-comment">//将整个字符串作为文本对待</span><br>    <span class="hljs-keyword">if</span> (html === last) &#123;<br>      options.chars &amp;&amp; options.chars(html)<br>      <span class="hljs-keyword">if</span> (!stack.length &amp;&amp; options.warn) &#123;<br>        options.warn(<span class="hljs-string">`Mal-formatted tag at end of template: &quot;<span class="hljs-subst">$&#123;html&#125;</span>&quot;`</span>, &#123;<span class="hljs-attr">start</span>: index + html.length&#125;)<br>      &#125;<br>      <span class="hljs-keyword">break</span><br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// Clean up any remaining tags</span><br>  parseEndTag()<br><br>  <span class="hljs-comment">/*解析开始标签*/</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseStartTag</span>(<span class="hljs-params"></span>) </span>&#123;<br><br>  &#125;<br><br>  <span class="hljs-comment">/*处理parse的结果*/</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleStartTag</span>(<span class="hljs-params">match</span>) </span>&#123;<br><br>  &#125;<br><br>  <span class="hljs-comment">/*解析结束标签*/</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseEndTag</span>(<span class="hljs-params">tagName, start, end</span>) </span>&#123;<br><br>  &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81/">vue源码</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A8%A1%E6%9D%BF%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B/">模板解析过程</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/js%E6%AD%A3%E5%88%99test%E5%92%8Cmatch%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mjs-正则test和match的区别</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E6%A8%A1%E6%9D%BF%E7%BC%96%E8%AF%91/">
+                        <span class="hidden-mobile">vue-模板编译</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>我只想安静的</span></a> <i class="iconfont icon-love"></i> <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>做一个堕落的富婆</span></a> 
+  </div>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2020,03,14,18,12,20); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+      <span class="post-meta-divider">|</span>
+    </span>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </span>
+    <!--
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      本站博客共 <span class="post-count">{{ totalcount(site) }}</span> 字
+    </span>
+    -->
+</div>
+
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+	</body>
+</html>
