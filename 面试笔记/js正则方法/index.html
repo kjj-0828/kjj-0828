@@ -14,11 +14,11 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="面试笔记-mjs-正则test和match的区别">
+  <meta name="description" content="面试笔记-mjs-正则方法">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>mjs-正则test和match的区别 - kjj</title>
+  <title>mjs-正则方法 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -167,7 +167,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="mjs-正则test和match的区别">
+            <span class="h2" id="subtitle" title="mjs-正则方法">
               
             </span>
 
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      290 字
+      1.5k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      22
        分钟
     </span>
   
@@ -242,11 +242,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">mjs-正则test和match的区别</h1>
+            <h1 style="display: none">mjs-正则方法</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：December 9, 2021 am
+                  本文最后更新于：December 10, 2021 pm
                 
               </p>
             
@@ -255,12 +255,164 @@
 <p>test方法是正则方法，参数是string，返回值是boolean，（理解为用正则去匹配字符串，判断字符串是否符合，返回值只能是true和false）</p>
 <p>match是string方法，参数是正则表达式，返回值是数组（理解为用字符串去匹配正则，那一串字符串中可能符合项有多个，返回值是数组）</p>
 </blockquote>
+<blockquote>
+<p>pattern是正则的实例，str是string的实例</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>用法</th>
+<th>说明</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pattern.test(str)</td>
+<td>判断str是否包含匹配结果</td>
+<td>返回Boolean</td>
+</tr>
+<tr>
+<td>pattern.exec(str)</td>
+<td>根据pattern对str进行正则匹配</td>
+<td>返回匹配结果数组，如果匹配不到返回null</td>
+</tr>
+<tr>
+<td>str.match(pattern)</td>
+<td>根据pattern对str进行正则匹配</td>
+<td>返回匹配结果数组，如果匹配不到返回null</td>
+</tr>
+<tr>
+<td>str.replace(pattern,replacement)</td>
+<td>根据pattern对str进行正则匹配,匹配结果替换成replacement</td>
+<td>一个新的字符串</td>
+</tr>
+</tbody></table>
 <p>test练习：</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 判断日期是不是yyyy-MM-dd的格式，用test方法</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDate</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// var str = document.getElementById(&#x27;str&#x27;).value.trim(); </span><br>    <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;2002-01-01&#x27;</span><br>    <span class="hljs-keyword">if</span> (str.length != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^(\d&#123;1,4&#125;)(-|\/)(\d&#123;1,2&#125;)\2(\d&#123;1,2&#125;)$/</span>; <br>        <span class="hljs-keyword">if</span> (!reg.test(str)) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;对不起，您输入的日期格式不正确!&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">console</span>.log(str);<br>        &#125;<br>    &#125;<br>&#125;<br>isDate();<br></code></pre></div></td></tr></table></figure>
 
 <p>match练习：</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 判断日期是不是yyyy-MM-dd的格式，用match方法</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isDate</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-comment">// var str = document.getElementById(&#x27;str&#x27;).value.trim(); </span><br>    <span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;2002-2&#x27;</span><br>    <span class="hljs-keyword">if</span> (str.length != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^(\d&#123;1,4&#125;)(-|\/)(\d&#123;1,2&#125;)\2(\d&#123;1,2&#125;)$/</span>;<br>        <span class="hljs-keyword">var</span> res = str.match(reg);<br>        <span class="hljs-keyword">if</span> (res == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;对不起，您输入的日期格式不正确!&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">console</span>.log(str);<br>        &#125;<br><br>    &#125;<br>&#125;<br>isDate()<br></code></pre></div></td></tr></table></figure>
 
+<p><strong>test()</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span>  boo = <span class="hljs-regexp">/\d/</span>.test(<span class="hljs-string">&#x27;ada221&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(boo); <span class="hljs-comment">//true </span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>exec()</strong></p>
+<blockquote>
+<p>exec的功能更加强大，提供更多的信息</p>
+</blockquote>
+<blockquote>
+<p>返回数组的第一个元素是与整个正则匹配的文本</p>
+<p>然后数组的第二个元素是与整个正则的第一个子表达式匹配的文本</p>
+<p>第三个元素是与整个正则的第二个字表达式匹配的文本，以此类推</p>
+<p>index是匹配文本的第一个字符的位置</p>
+<p>input是输入的整个文本</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> result = <span class="hljs-regexp">/(\d+)-(\w+)/</span>.exec(<span class="hljs-string">&#x27;12-ad&#x27;</span>); <span class="hljs-comment">// [ &#x27;12-ad&#x27;, &#x27;12&#x27;, &#x27;ad&#x27;, index: 0, input: &#x27;12-ad&#x27;, groups: undefined ]</span><br><span class="hljs-built_in">console</span>.log(result);<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>尽管是全局匹配，但是exec方法只对指定的字符串进行一次匹配</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> res = <span class="hljs-regexp">/\d/g</span>.exec(<span class="hljs-string">&#x27;a22&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// [ &#x27;2&#x27;, index: 1, input: &#x27;a22&#x27;, groups: undefined ]</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>深入理解exec</p>
+</blockquote>
+<ul>
+<li><code>global:</code> 布尔值，表示是否设置了 <code>g</code> 标志</li>
+<li><code>ignoreCase:</code> 布尔值，表示是否设置了 <code>i</code> 标志</li>
+<li><code>lastIndex:</code> 搜索下一个匹配项时开始的位置，从<code>0</code>开始</li>
+<li><code>multiline:</code> 布尔值，表示是否设置了 <code>m</code> 标志</li>
+<li><code>source:</code> 正则表达式的字符串表示</li>
+</ul>
+<blockquote>
+<p>非全局匹配：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\d/</span>;<br><span class="hljs-comment">//第一次匹配</span><br><span class="hljs-built_in">console</span>.log(reg.exec(<span class="hljs-string">&#x27;a123&#x27;</span>)); <span class="hljs-comment">// [ &#x27;1&#x27;, index: 1, input: &#x27;a123&#x27;, groups: undefined ]</span><br><span class="hljs-built_in">console</span>.log(reg.lastIndex); <span class="hljs-comment">// 0</span><br><span class="hljs-comment">//第二次匹配</span><br><span class="hljs-built_in">console</span>.log(reg.exec(<span class="hljs-string">&#x27;a123&#x27;</span>)); <span class="hljs-comment">// [ &#x27;1&#x27;, index: 1, input: &#x27;a123&#x27;, groups: undefined ]</span><br><span class="hljs-built_in">console</span>.log(reg.lastIndex); <span class="hljs-comment">// 0</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>同一正则表达式，在非全局匹配模式下，每次实例的lastIndex值总是0</p>
+<p>每次匹配查找都是将lastIndex做为起始位置的</p>
+</blockquote>
+<blockquote>
+<p>全局匹配：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\d/g</span>;<br><span class="hljs-comment">// 第一次匹配</span><br><span class="hljs-built_in">console</span>.log(reg.exec(<span class="hljs-string">&#x27;a123&#x27;</span>));<span class="hljs-comment">// [ &#x27;1&#x27;, index: 1, input: &#x27;a123&#x27;, groups: undefined ]</span><br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<span class="hljs-comment">// 2</span><br><span class="hljs-comment">// 第二次匹配</span><br><span class="hljs-built_in">console</span>.log(reg.exec(<span class="hljs-string">&#x27;a123&#x27;</span>));<span class="hljs-comment">// [ &#x27;2&#x27;, index: 2, input: &#x27;a123&#x27;, groups: undefined ]</span><br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<span class="hljs-comment">// 3</span><br><span class="hljs-comment">// 第三次匹配</span><br><span class="hljs-built_in">console</span>.log(reg.exec(<span class="hljs-string">&#x27;a123&#x27;</span>));<span class="hljs-comment">// [ &#x27;3&#x27;, index: 3, input: &#x27;a123&#x27;, groups: undefined ]</span><br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<span class="hljs-comment">// 4</span><br><span class="hljs-comment">// 第四次匹配</span><br><span class="hljs-built_in">console</span>.log(reg.exec(<span class="hljs-string">&#x27;a123&#x27;</span>));<span class="hljs-comment">// null</span><br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<span class="hljs-comment">// 0</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>同一正则表达式，在全局匹配模式下，每次实例的lastIndex值是匹配文本的最后一个字符的下一个位置</p>
+<p>当exec匹配不到时，返回null，lastIndex置为0</p>
+</blockquote>
+<p><strong>match()</strong></p>
+<blockquote>
+<p>非全局匹配：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;aaaa&#x27;</span>.match(<span class="hljs-regexp">/\w/</span>);<br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">// [ &#x27;a&#x27;, index: 0, input: &#x27;aaaa&#x27;, groups: undefined ]</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>match在非全局匹配下和exec有点相似，都有index和input属性</p>
+</blockquote>
+<blockquote>
+<p>全局匹配：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;aaaa&#x27;</span>.match(<span class="hljs-regexp">/\w/g</span>);<br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">// [ &#x27;a&#x27;, &#x27;a&#x27;, &#x27;a&#x27;, &#x27;a&#x27; ]</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>返回所有符合匹配的子字符串的数组，index和input属性也没有了</p>
+</blockquote>
+<p><strong>replace()</strong></p>
+<blockquote>
+<p>这个方法必须接受2个参数：</p>
+<ul>
+<li>pattern：这个参数可以是字符串也可以是正则表达式</li>
+<li>replacement：替换匹配项的字符串或者处理函数的返回值</li>
+</ul>
+</blockquote>
+<ol>
+<li><p>当没有找到匹配项，返回原来字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> res = <span class="hljs-string">&#x27;aaaa&#x27;</span>.replace(<span class="hljs-string">&#x27;bbbb&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// aaaa</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>当pattern为字符串或者非全局对象正则表达式的时候，只能替换找到的第一个匹配项</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> res = <span class="hljs-string">&#x27;aaaa&#x27;</span>.replace(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// baaa</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>当pattern是全局的正则对象的时候，替换每一项</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> res = <span class="hljs-string">&#x27;aaaa&#x27;</span>.replace(<span class="hljs-regexp">/\w/g</span>,<span class="hljs-string">&#x27;b&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// bbbb</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>replacement为函数的时：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> res = <span class="hljs-string">&#x27;aaaa&#x27;</span>.replace(<span class="hljs-regexp">/\w/g</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;b&#x27;</span><br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// bbbb</span><br><br><span class="hljs-keyword">let</span> res = <span class="hljs-string">&#x27;aaaa&#x27;</span>.replace(<span class="hljs-regexp">/\w/g</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>)</span>&#123;<br>    <span class="hljs-keyword">return</span> value.toUpperCase();<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// AAAA</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>函数的返回值会做为替换字符串</p>
+<p>函数的参数有2个，第一个是每一个匹配项，第二个是每个匹配项在字符串中的位置</p>
+</blockquote>
+</li>
+<li><p>特殊的$:</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>替换文本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$1、$2...$99</code></td>
+<td>与正则表达式中第1到第99个相匹配的文本</td>
+</tr>
+<tr>
+<td>$&amp;</td>
+<td>与 <code>regexp</code> 相匹配的子串</td>
+</tr>
+<tr>
+<td>$`</td>
+<td>位于匹配子串左侧的文本</td>
+</tr>
+<tr>
+<td>$’</td>
+<td>位于匹配子串右侧的文本</td>
+</tr>
+<tr>
+<td>$$</td>
+<td>直接量符号</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//第一种情况</span><br><span class="hljs-keyword">let</span> a1 = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/([a-z]+)(\d+)([A-Z]+)/g</span>,<span class="hljs-string">&#x27;$1&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(a1); <span class="hljs-comment">//aa </span><br><span class="hljs-keyword">let</span> a2 = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/([a-z]+)(\d+)([A-Z]+)/g</span>,<span class="hljs-string">&#x27;$2&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(a2); <span class="hljs-comment">//11</span><br><span class="hljs-keyword">let</span> a3 = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/([a-z]+)(\d+)([A-Z]+)/g</span>,<span class="hljs-string">&#x27;$3&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(a3); <span class="hljs-comment">//AA</span><br><span class="hljs-comment">//第二种情况：</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/([a-z]+)(\d+)([A-Z]+)/g</span>, <span class="hljs-string">&#x27;$&amp;&#x27;</span>); <br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//&quot;aa11AA&quot;</span><br><span class="hljs-comment">//第三种情况：</span><br><span class="hljs-keyword">let</span> b1 = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/(\d+)/g</span>, <span class="hljs-string">&#x27;$`&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(b1); <span class="hljs-comment">//&quot;aaaaAA&quot;</span><br><span class="hljs-comment">//第四种情况：</span><br><span class="hljs-keyword">let</span> b2 = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/(\d+)/g</span>, <span class="hljs-string">&quot;$&#x27;&quot;</span>); <br><span class="hljs-built_in">console</span>.log(b2);<span class="hljs-comment">//&quot;aaAAAA&quot;</span><br><span class="hljs-comment">//第五种情况：</span><br><span class="hljs-keyword">let</span> b3 = <span class="hljs-string">&#x27;aa11AA&#x27;</span>.replace(<span class="hljs-regexp">/(\d+)/g</span>, <span class="hljs-string">&#x27;$$&#x27;</span>); <br><span class="hljs-built_in">console</span>.log(b3);<span class="hljs-comment">//&quot;aa$AA&quot;</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
 
             </div>
             <hr>
@@ -280,7 +432,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%AD%A3%E5%88%99test%E5%92%8Cmatch%E7%9A%84%E5%8C%BA%E5%88%AB/">正则test和match的区别</a>
+                      <a class="hover-with-bg" href="/tags/%E6%AD%A3%E5%88%99%E6%96%B9%E6%B3%95/">正则方法</a>
                     
                   </div>
                 
