@@ -252,15 +252,17 @@
             
             <div class="markdown-body">
               <ol>
-<li><p>优化阶段主要做的事情：</p>
+<li>优化阶段主要做的事情：</li>
+</ol>
 <blockquote>
 <ul>
-<li>在AST树中找到静态节点并标记</li>
-<li>在AST树中找到静态根节点并标记</li>
+<li><p>在AST树中找到静态节点并标记</p>
+</li>
+<li><p>在AST树中找到静态根节点并标记</p>
+</li>
 </ul>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;ul&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>&lt;/ul&gt;<br></code></pre></div></td></tr></table></figure></li>
-</ol>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"> &lt;ul&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>我是文本信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br>&lt;/ul&gt;<br></code></pre></div></td></tr></table></figure>
 <blockquote>
 <p>li是静态节点，一旦被渲染成DOM节点，就不会在改变</p>
 <p>ul节点的所有子节点都是静态节点，那么我们把像ul这样的节点成为静态根节点</p>
