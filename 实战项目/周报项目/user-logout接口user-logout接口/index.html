@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      317 字
+      374 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      6
        分钟
     </span>
   
@@ -256,7 +256,7 @@
 <blockquote>
 <p>设置用户验证，用户id不存在，id和token.iss不符，登录时间过期</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">    <span class="hljs-comment">//用户验证</span><br>    <span class="hljs-function"><span class="hljs-title">userVerify</span>(<span class="hljs-params">req, res,cb</span>)</span> &#123;<br>        <span class="hljs-keyword">let</span> params = req.body;<br>        <span class="hljs-keyword">let</span> id = params.id;<br>        <span class="hljs-keyword">let</span> resData = &#123;&#125;;<br>        <span class="hljs-keyword">let</span> token = req.headers.token;<br>        <span class="hljs-keyword">let</span> decode = jwt.decode(token, app.get(<span class="hljs-string">&#x27;jwtTokenSecret&#x27;</span>));<br>        <span class="hljs-keyword">if</span> (!id || decode.iss != id) &#123;<br>            resData = &#123;<br>                <span class="hljs-attr">code</span>: <span class="hljs-number">2</span>,<br>                <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;用户id不存在&quot;</span><br>            &#125;<br>            $http.writeJson(res, resData);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (decode.exp &lt;= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()) &#123;<br>                resData = &#123;<br>                    <span class="hljs-attr">code</span>: <span class="hljs-number">20</span>,<br>                    <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;登录过期&quot;</span><br>                &#125;<br>            $http.writeJson(res, resData);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cb();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jwt-simple&#x27;</span>);<br><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);<br><span class="hljs-keyword">const</span> app = express();<br><span class="hljs-comment">// 设置app的一个名为jwtTokenSecret变量，值是YOUR_SECRET_STRING</span><br>app.set(<span class="hljs-string">&#x27;jwtTokenSecret&#x27;</span>, <span class="hljs-string">&#x27;YOUR_SECRET_STRING&#x27;</span>);<br>	<span class="hljs-comment">//用户验证</span><br>    <span class="hljs-function"><span class="hljs-title">userVerify</span>(<span class="hljs-params">req, res,cb</span>)</span> &#123;<br>        <span class="hljs-keyword">let</span> params = req.body;<br>        <span class="hljs-keyword">let</span> id = params.id;<br>        <span class="hljs-keyword">let</span> resData = &#123;&#125;;<br>        <span class="hljs-keyword">let</span> token = req.headers.token;<br>        <span class="hljs-keyword">let</span> decode = jwt.decode(token, app.get(<span class="hljs-string">&#x27;jwtTokenSecret&#x27;</span>));<br>        <span class="hljs-keyword">if</span> (!id || decode.iss != id) &#123;<br>            resData = &#123;<br>                <span class="hljs-attr">code</span>: <span class="hljs-number">2</span>,<br>                <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;用户id不存在&quot;</span><br>            &#125;<br>            $http.writeJson(res, resData);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (decode.exp &lt;= <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()) &#123;<br>                resData = &#123;<br>                    <span class="hljs-attr">code</span>: <span class="hljs-number">20</span>,<br>                    <span class="hljs-attr">message</span>: <span class="hljs-string">&quot;登录过期&quot;</span><br>                &#125;<br>            $http.writeJson(res, resData);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cb();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>完善api接口</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> path = <span class="hljs-string">&#x27;/demo-weekly/end/api&#x27;</span>;<br><span class="hljs-built_in">module</span>.exports = &#123;<br>    <span class="hljs-attr">userLogin</span>: path + <span class="hljs-string">&#x27;/user/login&#x27;</span>,<br>    <span class="hljs-attr">userLogout</span>: path + <span class="hljs-string">&#x27;/user/logout&#x27;</span>,<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>完善user.js中的logout方法</p>
@@ -275,6 +275,10 @@
 <p>   头部配置token，访问logout接口</p>
 </blockquote>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211230164539.png" srcset="/img/loading.gif" lazyload alt="image-20211230164539091"></p>
+<blockquote>
+<p>配置body，因为只有当前用户的id存在，才可以进行操作</p>
+</blockquote>
+<p>​       <img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211230215233.png" srcset="/img/loading.gif" lazyload alt="image-20211230215232690"></p>
 </li>
 </ol>
 
@@ -315,13 +319,19 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/JS%E6%80%BB%E7%BB%93JS%E6%80%BB%E7%BB%93/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JS-tips</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
                       <a href="/%E5%AE%9E%E6%88%98%E7%BB%83%E4%B9%A0/%E5%91%A8%E6%8A%A5%E9%A1%B9%E7%9B%AEnode-user%E6%8E%A5%E5%8F%A3/">
                         <span class="hidden-mobile">node-user接口</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -364,7 +374,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -373,7 +383,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
