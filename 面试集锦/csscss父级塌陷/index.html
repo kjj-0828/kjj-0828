@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816203334.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="面试集锦-css父级塌陷">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>css父级塌陷 - kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816200709.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="css父级塌陷">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-29 19:37" pubdate>
+        September 29, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">css父级塌陷</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 2, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、对浮动的理解"><a href="#一、对浮动的理解" class="headerlink" title="一、对浮动的理解"></a>一、对浮动的理解</h2><p>在了解什么是浮动之前我们先了解一下html元素在普通流排列方式。在普通流中，元素是按照它在 HTML 中的出现的先后顺序自上而下依次排列布局的，在排列过程中所有的行内元素水平排列，直到当行被占满然后换行，块级元素则会被渲染为一整行。如果没有特殊样式指定，所有元素默认都是按照普通流方式排列布局，即普通流中元素的位置由该元素在 HTML 文档中的位置决定的。</p>
+<p>浮动使元素脱离文档普通流，漂浮在普通流之上的。浮动元素依然按照其在普通流的位置上出现，然后尽可能的根据设置的浮动方向向左或者向右浮动，直到浮动元素的外边缘遇到包含框或者另一个浮动元素为止，且允许文本和内联元素环绕它。浮动会产生块级框（相当于设置了display:block），而不管该元素本身是什么。<br><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210804115840.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>就如上图的显示的div1，div2，div3就是按照普通流排列布局方式呈现的，而后面的div4，div5，div6中的div5的布局方式就不一样了，因为我给div5设置了向左浮动。此时div5脱离普通流，漂浮在普通流之上，所以导致原来div5在普通流中的位置空了出来，div6自动补上去（普通流（div6）表现的和浮动元素不存在一样）。</p>
+<h2 id="二、清除浮动"><a href="#二、清除浮动" class="headerlink" title="二、清除浮动"></a>二、清除浮动</h2><p>浮动导致元素已不在普通流中，所以在排列布局的时候文档中的普通流表现的和浮动元素不存在一样，当浮动元素的高度超出包含框的时候，会出现包含框不会自动撑高来包裹浮动元素，即所谓的“高度塌陷”。如下图所示</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210804115823.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="三、浮动对比"><a href="#三、浮动对比" class="headerlink" title="三、浮动对比"></a>三、浮动对比</h2><h3 id="没有浮动之前："><a href="#没有浮动之前：" class="headerlink" title="没有浮动之前："></a>没有浮动之前：</h3><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    &lt;style&gt;<br>        <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;&#125;<br>        <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>    &lt;/style&gt;<br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195143.png" srcset="/img/loading.gif" lazyload alt="image-20210929195142231"></p>
+<h3 id="浮动后：子元素脱离了文档流，父元素的高度不会被撑开，成为高度塌陷"><a href="#浮动后：子元素脱离了文档流，父元素的高度不会被撑开，成为高度塌陷" class="headerlink" title="浮动后：子元素脱离了文档流，父元素的高度不会被撑开，成为高度塌陷"></a>浮动后：子元素脱离了文档流，父元素的高度不会被撑开，成为高度塌陷</h3><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    &lt;style&gt;<br>        <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;&#125;<br>        <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>    &lt;/style&gt;<br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195925.png" srcset="/img/loading.gif" lazyload alt="image-20210929195924737"></p>
+<h2 id="四、清除浮动的方式"><a href="#四、清除浮动的方式" class="headerlink" title="四、清除浮动的方式"></a>四、清除浮动的方式</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>给父容器添加after伪类</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    &lt;style&gt;<br>        <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;&#125;<br>        <span class="hljs-selector-class">.father</span><span class="hljs-selector-pseudo">::after</span>&#123;<span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;<span class="hljs-attribute">display</span>: block;<span class="hljs-attribute">clear</span>: both;&#125;<br>        <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>    &lt;/style&gt;<br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195843.png" srcset="/img/loading.gif" lazyload alt="image-20210929195842964"></p>
+<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>给父元素添加样式overflow: hidden;或者overflow: auto;(不推荐该用法，使用hidden时当内容较多时会被遮挡，使用auto时内容较多会出现滚动条。构建块格式化上下（BFC）)</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    &lt;style&gt;<br>        <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;<span class="hljs-attribute">overflow</span>: hidden;&#125;<br>        <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>    &lt;/style&gt;<br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195843.png" srcset="/img/loading.gif" lazyload alt="image-20210929195842964"></p>
+<h3 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h3><p>添加空标签，并设置clear:both的样式（不推荐使用，可能会增加很多空标签，代码冗余）</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">&lt;style&gt;<br><span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;&#125;<br><span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br><span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br><span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br><span class="hljs-selector-class">.blank</span>&#123;<span class="hljs-attribute">clear</span>: both;&#125;<br>&lt;/style&gt;<br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;blank&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195843.png" srcset="/img/loading.gif" lazyload alt="image-20210929195842964"></p>
+<h3 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h3><p>给父容器设置高度 （不推荐，当浮动元素和设置的容器高度不一样时会出现问题，适合固定高度布局时使用）</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">&lt;style&gt;<br>     <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;<span class="hljs-attribute">height</span> :<span class="hljs-number">100px</span>;&#125;<br>     <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>     <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>     <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>&lt;/style&gt;<br> &lt;<span class="hljs-selector-tag">body</span>&gt;<br>     &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>         &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>         &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>         &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>     &lt;/<span class="hljs-selector-tag">div</span>&gt;<br> &lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195843.png" srcset="/img/loading.gif" lazyload alt="image-20210929195842964"></p>
+<h3 id="方式五"><a href="#方式五" class="headerlink" title="方式五"></a>方式五</h3><p>让父元素一起浮动（不推荐，可能会影响父元素的兄弟元素和其父元素的排列布局）</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">&lt;style&gt;<br>  &lt;style&gt;<br>            <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;<span class="hljs-attribute">float</span>: left;<span class="hljs-attribute">width</span>:<span class="hljs-number">100%</span>;&#125;<br>            <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>            <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>            <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>        &lt;/style&gt;<br>    &lt;<span class="hljs-selector-tag">body</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>            &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>            &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>            &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195843.png" srcset="/img/loading.gif" lazyload alt="image-20210929195842964"></p>
+<h3 id="方式六"><a href="#方式六" class="headerlink" title="方式六"></a>方式六</h3><p>给父元素设置display:table或者display:inline-block(构建块格式化上下文（BFC）)</p>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">&lt;style&gt;<br>        <span class="hljs-comment">/* .father &#123; background-color: #7fffd4;display: table;width: 100%;&#125; */</span><br>    <span class="hljs-selector-class">.father</span> &#123; <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#7fffd4</span>;<span class="hljs-attribute">display</span>: inline-block;<span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;&#125;<br>    <span class="hljs-selector-class">.son1</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87ceeb</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>    <span class="hljs-selector-class">.son2</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5dc</span>;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>    <span class="hljs-selector-class">.son3</span> &#123;<span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ffe4c4</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;&#125;<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;<span class="hljs-selector-tag">body</span>&gt;<br>    &lt;<span class="hljs-selector-tag">div</span> class=&quot;father&quot;&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son1&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son2&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>        &lt;<span class="hljs-selector-tag">div</span> class=&quot;son3&quot;&gt;&lt;/<span class="hljs-selector-tag">div</span>&gt;<br>    &lt;/<span class="hljs-selector-tag">div</span>&gt;<br>&lt;/<span class="hljs-selector-tag">body</span>&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929195843.png" srcset="/img/loading.gif" lazyload alt="image-20210929195842964"></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013356907/article/details/82778480">https://blog.csdn.net/u013356907/article/details/82778480</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/">面试集锦</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/css/">css</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/css%E7%88%B6%E7%BA%A7%E5%A1%8C%E9%99%B7/">css父级塌陷</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss%E4%B9%8BBFC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">css之BFC</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss%E6%A0%B7%E5%BC%8F%E9%9A%94%E7%A6%BB/">
+                        <span class="hidden-mobile">css样式隔离</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>我只想安静的</span></a> <i class="iconfont icon-love"></i> <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>做一个堕落的富婆</span></a> 
+  </div>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2020,03,14,18,12,20); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+      <span class="post-meta-divider">|</span>
+    </span>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </span>
+    <!--
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      本站博客共 <span class="post-count">{{ totalcount(site) }}</span> 字
+    </span>
+    -->
+</div>
+
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+	</body>
+</html>

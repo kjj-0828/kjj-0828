@@ -1,0 +1,717 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816203334.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="面试集锦-js-ES6之前的继承方法">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>js-ES6之前的继承方法 - kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816200709.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="js-ES6之前的继承方法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-22 21:52" pubdate>
+        October 22, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">js-ES6之前的继承方法</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 2, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、原型链继承"><a href="#一、原型链继承" class="headerlink" title="一、原型链继承"></a>一、原型链继承</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 父类型</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">this</span>.play = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>    <span class="hljs-built_in">this</span>.setName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<span class="hljs-comment">// 方法</span><br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br><span class="hljs-comment">// 子类型</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">price</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.price = price;<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;;<br>&#125;<br>Student.prototype = <span class="hljs-keyword">new</span> Person(); <span class="hljs-comment">// 子类型的原型是父类型的实例对象</span><br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-number">15000</span>);<br><span class="hljs-keyword">var</span> s2 = <span class="hljs-keyword">new</span> Student(<span class="hljs-number">14000</span>);<br><span class="hljs-built_in">console</span>.log(s1,s2)<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211022215349.png" srcset="/img/loading.gif" lazyload alt="image-20211022215341354"></p>
+<blockquote>
+<p>这样实现的实质是将子类的原型指向父类的实例，所以子类可以将父类的私有，公有方法和属性都当做子类的公有属性</p>
+<p>我们知道在操作基本数据类型的时候操作的是值，在操作引用数据类型的时候操作的是地址，如果父类的私有属性中有引用类型的属性，那么他被子类继承时候会作为公有属性，这样子类1操作这个属性的时候，就会影响到子类2</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">s1.play.push(<span class="hljs-number">4</span>);<br><span class="hljs-built_in">console</span>.log(s1.play,s2.play); <span class="hljs-comment">// [ 1, 2, 3, 4 ] [ 1, 2, 3, 4 ]</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>s1的属性发生改变的时候，s2的属性也发生了改变</p>
+</blockquote>
+<p>我们在子类中添加新的方法或者是重写父类的方法的时候，切记一定要放到替换原型的语句后面</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>     <span class="hljs-built_in">this</span>.name = name,<br>     <span class="hljs-built_in">this</span>.age = age<br> &#125;<br> Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;<br> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">price</span>) </span>&#123;<br>     <span class="hljs-built_in">this</span>.price = price<br>     <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br> &#125;<br> <span class="hljs-comment">// Student.prototype.sayHello = function () &#123; &#125;//在这里写子类的原型方法和属性是无效的，</span><br><span class="hljs-comment">//因为会改变原型的指向，所以应该放到重新指定之后</span><br> Student.prototype = <span class="hljs-keyword">new</span> Person()<br> Student.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;<br> <span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-number">15000</span>)<br> <span class="hljs-built_in">console</span>.log(s1)<br></code></pre></div></td></tr></table></figure>
+
+<p>特点：</p>
+<ul>
+<li>父类新增的原型方法/原型属性，子类都能访问到</li>
+<li>简单，易于实现</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>无法实现多继承</li>
+<li>来自原型对象的所有属性被实例所共享</li>
+<li>创造子类实例时，无法向父类构造参数传参</li>
+<li>要想为子类新增属性和方法，必须在替换原型语句后面，不能放到构造器中</li>
+</ul>
+<h2 id="二、构造函数继承"><a href="#二、构造函数继承" class="headerlink" title="二、构造函数继承"></a>二、构造函数继承</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 父类型</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">this</span>.setName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<span class="hljs-comment">// 方法</span><br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br><span class="hljs-comment">// 子类型</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age);<br>    <span class="hljs-built_in">this</span>.price = price;<br>&#125;<br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;Tom&#x27;</span>, <span class="hljs-number">20</span>, <span class="hljs-number">15000</span>)<br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211022222151.png" srcset="/img/loading.gif" lazyload alt="image-20211022222150422"></p>
+<blockquote>
+<p>这种方式，只能继承父类的属性和方法，不能继承父类原型的属性和方法</p>
+</blockquote>
+<p>特点：</p>
+<ul>
+<li>解决了原型链继承中子类实例共享父类引用属性的问题</li>
+<li>创建子类实例的时候，可以向父类传递参数</li>
+<li>可以实现多继承，call多个父类对象</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>实例并不是父类的实例，只是子类的实例</li>
+<li>只能继承父类的方法和属性，不能继承原型的属性和方法</li>
+<li>无法实现函数复用，每一个子类都有父类实例函数的副本，影响性能</li>
+</ul>
+<h2 id="三、原型链-构造函数"><a href="#三、原型链-构造函数" class="headerlink" title="三、原型链+构造函数"></a>三、原型链+构造函数</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">this</span>.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age) <span class="hljs-comment">// 构造函数</span><br>    <span class="hljs-built_in">this</span>.price = price<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Student.prototype = <span class="hljs-keyword">new</span> Person(); <span class="hljs-comment">// 原型链 </span><br>Student.prototype.constructor = Student; <span class="hljs-comment">// 修复构造函数指向</span><br>Student.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;&#125;;<br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">20</span>,<span class="hljs-number">14000</span>);<br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025205118.png" srcset="/img/loading.gif" lazyload alt="image-20211025205110184"></p>
+<p>特点：</p>
+<ul>
+<li>可以继承实例属性/方法 也可以继承原型属性/方法</li>
+<li>不存在引用属性共享问题</li>
+<li>可传参</li>
+<li>函数可以复用</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>调用了两次父类构造函数，生成了两份实例</li>
+</ul>
+<h2 id="四、组合继承优化1"><a href="#四、组合继承优化1" class="headerlink" title="四、组合继承优化1"></a>四、组合继承优化1</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>    <span class="hljs-built_in">this</span>.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age);<br>    <span class="hljs-built_in">this</span>.price = price;<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>Student.prototype = Person.prototype; <span class="hljs-comment">// 父类原型和子类原型指向同一个对象</span><br>Student.prototype.sayHello = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;;<br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;ton&#x27;</span>, <span class="hljs-number">20</span>, <span class="hljs-number">1212</span>);<br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025210138.png" srcset="/img/loading.gif" lazyload alt="image-20211025210137343"></p>
+<p>优点：</p>
+<ul>
+<li>不会初始化两次实例方法/属性 避免组合继承的缺点</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>没有办法辨别实例是子类还是父类创建的，子类和父类的构造函数指向同一个</li>
+</ul>
+<h2 id="五、组合继承优化2"><a href="#五、组合继承优化2" class="headerlink" title="五、组合继承优化2"></a>五、组合继承优化2</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>    <span class="hljs-built_in">this</span>.age = age;<br>&#125;<br>Person.prototype.setAge = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;111&#x27;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">student</span>(<span class="hljs-params">name, age, price</span>) </span>&#123;<br>    Person.call(<span class="hljs-built_in">this</span>, name, age);<br>    <span class="hljs-built_in">this</span>.price = price;<br>    <span class="hljs-built_in">this</span>.setScore = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;<br>&#125;<br>student.prototype = <span class="hljs-built_in">Object</span>.create(Person.prototype); <span class="hljs-comment">// 核心代码</span><br><span class="hljs-comment">// var B = Object.create(A)以A对象为原型，生成了B对象。B继承了A的所有属性和方法。</span><br>student.prototype.constructor = student; <span class="hljs-comment">//核心代码</span><br><span class="hljs-keyword">var</span> s1 = <span class="hljs-keyword">new</span> student(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">12</span>,<span class="hljs-number">19002</span>);<br><span class="hljs-built_in">console</span>.log(s1 <span class="hljs-keyword">instanceof</span> student , s1 <span class="hljs-keyword">instanceof</span> Person); <span class="hljs-comment">// true true</span><br><span class="hljs-built_in">console</span>.log(s1.constructor); <span class="hljs-comment">// student</span><br><span class="hljs-built_in">console</span>.log(s1);<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025211109.png" srcset="/img/loading.gif" lazyload alt="image-20211025211108526"></p>
+<p>优点：</p>
+<ul>
+<li>继承了父类原型对象的属性和方法，最完美的继承方法</li>
+</ul>
+<h2 id="六、ES6中的class继承"><a href="#六、ES6中的class继承" class="headerlink" title="六、ES6中的class继承"></a>六、ES6中的class继承</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, age</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.age = age;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">showName</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;调用父类的方法&quot;</span>);<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name, <span class="hljs-built_in">this</span>.age);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> p1 = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-number">18</span>);<br><span class="hljs-built_in">console</span>.log(p1);<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">name, age, salary</span>)</span> &#123;<br>        <span class="hljs-built_in">super</span>(name, age);<br>        <span class="hljs-built_in">this</span>.salary = salary;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-title">showName</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;调用子类的方法&#x27;</span>);<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name, <span class="hljs-built_in">this</span>.age, <span class="hljs-built_in">this</span>.salary);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">let</span> s1 = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&#x27;tom&#x27;</span>,<span class="hljs-number">18</span>,<span class="hljs-number">100000</span>);<br><span class="hljs-built_in">console</span>.log(s1);<br>s1.showName();<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211025213222.png" srcset="/img/loading.gif" lazyload alt="image-20211025213221722"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/">面试集锦</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/js/">js</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/ES6%E4%B9%8B%E5%89%8D%E7%9A%84%E7%BB%A7%E6%89%BF%E6%96%B9%E6%B3%95/">ES6之前的继承方法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jstypeof%E5%92%8Cinstanceof/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">js-typeof和instanceof</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jspromise%E5%92%8Casync-await%E5%85%B3%E7%B3%BB/">
+                        <span class="hidden-mobile">js-promise和async/await关系</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>我只想安静的</span></a> <i class="iconfont icon-love"></i> <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>做一个堕落的富婆</span></a> 
+  </div>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2020,03,14,18,12,20); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+      <span class="post-meta-divider">|</span>
+    </span>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </span>
+    <!--
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      本站博客共 <span class="post-count">{{ totalcount(site) }}</span> 字
+    </span>
+    -->
+</div>
+
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+	</body>
+</html>
