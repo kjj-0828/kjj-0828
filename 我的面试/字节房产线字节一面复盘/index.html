@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816203334.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="我的面试-字节一面复盘">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>mjs-字节一面复盘 - kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816200709.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="mjs-字节一面复盘">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-02 18:50" pubdate>
+        March 2, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">mjs-字节一面复盘</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 2, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <ol>
+<li><p>先做一个自我介绍</p>
+</li>
+<li><p>在学校专门学前端，还是其他都学？</p>
+</li>
+<li><p>研究生做项目的时候，有没有创新性的要求？</p>
+</li>
+<li><p>你做的官网的项目，是你做的技术选型吗？</p>
+</li>
+<li><p>你实现的屏幕适应是怎么做的？</p>
+<p>答：使用vscode将我的.less文件编译成css文件；使用rem</p>
+</li>
+<li><p>rem的单位是相对于谁的呢？</p>
+<p>答：相对于html的字体</p>
+</li>
+<li><p>是html的哪个标签的font-size呢？</p>
+<p>答：是body</p>
+</li>
+<li><p>那你的单位是怎么换算的，要写多少rem？换算的过程？</p>
+<p>答：我做了，每次都除以一个基数</p>
+</li>
+<li><p>那你设置根元素的font-size会不会影响其他元素？</p>
+<p>答：其他元素都是根据这个来的，应该受到影响</p>
+</li>
+<li><p>除了这个，还有哪些自适应的布局方式?你当时写这个网站有没有考虑用其他来写？</p>
+<p>答：当时确实想过，但是学校部署的提供的站群，是用原生的，我也思考了一下，可以用vue写完，再编译一下，编译之后的文件也可以使用</p>
+</li>
+<li><p>那你做的第二个项目是vue做的，不用部署在平台上？</p>
+</li>
+<li><p>除了mysql，还接触过哪些？</p>
+</li>
+<li><p>答：本科用过oracle</p>
+</li>
+<li><p>有没有接触过mangoDB？</p>
+<p>答：知道mangDB是非关系性数据库，然后做的电力系统的项目，需要对数据进行二次处理，会把第一次采集的大量数据放到mangoDB，需要的数据经过处理，放到mysql</p>
+</li>
+<li><p>强调组件化，组件复用，你做了哪些组件，好处在哪里？</p>
+<p>答：做了一个表单组件，新增按钮和表单进行组合，点击新增按钮弹出表单</p>
+</li>
+<li><p>组件设计有什么原则呢？</p>
+<p>答：这个我没有考虑这个方面的</p>
+</li>
+<li><p>你学习过一些设计模式吗？</p>
+<p>答：我记得有单例模式，还有跟独立性有关的一个</p>
+</li>
+<li><p>独立性是什么意思？</p>
+<p>答：组件的话，应该像按钮一样，每个页面都可以使用，他的数据设置应该是参数化的</p>
+</li>
+<li><p>那你提到的单例模式，是什么意思？</p>
+<p>答：没答上来</p>
+</li>
+<li><p>行，那咱们问一些基础把，你觉得进程和线程有什么区别？</p>
+<p>答：我举个例子，比如我启动了一个QQ，那就是至少启动了一个进程，但是我和别人聊天，这就是一个聊天线程，和别人视频，就是一个视频线程，一个进程包含多个线程</p>
+</li>
+<li><p>多线程有什么好处？</p>
+<p>答：js是单线程的，它在这段时间内只能完成一件事情，如果多线程他可以同一时间完成很多事情</p>
+</li>
+<li><p>chrome架构是多线程还是单线程？</p>
+<p>答：应该多线程</p>
+</li>
+<li><p>你了解浏览器缓存吗？</p>
+<p>答：强缓存和协商缓存</p>
+</li>
+<li><p>那这2个有什么区别？</p>
+<p>答：强缓存是通过设置请求头的expires和cache-control，想服务器请求会先看缓存，如果强缓存没有，就走协商缓存，如果协商缓存有，就返回304，如果没有，服务器返回新的资源</p>
+</li>
+<li><p>强缓存需要向后台请求吗？</p>
+<p>答：强缓存如果没有命中的话，就会走到协商缓存，如果命中的话，就直接从缓存返回资源呀</p>
+</li>
+<li><p>向js、css这些静态资源存储在哪里？</p>
+<p>答：存储在service worker、内存，硬盘中</p>
+</li>
+<li><p>你知道堆栈有什么区别吗？</p>
+<p>答：没答上来</p>
+</li>
+<li><p>js的基础类型，引用类型</p>
+<p>答：基础：number、boolean、string、null、undefined</p>
+<p>引用：Array、function、object</p>
+</li>
+<li><p>基础类型存在堆还是栈？</p>
+<p>答：基础类型存在堆，引用类型存在栈里（老师说这个你可能需要再看看）</p>
+</li>
+<li><p>数据结构接触的多吗？接触过链表结构吗？</p>
+</li>
+<li><p>答：没有</p>
+</li>
+<li><p>原型链有了解过吗?</p>
+<p>答：我是这么理解的，如果你设置的对象属性在当前对象可以找到，那就返回值，如果没有找到就会一直顺着原型链找，直到顶端null，如果没有找到就返回没有找到，如果找到，会返回值</p>
+</li>
+<li><p>怎么判断一个数组？</p>
+<p>答：instanceof、isArray</p>
+</li>
+<li><p>常用的数组方法、for和forEach的区别，平时怎么用的？</p>
+<p>答：for定义变量，依次遍历，forEach数组点运算符调用forEach</p>
+</li>
+<li><p>怎么退出for循环？</p>
+<p>答：break、return</p>
+</li>
+<li><p>那这2个可以在forEach中用吗？</p>
+<p>答：return应该可以吧（老师说嗯…….这个你可以去试一下）</p>
+</li>
+<li><p>除了这个，你还接触过哪些数组操作方法？</p>
+<p>答：push()、concat()、every()、some()、reduce()</p>
+</li>
+<li><p>reduce是什么？</p>
+<p>答：可以获取数组的元素和下标，</p>
+</li>
+<li><p>除了元素和下标还可以接受什么？</p>
+<p>答：没答上来，(老师说嗯…….)</p>
+</li>
+<li><p>concat会修改数组，还是返回新数组</p>
+<p>答：返回新数组</p>
+</li>
+<li><p>push有没有返回值？</p>
+<p>答：没有（老师，嗯……有，但是返回的不是数组）</p>
+</li>
+<li><p>那他返回的是什么？</p>
+<p>答：难道是数组的长度（老师，对）</p>
+</li>
+<li><p>放到数组之前的一个方法？</p>
+<p>答：unshift()</p>
+</li>
+<li><p>ES6用过没有？</p>
+<p>答：接触过，但是用的不多</p>
+</li>
+<li><p>数组去重，怎么做？</p>
+<p>答：最简单的方法，遍历数组，不重复的值放入新方法，</p>
+</li>
+<li><p>怎么判断不重复的值？</p>
+<p>答：没答上来，（老师instanceof和includes都可以）</p>
+</li>
+<li><p>还有其他方式吗？</p>
+<p>答：没有答上来（老师，es6的set没有用过吗）</p>
+</li>
+<li><p>var、let、const区别？</p>
+<p>答：var存在变量提升，let定义变量，const定义常量，var和let的作用域不一样，var全局作用域，let块级作用域</p>
+</li>
+<li><p>promise用过吗？</p>
+<p>答：练习的时候用过，发请求返回给我promise对象</p>
+</li>
+<li><p>没有promise之前，发请求是什么？</p>
+<p>答：用ajax，json结构体</p>
+</li>
+<li><p>其他异步编程的方式?</p>
+<p>答：async、await</p>
+</li>
+<li><p>那promise比setTimeout 的优势？</p>
+<p>答：我回答了宏任务和微任务，宏任务1执行完，执行微任务1，微任务2….，宏任务2执行完，执行微任务1，微任务2…</p>
+</li>
+<li><p>js为什么是单线程？</p>
+<p>答：比如我写了js程序，去操作DOM。然后同时我的同学又写了js，去操作DOM，那会出现问题</p>
+</li>
+<li><p>css的盒模型？</p>
+<p>答：内容模型：边框和内边距都会算进去</p>
+<p>怪异盒子：边框和内边距不会算进去</p>
+</li>
+<li><p>哪个算内容？哪个不算？</p>
+<p>（老师一个标准盒模型，一个IE模型）</p>
+</li>
+<li><p>那标准盒模型是什么？</p>
+<p>答：内容盒模型会算进去</p>
+</li>
+<li><p>伪类和伪元素的区别？</p>
+<p>答：伪类主要根据特征，伪类不会增加DOM属性。伪元素会增加额外的DOM元素</p>
+</li>
+<li><p>说几个伪类？</p>
+<p>答：hover、link、visited、active、last-child</p>
+</li>
+<li><p>css的position？</p>
+<p>答：absolute、fixed、relative、（在老师的提示下说出了static）</p>
+</li>
+<li><p>哪个定位脱离文档流？</p>
+<p>答：absolute、fixed、</p>
+</li>
+<li><p>absolute相对于谁定位?</p>
+<p>答：直系父元素</p>
+</li>
+<li><p>父元素有什么要求？</p>
+<p>答：必须有宽高（老师，这个你可以在看看）</p>
+</li>
+<li><p>你用过webpack？</p>
+<p>答：vue的项目用过</p>
+</li>
+<li><p>vue的computed和watcher的区别？</p>
+<p>答：computed的值没有发生变化，不会触发，watcher监听新旧值的变化（老师，那computed就相当于对一个计算的缓存）</p>
+</li>
+<li><p>vue的组件通信的方式？</p>
+<p>答：父子组件props、emit，还有发布订阅模式</p>
+</li>
+<li><p>举一个发布订阅模式最简单的例子？</p>
+<p>答：vue的双向绑定原理</p>
+</li>
+<li><p>如果你用发布订阅模式，你会怎么写父子组件的通信？</p>
+<p>答：一个中间者，发布者，接受者，子组件订阅信息，父组件发布（老师，父组件触发事件，子组件监听这个事件）</p>
+</li>
+<li><p>子组件和父组件还有哪些方式？</p>
+<p>答：没有答上来</p>
+</li>
+<li><p>keep-alive有什么好处？</p>
+<p>答：没有答上来</p>
+</li>
+<li><p>编程题</p>
+<p>（1） 数组扁平化：let ary =[1,[2,[3,[4, 5]]],6];（当时特别粗心，数组名写写错，传参也传错，数组还用了加法）</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220302212739.png" srcset="/img/loading.gif" lazyload alt="image-20220302212731828"></p>
+<p>（2）数组中找目标值：nums =[2,7,11，15], target = 9（写了2个方法，第二个方法老师提供了思路）</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220302212851.png" srcset="/img/loading.gif" lazyload alt="image-20220302212850429"></p>
+</li>
+</ol>
+<p>（2）数组中找目标值：nums =[2,11，7，15], target = 9（写了2个方法，第二个方法老师提供了思路，第二个方法，老师提出了严谨性，如果判断条件的值是0，那需要处理）</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220302213052.png" srcset="/img/loading.gif" lazyload alt="image-20220302213051468"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%88%91%E7%9A%84%E9%9D%A2%E8%AF%95/">我的面试</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%88%91%E7%9A%84%E9%9D%A2%E8%AF%95/%E5%AD%97%E8%8A%82%E6%88%BF%E4%BA%A7%E7%BA%BF/">字节房产线</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%E5%A4%8D%E7%9B%98/">字节一面复盘</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%AC%94%E8%AE%B0/%E5%AD%97%E8%8A%82%E9%9D%A2%E7%BB%8F%E5%AD%97%E8%8A%82%E9%9D%A2%E7%BB%8F%E7%A7%AF%E7%B4%AF-1/">
+                        <span class="hidden-mobile">字节面试积累-1</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">Stichwort</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>我只想安静的</span></a> <i class="iconfont icon-love"></i> <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>做一个堕落的富婆</span></a> 
+  </div>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2020,03,14,18,12,20); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+      <span class="post-meta-divider">|</span>
+    </span>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </span>
+    <!--
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      本站博客共 <span class="post-count">{{ totalcount(site) }}</span> 字
+    </span>
+    -->
+</div>
+
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+	</body>
+</html>

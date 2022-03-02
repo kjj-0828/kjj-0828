@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      238 字
+      548 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      8
        分钟
     </span>
   
@@ -246,12 +246,13 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：February 8, 2022 pm
+                  本文最后更新于：February 19, 2022 am
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
+              <p>一、转换</p>
+<ol>
 <li><p>split</p>
 <blockquote>
 <p>字符串转数组    </p>
@@ -288,6 +289,31 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">str = <span class="hljs-string">&#x27;1234567&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(str.slice(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>)); <span class="hljs-comment">//123</span><br>arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];<br><span class="hljs-built_in">console</span>.log(arr.slice(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>)); <span class="hljs-comment">// [ 1, 2, 3 ]</span><br></code></pre></div></td></tr></table></figure></li>
 </ol>
+<p>二、深拷贝</p>
+<ol>
+<li><p>slice</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _delete = <span class="hljs-function">(<span class="hljs-params">array, index</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 补全代码</span><br>    <span class="hljs-keyword">var</span> newArr = array.slice();<br>    newArr.splice(index, <span class="hljs-number">1</span>); <br>    <span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">// [ 1, 2, 3 ] 刪除之後，原数组不变</span><br>    <span class="hljs-keyword">return</span> newArr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(_delete([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-number">1</span>)); <span class="hljs-comment">// [ 1, 3 ]</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>concat</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _delete = <span class="hljs-function">(<span class="hljs-params">array, index</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 补全代码</span><br>    <span class="hljs-keyword">var</span> newArr = array.concat();<br>    newArr.splice(index, <span class="hljs-number">1</span>); <br>    <span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">// [ 1, 2, 3 ] 刪除之後，原数组不变</span><br>    <span class="hljs-keyword">return</span> newArr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(_delete([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-number">1</span>)); <span class="hljs-comment">// [ 1, 3 ]</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>for循环依次赋值</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _delete = <span class="hljs-function">(<span class="hljs-params">array, index</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 补全代码</span><br>    <span class="hljs-keyword">var</span> newArr = [];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">of</span> array)&#123;<br>        newArr.push(i);<br>    &#125;<br>    newArr.splice(index, <span class="hljs-number">1</span>); <br>    <span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">// [ 1, 2, 3 ] 刪除之後，原数组不变</span><br>    <span class="hljs-keyword">return</span> newArr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(_delete([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-number">1</span>)); <span class="hljs-comment">// [ 1, 3 ]</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>JSON.parse(JSON.stringify)</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> _delete = <span class="hljs-function">(<span class="hljs-params">array, index</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 补全代码</span><br>    <span class="hljs-keyword">var</span> newArr = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(array))<br>    newArr.splice(index, <span class="hljs-number">1</span>); <br>    <span class="hljs-built_in">console</span>.log(array); <span class="hljs-comment">// [ 1, 2, 3 ] 刪除之後，原数组不变</span><br>    <span class="hljs-keyword">return</span> newArr;<br>&#125;<br><span class="hljs-built_in">console</span>.log(_delete([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-number">1</span>)); <span class="hljs-comment">// [ 1, 3 ]</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<p>三、typeof and instanceof</p>
+<ol>
+<li><p>typeof</p>
+<ul>
+<li>typeof对于原始类型来说，除了null都可以显示正确类型</li>
+<li>typeof对于对象来说，除了函数都会显示object</li>
+</ul>
+</li>
+<li><p>instanceof</p>
+<ul>
+<li>instanceof是用来判断 A 是否为 B 的实例，表达式为：A instanceof B，如果 A 是 B 的实例，则返回 true,否则返回 false。 在这里需要特别注意的是：instanceof 检测的是原型。</li>
+</ul>
+</li>
+</ol>
 
             </div>
             <hr>
@@ -321,6 +347,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/%E5%AE%9E%E4%B9%A0%E7%9B%B8%E5%85%B3%E6%84%8F%E5%90%91%E5%88%97%E8%A1%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">实习列表-list</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
