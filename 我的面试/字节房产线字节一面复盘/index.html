@@ -260,24 +260,24 @@
 <h2 id="【响应式布局】"><a href="#【响应式布局】" class="headerlink" title="【响应式布局】"></a>【响应式布局】</h2><ol>
 <li><p>你实现的屏幕适应是怎么做的？</p>
 <p>答：使用vscode将我的.less文件编译成css文件；使用rem</p>
-<p>【补充】字体单位调整成rem；媒体查询；百分比%；css3的新特性vh/vw；flex弹性布局</p>
+<p>【<strong>补充</strong>】字体单位调整成rem；媒体查询；百分比%；css3的新特性vh/vw；flex弹性布局</p>
 </li>
 <li><p>rem的单位是相对于谁的呢？</p>
 <p>答：相对于html的字体</p>
-<p>【补充】相对html根元素，通过他可以做到只要修改根元素字体的大小就可以调整所有字体的大小；</p>
+<p>【<strong>补充</strong>】相对html根元素，通过他可以做到只要修改根元素字体的大小就可以调整所有字体的大小；</p>
 <p>【em特点】em是相对父节点的font-size</p>
 </li>
 <li><p>是html的哪个标签的font-size呢？</p>
 <p>答：是body</p>
-<p>【补充】根标签（现在还没有明白老师想问的是什么）</p>
+<p>【<strong>补充</strong>】根标签（现在还没有明白老师想问的是什么）</p>
 </li>
 <li><p>那你的单位是怎么换算的，要写多少rem？换算的过程？</p>
 <p>答：我做了，每次都除以一个基数</p>
-<p>【补充】设置html的font-size是50，其他元素都是相对于根元素，比如设置头部宽度值（1100rem / 50）；根元素 ( html）设置font-size=12px;非根元素设置width:2rem;则换成px表示就是24px。</p>
+<p>【<strong>补充</strong>】设置html的font-size是50，其他元素都是相对于根元素，比如设置头部宽度值（1100rem / 50）；根元素 ( html）设置font-size=12px;非根元素设置width:2rem;则换成px表示就是24px。</p>
 </li>
 <li><p>那你设置根元素的font-size会不会影响其他元素？</p>
 <p>答：其他元素都是根据这个来的，应该受到影响</p>
-<p>【补充】根元素的font-size变化，其他都会受到影响</p>
+<p>【<strong>补充</strong>】根元素的font-size变化，其他都会受到影响</p>
 </li>
 <li><p>除了这个，还有哪些自适应的布局方式?你当时写这个网站有没有考虑用其他来写？</p>
 <p>答：当时确实想过，但是学校部署的提供的站群，是用原生的，我也思考了一下，可以用vue写完，再编译一下，编译之后的文件也可以使用</p>
@@ -294,18 +294,18 @@
 </li>
 <li><p>有没有接触过mangoDB？</p>
 <p>答：知道mangDB是非关系性数据库，然后做的电力系统的项目，需要对数据进行二次处理，会把第一次采集的大量数据放到mangoDB，需要的数据经过处理，放到mysql</p>
-<p>【补充】MongoDB 是一个介于关系数据库和非关系数据库之间的产品</p>
+<p>【<strong>补充</strong>】MongoDB 是一个介于关系数据库和非关系数据库之间的产品</p>
 </li>
 <li><p>强调组件化，组件复用，你做了哪些组件，好处在哪里？</p>
 <p>答：做了一个表单组件，新增按钮和表单进行组合，点击新增按钮弹出表单</p>
 </li>
 <li><p>组件设计有什么原则呢？</p>
-<p>答：这个我没有考虑这个方面的<br>【补充】</p>
+<p>答：这个我没有考虑这个方面的<br>【<strong>补充</strong>】</p>
 <p><strong>高</strong>层模块不依赖底层模块，即为依赖倒转原则。<br><strong>内</strong>部修改关闭，外部扩展开放，即开闭原则。<br><strong>聚</strong>合单一功能，即为单一职责原则。<br><strong>低</strong>知识要求，对外接口简单，即迪米特法则。<br><strong>耦</strong>合多个接口，不如独立拆分，即接口隔离原则。<br><strong>合</strong>成复用，尽量不使用继承，即合成复用原则。</p>
 </li>
 <li><p>你学习过一些设计模式吗？</p>
 <p>答：我记得有单例模式，还有跟独立性有关的一个</p>
-<p>【补充】</p>
+<p>【<strong>补充</strong>】</p>
 <p>（1）外观模式，客户端—–&gt;facade(外观)—&gt;subSystem(子系统) </p>
 <p>外观模式将子系统复杂的业务逻辑进行抽象，提供一个更统一、简洁、更易用的API，比如，JQuery就是把负责的DOM操作进行抽象和封装，并且兼容各个浏览器</p>
 <p>（2）代理模式， Real Subject(真实对象)、proxy（代理对象）、subject（接口 2个对象都要实现的接口）</p>
@@ -325,25 +325,25 @@
 </li>
 <li><p>独立性是什么意思？</p>
 <p>答：组件的话，应该像按钮一样，每个页面都可以使用，他的数据设置应该是参数化的</p>
-<p>【补充】高层模块不依赖底层模块，即依赖倒置原则，一个组件只负责实现一个功能，即单一职责原则</p>
+<p>【<strong>补充</strong>】高层模块不依赖底层模块，即依赖倒置原则，一个组件只负责实现一个功能，即单一职责原则</p>
 </li>
 <li><p>那你提到的单例模式，是什么意思？</p>
 <p>答：没答上来</p>
-<p>【补充】单例模式是要求一个类贯穿整个系统，可能涉及到全局变量</p>
+<p>【<strong>补充</strong>】单例模式是要求一个类贯穿整个系统，可能涉及到全局变量</p>
 </li>
 </ol>
 <h2 id="【JS】"><a href="#【JS】" class="headerlink" title="【JS】"></a>【JS】</h2><ol>
 <li><p>行，那咱们问一些基础把，你觉得进程和线程有什么区别？</p>
 <p>答：我举个例子，比如我启动了一个QQ，那就是至少启动了一个进程，但是我和别人聊天，这就是一个聊天线程，和别人视频，就是一个视频线程，一个进程包含多个线程</p>
-<p>【补充】进程比喻成火车，线程比喻成车厢</p>
+<p>【<strong>补充</strong>】进程比喻成火车，线程比喻成车厢</p>
 </li>
 <li><p>多线程有什么好处？</p>
 <p>答：js是单线程的，它在这段时间内只能完成一件事情，如果多线程他可以同一时间完成很多事情</p>
-<p>【补充】提高了资源的利用率；同时完成多个事件而且互不干扰</p>
+<p>【<strong>补充</strong>】提高了资源的利用率；同时完成多个事件而且互不干扰</p>
 </li>
 <li><p>chrome架构是多线程还是单线程？</p>
 <p>答：应该多线程</p>
-<p>【补充】主要包括浏览器进程、渲染进程、GPU进程、插件进程</p>
+<p>【<strong>补充</strong>】主要包括浏览器进程、渲染进程、GPU进程、插件进程</p>
 </li>
 <li><p>你了解浏览器缓存吗？</p>
 <p>答：强缓存和协商缓存</p>
@@ -353,15 +353,15 @@
 </li>
 <li><p>强缓存需要向后台请求吗？</p>
 <p>答：强缓存如果没有命中的话，就会走到协商缓存，如果命中的话，就直接从缓存返回资源呀</p>
-<p>【补充】强缓存表示在缓存期间不需要请求</p>
+<p>【<strong>补充</strong>】强缓存表示在缓存期间不需要请求</p>
 </li>
 <li><p>向js、css这些静态资源存储在哪里？</p>
 <p>答：存储在service worker、内存，硬盘中</p>
-<p>【补充】内存缓存，主要存储一些小文件，读取速度非常快，具有时效性，当关闭Tab，缓存也释放了；硬盘缓存，主要存储一些大文件，一般比较大的css和js，读取速度慢</p>
+<p>【<strong>补充</strong>】内存缓存，主要存储一些小文件，读取速度非常快，具有时效性，当关闭Tab，缓存也释放了；硬盘缓存，主要存储一些大文件，一般比较大的css和js，读取速度慢</p>
 </li>
 <li><p>你知道堆栈有什么区别吗？</p>
 <p>答：没答上来</p>
-<p>【补充】 堆是一个树形的数据结构对象，由程序员分配释放，主要存储引用数据类型；栈是一个链表的数据结构，由操作系统自动分配释放，主要存储基本数据类型</p>
+<p>【<strong>补充</strong>】 堆是一个树形的数据结构对象，由程序员分配释放，主要存储引用数据类型；栈是一个链表的数据结构，由操作系统自动分配释放，主要存储基本数据类型</p>
 </li>
 <li><p>js的基础类型，引用类型</p>
 <p>答：基础：number、boolean、string、null、undefined</p>
@@ -369,7 +369,7 @@
 </li>
 <li><p>基础类型存在堆还是栈？</p>
 <p>答：基础类型存在堆，引用类型存在栈里（老师说这个你可能需要再看看）</p>
-<p>【补充】</p>
+<p>【<strong>补充</strong>】</p>
 <ul>
 <li><p>基础类型</p>
 <p>（1）空间确定，保存在栈中（2）保存和复制的都是值 （3）检测用typeof</p>
@@ -386,7 +386,7 @@
 </li>
 <li><p>原型链有了解过吗?</p>
 <p>答：我是这么理解的，如果你设置的对象属性在当前对象可以找到，那就返回值，如果没有找到就会一直顺着原型链找，直到顶端null，如果没有找到就返回没有找到，如果找到，会返回值</p>
-<p>【补充】涉及：构造函数、原型对象、实例对象、prototype、<code>__proto__</code></p>
+<p>【<strong>补充</strong>】涉及：构造函数、原型对象、实例对象、prototype、<code>__proto__</code></p>
 <p>构造函数通过prototype指向原型对象，原型对象通过constructor指向构造函数；通过new关键字实现的实例对象通过<code>__proto__</code>指向原型对象；如果使得一个原型对象是另一个原型对象的实例，那么就会构成原型链。</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211010203154.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
@@ -395,25 +395,25 @@
 </li>
 <li><p>常用的数组方法、for和forEach的区别，平时怎么用的？</p>
 <p>答：for定义变量，依次遍历，forEach数组点运算符调用forEach</p>
-<p>【补充】（1） for可以定义循环变量的开始，forEach只能默认从0开始（2）for循环可以使用continue、break、return 终止，但是forEach都不支持（3）for循环过程中可以修改索引，但是forEach做不到，要依次遍历</p>
+<p>【<strong>补充</strong>】（1） for可以定义循环变量的开始，forEach只能默认从0开始（2）for循环可以使用continue、break、return 终止，但是forEach都不支持（3）for循环过程中可以修改索引，但是forEach做不到，要依次遍历</p>
 </li>
 <li><p>怎么退出for循环？</p>
 <p>答：break、return</p>
 </li>
 <li><p>那这2个可以在forEach中用吗？</p>
 <p>答：return应该可以吧（老师说嗯…….这个你可以去试一下）</p>
-<p>【补充】使用break报错，不支持return</p>
+<p>【<strong>补充</strong>】使用break报错，不支持return</p>
 </li>
 <li><p>除了这个，你还接触过哪些数组操作方法？</p>
 <p>答：push()、concat()、every()、some()、reduce()</p>
 </li>
 <li><p>reduce是什么？</p>
 <p>答：可以获取数组的元素和下标，</p>
-<p>【补充】reduce是数组的归并方法，接受2个参数  arr.reduce(function(prev,cur,index,arr){}, init);</p>
+<p>【<strong>补充</strong>】reduce是数组的归并方法，接受2个参数  arr.reduce(function(prev,cur,index,arr){}, init);</p>
 </li>
 <li><p>除了元素和下标还可以接受什么？</p>
 <p>答：没答上来，(老师说嗯…….)</p>
-<p>【补充】接受2个参数，第一个参数要执行的函数，第二个参数函数的初始化值</p>
+<p>【<strong>补充</strong>】接受2个参数，第一个参数要执行的函数，第二个参数函数的初始化值</p>
 </li>
 <li><p>concat会修改数组，还是返回新数组</p>
 <p>答：返回新数组</p>
@@ -432,7 +432,7 @@
 </li>
 <li><p>数组去重，怎么做？</p>
 <p>答：最简单的方法，遍历数组，不重复的值放入新方法，</p>
-<p>【补充】</p>
+<p>【<strong>补充</strong>】</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 方法一：数组方法forEach,主要利用indexof返回第一次找到的下标</span><br><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">let</span> arr2 = [];<br>arr1.forEach(<span class="hljs-function">(<span class="hljs-params">ele, index, arr</span>) =&gt;</span> &#123;<br>    arr.indexOf(ele) === index ? arr2.push(ele) : <span class="hljs-literal">null</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(arr2); <span class="hljs-comment">// [ 1, 2, 3, 8 ]</span><br></code></pre></div></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 方法二：利用reduce将每次的新数组作为回调参数返回</span><br><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">var</span> arr2 = arr1.reduce(<span class="hljs-function">(<span class="hljs-params">prev, cur</span>) =&gt;</span> &#123;<br>    prev.indexOf(cur) === -<span class="hljs-number">1</span> &amp;&amp; prev.push(cur);<br>    <span class="hljs-keyword">return</span> prev;<br>&#125;, [])<br><span class="hljs-built_in">console</span>.log(arr2); <span class="hljs-comment">// [ 1, 2, 3, 8 ]</span><br></code></pre></div></td></tr></table></figure>
@@ -453,7 +453,7 @@
 <p>答：练习的时候用过，发请求返回给我promise对象</p>
 <p>没有promise之前，发请求是什么？</p>
 <p>答：用ajax，json结构体</p>
-<p>【补充】没有Promise之前,解决异步都是依赖回调</p>
+<p>【<strong>补充</strong>】没有Promise之前,解决异步都是依赖回调</p>
 <p>（1）promise的诞生，主要是为了解决回调地狱的问题，在没有promise之前，js实现异步编程主要是通过嵌套回调函数实现的，嵌套繁多复杂的回调函数就会出现回调地狱。</p>
 <p>（2）规范回调的名字或者顺序</p>
 <p>（3）容易捕获错误</p>
@@ -467,22 +467,22 @@
 </li>
 <li><p>其他异步编程的方式?</p>
 <p>答：async、await</p>
-<p>【补充】回调函数、事件监听、发布订阅模式、promise、generator+yield、async+await</p>
+<p>【<strong>补充</strong>】回调函数、事件监听、发布订阅模式、promise、generator+yield、async+await</p>
 </li>
 <li><p>那promise比setTimeout 的优势？</p>
 <p>答：我回答了宏任务和微任务，宏任务1执行完，执行微任务1，微任务2….，宏任务2执行完，执行微任务1，微任务2…</p>
-<p>【补充】promise比setTimeout快，promise产生的是js引擎的微任务，setTimeout产生的是宏任务。在事件循环的过程中，作业队列（存储promise回调函数）比任务队列（存储setTimeout回调）优先级高</p>
+<p>【<strong>补充</strong>】promise比setTimeout快，promise产生的是js引擎的微任务，setTimeout产生的是宏任务。在事件循环的过程中，作业队列（存储promise回调函数）比任务队列（存储setTimeout回调）优先级高</p>
 </li>
 <li><p>js为什么是单线程？</p>
 <p>答：比如我写了js程序，去操作DOM。然后同时我的同学又写了js，去操作DOM，那会出现问题</p>
-<p>【补充】js做为浏览器的脚本语言，只要是为了完成用户和页面的交互，主要就是DOM操作， 举个例子，如果js是多线程，一个线程下达命令删除DOM，一个线程下达命令编辑DOM，同时下达两个矛盾的命令会导致浏览器的崩溃。</p>
+<p>【<strong>补充</strong>】js做为浏览器的脚本语言，只要是为了完成用户和页面的交互，主要就是DOM操作， 举个例子，如果js是多线程，一个线程下达命令删除DOM，一个线程下达命令编辑DOM，同时下达两个矛盾的命令会导致浏览器的崩溃。</p>
 </li>
 </ol>
 <h2 id="【css】"><a href="#【css】" class="headerlink" title="【css】"></a>【css】</h2><ol>
 <li><p>css的盒模型？</p>
 <p>答：内容模型：边框和内边距都会算进去</p>
 <p>怪异盒子：边框和内边距不会算进去</p>
-<p>【补充】css的盒模型有2种，标准盒模型和IE盒模型</p>
+<p>【<strong>补充</strong>】css的盒模型有2种，标准盒模型和IE盒模型</p>
 <p>标准盒模型(content-box)，设置width：200px，box(244) = content(200) +padding(20*2)+border(2*2)</p>
 <p>IE盒模型(border-box)，设置width：200px，还设置了border、padding，box(200) = content(156) + padding(20*2)+border(2*2)</p>
 </li>
@@ -500,18 +500,18 @@
 </li>
 <li><p>css的position？</p>
 <p>答：absolute、fixed、relative、（在老师的提示下说出了static）</p>
-<p>【补充】sticky、inherit</p>
+<p>【<strong>补充</strong>】sticky、inherit</p>
 </li>
 <li><p>哪个定位脱离文档流？</p>
 <p>答：absolute、fixed、</p>
 </li>
 <li><p>absolute相对于谁定位?</p>
 <p>答：直系父元素</p>
-<p>【补充】是相对于离他最近的一个已经定位的盒子进行定位的</p>
+<p>【<strong>补充</strong>】是相对于离他最近的一个已经定位的盒子进行定位的</p>
 </li>
 <li><p>父元素有什么要求？</p>
 <p>答：必须有宽高（老师，这个你可以在看看）    </p>
-<p>【补充】父元素必须有定位，如果都没有，默认以body</p>
+<p>【<strong>补充</strong>】父元素必须有定位，如果都没有，默认以body</p>
 </li>
 </ol>
 <h2 id="【vue】"><a href="#【vue】" class="headerlink" title="【vue】"></a>【vue】</h2><ol>
@@ -520,7 +520,7 @@
 </li>
 <li><p>vue的computed和watcher的区别？</p>
 <p>答：computed的值没有发生变化，不会触发，watcher监听新旧值的变化（老师，那computed就相当于对一个计算的缓存）</p>
-<p>【补充】</p>
+<p>【<strong>补充</strong>】</p>
 <p>（1）computed支持缓存，只有数据发生改变时，才会发生改变</p>
 <p>（2）computed直接取缓存的值，methods每次都重新计算</p>
 <p>（3）不支持异步</p>
@@ -532,7 +532,7 @@
 </li>
 <li><p>vue的组件通信的方式？</p>
 <p>答：父子组件props、emit，还有发布订阅模式</p>
-<p>【补充】</p>
+<p>【<strong>补充</strong>】</p>
 <p>（1）props、<code>$emit</code></p>
 <p>父组件通过props向子组件传值，子组件通过<code>$emit</code>自定义事件向父组件传值</p>
 <p>（2）<code>$emit、$on</code></p>
@@ -557,14 +557,14 @@
 </li>
 <li><p>如果你用发布订阅模式，你会怎么写父子组件的通信？</p>
 <p>答：一个中间者，发布者，接受者，子组件订阅信息，父组件发布（老师，父组件触发事件，子组件监听这个事件）</p>
-<p>【补充】父组件做为被观察者，子组件作为观察者，子组件订阅父组件的消息，当父组件数据变化时，通知子组件更新</p>
+<p>【<strong>补充</strong>】父组件做为被观察者，子组件作为观察者，子组件订阅父组件的消息，当父组件数据变化时，通知子组件更新</p>
 </li>
 <li><p>子组件和父组件还有哪些方式？</p>
 <p>答：没有答上来</p>
 </li>
 <li><p>keep-alive有什么好处？</p>
 <p>答：没有答上来</p>
-<p>【补充】可以使被包含的组件保持状态，避免重新渲染，比如，列表页—&gt;详情页，从详情页—-&gt;列表页希望是缓存，这时候就可以将列表页包含在keep-alive中，不用二次渲染。</p>
+<p>【<strong>补充</strong>】可以使被包含的组件保持状态，避免重新渲染，比如，列表页—&gt;详情页，从详情页—-&gt;列表页希望是缓存，这时候就可以将列表页包含在keep-alive中，不用二次渲染。</p>
 <p>一般设计keep-alive和router-view一起使用。</p>
 </li>
 </ol>
@@ -620,7 +620,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95%E9%A2%98%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95%E9%A2%98-1/">
                         <span class="hidden-mobile">字节面试题-1</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -663,7 +663,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -672,7 +672,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
