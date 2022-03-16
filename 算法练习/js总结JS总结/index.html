@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      548 字
+      656 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      10
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 2, 2022 pm
+                  本文最后更新于：March 15, 2022 am
                 
               </p>
             
@@ -314,6 +314,17 @@
 </ul>
 </li>
 </ol>
+<p>四、0 的问题</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220314162604.png" srcset="/img/loading.gif" lazyload alt="image-20220314162556813"></p>
+<p>五、json和js</p>
+<p>js对象转json 字符串：</p>
+<p>json = JSON.stringify(js对象);</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>    <span class="hljs-attr">a</span>: <span class="hljs-string">&#x27;hello&#x27;</span>,<br>    <span class="hljs-attr">b</span>: <span class="hljs-string">&#x27;world&#x27;</span><br>&#125;<br><span class="hljs-keyword">let</span> json = <span class="hljs-built_in">JSON</span>.stringify(obj);<br><span class="hljs-built_in">console</span>.log(json); <span class="hljs-comment">// &#123;&quot;a&quot;:&quot;hello&quot;,&quot;b&quot;:&quot;world&quot;&#125;</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> json); <span class="hljs-comment">// string </span><br></code></pre></div></td></tr></table></figure>
+
+<p>json字符串转成js对象</p>
+<p>js = JSON.parse(json);</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> json = <span class="hljs-string">&#x27;&#123;&quot;a&quot;:&quot;hello&quot;,&quot;b&quot;:&quot;world&quot;&#125;&#x27;</span>;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-built_in">JSON</span>.parse(json);<br><span class="hljs-built_in">console</span>.log(obj); <span class="hljs-comment">// &#123; a: &#x27;hello&#x27;, b: &#x27;world&#x27; &#125;</span><br></code></pre></div></td></tr></table></figure>
+
 
             </div>
             <hr>
@@ -353,7 +364,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95%E9%A2%98%E5%AD%97%E8%8A%82%E9%9D%A2%E8%AF%95%E9%A2%98-1/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">字节面试题-1</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Antaŭa afiŝo</span>
                       </a>
                     
                   </article>
@@ -362,7 +373,7 @@
                     
                       <a href="/%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE/%E5%91%A8%E6%8A%A5%E9%A1%B9%E7%9B%AEuser-logout%E6%8E%A5%E5%8F%A3/">
                         <span class="hidden-mobile">user-logout接口</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Sekva afiŝo</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -379,7 +390,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -405,7 +416,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -414,7 +425,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">ŝlosivorto</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
