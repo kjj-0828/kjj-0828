@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      333 字
+      313 字
     </span>
   
 
@@ -255,11 +255,11 @@
 <li><p>暴力解法</p>
 <p>后一天买入的- 前一天卖出的= 利润</p>
 <p>两层循环求最大利润</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;number[]&#125;</span> <span class="hljs-variable">prices</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">&#123;number&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> maxProfit = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prices</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> maxProfit = <span class="hljs-number">0</span>; <span class="hljs-comment">//最大利润</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; prices.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; prices.length; j++) &#123;<br>            <span class="hljs-keyword">let</span> profit = prices[j] - prices[i]; <span class="hljs-comment">// 后一天卖出的- 前一天买入的 = 利润</span><br>            <span class="hljs-keyword">if</span> (profit &gt; maxProfit) &#123;<br>                maxProfit = profit;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> maxProfit;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> maxProfit = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prices</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> maxProfit = <span class="hljs-number">0</span>; <span class="hljs-comment">//最大利润</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; prices.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i + <span class="hljs-number">1</span>; j &lt; prices.length; j++) &#123;<br>            <span class="hljs-keyword">let</span> profit = prices[j] - prices[i]; <span class="hljs-comment">// 后一天卖出的- 前一天买入的 = 利润</span><br>            <span class="hljs-keyword">if</span> (profit &gt; maxProfit) &#123;<br>                maxProfit = profit;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> maxProfit;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>动态规划</p>
 <p>如果放到现实生活中，我肯定希望在历史的最低点买入股票，然后在股票最高的时候选择卖出，所以对题目进行转化</p>
 <p>维护一个变量minPort记录最低点，一次遍历，如果遍历过程中，先判断是不是最低点，如果是，选择买入，如果不是，就考虑要不要卖出，选择卖出的条件是当前的利润大于上一次决定的卖出的利润，我才会更新maxProfit</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;number[]&#125;</span> <span class="hljs-variable">prices</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">&#123;number&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">var</span> maxProfit = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prices</span>) </span>&#123;<br>    <span class="hljs-comment">//    假设我每次都能找到历史最低点，选择买入</span><br>    <span class="hljs-keyword">let</span> minPort = prices[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">let</span> maxProfit = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; prices.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (prices[i] &lt; minPort) &#123;<br>            minPort = prices[i]; <span class="hljs-comment">// 找最小值</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (maxProfit &lt; prices[i] - minPort) &#123; <span class="hljs-comment">// 最小值不变，就考虑要不要卖</span><br>                maxProfit = prices[i] - minPort;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> maxProfit;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> maxProfit = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prices</span>) </span>&#123;<br>    <span class="hljs-comment">//    假设我每次都能找到历史最低点，选择买入</span><br>    <span class="hljs-keyword">let</span> minPort = prices[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">let</span> maxProfit = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; prices.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (prices[i] &lt; minPort) &#123;<br>            minPort = prices[i]; <span class="hljs-comment">// 找最小值</span><br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (maxProfit &lt; prices[i] - minPort) &#123; <span class="hljs-comment">// 最小值不变，就考虑要不要卖</span><br>                maxProfit = prices[i] - minPort;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> maxProfit;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
 </ol>
 
             </div>
@@ -300,7 +300,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">LeetCode-只出现一次的数字</span>
-                        <span class="visible-mobile">Antaŭa afiŝo</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -309,7 +309,7 @@
                     
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/es6Module%E5%8A%A0%E8%BD%BD/">
                         <span class="hidden-mobile">es6Module加载</span>
-                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -326,7 +326,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Enhavtabelo</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -352,7 +352,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -361,7 +361,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">ŝlosivorto</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
