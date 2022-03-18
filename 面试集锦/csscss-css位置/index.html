@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      194 字
+      426 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      5
        分钟
     </span>
   
@@ -246,12 +246,46 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 2, 2022 pm
+                  本文最后更新于：March 18, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
+              <p>【2022-3-18补充】</p>
+<hr>
+<ol>
+<li><p>relative定位</p>
+<p>relative相对自己默认的位置。定位基点是自己默认位置</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318123922.png" srcset="/img/loading.gif" lazyload alt="image-20220318123921923"></p>
+</li>
+<li><p>absolute定位</p>
+<p>absolute相对于上级元素一般是父元素进行定位，有限制条件是父元素的定位不能是static，定位基点：上级元素（一般是父元素）</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;relative&quot;</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;absolute&quot;</span>&gt;</span>son<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.relative</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>&#125;<br>   <br><span class="hljs-selector-class">.absolute</span> &#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318124945.png" srcset="/img/loading.gif" lazyload alt="image-20220318124944199"></p>
+</li>
+<li><p>fixed定位</p>
+<p>相对于浏览器视口定位，定位基点是浏览器窗口</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;fixed&quot;</span>&gt;fixed&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.fixed &#123;<br>    <span class="hljs-attr">position</span>: fixed;<br>    top: <span class="hljs-number">50</span>%;<br>    left: <span class="hljs-number">50</span>%;<br>    transform: translate(-<span class="hljs-number">50</span>%, -<span class="hljs-number">50</span>%);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318130929.png" srcset="/img/loading.gif" lazyload alt="image-20220318130928647"></p>
+</li>
+<li><p>sticky定位</p>
+<p>当滑动到某一点时，发生固定</p>
+<p>有效规则：</p>
+<p>父级的overflow必须是visible</p>
+<p>必须设置top、left、right、bottom其中某个属性</p>
+<p>案例：图片叠加</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.backgorund &#123;<br>    <span class="hljs-attr">position</span>: -webkit-sticky;<br>    position: sticky;<br>    top: <span class="hljs-number">0</span>;<br>   <br>&#125;	<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318134802.gif" srcset="/img/loading.gif" lazyload alt="2 (2)"></p>
+<p>案例：标题栏</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318134357.gif" srcset="/img/loading.gif" lazyload alt="3"></p>
+</li>
 <li><p>position的值：relative、absolute、fixed、static、sticky</p>
 <p>relative：相对布局，相对于自己正常位置进行定位,(原来的位置还在保留，向下移动了10px)</p>
 <figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    <span class="hljs-selector-class">.relative</span> &#123;<br>        <span class="hljs-attribute">position</span>: relative;<br>        <span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;<br>    &#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;relative&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure>
