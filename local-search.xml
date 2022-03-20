@@ -4,11 +4,119 @@
   
   
   <entry>
+    <title>vue-Vue3.0和Vue2.0</title>
+    <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/vuevue3.0%E5%92%8CVue2.0/"/>
+    <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/vuevue3.0%E5%92%8CVue2.0/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>template</p><p>vue2.0只支持一个根组件</p><p>vue3.0不在约束根组件个数</p><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;h2&gt; &#123;&#123; title &#125;&#125; &lt;/h2&gt;<br>    &lt;input type=&#x27;text&#x27; v-model=&#x27;username&#x27; placeholder=&#x27;Username&#x27; /&gt;<br>    &lt;input type=&#x27;password&#x27; v-model=&#x27;password&#x27; placeholder=&#x27;Password&#x27; /&gt;<br>    &lt;button @click=&#x27;login&#x27;&gt;Submit&lt;/button&gt;<br>    &lt;p&gt; <br>      Values: &#123;&#123; username + &#x27; &#x27; + password &#125;&#125;<br>    &lt;/p&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vue">&lt;template&gt;<br>    &lt;h2&gt; &#123;&#123; title &#125;&#125; &lt;/h2&gt;<br>    &lt;input type=&#x27;text&#x27; v-model=&#x27;state.username&#x27; placeholder=&#x27;Username&#x27; /&gt;<br>    &lt;input type=&#x27;password&#x27; v-model=&#x27;state.password&#x27; placeholder=&#x27;Password&#x27; /&gt;<br>    &lt;button @click=&#x27;login&#x27;&gt;Submit&lt;/button&gt;<br>    &lt;p&gt; <br>      Values: &#123;&#123; state.username + &#x27; &#x27; + state.password &#125;&#125;<br>    &lt;/p&gt;<br>&lt;/template&gt;<br></code></pre></div></td></tr></table></figure></li><li><p>options API 和 composition API</p><p>vue2.0的提供data、computed、methods等options API</p><p>vue3.0提供setup()进行统一的管理</p><p>不过全新的<code>setup()</code>方法可以接收两个参数：</p><ol><li><code>props</code> - 不可变的组件参数</li><li><code>context</code> - Vue3 暴露出来的属性（emit，slots，attrs）</li></ol><p>关于data：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 2.0</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  data () &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 3.0</span><br><span class="hljs-keyword">import</span> &#123; reactive &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  setup () &#123;<br>    <span class="hljs-keyword">const</span> state = reactive(&#123;<br>      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;)<br>    <span class="hljs-keyword">return</span> &#123; state &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>关于methods：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 2.0</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  data () &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<br>  &#125;,<br>  <span class="hljs-attr">methods</span>: &#123;<br>    login () &#123;<br>      <span class="hljs-comment">// 登陆方法</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 3.0</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  setup () &#123;<br>    <span class="hljs-keyword">const</span> state = reactive(&#123;<br>      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-keyword">const</span> login = <span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-comment">// 登陆方法</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123; <br>      login,<br>      state<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>关于钩子函数：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//2.0</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  data () &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<br>  &#125;,<br>  mounted () &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;组件已挂载&#x27;</span>)<br>  &#125;,<br>  <span class="hljs-attr">methods</span>: &#123;<br>    login () &#123;<br>      <span class="hljs-comment">// login method</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 3.0 </span><br><span class="hljs-keyword">import</span> &#123; reactive, onMounted &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  setup () &#123;<br>    <span class="hljs-comment">// ..</span><br>    onMounted(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;组件已挂载&#x27;</span>)<br>    &#125;)<br>    <span class="hljs-comment">// ...</span><br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>关于computed：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// vue2.0</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-comment">// .. </span><br>  <span class="hljs-attr">computed</span>: &#123;<br>    lowerCaseUsername () &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.username.toLowerCase()<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// vue3.0</span><br><span class="hljs-keyword">import</span> &#123; reactive, onMounted, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br>  setup () &#123;<br>    <span class="hljs-keyword">const</span> state = reactive(&#123;<br>      <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">password</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>      <span class="hljs-attr">lowerCaseUsername</span>: computed(<span class="hljs-function">() =&gt;</span> state.username.toLowerCase())<br>    &#125;)<br><br>    <span class="hljs-comment">// ...</span><br>  &#125;<br></code></pre></div></td></tr></table></figure><p>关于props：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// vue 2.0 </span><br><span class="hljs-comment">// 接收：</span><br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br><span class="hljs-comment">// 使用：</span><br>mounted () &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;title: &#x27;</span> + <span class="hljs-built_in">this</span>.title)<br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// vue3.0</span><br><span class="hljs-comment">//接收：</span><br>  <span class="hljs-attr">props</span>: &#123;<br>    <span class="hljs-attr">title</span>: <span class="hljs-built_in">String</span><br>  &#125;,<br><span class="hljs-comment">//使用:</span><br>setup (props) &#123;<br>    <span class="hljs-comment">// ...</span><br>    onMounted(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;title: &#x27;</span> + props.title)<br>    &#125;)<br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></div></td></tr></table></figure><p>关于事件：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// vue2.0</span><br>login () &#123;<br>      <span class="hljs-built_in">this</span>.$emit(<span class="hljs-string">&#x27;login&#x27;</span>, &#123;<br>        <span class="hljs-attr">username</span>: <span class="hljs-built_in">this</span>.username,<br>        <span class="hljs-attr">password</span>: <span class="hljs-built_in">this</span>.password<br>      &#125;)<br> &#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 3.0</span><br>setup (props, &#123; emit &#125;) &#123;<br>    <span class="hljs-comment">// ...</span><br><br>    <span class="hljs-keyword">const</span> login = <span class="hljs-function">() =&gt;</span> &#123;<br>      emit(<span class="hljs-string">&#x27;login&#x27;</span>, &#123;<br>        <span class="hljs-attr">username</span>: state.username,<br>        <span class="hljs-attr">password</span>: state.password<br>      &#125;)<br>    &#125;<br><br>    <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></div></td></tr></table></figure></li><li><p>响应式原理的不同</p><p>vue2.0是通过es5的Object.defineProperty实现数据的双向绑定，但是无法监听数组的变化，还有对象进行新增属性</p><p>vue3.0 通过proxy进行数据的响应式原理</p></li><li><p>生命周期函数</p><figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs text">Vue2--------------vue3<br>beforeCreate  -&gt; setup()<br>created       -&gt; setup()<br>beforeMount   -&gt; onBeforeMount<br>mounted       -&gt; onMounted<br>beforeUpdate  -&gt; onBeforeUpdate<br>updated       -&gt; onUpdated<br>beforeDestroy -&gt; onBeforeUnmount<br>destroyed     -&gt; onUnmounted<br>activated     -&gt; onActivated<br>deactivated   -&gt; onDeactivated<br>errorCaptured -&gt; onErrorCaptured<br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试集锦</category>
+      
+      <category>vue</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue3.0</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-青蛙跳台</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>递归完成</p><p>但是递归测试超时</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 递归，但是递归超时</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>n </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// fn = fn(n-1) + fn(n-2)</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">qingWa</span>(<span class="hljs-params">n</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> arr = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">2</span>) &#123;<br>        <span class="hljs-keyword">return</span> arr[n];<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> qingWa(n - <span class="hljs-number">1</span>) + qingWa(n - <span class="hljs-number">2</span>);<br>    &#125;<br><br>&#125;<br><span class="hljs-built_in">console</span>.log(qingWa(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 8</span><br></code></pre></div></td></tr></table></figure></li><li><p>for循环</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：for循环</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;&#125;</span> </span>n </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">qingWa</span>(<span class="hljs-params">n</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> arr = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>];<br>    <span class="hljs-keyword">let</span> res = [];<br>    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">2</span>) &#123;<br>        <span class="hljs-keyword">return</span> arr[n];<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">3</span>; i &lt;= n; i++) &#123;<br>        arr[i] = arr[i - <span class="hljs-number">1</span>] + arr[i - <span class="hljs-number">2</span>];<br>    &#125;<br>    <span class="hljs-keyword">return</span> arr[n];<br>&#125;<br><span class="hljs-built_in">console</span>.log(qingWa(<span class="hljs-number">5</span>)); <span class="hljs-comment">// 8</span><br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>LeetCode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>青蛙跳台</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-最大子序列求和</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%88%97%E6%B1%82%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>动态规划</p><p>定义一个dp数组，他代表的是以arr[i]结尾的最大连续子序列和</p><p>dp[i] = max{dp[i-1]+ arr[i]，arr[i]}</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">   <span class="hljs-comment">/**方法一：动态规划</span><br><span class="hljs-comment">    * dp[i] 代表以arr[i]结尾的最大连续子序列和</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr </span><br><span class="hljs-comment">    * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isMaxziXuLie</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>     <span class="hljs-keyword">let</span> dp = [];<br>     dp[<span class="hljs-number">0</span>] = arr[<span class="hljs-number">0</span>];<br>     <span class="hljs-keyword">let</span> res = arr[<span class="hljs-number">0</span>];<br>     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>       <span class="hljs-keyword">if</span> (dp[i - <span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 如果dp[i-1]是负值，我将舍弃，因为任何一个数加上一个负数，都会变小</span><br>         dp[i] = dp[i - <span class="hljs-number">1</span>] + arr[i];<br>       &#125; <span class="hljs-keyword">else</span> &#123;<br>         dp[i] = arr[i];<br>       &#125;<br>       res = <span class="hljs-built_in">Math</span>.max(res, dp[i]);<br>     &#125;<br>     <span class="hljs-keyword">return</span> res;<br>   &#125;<br>   <span class="hljs-keyword">let</span> arr = [-<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">5</span>, <span class="hljs-number">4</span>];<br><span class="hljs-built_in">console</span>.log(isMaxziXuLie(arr)); <span class="hljs-comment">// 6</span><br></code></pre></div></td></tr></table></figure></li><li><p>暴力解法</p><p>遍历数组2遍，每次累加。获取最大值</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：暴力解法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;&#125;</span> </span>arr </span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isMaxziXuLie</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> max = <span class="hljs-built_in">Number</span>.MIN_VALUE;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = i; j &lt; arr.length; j++) &#123;<br>      sum += arr[j];<br>      <span class="hljs-keyword">if</span> (sum &gt; max) &#123;<br>        max = sum;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> max;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [-<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">5</span>, <span class="hljs-number">4</span>];<br><span class="hljs-built_in">console</span>.log(isMaxziXuLie(arr)); <span class="hljs-comment">// 6</span><br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>LeetCode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>最大子序列求和</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-回文序列</title>
+    <link href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97/"/>
+    <url>/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>正则匹配，使用[\W_]匹配字符串中不是数字、字符串、汉字的字符，使用replace替换为’‘</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**方法一</span><br><span class="hljs-comment"> * 正则处理字符串</span><br><span class="hljs-comment"> * \W匹配不是数字，字母，下划线，汉字的字符(比如：：，。等特殊字符)</span><br><span class="hljs-comment"> * _匹配下划线字符</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>str </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isHuiWen</span>(<span class="hljs-params">s</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> res = s.toLowerCase().replace(<span class="hljs-regexp">/[\W]/ig</span>, <span class="hljs-string">&#x27;&#x27;</span>);<br>    <span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">let</span> j = res.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-keyword">if</span> (res.charAt(i) === res.charAt(j)) &#123;<br>            i++;<br>            j--;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">let</span> s = <span class="hljs-string">&#x27;race a _car_&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(isHuiWen(s)); <span class="hljs-comment">// false</span><br></code></pre></div></td></tr></table></figure></li><li><p>使用<code>[^a-z0-9]</code>匹配不是a-z，0-9的字符，通过split进行分割，在通过join()将字符串转成数组</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**方法二：翻转字符串</span><br><span class="hljs-comment"> * 正则匹配：[^x]匹配除了x字符以外的字符</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>s </span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isHuiWen</span>(<span class="hljs-params">s</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> res1 = s.toLowerCase().split(<span class="hljs-regexp">/[^a-z0-9]/</span>).join(<span class="hljs-string">&#x27;&#x27;</span>);<br>    <span class="hljs-keyword">let</span> res2 = res1.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>);<br>    <span class="hljs-keyword">return</span> res1 === res2;<br><br>&#125;<br><span class="hljs-keyword">let</span> s = <span class="hljs-string">&#x27;A man, a plan, a canal: Panama&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(isHuiWen(s)); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure></li><li><p>对字符串进行处理，然后利用双指针的思想</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法三：还是双指针的思想.只是利用for循环</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>s </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isHuiWen</span>(<span class="hljs-params">s</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> str = s.toLowerCase().split(<span class="hljs-regexp">/[^a-z0-9]/</span>).join(<span class="hljs-string">&#x27;&#x27;</span>);<br>    <span class="hljs-built_in">console</span>.log(str);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; str.length / <span class="hljs-number">2</span>; i++) &#123;<br>        <span class="hljs-keyword">if</span> (str.charAt(i) != str.charAt(str.length - <span class="hljs-number">1</span> - i)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-keyword">let</span> s = <span class="hljs-string">&#x27;11311&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(isHuiWen(s)); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法练习</category>
+      
+      <category>面试算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>回文序列</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>阿里面试题-1</title>
     <link href="/%E9%9D%A2%E7%BB%8F%E7%A7%AF%E7%B4%AF/%E9%98%BF%E9%87%8C%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98-1/"/>
     <url>/%E9%9D%A2%E7%BB%8F%E7%A7%AF%E7%B4%AF/%E9%98%BF%E9%87%8C%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98-1/</url>
     
-    <content type="html"><![CDATA[<h2 id="一面："><a href="#一面：" class="headerlink" title="一面："></a>一面：</h2><hr><ol><li>第一题判断回文序列</li><li>第二题数组相邻k个元素最大子序列求和</li><li>第三题完成一个函数，从淘宝网获取所有图片信息返回所有url序列，之后从中截取每张图片的名称，并根据每张图片的大小排序返回并下载。</li><li>一道正则题</li><li>第五道青蛙跳台</li></ol><h2 id="二面："><a href="#二面：" class="headerlink" title="二面："></a>二面：</h2><hr><ol><li><p>原型链的了解，</p><p>【补充】涉及构造函数、原型对象、实例对象、prototype、<code>__proto__</code>、Function、Object</p></li><li><p>css各种定位，每种定位相对于哪，每种定位的特点，</p><p>【补充】</p><p>static:默认布局，没有定位，元素出现在正常的文本流中</p><p>relative:相对布局，相对于自己原来的位置</p><p>absolute:绝对布局，相对于某个上级元素（一般是父元素）并且有定位，有一个限制条件是上级元素不能是static定位，不然就会相对于网页的根元素html进行定位</p><p>fixed:固定布局，相对于浏览器视口</p><p>sticky:粘性布局，滚动到一定位置会固定</p></li><li><p>flex布局的意义，再详细介绍。</p></li><li><p>之后问ES6相关，新增属性，</p></li><li><p>Promise,Generator原理，优缺点（Promise真的问的太深，虽然差不多能写出源码但是口述说的还是迷迷糊糊），</p></li><li><p>然后网络安全，详细介绍cookie，比较cookie sessionStorage localStorage 区别，怎么保护cookie不被泄露。</p></li><li><p>之后介绍token，具体原理，怎么应用。</p></li><li><p>详细介绍XSS，CSRF,怎么防范，它们之间的区别，</p></li><li><p>回答了前后端过滤，加密等方法，但是面试官深问怎么加密，如何过滤，具体方法，没答出来。</p></li><li><p>解决跨域有哪些方法，他们的原理，</p></li><li><p>怎么实现cookie跨域，</p></li><li><p>设置代理的原理，代理为何能实现跨域，具体属性等（</p></li><li><p>到这就感觉自己已经凉凉了）。</p></li><li><p>之后转到Vue，Vue3相比于Vue2做了哪些改变，你所说的废弃了那些不常用的api具体是哪些，怎么定义“不常用”，</p></li><li><p>Vue中的通信方式，传参方式，传参的底层原理（？？？没听太懂 没答出来）</p></li><li><p>Vuex的设计原理，如果让你设计你会怎么设计，优缺点。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一面："><a href="#一面：" class="headerlink" title="一面："></a>一面：</h2><ol><li>第一判断回文序列</li><li>第二题数组相邻k个元素最大子序列求和</li><li>第三题完成一个函数，从淘宝网获取所有图片信息返回所有url序列，之后从中截取每张图片的名称，并根据每张图片的大小排序返回并下载。</li><li>一道正则题</li><li>第五道青蛙跳台</li></ol><h2 id="二面："><a href="#二面：" class="headerlink" title="二面："></a>二面：</h2><ol><li><p>原型链的了解</p><p>【<strong>回答</strong>】：涉及构造函数、原型对象、实例对象、prototype、<code>__proto__</code>、Function、Object</p></li><li><p>css各种定位，每种定位相对于哪，每种定位的特点</p><p>【<strong>回答</strong>】：</p><ul><li>  static:默认布局，没有定位，元素出现在正常的文本流中</li></ul></li></ol><ul><li>relative:相对布局，相对于自己原来的位置<ul><li>absolute:绝对布局，相对于某个上级元素（一般是父元素）并且有定位，有一个限制条件是上级元素不能是static定位，不然就会相对于网页的根元素html进行定位</li><li>fixed:固定布局，相对于浏览器视口</li><li>sticky:粘性布局，滚动到一定位置会固定</li></ul></li></ul><ol start="3"><li><p>flex布局的意义，再详细介绍。</p><p>【<strong>回答</strong>】：</p><p>（1）容器属性：flex-direction、flex-wrap、flex-flow（flex-direction+flex-wrap）、just-content、align-items、align-content（多轴）</p><p>（2）项目属性：order、flex-grow、flex-shink、flex-basis、flex（flex-grow+flex-shink+flex-basis）、align-self</p></li><li><p>之后问ES6相关，新增属性，</p></li><li><p>Promise,Generator原理，优缺点（Promise真的问的太深，虽然差不多能写出源码但是口述说的还是迷迷糊糊），</p></li><li><p>然后网络安全，详细介绍cookie，比较cookie sessionStorage localStorage 区别，怎么保护cookie不被泄露。</p><p>【<strong>回答</strong>】：</p><p>（1）尽量避免在cookies中存储敏感信息，比如e-mail、密码</p><p>（2）如果浏览器端不需要对cookie操作，可以在Set-Cookies的末尾加上HttpOnly</p><p>（3）cookie和本机的ip进行绑定</p><p>（4）尽量使用post请求方式而不是get请求方式</p></li><li><p>之后介绍token，具体原理，怎么应用。</p><p>【<strong>回答</strong>】：</p><p>token和cookie的都是服务器端返回的，不同的是，token提升了服务器端的性能，服务器端不会再做保存操作；</p><p>当客户端传递信息过来时，服务器端用相同的算法和密钥进行信息加密，然后比较前端传递的token和自己计算的token是否一致，如果一致，则返回相关资源，如果不一致，则返回错误代码。</p></li><li><p>详细介绍XSS，CSRF,怎么防范，它们之间的区别，</p><p>【<strong>回答</strong>】：</p><p>（1）XSS：跨站脚本攻击；攻击者将一段恶意代码注入到前端网页中，当用户访问时，会执行恶意代码，达到攻击的目的；前端可以将js的特殊字符替换成html编码；后端可以对提交的数据进行过滤。</p><p>（2）CSRF：跨站请求伪造；攻击者盗用受害者的信息，去发送恶意请求；使用post不用get；在cookie中加入httponly；增强token</p><p>（3）区别：CSRF需要登录，XSS不需要登录，XSS是攻击者向受害者的网页中加入恶意的js代码；CSRF是通过盗用受害者的身份，去完成恶意请求。</p></li><li><p>回答了前后端过滤，加密等方法，但是面试官深问怎么加密，如何过滤，具体方法，没答出来。</p></li><li><p>解决跨域有哪些方法，他们的原理</p><p>【<strong>回答</strong>】：jsonp、CROS、node+webpack+webpack-dev-server</p></li><li><p>怎么实现cookie跨域，</p><p>【<strong>回答</strong>】：对于CROS设置withCredentials：true</p></li><li><p>设置代理的原理，代理为何能实现跨域，具体属性等</p></li><li><p>之后转到Vue，Vue3相比于Vue2做了哪些改变，你所说的废弃了那些不常用的api具体是哪些，怎么定义“不常用”，</p><p>【<strong>回答</strong>】：</p><ol><li>根组件</li><li>options API和Compostion API</li><li>响应式原理</li><li>生命周期函数</li></ol></li><li><p>Vue中的通信方式，传参方式，传参的底层原理（？？？没听太懂 没答出来）</p><p>【<strong>回答</strong>】：</p><p>vue组件之间的通信方式：</p><ol><li><p>通过props向子组件传递数据：父 -&gt; 子</p></li><li><p>通过事件向父组件发送消息：子 -&gt; 父，使用$emit发送事件</p></li><li><p>父链 和 子索引：<code>this.$parent</code>  与 <code>this.$children</code></p></li><li><p>依赖注入：provide 和 inject</p></li><li><p>子组件引用： ref与$refs</p></li><li><p>特性绑定：<code>v-bind=&quot;$attrs&quot;</code> 和 <code>v-on=&quot;$listeners&quot;</code></p></li><li><p>event bus</p></li></ol><p>vue的路由传参方式：</p><p>直接携带式、name+params、path+query</p></li><li><p>Vuex的设计原理，如果让你设计你会怎么设计，优缺点。</p><p>【<strong>回答</strong>】：</p><p>vuex涉及的相关知识：state、getters、mutations、actions、modules</p><p>设计原理：</p><p>（1）store通过vue的混入机制，将vuexinit混入vue的beforecreate之前，vueinit方法实现将store对象注册到vue组件实例中，并注册了store的引用属性$store。</p><p>（2）state利用vue的data响应式，将store的state存入到vue的data中；getters利用vue的computed实现对数据的实时监听。</p></li></ol>]]></content>
     
     
     <categories>
@@ -41,12 +149,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>判断链表是否有环</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -68,12 +170,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>只出现一次的数字</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -94,12 +190,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>买股票最佳时机</tag>
-      
-    </tags>
     
   </entry>
   
@@ -176,12 +266,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>async和await</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -202,12 +286,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>函数的异步应用</tag>
-      
-    </tags>
     
   </entry>
   
@@ -284,12 +362,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>promise</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -338,12 +410,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>proxy</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -364,12 +430,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>set和map结构</tag>
-      
-    </tags>
     
   </entry>
   
@@ -392,12 +452,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Symbol</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -418,12 +472,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>运算符的扩展</tag>
-      
-    </tags>
     
   </entry>
   
@@ -446,12 +494,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>d对象新增的方法</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -472,12 +514,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>对象的扩展</tag>
-      
-    </tags>
     
   </entry>
   
@@ -500,12 +536,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>数组的扩展</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -526,12 +556,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>函数的扩展</tag>
-      
-    </tags>
     
   </entry>
   
@@ -554,12 +578,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>数值的扩展</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -580,12 +598,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>正则的扩展</tag>
-      
-    </tags>
     
   </entry>
   
@@ -608,12 +620,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>字符串新增方法</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -634,12 +640,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>字符串扩展</tag>
-      
-    </tags>
     
   </entry>
   
@@ -662,12 +662,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>变量的解构赋值</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -689,12 +683,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>let 和 const 命令</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -715,12 +703,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>字节一面复盘</tag>
-      
-    </tags>
     
   </entry>
   
@@ -764,12 +746,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js易混淆知识点</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -791,12 +767,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>user-logout接口</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -817,12 +787,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>node-user接口</tag>
-      
-    </tags>
     
   </entry>
   
@@ -847,7 +811,7 @@
     
     <tags>
       
-      <tag>express入门</tag>
+      <tag>express</tag>
       
     </tags>
     
@@ -872,12 +836,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>生命周期-挂载阶段</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -898,12 +856,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>生命周期-编译阶段</tag>
-      
-    </tags>
     
   </entry>
   
@@ -939,12 +891,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>代码生成阶段</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -954,7 +900,7 @@
     <link href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E6%AD%A3%E5%88%99%E5%85%A5%E9%97%A8/"/>
     <url>/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/vue%E6%BA%90%E7%A0%81%E6%AD%A3%E5%88%99%E5%85%A5%E9%97%A8/</url>
     
-    <content type="html"><![CDATA[<ol><li><p>正则表达式</p><blockquote><p>正则表达式就是记录文本规则的代码</p></blockquote></li><li><p>常用的元字符：</p><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>.</td><td>匹配除了换行符(\n)以为的所有字符</td><td></td><td></td></tr><tr><td>\w</td><td>匹配字母，数字，汉字，下划线</td><td></td><td>等价于 [A-Z a-z 0-9_]</td></tr><tr><td>\s</td><td>匹配任意的空白符，包括空格，制表符(Tab),换行符，中文全角空格</td><td></td><td></td></tr><tr><td>\d</td><td>匹配一位数字，（0,1,2….）</td><td>0\d\d-\d\d\d\d\d\d\d\d</td><td>以0开头，然后是两个数字，然后是一个连字号”-“，最后是8个数字<br />(012-89889898)座机号</td></tr><tr><td>\d</td><td>匹配一位数字，（0,1,2….）</td><td>0\d{2}-\d{8}</td><td>这里\d后面的{2}({8})的意思是前面\d必须连续重复匹配2次(8次)</td></tr><tr><td>\b</td><td>匹配单词的开头或者结尾</td><td>It’s a nice day today   正则：(<em>\bnice\b</em>)</td><td>就能匹配出以 ‘n’ 开头以 ‘e’ 结尾的单词</td></tr><tr><td>^</td><td>匹配字符串的开始</td><td></td><td></td></tr><tr><td>$</td><td>匹配字符串的结束</td><td></td><td></td></tr></tbody></table></li><li><p>常用的限定符</p><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>*</td><td>匹配前面的字符重复0次或多次</td><td></td><td></td></tr><tr><td>+</td><td>匹配前面的字符重复1次或多次</td><td></td><td></td></tr><tr><td>?</td><td>匹配零次或一次</td><td></td><td></td></tr><tr><td>{n}</td><td>重复n次</td><td></td><td></td></tr><tr><td>{n,}</td><td>重复n次或者更多次</td><td></td><td></td></tr><tr><td>{n,m}</td><td>重复n到m次</td><td></td><td></td></tr></tbody></table></li><li><p>分枝条件</p><p>使用字符|</p><blockquote><p>分枝条件讲究顺序，如果前面的分枝条件匹配了，那么后面的匹配规则就不管了</p></blockquote></li><li><p>分组</p><blockquote><p>使用小括号，把需要重复的字符串括起来</p></blockquote></li><li><p>反义字符</p><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>\W</td><td>匹配任意不是数字，字母，下划线，汉字的字符</td><td></td><td></td></tr><tr><td>\S</td><td>匹配任意不是空白符的字符</td><td></td><td></td></tr><tr><td>\D</td><td>匹配任意非数字的字符</td><td></td><td></td></tr><tr><td>\B</td><td>匹配不是单词开头或结束的位置</td><td></td><td></td></tr><tr><td>[^x]</td><td>匹配除了x以外的任意字符</td><td></td><td></td></tr><tr><td>[^aeiou]</td><td>匹配除了aeiou以外的任意字符</td><td></td><td></td></tr></tbody></table></li><li><p>后向引用</p></li><li><p>零宽断言</p></li><li><p>负向零宽断言</p></li><li><p>注释</p><blockquote><p>注释的语法(?#comment)</p></blockquote></li><li><p>贪婪和懒惰</p><blockquote><p>贪婪：匹配尽可能多的字符，例如a.*b，如果用它匹配aabab，他会匹配整个字符串</p><p>懒惰：匹配尽可能少的字符，例如a.*b，如果用它匹配aabab，他会匹配aab,ab</p><p>之前的限定符，都可以变成懒惰限定符，那就是在后面加？</p></blockquote><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>*？</td><td>重复任意次，但尽可能少重复</td><td></td><td></td></tr><tr><td>+?</td><td>重复一次或者更多次，但尽可能少重复</td><td></td><td></td></tr><tr><td>??</td><td>重复0次或者1次，但尽可能少重复</td><td></td><td></td></tr><tr><td>{n,m}？</td><td>重复n到m次，但尽可能少重复</td><td></td><td></td></tr><tr><td>{n,}?</td><td>重复n到多次，但尽可能少重复</td><td></td><td></td></tr></tbody></table></li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li><p>正则表达式</p><blockquote><p>正则表达式就是记录文本规则的代码</p></blockquote></li><li><p>常用的元字符：</p><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>.</td><td>匹配除了换行符(\n)以为的所有字符</td><td></td><td></td></tr><tr><td>\w</td><td>匹配字母，数字，汉字，下划线</td><td></td><td>等价于 [A-Z a-z 0-9_]</td></tr><tr><td>\s</td><td>匹配任意的空白符，包括空格，制表符(Tab),换行符，中文全角空格</td><td></td><td></td></tr><tr><td>\d</td><td>匹配一位数字，（0,1,2….）</td><td>0\d\d-\d\d\d\d\d\d\d\d</td><td>以0开头，然后是两个数字，然后是一个连字号”-“，最后是8个数字<br />(012-89889898)座机号</td></tr><tr><td>\d</td><td>匹配一位数字，（0,1,2….）</td><td>0\d{2}-\d{8}</td><td>这里\d后面的{2}({8})的意思是前面\d必须连续重复匹配2次(8次)</td></tr><tr><td>\b</td><td>匹配单词的开头或者结尾</td><td>It’s a nice day today   正则：(<em>\bnice\b</em>)</td><td>就能匹配出以 ‘n’ 开头以 ‘e’ 结尾的单词</td></tr><tr><td>^</td><td>匹配字符串的开始</td><td></td><td></td></tr><tr><td>$</td><td>匹配字符串的结束</td><td></td><td></td></tr><tr><td>/i</td><td>忽略大小写</td><td></td><td></td></tr><tr><td>/g</td><td>全文查找出现的所有匹配字符</td><td></td><td></td></tr><tr><td>/ig</td><td>全文查找，忽略大小写</td><td></td><td></td></tr><tr><td>/gi</td><td>全文查找，忽略大小写</td><td></td><td></td></tr></tbody></table></li><li><p>常用的限定符</p><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>*</td><td>匹配前面的字符重复0次或多次</td><td></td><td></td></tr><tr><td>+</td><td>匹配前面的字符重复1次或多次</td><td></td><td></td></tr><tr><td>?</td><td>匹配零次或一次</td><td></td><td></td></tr><tr><td>{n}</td><td>重复n次</td><td></td><td></td></tr><tr><td>{n,}</td><td>重复n次或者更多次</td><td></td><td></td></tr><tr><td>{n,m}</td><td>重复n到m次</td><td></td><td></td></tr></tbody></table></li><li><p>分枝条件</p><p>使用字符|</p><blockquote><p>分枝条件讲究顺序，如果前面的分枝条件匹配了，那么后面的匹配规则就不管了</p></blockquote></li><li><p>分组</p><blockquote><p>使用小括号，把需要重复的字符串括起来</p></blockquote></li><li><p>反义字符</p><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>\W</td><td>匹配任意不是数字，字母，下划线，汉字的字符</td><td></td><td></td></tr><tr><td>\S</td><td>匹配任意不是空白符的字符</td><td></td><td></td></tr><tr><td>\D</td><td>匹配任意非数字的字符</td><td></td><td></td></tr><tr><td>\B</td><td>匹配不是单词开头或结束的位置</td><td></td><td></td></tr><tr><td>[^x]</td><td>匹配除了x以外的任意字符</td><td></td><td></td></tr><tr><td>[^aeiou]</td><td>匹配除了aeiou以外的任意字符</td><td></td><td></td></tr></tbody></table></li><li><p>后向引用</p></li><li><p>零宽断言</p></li><li><p>负向零宽断言</p></li><li><p>注释</p><blockquote><p>注释的语法(?#comment)</p></blockquote></li><li><p>贪婪和懒惰</p><blockquote><p>贪婪：匹配尽可能多的字符，例如a.*b，如果用它匹配aabab，他会匹配整个字符串</p><p>懒惰：匹配尽可能少的字符，例如a.*b，如果用它匹配aabab，他会匹配aab,ab</p><p>之前的限定符，都可以变成懒惰限定符，那就是在后面加？</p></blockquote><table><thead><tr><th>字符</th><th>含义</th><th>例子</th><th>解释</th></tr></thead><tbody><tr><td>*？</td><td>重复任意次，但尽可能少重复</td><td></td><td></td></tr><tr><td>+?</td><td>重复一次或者更多次，但尽可能少重复</td><td></td><td></td></tr><tr><td>??</td><td>重复0次或者1次，但尽可能少重复</td><td></td><td></td></tr><tr><td>{n,m}？</td><td>重复n到m次，但尽可能少重复</td><td></td><td></td></tr><tr><td>{n,}?</td><td>重复n到多次，但尽可能少重复</td><td></td><td></td></tr></tbody></table></li></ol>]]></content>
     
     
     <categories>
@@ -965,12 +911,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>正则入门</tag>
-      
-    </tags>
     
   </entry>
   
@@ -993,12 +933,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>优化阶段</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1019,12 +953,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>文本解析器</tag>
-      
-    </tags>
     
   </entry>
   
@@ -1074,12 +1002,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>模板解析过程</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1100,12 +1022,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>模板编译</tag>
-      
-    </tags>
     
   </entry>
   
@@ -1128,12 +1044,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>文件切片(环境搭建)</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1154,12 +1064,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>优化更新子节点</tag>
-      
-    </tags>
     
   </entry>
   
@@ -1182,12 +1086,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>更新子节点</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1208,12 +1106,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>DOM-Diff</tag>
-      
-    </tags>
     
   </entry>
   
@@ -1236,12 +1128,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>虚拟DOM</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1263,12 +1149,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>array变化侦测</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1289,12 +1169,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>object变化侦测</tag>
-      
-    </tags>
     
   </entry>
   
@@ -1319,7 +1193,7 @@
     
     <tags>
       
-      <tag>defer和async的区别</tag>
+      <tag>defer和async</tag>
       
     </tags>
     
@@ -1373,7 +1247,7 @@
     
     <tags>
       
-      <tag>ES6之前的继承方法</tag>
+      <tag>ES6继承</tag>
       
     </tags>
     
@@ -1400,7 +1274,7 @@
     
     <tags>
       
-      <tag>promise和async/await关系</tag>
+      <tag>promise和async/await</tag>
       
     </tags>
     
@@ -1427,7 +1301,7 @@
     
     <tags>
       
-      <tag>import和require的区别</tag>
+      <tag>import和require</tag>
       
     </tags>
     
@@ -1478,12 +1352,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js和node的事件循环区别</tag>
-      
-    </tags>
     
   </entry>
   
@@ -1656,7 +1524,7 @@
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httpCSRF%E6%94%BB%E5%87%BB/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httpCSRF%E6%94%BB%E5%87%BB/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、什么是CSRF"><a href="#一、什么是CSRF" class="headerlink" title="一、什么是CSRF"></a>一、什么是CSRF</h2><blockquote><p>跨站请求伪造，攻击者盗用了你的身份，以你的名义发送恶意请求</p></blockquote><h2 id="二、CSRF的原理"><a href="#二、CSRF的原理" class="headerlink" title="二、CSRF的原理"></a>二、CSRF的原理</h2><blockquote><p>首先用户C浏览并登录了受信任站点A；</p><p>登录信息验证通过以后，站点A会在返回给浏览器的信息中带上已登录的cookie，cookie信息会在浏览器端保存一定时间（根据服务端设置而定）；</p><p>完成这一步以后，用户在没有登出（清除站点A的cookie）站点A的情况下，访问恶意站点B；</p><p>这时恶意站点 B的某个页面向站点A发起请求，而这个请求会带上浏览器端所保存的站点A的cookie；</p><p>站点A根据请求所带的cookie，判断此请求为用户C所发送的。</p><p>因此，站点A会报据用户C的权限来处理恶意站点B所发起的请求，而这个请求可能以用户C的身份发送 邮件、短信、消息，以及进行转账支付等操作，这样恶意站点B就达到了伪造用户C请求站点 A的目的。</p></blockquote><h2 id="三、完成CSRF攻击"><a href="#三、完成CSRF攻击" class="headerlink" title="三、完成CSRF攻击"></a>三、完成CSRF攻击</h2><blockquote><p>登录受信任的网站A，并且在本地生成cookie</p><p>在不登出网站A的情况下，访问恶意网站B</p></blockquote><h2 id="四、如何防御"><a href="#四、如何防御" class="headerlink" title="四、如何防御"></a>四、如何防御</h2><div class="hljs code-wrapper"><pre><code>1. 尽量使用POST，限制GET 2. 将cookie设置成httpOnly 3. 增加token 4. 通过referer进行识别</code></pre></div><h2 id="五、XSS和CSRF的区别"><a href="#五、XSS和CSRF的区别" class="headerlink" title="五、XSS和CSRF的区别"></a>五、XSS和CSRF的区别</h2><ol><li>CSRF需要用户进行登录，XSS不需要</li><li>CSRF是利用网站本身的漏洞，去请求网站，XSS是向网站A中注入JS代码，然后执行代码，篡改网站A的内容</li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、什么是CSRF"><a href="#一、什么是CSRF" class="headerlink" title="一、什么是CSRF"></a>一、什么是CSRF</h2><blockquote><p>跨站请求伪造（Cross-Site-request-forgery），攻击者盗用了你的身份，以你的名义发送恶意请求</p></blockquote><h2 id="二、CSRF的原理"><a href="#二、CSRF的原理" class="headerlink" title="二、CSRF的原理"></a>二、CSRF的原理</h2><blockquote><p>首先用户C浏览并登录了受信任站点A；</p><p>登录信息验证通过以后，站点A会在返回给浏览器的信息中带上已登录的cookie，cookie信息会在浏览器端保存一定时间（根据服务端设置而定）；</p><p>完成这一步以后，用户在没有登出（清除站点A的cookie）站点A的情况下，访问恶意站点B；</p><p>这时恶意站点 B的某个页面向站点A发起请求，而这个请求会带上浏览器端所保存的站点A的cookie；</p><p>站点A根据请求所带的cookie，判断此请求为用户C所发送的。</p><p>因此，站点A会报据用户C的权限来处理恶意站点B所发起的请求，而这个请求可能以用户C的身份发送 邮件、短信、消息，以及进行转账支付等操作，这样恶意站点B就达到了伪造用户C请求站点 A的目的。</p></blockquote><h2 id="三、完成CSRF攻击"><a href="#三、完成CSRF攻击" class="headerlink" title="三、完成CSRF攻击"></a>三、完成CSRF攻击</h2><blockquote><p>登录受信任的网站A，并且在本地生成cookie</p><p>在不登出网站A的情况下，访问恶意网站B</p></blockquote><h2 id="四、如何防御"><a href="#四、如何防御" class="headerlink" title="四、如何防御"></a>四、如何防御</h2><ol><li>尽量使用POST，限制GET</li><li>将cookie设置成httpOnly</li><li>增加token</li><li>通过referer进行识别</li></ol><h2 id="五、XSS和CSRF的区别"><a href="#五、XSS和CSRF的区别" class="headerlink" title="五、XSS和CSRF的区别"></a>五、XSS和CSRF的区别</h2><ol><li>CSRF需要用户进行登录，XSS不需要</li><li>CSRF是利用网站本身的漏洞，去请求网站，XSS是向网站A中注入JS代码，然后执行代码，篡改网站A的内容</li></ol>]]></content>
     
     
     <categories>
@@ -1670,7 +1538,7 @@
     
     <tags>
       
-      <tag>CSRF攻击</tag>
+      <tag>CSRF</tag>
       
     </tags>
     
@@ -1724,7 +1592,7 @@
     
     <tags>
       
-      <tag>图片懒加载</tag>
+      <tag>懒加载</tag>
       
     </tags>
     
@@ -1737,7 +1605,7 @@
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httpXSS%E6%94%BB%E5%87%BB/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httpXSS%E6%94%BB%E5%87%BB/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、什么是XSS攻击"><a href="#一、什么是XSS攻击" class="headerlink" title="一、什么是XSS攻击"></a>一、什么是XSS攻击</h2><blockquote><p>XSS是跨站脚本攻击，恶意攻击者在web页面中插入恶意的script代码，当用户访问该页面时，恶意的script会执行，达到恶意攻击的目的</p><p>XSS的攻击方式就是“教唆”网站去执行本来不存在于这个网页中的前端代码</p></blockquote><h2 id="二、XSS的危害"><a href="#二、XSS的危害" class="headerlink" title="二、XSS的危害"></a>二、XSS的危害</h2><ol><li>窃取网页浏览中的cookie值</li><li>劫持流量实现恶意跳转</li><li>配合csrf攻击完成恶意请求</li></ol><h2 id="三、xss的分类"><a href="#三、xss的分类" class="headerlink" title="三、xss的分类"></a>三、xss的分类</h2><p>反射型XSS：</p><ul><li>“反射”主要指的是服务器把恶意代码反射注入到浏览器端</li><li>攻击是一次性的</li></ul><p>攻击步骤：</p><ul><li>攻击者在url后面的参数中加入恶意攻击代码</li><li>当用户打开带有恶意代码的url链接的时候，网站的服务器将恶意代码从url中取出，然后拼接到html中返回给浏览器端</li><li>用户浏览器接受到后相应并解析代码，其中的恶意代码也会被执行到</li></ul><p>常见的反射型XSS：</p><ul><li>恶意链接</li></ul><p>存储型XSS：</p><ul><li>攻击是持久性的</li></ul><p>攻击步骤：</p><ul><li>攻击者将恶意代码存放到目标网站的数据库中</li><li>用户浏览目标网站的时候，网站服务器从数据库中把恶意代码取出，然后拼接到html后返回给浏览器</li><li>浏览器接受到响应后解析并执行，其中恶意代码也会被执行</li></ul><p>如何解决：</p><ul><li>后端对提交的数据进行过滤</li><li>前端做一些处理，对script等标签，将特殊字符替换成html编码等</li></ul><p>DOM-based型xss：</p><p>攻击步骤：</p><ul><li>攻击者构造出特殊的url，其中url中含有恶意代码</li><li>用户打开含有恶意代码的url</li><li>用户浏览器响应解析并执行，前端使用js取出url中恶意代码并执行</li></ul><h2 id="四、解决方案"><a href="#四、解决方案" class="headerlink" title="四、解决方案"></a>四、解决方案</h2><ol><li>cookie安全策略</li><li>X-XSS-Protection设置</li><li>XSS防御HTML编码</li><li>XSS 防御HTML Attribute编码</li><li>XSS防御之javascript编码</li><li>XSS 防御之 URL 编码</li><li>XSS 防御之 CSS 编码</li><li>开启CSP网页安全政策防止XSS攻击</li></ol><h2 id="五、sql注入"><a href="#五、sql注入" class="headerlink" title="五、sql注入"></a>五、sql注入</h2><p>在登录界面的时候，都需要输入用户名和密码，如果我输入的密码是‘or’ ‘123’ = ‘123’，在我们查询数据库的时候，拼接以后的sql语句是<code>select * from user where username =&#39;&#39;and password =&#39;&#39; or &#39;123&#39; =&#39;123&#39;</code>,这样用户名和密码的校验是没有意义的。</p><p>sql注入攻击：sql语句伪造参数，然后对参数拼接以后形成xss攻击的sql语句，最后就会导致数据库被攻击了。</p><p>解决方案：</p><ul><li>使用预编译语句，伪造的参数到达服务器端的时候只是简单的字符串，不会形成sql攻击</li><li>数据库中的密码不应该明文存储，最好采取加密的方式</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/26177815">浅谈XSS攻击的那些事（附常用绕过姿势）</a></p><p><a href="https://www.cnblogs.com/tugenhua0707/p/10909284.html">web安全之XSS攻击原理及防范</a></p>]]></content>
+    <content type="html"><![CDATA[<p>【2022-3-19补充】</p><p>跨站脚本攻击（Cross-Site-Scripting）但是缩写是css，重名，所以改为XSS</p><h2 id="一、什么是XSS攻击"><a href="#一、什么是XSS攻击" class="headerlink" title="一、什么是XSS攻击"></a>一、什么是XSS攻击</h2><blockquote><p>XSS是跨站脚本攻击，恶意攻击者在web页面中插入恶意的script代码，当用户访问该页面时，恶意的script会执行，达到恶意攻击的目的</p><p>XSS的攻击方式就是“教唆”网站去执行本来不存在于这个网页中的前端代码</p></blockquote><h2 id="二、XSS的危害"><a href="#二、XSS的危害" class="headerlink" title="二、XSS的危害"></a>二、XSS的危害</h2><ol><li>窃取网页浏览中的cookie值</li><li>劫持流量实现恶意跳转</li><li>配合csrf攻击完成恶意请求</li></ol><h2 id="三、xss的分类"><a href="#三、xss的分类" class="headerlink" title="三、xss的分类"></a>三、xss的分类</h2><p>反射型XSS：</p><ul><li>“反射”主要指的是服务器把恶意代码反射注入到浏览器端</li><li>攻击是一次性的</li></ul><p>攻击步骤：</p><ul><li>攻击者在url后面的参数中加入恶意攻击代码</li><li>当用户打开带有恶意代码的url链接的时候，网站的服务器将恶意代码从url中取出，然后拼接到html中返回给浏览器端</li><li>用户浏览器接受到后相应并解析代码，其中的恶意代码也会被执行到</li></ul><p>常见的反射型XSS：</p><ul><li>恶意链接</li></ul><p>存储型XSS：</p><ul><li>攻击是持久性的</li></ul><p>攻击步骤：</p><ul><li>攻击者将恶意代码存放到目标网站的数据库中</li><li>用户浏览目标网站的时候，网站服务器从数据库中把恶意代码取出，然后拼接到html后返回给浏览器</li><li>浏览器接受到响应后解析并执行，其中恶意代码也会被执行</li></ul><p>如何解决：</p><ul><li>后端对提交的数据进行过滤</li><li>前端做一些处理，对script等标签，将特殊字符替换成html编码等</li></ul><p>DOM-based型xss：</p><p>攻击步骤：</p><ul><li>攻击者构造出特殊的url，其中url中含有恶意代码</li><li>用户打开含有恶意代码的url</li><li>用户浏览器响应解析并执行，前端使用js取出url中恶意代码并执行</li></ul><h2 id="四、解决方案"><a href="#四、解决方案" class="headerlink" title="四、解决方案"></a>四、解决方案</h2><ol><li>cookie安全策略</li><li>X-XSS-Protection设置</li><li>XSS防御HTML编码</li><li>XSS 防御HTML Attribute编码</li><li>XSS防御之javascript编码</li><li>XSS 防御之 URL 编码</li><li>XSS 防御之 CSS 编码</li><li>开启CSP网页安全政策防止XSS攻击</li></ol><h2 id="五、sql注入"><a href="#五、sql注入" class="headerlink" title="五、sql注入"></a>五、sql注入</h2><p>在登录界面的时候，都需要输入用户名和密码，如果我输入的密码是‘or’ ‘123’ = ‘123’，在我们查询数据库的时候，拼接以后的sql语句是<code>select * from user where username =&#39;&#39;and password =&#39;&#39; or &#39;123&#39; =&#39;123&#39;</code>,这样用户名和密码的校验是没有意义的。</p><p>sql注入攻击：sql语句伪造参数，然后对参数拼接以后形成xss攻击的sql语句，最后就会导致数据库被攻击了。</p><p>解决方案：</p><ul><li>使用预编译语句，伪造的参数到达服务器端的时候只是简单的字符串，不会形成sql攻击</li><li>数据库中的密码不应该明文存储，最好采取加密的方式</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://zhuanlan.zhihu.com/p/26177815">浅谈XSS攻击的那些事（附常用绕过姿势）</a></p><p><a href="https://www.cnblogs.com/tugenhua0707/p/10909284.html">web安全之XSS攻击原理及防范</a></p>]]></content>
     
     
     <categories>
@@ -1751,7 +1619,7 @@
     
     <tags>
       
-      <tag>XSS攻击</tag>
+      <tag>XSS</tag>
       
     </tags>
     
@@ -1787,11 +1655,38 @@
   
   
   <entry>
+    <title>http-关于token</title>
+    <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/http%E5%85%B3%E4%BA%8Etoken/"/>
+    <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/http%E5%85%B3%E4%BA%8Etoken/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>token的实现思路：<br>（1）客户端提供username和password登录系统，服务器端通过mysql数据库做判断，</p><p>（2）用户存在，服务器端生成token返回</p><p>（3）用户请求服务器端接口api时，携带token</p><p>（4）服务器进行检验，如果匹配，返回请求数据</p><p>（5）如果不匹配，返回错误代码</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220319130834.png" alt="img"></p></li><li><p>token的实现方法</p><p>关于token的生成、加密、解密、验证可以使用JWT（JSON Web Token）</p></li><li><p>cookie的实现思路：</p><p>（1）用户第一次访问服务器端，服务器会通过Set-Cookie返回客户端，客户端将cookie存储在本地</p><p>（2）用户再次访问服务器端，会在本次查找cookie，如果存在会自动加到请求头中</p><p>（3）服务器端通过cookie识别用户的身份，返回对应的请求资源</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20211008104541.jpeg" alt="img"></p></li><li><p>区别cookie、session、token</p><p>（1）用户第一次通过username和password登录系统，服务器通过Set-Cookie返回客户端，客户端将cookie保存在本地，之后访问接口api携带cookie即可，但是服务器是怎么认证cookie的？</p><p>（2）其实在服务器返回Set-Cookie的信息里，有一个sessionId，服务器会在本地保存一份sessionId，当客户端携带cookie过来时，就对比cookie中的sessionid和服务器自己保存的sessionId就知道你是谁了，所以说cookie是有状态的</p><p>（3）但是新的问题出现了，对于客户端自己保存自己的cookie没有问题，但是服务器端要保存所有的sessionId，随着数据访问量增大，服务器就会出现性能问题</p><p>（4）通过token来解决上述问题，还是老样子，第一次访问，服务器发token，但是服务器不会再存储了，因为对token的加密只有服务器知道算法和密钥，所以再一次访问，服务器拿到信息，对信息进行token计算，算出的token 和携带的token对比，发现匹配，就返回资源，这样就解决了服务器的压力，所以说token是无状态的。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试集锦</category>
+      
+      <category>http</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>token</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>http-本地存储</title>
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/http%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/http%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、浏览器缓存分类"><a href="#一、浏览器缓存分类" class="headerlink" title="一、浏览器缓存分类"></a>一、浏览器缓存分类</h2><ul><li>http缓存和本地存储：本篇主要讲解本地存储</li></ul><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930135815.png" alt="image-20210930135813684"></p><h2 id="二、Cookie"><a href="#二、Cookie" class="headerlink" title="二、Cookie"></a>二、Cookie</h2><ol><li>cookie机制：</li></ol><blockquote><p>如果没有在浏览器端设置cookie的过期时间，cookie保存在内存中，生命周期随着浏览器的关闭而结束，这种cookie简称回话cookie。如果设置了过期时间，cookie保存在硬盘中，关闭浏览器以后cookie还会存在，到过期时间才会消失。</p></blockquote><ol start="2"><li>cookie的缺点<ul><li>单个cookie的存储大小不能超过4kb，大小受到限制</li><li>安全性较低，cookie欺骗、cookie截获</li><li>有些状态不可能保存在客户端</li><li>每次访问都要携带cookie给服务器，浪费带宽</li><li>cookie数据有路径的概念，可以限制cookie只属于某个路径下</li></ul></li></ol><h2 id="三、服务器端的session机制"><a href="#三、服务器端的session机制" class="headerlink" title="三、服务器端的session机制"></a>三、服务器端的session机制</h2><ol><li>session机制</li></ol><blockquote><p>当服务器收到请求需要创建session对象时，首先会检查客户端请求中是否有sessionId，如果有id，服务器根据该id返回对应的session对象。</p><p>如果客户端请求中没有session对象，服务器会创建新的session对象，并且把sessionId在本次响应中返回给客户端。</p><p>通常使用cookie的方式把sessionId存储到客户端，如果用户禁用了cookie，则要使用URL重写，当浏览器支持cookie时，url不做任何处理，当浏览器不支持cookie的时候，将会重写URL将sessionId拼接到访问地址之后。</p></blockquote><ol start="2"><li>session的安全性大于cookie<ul><li>session存储在cookie，要攻破session先攻破cookie</li><li>sessionId要有人登录，或者启动session_start才会有，所以攻破也不一定得到sessionId</li><li>第二次启动session_start后，前一次的sessionId就失效了，session过期以后，sessionId也就消失了</li><li>sessionId是加密的</li></ul></li><li>session的缺点<ul><li>session保存的东西越多，就越占用服务器内存，对于在线人数比较多的网站，服务器的压力比较大</li><li>依赖cookie，如果不支持cookie，就要进行url重写，不安全</li><li>过度使用session变量会导致代码不可读而且不好维护</li></ul></li></ol><h2 id="四、LocalStorage"><a href="#四、LocalStorage" class="headerlink" title="四、LocalStorage"></a>四、LocalStorage</h2><blockquote><p>将数据保存在客户端本地的硬件设备（通常指硬盘，也可以是其他硬件设备），即使浏览器关闭了，数据任然存在，除非手动删除。</p></blockquote><h2 id="五、SessionStorage"><a href="#五、SessionStorage" class="headerlink" title="五、SessionStorage"></a>五、SessionStorage</h2><blockquote><p>将数据保存在session对象中，session指的是用户浏览某个网站，从进入这个网站到浏览器关闭所经过的时间，session对象可以保存这段时间内的所有数据</p></blockquote><h2 id="五、webSql（已经弃用）"><a href="#五、webSql（已经弃用）" class="headerlink" title="五、webSql（已经弃用）"></a>五、webSql（已经弃用）</h2><h2 id="六、IndexDB（类似于前端数据库）"><a href="#六、IndexDB（类似于前端数据库）" class="headerlink" title="六、IndexDB（类似于前端数据库）"></a>六、IndexDB（类似于前端数据库）</h2><h2 id="七、本地存储的对比"><a href="#七、本地存储的对比" class="headerlink" title="七、本地存储的对比"></a>七、本地存储的对比</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930162805.png" alt="img"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、浏览器缓存分类"><a href="#一、浏览器缓存分类" class="headerlink" title="一、浏览器缓存分类"></a>一、浏览器缓存分类</h2><ul><li>http缓存和本地存储：本篇主要讲解本地存储</li></ul><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930135815.png" alt="image-20210930135813684"></p><p>【2022-3-19补充】</p><hr><p>什么是cookie？</p><p>cookie是一段文本信息，是以字符串的形式存在的。</p><p>cookies是服务器端给用户颁发的一个状态值，存储在客户端或者浏览器中，只要在cookies的有效期内，再次向服务器端发送请求时，浏览器会先检查本地的cookies，如果存在，会自动将cookie加在请求头部一起发给服务器端，服务器端通过cookie识别用户的身份，并且将存储在服务器端的资源返回给用户。</p><hr><h2 id="二、Cookie"><a href="#二、Cookie" class="headerlink" title="二、Cookie"></a>二、Cookie</h2><ol><li>cookie机制：</li></ol><blockquote><p>如果没有在浏览器端设置cookie的过期时间，cookie保存在内存中，生命周期随着浏览器的关闭而结束，这种cookie简称回话cookie。如果设置了过期时间，cookie保存在硬盘中，关闭浏览器以后cookie还会存在，到过期时间才会消失。</p></blockquote><ol start="2"><li>cookie的缺点<ul><li>单个cookie的存储大小不能超过4kb，大小受到限制</li><li>安全性较低，cookie欺骗、cookie截获</li><li>有些状态不可能保存在客户端</li><li>每次访问都要携带cookie给服务器，浪费带宽</li><li>cookie数据有路径的概念，可以限制cookie只属于某个路径下</li></ul></li></ol><h2 id="三、服务器端的session机制"><a href="#三、服务器端的session机制" class="headerlink" title="三、服务器端的session机制"></a>三、服务器端的session机制</h2><ol><li>session机制</li></ol><blockquote><p>当服务器收到请求需要创建session对象时，首先会检查客户端请求中是否有sessionId，如果有id，服务器根据该id返回对应的session对象。</p><p>如果客户端请求中没有session对象，服务器会创建新的session对象，并且把sessionId在本次响应中返回给客户端。</p><p>通常使用cookie的方式把sessionId存储到客户端，如果用户禁用了cookie，则要使用URL重写，当浏览器支持cookie时，url不做任何处理，当浏览器不支持cookie的时候，将会重写URL将sessionId拼接到访问地址之后。</p></blockquote><ol start="2"><li>session的安全性大于cookie<ul><li>session存储在cookie，要攻破session先攻破cookie</li><li>sessionId要有人登录，或者启动session_start才会有，所以攻破也不一定得到sessionId</li><li>第二次启动session_start后，前一次的sessionId就失效了，session过期以后，sessionId也就消失了</li><li>sessionId是加密的</li></ul></li><li>session的缺点<ul><li>session保存的东西越多，就越占用服务器内存，对于在线人数比较多的网站，服务器的压力比较大</li><li>依赖cookie，如果不支持cookie，就要进行url重写，不安全</li><li>过度使用session变量会导致代码不可读而且不好维护</li></ul></li></ol><h2 id="四、LocalStorage"><a href="#四、LocalStorage" class="headerlink" title="四、LocalStorage"></a>四、LocalStorage</h2><blockquote><p>将数据保存在客户端本地的硬件设备（通常指硬盘，也可以是其他硬件设备），即使浏览器关闭了，数据任然存在，除非手动删除。</p></blockquote><h2 id="五、SessionStorage"><a href="#五、SessionStorage" class="headerlink" title="五、SessionStorage"></a>五、SessionStorage</h2><blockquote><p>将数据保存在session对象中，session指的是用户浏览某个网站，从进入这个网站到浏览器关闭所经过的时间，session对象可以保存这段时间内的所有数据</p></blockquote><h2 id="五、webSql（已经弃用）"><a href="#五、webSql（已经弃用）" class="headerlink" title="五、webSql（已经弃用）"></a>五、webSql（已经弃用）</h2><h2 id="六、IndexDB（类似于前端数据库）"><a href="#六、IndexDB（类似于前端数据库）" class="headerlink" title="六、IndexDB（类似于前端数据库）"></a>六、IndexDB（类似于前端数据库）</h2><h2 id="七、本地存储的对比"><a href="#七、本地存储的对比" class="headerlink" title="七、本地存储的对比"></a>七、本地存储的对比</h2><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210930162805.png" alt="img"></p>]]></content>
     
     
     <categories>
@@ -1911,12 +1806,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>无重复最长子串</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -1926,7 +1815,7 @@
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/vuenextTick%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/vuenextTick%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</url>
     
-    <content type="html"><![CDATA[<h2 id="一、什么是进程和线程"><a href="#一、什么是进程和线程" class="headerlink" title="一、什么是进程和线程"></a>一、什么是进程和线程</h2><p>进程：指的是系统正在运行的一个应用程序，程序一旦运行就是一个进程，进程是系统进行资源分配的基本单位，是操作系统的基础。</p><p>线程：线程包含在进程中，是进程中一个独立执行的一个单元执行流，线程是程序执行的最小单位</p><p>进程之间是通过TCP/IP的端口来实现交互的</p><p>线程的通信比较简单，共享同一块内存</p><p>小结：</p><ol><li><p>进程要分配一大块内存，线程只需要分配一部分栈就可以了</p></li><li><p>一个程序至少有一个进程，一个进程至少有一个线程</p></li><li><p>进程是资源分配的最小单位，线程是程序执行的最小单位</p></li><li><p>一个线程可以创建和撤销另一个线程，同一个进程中的多个线程可以并发执行</p></li></ol><h2 id="二、浏览器渲染过程"><a href="#二、浏览器渲染过程" class="headerlink" title="二、浏览器渲染过程"></a>二、浏览器渲染过程</h2><p>浏览器的渲染进程：</p><ol><li>解析html和css文件，加载图片等资源文件，渲染成页面</li><li>执行解析js文件脚本代码</li></ol><p>浏览器渲染进程中的多个线程并发执行</p><ol><li><p>GUI线程</p><p>（1）解析html文件构建DOM树，解析css文件，结合DOM树生成渲染树，然后布局和绘制成页面</p><p>（2）当渲染树需要更改样式属性时，发生重绘；当渲染树中的元素规则尺寸、布局或者显示隐藏的时候，发生回流</p></li><li><p>JS引擎线程</p></li><li><p>时间触发线程</p></li><li><p>定时器触发线程</p></li><li><p>异步http请求线程</p></li></ol><p>GUI线程和js线程是相互排斥的，因为js线程在执行的过程中可能会发生重绘和回流，所以GUI线程执行的时候，js线程会挂起，等待GUI线程执行完成。js线程执行时，同理。（个人感觉有点异步的意思，单线程）</p><p>小结：</p><ol><li>浏览器的渲染进程包括：解析html和css文件加载图片资源，渲染成界面，执行解析js文件</li><li>整个 浏览器的渲染进程会开启多个线程：GUI线程，JS引擎线程，时间触发线程，定时器线程，异步http请求线程</li><li>GUI线程和JS引擎线程相互排斥</li></ol><h2 id="三、什么是事件循坏"><a href="#三、什么是事件循坏" class="headerlink" title="三、什么是事件循坏"></a>三、什么是事件循坏</h2><ol><li><h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3></li></ol><p>所有的任务都可以分为同步任务和异步任务</p><p>同步任务可以理解成立即执行任务，同步任务一般会直接进入主线程中进行执行，异步任务比如ajax网络请求，setTimeout定时函数都属于异步任务，异步任务会通过事件队列的机制来进行协调。</p><p>同步任务和异步任务进入不同的执行环境，同步进入主线程，即主执行栈，异步进入事件队列，主线程内的任务执行完成为空，就去查看事件队列里的任务，推入主线程，这个过程不断的循环执行就是事件循环。</p><p>借用网上博主的一篇流程图说明这个过程：</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929093719.png" alt="img"></p><ol start="2"><li><h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>js分为2种任务类型宏任务（macrotask）和微任务（microtask）在ES中，宏任务称为task，微任务称为jobs</p><p>宏任务：每次执行栈执行的代码就是一个宏任务（包括从事件队列中获取一个事件回调并放到执行栈执行）</p><p>每一个<code>宏任务</code>会从头到尾把这个任务执行完成，不会执行其他</p><p>浏览器为了能够使得js内部的宏任务和DOM任务有序的执行，会在一个<code>宏任务</code>结束之后，下一个<code>宏任务</code>开始之前，对页面进行重新渲染（task–&gt;渲染–&gt;task–&gt;…）</p><p>微任务：可以理解成在当前<code>宏任务</code>结束后立即执行的任务，也就是说在当前<code>宏任务</code>结束后，下一个<code>宏任务</code>之前，在渲染之前</p><p>所以微任务的响应速度相比setTImeout要快，因为不需要等待渲染，也就是说在某一个<code>宏任务</code>执行完成后，就会立即执行在它执行期间产生的所有<code>微任务</code>，（在渲染前）</p><p>宏任务主要包括：script整体代码、setTimeout、setInterval、I/O、UI交互事件、setImmediate</p><p>微任务主要包括：Promise、MutaionObserver、process.nextTick(Node.js 环境)</p><div class="note note-secondary">            <p>在node环境中，nextTick的执行优先级高于Promise，可以简单的理解为：在宏任务结束后会先执行微任务nextTick，在执行微任务Promise部分</p>          </div><p>小结：</p><ol><li><p>执行一个宏任务（如果没有就从事件队列中读取）</p></li><li><p>执行过程中如果遇到微任务，就添加到微任务的事件队列中</p></li><li><p>宏任务执行完成，立即执行当前微任务队列中的所有微任务（依次执行）</p></li><li><p>当前宏任务执行完成，开始检查渲染，然后GUI线程接管渲染，渲染完成后，js线程继续接管，开始下一个宏任务</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929111831.png" alt="image-20210929111830215"></p></li></ol></li></ol><h2 id="四、执行栈"><a href="#四、执行栈" class="headerlink" title="四、执行栈"></a>四、执行栈</h2><p> 当我们执行一个方法的时候，js会生成这个方法对象的执行环境，也叫做执行上下文</p><p>这个执行上下文有这个<code>方法的私有作用域</code>、<code>上次作用域的指向</code>、<code>方法的参数</code>、<code>私有作用域中定义的变量</code>、<code>this 对象</code></p><p>这个执行环境被添加到一个栈中，这个栈就是执行栈</p><h2 id="五、Vue的异步更新队列"><a href="#五、Vue的异步更新队列" class="headerlink" title="五、Vue的异步更新队列"></a>五、Vue的异步更新队列</h2><p>Vue中DOM的更新时异步的，是在微任务中更新DOM</p><div class="note note-secondary">            <p>Vue更新DOM是异步执行的，只要侦听到数据变化，vue将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个watcher被多次触发，只会被推入到队列中一次，这种在缓冲时去除重复数据对于避免不必要的计算和DOM操作是非常重要的，然后在下一次事件循环中，vue刷新队列并执行实例工作，vue在内部对异步尝试使用原生的promise.then</p>          </div><div class="note note-secondary">            <p>例如，当你设置 vm.someData = ‘new value’，该组件不会立即重新渲染。当刷新队列时，组件会在下一个事件循环“tick”中更新。多数情况我们不需要关心这个过程，但是如果你想基于更新后的 DOM 状态来做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员使用“数据驱动”的方式思考，避免直接接触 DOM，但是有时我们必须要这么做。为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用Vue.nextTick(callback)。这样回调函数将在 DOM 更新完成后被调用。</p>          </div><p>当我们想要改变vue中某个数据的值时，vue不会立即重新渲染，数据不会立即发生改变，而是会在下一个事件循环的时候更新，这主要是因为vue中DOM操作是异步的</p><h2 id="六、nextTick应用场景"><a href="#六、nextTick应用场景" class="headerlink" title="六、nextTick应用场景"></a>六、nextTick应用场景</h2><ol><li><p>在vue的生命周期函数created钩子函数进行的DOM操作一定要放到Vue.nextTick回调函数中</p></li><li><p>在数据变化后要执行某个操作，这个操作需要使用随数据改变而改变DOM结构的时候，这个操作都应该放到vue.nextTick()的回调函数中</p></li><li><p>代码解释</p><figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;app&#x27;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>vue中nextTick的作用<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in list&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">item.id</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span>&#123;&#123;item.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">addItem</span>&gt;</span>添加<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">    <span class="hljs-keyword">let</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">        <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#app&#x27;</span>,</span><br><span class="javascript">        <span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">            <span class="hljs-keyword">return</span> &#123;</span><br><span class="javascript">                <span class="hljs-attr">list</span>: [&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">2</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">4</span> &#125;]</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;,</span><br><span class="javascript">        <span class="hljs-attr">methods</span>: &#123;</span><br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">addItem</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">                <span class="hljs-keyword">let</span> length = <span class="hljs-built_in">this</span>.list.length + <span class="hljs-number">1</span>;</span><br><span class="javascript">                <span class="hljs-built_in">this</span>.list.push(&#123; <span class="hljs-attr">id</span>: length &#125;);</span><br><span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$refs.list);</span><br><span class="javascript">                <span class="hljs-built_in">this</span>.$nextTick(<span class="hljs-function">()=&gt;</span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$refs.list,<span class="hljs-string">&#x27;in nextTick&#x27;</span>);</span><br><span class="javascript">                &#125;)</span><br><span class="javascript"></span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;</span><br><span class="javascript">    &#125;)</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929104527.png" alt="image-20210929104526335"></p></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/weixin_43737327/article/details/107578891">nextTick和JS的事件循环机制</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、什么是进程和线程"><a href="#一、什么是进程和线程" class="headerlink" title="一、什么是进程和线程"></a>一、什么是进程和线程</h2><p>进程：指的是系统正在运行的一个应用程序，程序一旦运行就是一个进程，进程是系统进行资源分配的基本单位，是操作系统的基础。</p><p>线程：线程包含在进程中，是进程中一个独立执行的一个单元执行流，线程是程序执行的最小单位</p><p>进程之间是通过TCP/IP的端口来实现交互的</p><p>线程的通信比较简单，共享同一块内存</p><p>小结：</p><ol><li><p>进程要分配一大块内存，线程只需要分配一部分栈就可以了</p></li><li><p>一个程序至少有一个进程，一个进程至少有一个线程</p></li><li><p>进程是资源分配的最小单位，线程是程序执行的最小单位</p></li><li><p>一个线程可以创建和撤销另一个线程，同一个进程中的多个线程可以并发执行</p></li></ol><h2 id="二、浏览器渲染过程"><a href="#二、浏览器渲染过程" class="headerlink" title="二、浏览器渲染过程"></a>二、浏览器渲染过程</h2><p>浏览器的渲染进程：</p><ol><li>解析html和css文件，加载图片等资源文件，渲染成页面</li><li>执行解析js文件脚本代码</li></ol><p>浏览器渲染进程中的多个线程并发执行</p><ol><li><p>GUI线程</p><p>（1）解析html文件构建DOM树，解析css文件，结合DOM树生成渲染树，然后布局和绘制成页面</p><p>（2）当渲染树需要更改样式属性时，发生重绘；当渲染树中的元素规则尺寸、布局或者显示隐藏的时候，发生回流</p></li><li><p>JS引擎线程</p></li><li><p>时间触发线程</p></li><li><p>定时器触发线程</p></li><li><p>异步http请求线程</p></li></ol><p>GUI线程和js线程是相互排斥的，因为js线程在执行的过程中可能会发生重绘和回流，所以GUI线程执行的时候，js线程会挂起，等待GUI线程执行完成。js线程执行时，同理。（个人感觉有点异步的意思，单线程）</p><p>小结：</p><ol><li>浏览器的渲染进程包括：解析html和css文件加载图片资源，渲染成界面，执行解析js文件</li><li>整个 浏览器的渲染进程会开启多个线程：GUI线程，JS引擎线程，时间触发线程，定时器线程，异步http请求线程</li><li>GUI线程和JS引擎线程相互排斥</li></ol><h2 id="三、什么是事件循环"><a href="#三、什么是事件循环" class="headerlink" title="三、什么是事件循环"></a>三、什么是事件循环</h2><ol><li><h3 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h3></li></ol><p>所有的任务都可以分为同步任务和异步任务</p><p>同步任务可以理解成立即执行任务，同步任务一般会直接进入主线程中进行执行，异步任务比如ajax网络请求，setTimeout定时函数都属于异步任务，异步任务会通过事件队列的机制来进行协调。</p><p>同步任务和异步任务进入不同的执行环境，同步进入主线程，即主执行栈，异步进入事件队列，主线程内的任务执行完成为空，就去查看事件队列里的任务，推入主线程，这个过程不断的循环执行就是事件循环。</p><p>借用网上博主的一篇流程图说明这个过程：</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929093719.png" alt="img"></p><ol start="2"><li><h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>js分为2种任务类型宏任务（macrotask）和微任务（microtask）在ES中，宏任务称为task，微任务称为jobs</p><p>宏任务：每次执行栈执行的代码就是一个宏任务（包括从事件队列中获取一个事件回调并放到执行栈执行）</p><p>每一个<code>宏任务</code>会从头到尾把这个任务执行完成，不会执行其他</p><p>浏览器为了能够使得js内部的宏任务和DOM任务有序的执行，会在一个<code>宏任务</code>结束之后，下一个<code>宏任务</code>开始之前，对页面进行重新渲染（task–&gt;渲染–&gt;task–&gt;…）</p><p>微任务：可以理解成在当前<code>宏任务</code>结束后立即执行的任务，也就是说在当前<code>宏任务</code>结束后，下一个<code>宏任务</code>之前，在渲染之前</p><p>所以微任务的响应速度相比setTImeout要快，因为不需要等待渲染，也就是说在某一个<code>宏任务</code>执行完成后，就会立即执行在它执行期间产生的所有<code>微任务</code>，（在渲染前）</p><p>宏任务主要包括：script整体代码、setTimeout、setInterval、I/O、UI交互事件、setImmediate</p><p>微任务主要包括：Promise、MutaionObserver、process.nextTick(Node.js 环境)</p><div class="note note-secondary">            <p>在node环境中，nextTick的执行优先级高于Promise，可以简单的理解为：在宏任务结束后会先执行微任务nextTick，在执行微任务Promise部分</p>          </div><p>小结：</p><ol><li><p>执行一个宏任务（如果没有就从事件队列中读取）</p></li><li><p>执行过程中如果遇到微任务，就添加到微任务的事件队列中</p></li><li><p>宏任务执行完成，立即执行当前微任务队列中的所有微任务（依次执行）</p></li><li><p>当前宏任务执行完成，开始检查渲染，然后GUI线程接管渲染，渲染完成后，js线程继续接管，开始下一个宏任务</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929111831.png" alt="image-20210929111830215"></p></li></ol></li></ol><h2 id="四、执行栈"><a href="#四、执行栈" class="headerlink" title="四、执行栈"></a>四、执行栈</h2><p> 当我们执行一个方法的时候，js会生成这个方法对象的执行环境，也叫做执行上下文</p><p>这个执行上下文有这个<code>方法的私有作用域</code>、<code>上次作用域的指向</code>、<code>方法的参数</code>、<code>私有作用域中定义的变量</code>、<code>this 对象</code></p><p>这个执行环境被添加到一个栈中，这个栈就是执行栈</p><h2 id="五、Vue的异步更新队列"><a href="#五、Vue的异步更新队列" class="headerlink" title="五、Vue的异步更新队列"></a>五、Vue的异步更新队列</h2><p>Vue中DOM的更新时异步的，是在微任务中更新DOM</p><div class="note note-secondary">            <p>Vue更新DOM是异步执行的，只要侦听到数据变化，vue将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个watcher被多次触发，只会被推入到队列中一次，这种在缓冲时去除重复数据对于避免不必要的计算和DOM操作是非常重要的，然后在下一次事件循环中，vue刷新队列并执行实例工作，vue在内部对异步尝试使用原生的promise.then</p>          </div><div class="note note-secondary">            <p>例如，当你设置 vm.someData = ‘new value’，该组件不会立即重新渲染。当刷新队列时，组件会在下一个事件循环“tick”中更新。多数情况我们不需要关心这个过程，但是如果你想基于更新后的 DOM 状态来做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员使用“数据驱动”的方式思考，避免直接接触 DOM，但是有时我们必须要这么做。为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用Vue.nextTick(callback)。这样回调函数将在 DOM 更新完成后被调用。</p>          </div><p>当我们想要改变vue中某个数据的值时，vue不会立即重新渲染，数据不会立即发生改变，而是会在下一个事件循环的时候更新，这主要是因为vue中DOM操作是异步的</p><h2 id="六、nextTick应用场景"><a href="#六、nextTick应用场景" class="headerlink" title="六、nextTick应用场景"></a>六、nextTick应用场景</h2><ol><li><p>在vue的生命周期函数created钩子函数进行的DOM操作一定要放到Vue.nextTick回调函数中</p></li><li><p>在数据变化后要执行某个操作，这个操作需要使用随数据改变而改变DOM结构的时候，这个操作都应该放到vue.nextTick()的回调函数中</p></li><li><p>代码解释</p><figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&#x27;app&#x27;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>vue中nextTick的作用<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in list&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">item.id</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;list&quot;</span>&gt;</span>&#123;&#123;item.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">addItem</span>&gt;</span>添加<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/vue@2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">    <span class="hljs-keyword">let</span> app = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">        <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#app&#x27;</span>,</span><br><span class="javascript">        <span class="hljs-function"><span class="hljs-title">data</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">            <span class="hljs-keyword">return</span> &#123;</span><br><span class="javascript">                <span class="hljs-attr">list</span>: [&#123; <span class="hljs-attr">id</span>: <span class="hljs-number">1</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">2</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">3</span> &#125;, &#123; <span class="hljs-attr">id</span>: <span class="hljs-number">4</span> &#125;]</span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;,</span><br><span class="javascript">        <span class="hljs-attr">methods</span>: &#123;</span><br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">addItem</span>(<span class="hljs-params"></span>)</span> &#123;</span><br><span class="javascript">                <span class="hljs-keyword">let</span> length = <span class="hljs-built_in">this</span>.list.length + <span class="hljs-number">1</span>;</span><br><span class="javascript">                <span class="hljs-built_in">this</span>.list.push(&#123; <span class="hljs-attr">id</span>: length &#125;);</span><br><span class="javascript">                <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$refs.list);</span><br><span class="javascript">                <span class="hljs-built_in">this</span>.$nextTick(<span class="hljs-function">()=&gt;</span>&#123;</span><br><span class="javascript">                    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$refs.list,<span class="hljs-string">&#x27;in nextTick&#x27;</span>);</span><br><span class="javascript">                &#125;)</span><br><span class="javascript"></span><br><span class="javascript">            &#125;</span><br><span class="javascript">        &#125;</span><br><span class="javascript">    &#125;)</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929104527.png" alt="image-20210929104526335"></p></li></ol><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/weixin_43737327/article/details/107578891">nextTick和JS的事件循环机制</a></p>]]></content>
     
     
     <categories>
@@ -1940,7 +1829,7 @@
     
     <tags>
       
-      <tag>nextTick和事件循环</tag>
+      <tag>事件循环</tag>
       
     </tags>
     
@@ -1994,7 +1883,7 @@
     
     <tags>
       
-      <tag>ajax初学</tag>
+      <tag>ajax</tag>
       
     </tags>
     
@@ -2021,7 +1910,7 @@
     
     <tags>
       
-      <tag>genertor分析</tag>
+      <tag>genertor</tag>
       
     </tags>
     
@@ -2045,12 +1934,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>new一个对象的过程</tag>
-      
-    </tags>
     
   </entry>
   
@@ -2100,12 +1983,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>手写call、apply、bind</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -2126,12 +2003,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>手写promise</tag>
-      
-    </tags>
     
   </entry>
   
@@ -2154,12 +2025,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>合并2个数组</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -2180,12 +2045,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>数据劫持or数据代理</tag>
-      
-    </tags>
     
   </entry>
   
@@ -2316,14 +2175,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>算法练习</tag>
-      
-      <tag>回溯算法</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -2346,8 +2197,6 @@
     
     
     <tags>
-      
-      <tag>Http</tag>
       
       <tag>强缓存和弱缓存</tag>
       
@@ -2389,7 +2238,7 @@
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss-css%E4%BD%8D%E7%BD%AE/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss-css%E4%BD%8D%E7%BD%AE/</url>
     
-    <content type="html"><![CDATA[<p>【2022-3-18补充】</p><hr><ol><li><p>relative定位</p><p>relative相对自己默认的位置。定位基点是自己默认位置</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318123922.png" alt="image-20220318123921923"></p></li><li><p>absolute定位</p><p>absolute相对于上级元素一般是父元素进行定位，有限制条件是父元素的定位不能是static，定位基点：上级元素（一般是父元素）</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;relative&quot;</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;absolute&quot;</span>&gt;</span>son<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.relative</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>&#125;<br>   <br><span class="hljs-selector-class">.absolute</span> &#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318124945.png" alt="image-20220318124944199"></p></li><li><p>fixed定位</p><p>相对于浏览器视口定位，定位基点是浏览器窗口</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;fixed&quot;</span>&gt;fixed&lt;/div&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.fixed &#123;<br>    <span class="hljs-attr">position</span>: fixed;<br>    top: <span class="hljs-number">50</span>%;<br>    left: <span class="hljs-number">50</span>%;<br>    transform: translate(-<span class="hljs-number">50</span>%, -<span class="hljs-number">50</span>%);<br>&#125;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318130929.png" alt="image-20220318130928647"></p></li><li><p>sticky定位</p><p>当滑动到某一点时，发生固定</p><p>有效规则：</p><p>父级的overflow必须是visible</p><p>必须设置top、left、right、bottom其中某个属性</p><p>案例：图片叠加</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.backgorund &#123;<br>    <span class="hljs-attr">position</span>: -webkit-sticky;<br>    position: sticky;<br>    top: <span class="hljs-number">0</span>;<br>   <br>&#125;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318134802.gif" alt="2 (2)"></p><p>案例：标题栏</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318134357.gif" alt="3"></p></li><li><p>position的值：relative、absolute、fixed、static、sticky</p><p>relative：相对布局，相对于自己正常位置进行定位,(原来的位置还在保留，向下移动了10px)</p><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    <span class="hljs-selector-class">.relative</span> &#123;<br>        <span class="hljs-attribute">position</span>: relative;<br>        <span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;<br>    &#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;relative&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903220832.gif" alt="95"></p><p>absolute：绝对布局，相对于static定位以外的第一个父元素进行定位</p><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">     <span class="hljs-selector-class">.absolute</span> &#123;<br>         <span class="hljs-attribute">position</span>: absolute;<br>         <span class="hljs-attribute">top</span>: <span class="hljs-number">100px</span>;<br>         <span class="hljs-attribute">left</span>: <span class="hljs-number">100px</span>;<br>     &#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;absolute&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903220218.png" alt="image-20210903220217661"></p><p>fixed：固定布局，相对于浏览器窗口定位</p><p>static：默认布局，没有定位，元素出现在正常的流中</p><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.static</span> &#123;<br>           <span class="hljs-attribute">position</span>: static;<br>       &#125;<br>  &lt;<span class="hljs-selector-tag">div</span> class=&quot;static&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903220340.png" alt="image-20210903220339541"></p><p>sticky：粘性布局（适用场合：一开始不显示，滚动到一定位置需要显示的元素）</p><p>inherit：从父级继承position属性</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>【2022-3-18补充】</p><hr><ol><li><p>relative定位</p><p>relative相对自己默认的位置。定位基点是自己默认位置</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318123922.png" alt="image-20220318123921923"></p></li><li><p>absolute定位</p><p>absolute相对于上级元素一般是父元素进行定位，有限制条件是父元素的定位不能是static，定位基点：上级元素（一般是父元素）</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;relative&quot;</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;absolute&quot;</span>&gt;</span>son<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.relative</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>&#125;<br>   <br><span class="hljs-selector-class">.absolute</span> &#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318124945.png" alt="image-20220318124944199"></p></li><li><p>fixed定位</p><p>相对于浏览器视口定位，定位基点是浏览器窗口</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;fixed&quot;</span>&gt;fixed&lt;/div&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.fixed &#123;<br>    <span class="hljs-attr">position</span>: fixed;<br>    top: <span class="hljs-number">50</span>%;<br>    left: <span class="hljs-number">50</span>%;<br>    transform: translate(-<span class="hljs-number">50</span>%, -<span class="hljs-number">50</span>%);<br>&#125;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318130929.png" alt="image-20220318130928647"></p></li><li><p>sticky定位</p><p>当滑动到某一点时，发生固定</p><p>有效规则：</p><p>父级的overflow必须是visible</p><p>必须设置top、left、right、bottom其中某个属性</p><p>案例：图片叠加</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.backgorund &#123;<br>    <span class="hljs-attr">position</span>: -webkit-sticky;<br>    position: sticky;<br>    top: <span class="hljs-number">0</span>;<br>   <br>&#125;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318134802.gif" alt="2 (2)"></p><p>案例：标题栏</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318134357.gif" alt="3"></p><hr></li><li><p>position的值：relative、absolute、fixed、static、sticky</p><p>relative：相对布局，相对于自己正常位置进行定位,(原来的位置还在保留，向下移动了10px)</p><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">    <span class="hljs-selector-class">.relative</span> &#123;<br>        <span class="hljs-attribute">position</span>: relative;<br>        <span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;<br>    &#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;relative&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903220832.gif" alt="95"></p><p>absolute：绝对布局，相对于static定位以外的第一个父元素进行定位</p><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">     <span class="hljs-selector-class">.absolute</span> &#123;<br>         <span class="hljs-attribute">position</span>: absolute;<br>         <span class="hljs-attribute">top</span>: <span class="hljs-number">100px</span>;<br>         <span class="hljs-attribute">left</span>: <span class="hljs-number">100px</span>;<br>     &#125;<br>&lt;<span class="hljs-selector-tag">div</span> class=&quot;absolute&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903220218.png" alt="image-20210903220217661"></p><p>fixed：固定布局，相对于浏览器窗口定位</p><p>static：默认布局，没有定位，元素出现在正常的流中</p><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.static</span> &#123;<br>           <span class="hljs-attribute">position</span>: static;<br>       &#125;<br>  &lt;<span class="hljs-selector-tag">div</span> class=&quot;static&quot;&gt;<span class="hljs-number">111</span>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br></code></pre></div></td></tr></table></figure><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210903220340.png" alt="image-20210903220339541"></p><p>sticky：粘性布局（适用场合：一开始不显示，滚动到一定位置需要显示的元素）</p><p>inherit：从父级继承position属性</p></li></ol>]]></content>
     
     
     <categories>
@@ -2430,7 +2279,7 @@
     
     <tags>
       
-      <tag>flex布局</tag>
+      <tag>flex</tag>
       
     </tags>
     
@@ -2455,12 +2304,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>全排列</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -2481,12 +2324,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>实现indexOf方法</tag>
-      
-    </tags>
     
   </entry>
   
@@ -2538,7 +2375,7 @@
     
     <tags>
       
-      <tag>CommonJs和Es6模块区别</tag>
+      <tag>CommonJs和Es6</tag>
       
     </tags>
     
@@ -2592,7 +2429,7 @@
     
     <tags>
       
-      <tag>call,apply,bind作用</tag>
+      <tag>call,apply,bind</tag>
       
     </tags>
     
@@ -2632,7 +2469,7 @@
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/vuevue-09Vuex%E5%AD%A6%E4%B9%A0/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/vuevue-09Vuex%E5%AD%A6%E4%B9%A0/</url>
     
-    <content type="html"><![CDATA[<ol><li><p>什么是vuex</p><ul><li>vuex是vue.js的状态管理模式</li><li>将组件的共享状态抽取出来，以一个全局单例模式进行管理</li><li>每一个vuex应用的核心就是store</li></ul></li><li><p>vuex与单纯的全局变量的不同点</p><ul><li>vuex的状态管理是响应式的</li><li>不能直接改变store中的状态值，必须通过显示提交到mutation的方式</li></ul></li><li><p>state:单一状态树</p><ul><li>从store实例中读取状态最简单的方法就是在计算属性中返回这个状态</li><li>通过根组件注册store，该store会注册到所有的子组件中</li><li>mapState辅助函数</li></ul></li><li><p>getter</p><ul><li>getter可以理解换成store的计算属性，</li><li>getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生改变的才会重新计算</li><li>getter接受state作为它的第一个参数</li><li>getter通过属性访问store.getter.dosomething</li><li>getter通过属性访问时，是作为Vue的响应式系统的一部分缓存其中的</li><li>getter也可以接受其他的getter作为第二个参数</li><li>getter通过方法访问</li><li>getter通过方法访问时，每次都回去调用，不会缓存结果</li><li>mapGetters辅助函数将store的getter映射到局部计算属性中</li></ul></li><li><p>mutation</p><ul><li>每一个mutation都有一个事件类型(方法名)和一个回调函数</li><li>回调函数接受state作为第一个参数</li><li>可以向store.commit()中传入额外的参数</li><li>mutation必须是同步函数</li></ul></li><li><p>action</p><ul><li>action提交到mutation</li><li>action中可以包含任何异步操作</li><li>action通过store.dispatch()触发</li><li>store.dispatch可以处理action内部函数返回的promise，并且store.dispatch返回的任何是一个Promise</li><li>store.dispatch可以触发多个action函数，触发的函数都结束以后，才可以执行返回的Promise操作</li></ul></li><li><p>modules</p><ul><li>将store的管理模块化</li></ul></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>【2022-3-20补充】</p><hr><p>（1）vuex通过全局注入store对象的方式，来实现状态共享</p><p>（2）store是怎么挂载注入到组件中的？</p><p>store通过vue的mixin混入机制，在vue的beforeCreate钩子函数之前混入vuexinit()方法；vueinit()方法实现将store对象注入vue组件实例中，并注册了store的引用属性$store。</p><p>（3）state和getters是怎么映射到组件中来响应式的更新状态的？</p><p>（3）vuex的state和getters是怎么映射到组件中来响应式的更新状态的？</p><p>state是利用vue的data响应式，将store的state存入vue实例组件的data中；Vuex的getters是借助vue的computed属性实现数据的实时监听。</p><p>【参考】</p><p><a href="https://juejin.cn/post/6844903784708046855">深入vuex原理(上)</a></p><p><a href="https://juejin.cn/post/6844903784703852551">深入vuex原理(下)</a></p><hr><ol><li>什么是vuex<ul><li>vuex是vue.js的状态管理模式</li><li>将组件的共享状态抽取出来，以一个全局单例模式进行管理</li><li>每一个vuex应用的核心就是store</li></ul></li><li>vuex与单纯的全局变量的不同点<ul><li>vuex的状态管理是响应式的</li><li>不能直接改变store中的状态值，必须通过显示提交到mutation的方式</li></ul></li><li>state:单一状态树<ul><li>从store实例中读取状态最简单的方法就是在计算属性中返回这个状态</li><li>通过根组件注册store，该store会注册到所有的子组件中</li><li>mapState辅助函数</li></ul></li><li>getter<ul><li>getter可以理解换成store的计算属性，</li><li>getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生改变的才会重新计算</li><li>getter接受state作为它的第一个参数</li><li>getter通过属性访问store.getter.dosomething</li><li>getter通过属性访问时，是作为Vue的响应式系统的一部分缓存其中的</li><li>getter也可以接受其他的getter作为第二个参数</li><li>getter通过方法访问</li><li>getter通过方法访问时，每次都回去调用，不会缓存结果</li><li>mapGetters辅助函数将store的getter映射到局部计算属性中</li></ul></li><li>mutation<ul><li>每一个mutation都有一个事件类型(方法名)和一个回调函数</li><li>回调函数接受state作为第一个参数</li><li>可以向store.commit()中传入额外的参数</li><li>mutation必须是同步函数</li></ul></li><li>action<ul><li>action提交到mutation</li><li>action中可以包含任何异步操作</li><li>action通过store.dispatch()触发</li><li>store.dispatch可以处理action内部函数返回的promise，并且store.dispatch返回的任何是一个Promise</li><li>store.dispatch可以触发多个action函数，触发的函数都结束以后，才可以执行返回的Promise操作</li></ul></li><li>modules<ul><li>将store的管理模块化</li></ul></li></ol>]]></content>
     
     
     <categories>
@@ -2671,12 +2508,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>买股票</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -2700,7 +2531,7 @@
     
     <tags>
       
-      <tag>Http</tag>
+      <tag>7层模型</tag>
       
     </tags>
     
@@ -2716,12 +2547,6 @@
     <content type="html"><![CDATA[<ol><li><p>封装一个console</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logInfo</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log.apply(<span class="hljs-built_in">console</span>, <span class="hljs-built_in">arguments</span>);<br>&#125;<br>logInfo(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>) <span class="hljs-comment">// 1 2 3</span><br></code></pre></div></td></tr></table></figure><ul><li>argments 是一个类数组对象</li><li>argments 不是数组，除了length和索引元素，没有数组的任何属性</li><li>apply会将数组(arguments)中的每个元素作为参数传递给函数(console.log)</li></ul></li><li><p>promise实现异步操作</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">Promise</span>.resolve()<br>    .then(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-comment">// 第一步要执行的任务</span><br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-keyword">const</span> data1 = ... <span class="hljs-comment">//往下传递的数据</span><br>    <span class="hljs-built_in">Promise</span>.resolve(data1)<br>&#125;)<br>    .then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 上一步传过来的数据</span><br>        <span class="hljs-comment">//第二步要执行的任务</span><br>        <span class="hljs-comment">// ...</span><br>        <span class="hljs-keyword">const</span> data2 = ... <span class="hljs-comment">// 要往下传递的数据</span><br>    <span class="hljs-built_in">Promise</span>.resolve(data2); <br><br>&#125;)<br>.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 上一步传过来的数据</span><br>        <span class="hljs-comment">// 最后异步要执行的任务</span><br>        <span class="hljs-comment">// ...</span><br>    &#125;)<br></code></pre></div></td></tr></table></figure></li><li><p>组合结果</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><br><span class="hljs-comment">//  * 初始值：[[&quot;红色&quot;, &quot;绿色&quot;], [&quot;大号&quot;, &quot;小号&quot;]]</span><br><span class="hljs-comment">//  * 返回值：[[&quot;红色&quot;, &quot;大号&quot;], [&quot;红色&quot;, &quot;小号&quot;], [&quot;绿色&quot;, &quot;大号&quot;], [&quot;绿色&quot;, &quot;小号&quot;]]</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">group</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>        result = resGroup(result, arr[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resGroup</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr2.length; j++) &#123;<br>            result.push([arr1[i], arr2[j]])<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [[<span class="hljs-string">&quot;红色&quot;</span>, <span class="hljs-string">&quot;绿色&quot;</span>], [<span class="hljs-string">&quot;大号&quot;</span>, <span class="hljs-string">&quot;小号&quot;</span>]];<br><span class="hljs-built_in">console</span>.log(group(arr)); <span class="hljs-comment">// [ [ &#x27;红色&#x27;, &#x27;大号&#x27; ], [ &#x27;红色&#x27;, &#x27;小号&#x27; ], [ &#x27;绿色&#x27;, &#x27;大号&#x27; ], [ &#x27;绿色&#x27;, &#x27;小号&#x27; ] ]</span><br></code></pre></div></td></tr></table></figure></li><li><p>组合结果优化,上面的输出格式适合2*2的数组，如果是m*n的组合，输出不正确</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><br><span class="hljs-comment">//  * 初始值：[[&quot;红色&quot;, &quot;绿色&quot;], [&quot;大号&quot;, &quot;小号&quot;]]</span><br><span class="hljs-comment">//  * 返回值：[[&quot;红色&quot;, &quot;大号&quot;], [&quot;红色&quot;, &quot;小号&quot;], [&quot;绿色&quot;, &quot;大号&quot;], [&quot;绿色&quot;, &quot;小号&quot;]]</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">group</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) &#123;<br>        result = resGroup(result, arr[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resGroup</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> result = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr1.length; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; arr2.length; j++) &#123;<br>            <span class="hljs-keyword">var</span> arr = (arr1[i] + <span class="hljs-string">&quot;,&quot;</span> + arr2[j]).split(<span class="hljs-string">&#x27;,&#x27;</span>)<br>            result.push(arr)<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br><span class="hljs-keyword">let</span> arr = [[<span class="hljs-string">&quot;红色&quot;</span>, <span class="hljs-string">&quot;绿色&quot;</span>], [<span class="hljs-string">&quot;大号&quot;</span>, <span class="hljs-string">&quot;小号&quot;</span>], [<span class="hljs-string">&quot;你&quot;</span>, <span class="hljs-string">&quot;我&quot;</span>],[<span class="hljs-string">&quot;男&quot;</span>,<span class="hljs-string">&quot;女&quot;</span>]];<br><span class="hljs-built_in">console</span>.log(group(arr)); <br>[<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;红色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;大号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;你&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;男&#x27;</span> ],<br>  [ <span class="hljs-string">&#x27;绿色&#x27;</span>, <span class="hljs-string">&#x27;小号&#x27;</span>, <span class="hljs-string">&#x27;我&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span> ]<br>]<br></code></pre></div></td></tr></table></figure></li></ol>]]></content>
     
     
-    
-    <tags>
-      
-      <tag>组合结果</tag>
-      
-    </tags>
     
   </entry>
   
@@ -2800,7 +2625,7 @@
     
     <tags>
       
-      <tag>css伪类和伪元素</tag>
+      <tag>伪类和伪元素</tag>
       
     </tags>
     
@@ -2854,7 +2679,7 @@
     
     <tags>
       
-      <tag>几种异步方法</tag>
+      <tag>异步方法</tag>
       
     </tags>
     
@@ -2878,12 +2703,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -2958,12 +2777,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>SpringBoot-druid-05druid连接数据库</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -2982,12 +2795,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>mybatis连接数据库</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3008,12 +2815,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>C3P0连接数据库</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3033,12 +2834,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>dbcp连接数据库</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3057,12 +2852,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>jdbc连接数据库</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3085,12 +2874,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>翻转复杂数组</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3111,12 +2894,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>反转链表</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3139,12 +2916,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Css样式执行顺序</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3154,7 +2925,7 @@
     <link href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httphttp-http%E8%B7%A8%E5%9F%9F/"/>
     <url>/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httphttp-http%E8%B7%A8%E5%9F%9F/</url>
     
-    <content type="html"><![CDATA[<ol><li><p>请求类型</p><p>请求类型有8种：</p><p>get:(select)从服务器请求数据，(给的少拿的多)</p><p>post:(create)向服务器发送数据,(给的多拿的少)</p><p>put:向服务器存放一些内容</p><p>delete:删除服务器的一些内容</p><p>head:只请求页面的头部</p><p>trace:回显服务器收到的请求，主要用于测试或诊断</p><p>options:允许客户端查看服务器的性能</p><p>connect:HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210823222040.png" alt="img"></p></li><li><p>同源策略(理解不深)</p><p>必须是同协议、同域名、同端口</p></li><li><p>什么是跨域？</p><p><code>只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作。</code></p></li><li><p>跨域举例</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">我们来看下面的页面是否与 http:<span class="hljs-comment">//store.company.com/dir/index.html 是同源的？</span><br>http:<span class="hljs-comment">//store.company.com/dir/index2.html 同源</span><br>http:<span class="hljs-comment">//store.company.com/dir2/index3.html 同源 虽然在不同文件夹下</span><br>https:<span class="hljs-comment">//store.company.com/secure.html 不同源 不同的协议(https)</span><br>http:<span class="hljs-comment">//store.company.com:81/dir/index.html 不同源 不同的端口(81)</span><br>http:<span class="hljs-comment">//news.company.com/dir/other.html 不同源 不同的域名(news)</span><br></code></pre></div></td></tr></table></figure></li><li><p>跨域解决方案</p><p>(1)Jsonp 分为原生的jsonp和jQuery的jsonp</p><p>(2)CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）,主要设置在后端，只要后端实现了跨域，就实现了跨域</p><p>(3)Node中间件代理(两次跨域)</p><p>(4) Nginx反向代理</p></li><li><p>同源策略限制的内容</p><p>(1)Cookie、LocalStorage、IndexedDB等存储性内容</p><p>(2) DOM节点</p><p>(3) AJAX请求不能发送</p></li><li><p>不受同源限制(允许跨境加载)</p><p>(1) <code>&lt;img src=xxx&gt;</code></p><p>(2) <code>&lt;link href=xxx&gt;</code></p><p>(3)<code>&lt;script src=xxx&gt;</code></p></li><li><p>jsonp的解决方式</p><p>最常用的解决跨域的方法用jsonp、CORS</p><p>(1) 使用jsonp解决跨域</p><p>实现原理，如果a页面(a.com/jsonp.html) 想要得到b页面(b.com/main.js)里的数据(很明显a，b在不同的域名下，需要跨域)在jsonp.html页面创建一个回调函数，动态的添加<code>script</code>元素，向服务器发送请求，请求地址为<code> http://b.com/main.js?callbcak=xxx,</code>在main.js里面调用这个回调函数，并且以json的数据格式作为参数传递，完成回调。</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * jsonp.html</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);<br><br>script.src = <span class="hljs-string">&#x27;http://b.com/main.js?callback=foo&#x27;</span>;<br><br><span class="hljs-built_in">document</span>.body.appendChild(script);<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">res</span>) </span>&#123;<br><br>  <span class="hljs-built_in">console</span>.log(res);<br><br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * main.js</span><br><span class="hljs-comment"> */</span><br>foo(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;tom&#x27;</span>&#125;)<br></code></pre></div></td></tr></table></figure><p>(2) JQuery中实现跨域</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本一)</span><br><br>&lt;script&gt;<br>$.getJSON(<span class="hljs-string">&#x27;http://example.com/data.php?callback=?&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(data);<br>&#125;);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本二)</span><br><br>$.ajax(&#123;<br><br>    <span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://www.xxx.com/login&#x27;</span>,<br><br>    <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;GET&#x27;</span>,<br><br>    <span class="hljs-attr">dataType</span>:<span class="hljs-string">&#x27;jsonp&#x27;</span>,<span class="hljs-comment">//请求方式为jsonp</span><br><br>    <span class="hljs-attr">jsonpCallback</span>:<span class="hljs-string">&#x27;callback&#x27;</span>,<br><br>&#125;)<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">res</span>) </span>&#123;<br><br>  <span class="hljs-built_in">console</span>.log(res);<br><br>&#125;<br><br></code></pre></div></td></tr></table></figure></li></ol><blockquote><p>JQuery会自动生成一个全局函数来代替callback=？中的问号，之后获取数据以后又会自动销毁，实际上就是起到一个临时函数的作用，<code>$.getJSON</code>会自动判断跨域，如果不存在跨域，会自动调用ajax，如果存在跨域，会利用异步加载的方式调用Jsonp中的回调函数</p></blockquote><ol><li><p>jsonp的缺点</p><p>(1) 任只要用这种方式，任何页面都可以访问b页面的数据，存在安全性问题</p><p>(2)只能发送get请求，不能发送post请求</p><p>(3)可能会被注入恶意代码，篡改页面内容</p></li><li><p>使用CROS方式</p><p>(1)允许浏览器向跨域资源服务器发送XMLHttpRequest请求</p><p>(2) 刚才的例子中，可以在b页面中添加响应头，允许a页面访问</p><p><code>　Access-Control-Allow-Origin:http://a.com</code></p><p>(3)然后a就可以用ajax获取b里面的数据了</p></li><li><p>webpack解决跨域</p><p>(1) webpack proxy </p><p>(2) 接受客户端发送的请求以后转发给其他服务器，目的是便于开发者在开发的模式下解决跨域问题</p><p>(3) 实现代理，必须有一个中间件服务器，webpack提供的中间件服务器webpack-dev-server只适用于开发阶段</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ./webpack.config.js</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>  <span class="hljs-attr">devServer</span>: &#123;<br>        <span class="hljs-comment">// host: &#x27;0.0.0.0&#x27;,</span><br>        <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启热点 */</span><br>        <span class="hljs-attr">inline</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启页面自动刷新 */</span><br>        <span class="hljs-attr">progress</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 显示打包的进度 */</span><br>        <span class="hljs-attr">disableHostCheck</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">// port:8080,</span><br>        <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">watchOptions</span>: &#123;<br>            <span class="hljs-attr">aggregateTimeout</span>: <span class="hljs-number">300</span><br>        &#125;,<br>        <span class="hljs-attr">proxy</span>: &#123;<br>            <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>                <span class="hljs-comment">// target: &#x27;http://100.64.34.171:8081&#x27;, /* 后台服务器地址 */</span><br>                <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;http://127.0.0.1:8086&#x27;</span>,<br>                <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">ws</span>: <span class="hljs-literal">false</span>,<br>                <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span><br>                 <span class="hljs-comment">/* pathRewrite: &#123;</span><br><span class="hljs-comment">                    &#x27;^/api&#x27;: &#x27;&#x27; // 这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用&#x27;http://40.00.100.100:3002/user/add&#x27;，直接写‘/api/user/add’即可</span><br><span class="hljs-comment">                &#125;*/</span><br>            &#125;<br>        &#125;<br>    &#125;,<br></code></pre></div></td></tr></table></figure><ul><li>target:表示代理到的目标地址</li><li>pathWrite:默认情况下，我们在/api也会被写到url中，希望删除，需要配置</li><li>secure默认情况下不接受转发到https服务器上，如果需要，设为false</li><li>changeOrigin: 它是表示是否更新代理后请求的 headers 中的 host 地址</li></ul><p>(4)实现原理</p><ul><li><p>proxy实际上利用<code>http-proxy-middleware </code>这个中间件，实现请求转发给其他服务器</p></li><li><p>在开发阶段，本地的地址是<code>Http://loaclhost:3000</code>,该请求发送一个前缀带有/api标识的去向服务器发送请求，但是这个服务器只是将请求发送给另一个请求</p></li><li><p>在开发阶段，<code>webpack-dev-server</code>会自动启动一个本地开发服务器，</p></li><li><p>我们应用在开发阶段是独立运行在localhost的一个端口上的，而后端服务器又运行在另一个地址上，由于同源策略，会出现跨域</p></li><li><p>所以使用代理，【浏览器发送请求】—&gt; 【中间服务器】—-&gt;【服务器】</p></li><li><p>服务器和服务器之间是不会存在跨域资源问题</p></li></ul></li><li><p>设置了 Access-Control-Allow-Credentials和withCredentials为什么cookie还是没能成功跨域?</p><p>浏览器端要跨域</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111620.webp" alt="img"></p><p>服务器端要检查</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111712.webp" alt="img"></p><p>最重要的是<code>Access-Control-Allow-Origin</code>,标识允许哪个域的请求</p><p>(1) <code>Access-Control-Allow-Origin:*</code>设置*浏览器将不会发送cookies，即使设置了<code>withCredentials</code></p><div class="note note-secondary">            <p>因为这意味着把cookies开放给所有网站</p><p>假设当前是A网站,并且在cookie里写入了身份凭证 用户同时打开了B网站, 那么B网站给A网站的服务器发的所有请求都是以A用户的身份进行的, 这将导致CSRF问题</p>          </div><p><code>withCredentials</code>：表示<code>XHR</code>是否接收cookies和发送cookies</p><p>(2) <code>Access-Control-Allow-Origin:xxx</code>指定域</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/zhilili/p/14738262.html">webpack(六）——webpack 解决跨域的原理</a></p><p><a href="https://www.jianshu.com/p/89a377c52b48">没错，就是Access-Control-Allow-Origin，跨域</a></p><p><a href="https://www.jianshu.com/p/f049ac7e2220">什么是跨域？如何实现？</a></p></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>【2022-3-19补充】</p><hr><p>跨域的解决方法：</p><p>1、 通过jsonp跨域<br>2、 document.domain + iframe跨域<br>3、 location.hash + iframe<br>4、 window.name + iframe跨域<br>5、 postMessage跨域<br>6、 跨域资源共享（CORS Cross-origin resource sharing）<br>7、 nginx代理跨域<br>8、 nodejs中间件代理跨域（node + webpack + webpack-dev-server）<br>9、 WebSocket协议跨域</p><hr><ol><li><p>请求类型</p><p>请求类型有8种：</p><p>get:(select)从服务器请求数据，(给的少拿的多)</p><p>post:(create)向服务器发送数据,(给的多拿的少)</p><p>put:向服务器存放一些内容</p><p>delete:删除服务器的一些内容</p><p>head:只请求页面的头部</p><p>trace:回显服务器收到的请求，主要用于测试或诊断</p><p>options:允许客户端查看服务器的性能</p><p>connect:HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210823222040.png" alt="img"></p></li><li><p>同源策略(理解不深)</p><p>必须是同协议、同域名、同端口</p></li><li><p>什么是跨域？</p><p><code>只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作。</code></p></li><li><p>跨域举例</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">我们来看下面的页面是否与 http:<span class="hljs-comment">//store.company.com/dir/index.html 是同源的？</span><br>http:<span class="hljs-comment">//store.company.com/dir/index2.html 同源</span><br>http:<span class="hljs-comment">//store.company.com/dir2/index3.html 同源 虽然在不同文件夹下</span><br>https:<span class="hljs-comment">//store.company.com/secure.html 不同源 不同的协议(https)</span><br>http:<span class="hljs-comment">//store.company.com:81/dir/index.html 不同源 不同的端口(81)</span><br>http:<span class="hljs-comment">//news.company.com/dir/other.html 不同源 不同的域名(news)</span><br></code></pre></div></td></tr></table></figure></li><li><p>跨域解决方案</p><p>(1)Jsonp 分为原生的jsonp和jQuery的jsonp</p><p>(2)CORS是一个W3C标准，全称是”跨域资源共享”（Cross-origin resource sharing）,主要设置在后端，只要后端实现了跨域，就实现了跨域</p><p>(3)Node中间件代理(两次跨域)</p><p>(4) Nginx反向代理</p></li><li><p>在非同源时，一下情况收到限制，无法共享</p><p>(1)Cookie、LocalStorage、IndexedDB等存储性内容</p><p>(2) DOM节点</p><p>(3) AJAX请求不能发送</p></li><li><p>不受同源限制(允许跨境加载)</p><p>(1) <code>&lt;img src=xxx&gt;</code></p><p>(2) <code>&lt;link href=xxx&gt;</code></p><p>(3)<code>&lt;script src=xxx&gt;</code></p></li><li><p>jsonp的解决方式</p><p>最常用的解决跨域的方法用jsonp、CORS</p><p>(1) 使用jsonp解决跨域</p><p>实现原理，如果a页面(a.com/jsonp.html) 想要得到b页面(b.com/main.js)里的数据(很明显a，b在不同的域名下，需要跨域)在jsonp.html页面创建一个回调函数，动态的添加<code>script</code>元素，向服务器发送请求，请求地址为<code> http://b.com/main.js?callbcak=xxx,</code>在main.js里面调用这个回调函数，并且以json的数据格式作为参数传递，完成回调。</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * jsonp.html</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">let</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;script&#x27;</span>);<br><br>script.src = <span class="hljs-string">&#x27;http://b.com/main.js?callback=foo&#x27;</span>;<br><br><span class="hljs-built_in">document</span>.body.appendChild(script);<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params">res</span>) </span>&#123;<br><br>  <span class="hljs-built_in">console</span>.log(res);<br><br>&#125;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * main.js</span><br><span class="hljs-comment"> */</span><br>foo(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;tom&#x27;</span>&#125;)<br></code></pre></div></td></tr></table></figure><p>(2) JQuery中实现跨域</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本一)</span><br><br>&lt;script&gt;<br>$.getJSON(<span class="hljs-string">&#x27;http://example.com/data.php?callback=?&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(data);<br>&#125;);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本二)</span><br><br>$.ajax(&#123;<br><br>    <span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://www.xxx.com/login&#x27;</span>,<br><br>    <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;GET&#x27;</span>,<br><br>    <span class="hljs-attr">dataType</span>:<span class="hljs-string">&#x27;jsonp&#x27;</span>,<span class="hljs-comment">//请求方式为jsonp</span><br><br>    <span class="hljs-attr">jsonpCallback</span>:<span class="hljs-string">&#x27;callback&#x27;</span>,<br><br>&#125;)<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">res</span>) </span>&#123;<br><br>  <span class="hljs-built_in">console</span>.log(res);<br><br>&#125;<br><br></code></pre></div></td></tr></table></figure><p>JQuery会自动生成一个全局函数来代替callback=？中的问号，之后获取数据以后又会自动销毁，实际上就是起到一个临时函数的作用，<code>$.getJSON</code>会自动判断跨域，如果不存在跨域，会自动调用ajax，如果存在跨域，会利用异步加载的方式调用Jsonp中的回调函数</p><p>  jsonp的缺点</p><p> (1) 任只要用这种方式，任何页面都可以访问b页面的数据，存在安全性问题</p><p> (2)只能发送get请求，不能发送post请求</p><p> (3)可能会被注入恶意代码，篡改页面内容</p></li><li><p>使用CROS方式</p><p>(1)允许浏览器向跨域资源服务器发送XMLHttpRequest请求</p><p>(2) 刚才的例子中，可以在b页面中添加响应头，允许a页面访问</p><p><code>　Access-Control-Allow-Origin:http://a.com</code></p><p>(3)然后a就可以用ajax获取b里面的数据了</p></li><li><p>webpack解决跨域</p></li></ol><p>   (1) webpack proxy </p><p>   (2) 接受客户端发送的请求以后转发给其他服务器，目的是便于开发者在开发的模式下解决跨域问题</p><p>   (3) 实现代理，必须有一个中间件服务器，webpack提供的中间件服务器webpack-dev-server只适用于开发阶段</p>   <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ./webpack.config.js</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>  <span class="hljs-attr">devServer</span>: &#123;<br>        <span class="hljs-comment">// host: &#x27;0.0.0.0&#x27;,</span><br>        <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启热点 */</span><br>        <span class="hljs-attr">inline</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启页面自动刷新 */</span><br>        <span class="hljs-attr">progress</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 显示打包的进度 */</span><br>        <span class="hljs-attr">disableHostCheck</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">// port:8080,</span><br>        <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">watchOptions</span>: &#123;<br>            <span class="hljs-attr">aggregateTimeout</span>: <span class="hljs-number">300</span><br>        &#125;,<br>        <span class="hljs-attr">proxy</span>: &#123;<br>            <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>                <span class="hljs-comment">// target: &#x27;http://100.64.34.171:8081&#x27;, /* 后台服务器地址 */</span><br>                <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;http://127.0.0.1:8086&#x27;</span>,<br>                <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">ws</span>: <span class="hljs-literal">false</span>,<br>                <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span><br>                 <span class="hljs-comment">/* pathRewrite: &#123;</span><br><span class="hljs-comment">                    &#x27;^/api&#x27;: &#x27;&#x27; // 这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用&#x27;http://40.00.100.100:3002/user/add&#x27;，直接写‘/api/user/add’即可</span><br><span class="hljs-comment">                &#125;*/</span><br>            &#125;<br>        &#125;<br>    &#125;,<br></code></pre></div></td></tr></table></figure><ul><li>target:表示代理到的目标地址</li><li>pathWrite:默认情况下，我们在/api也会被写到url中，希望删除，需要配置</li><li>secure默认情况下不接受转发到https服务器上，如果需要，设为false</li><li>changeOrigin: 它是表示是否更新代理后请求的 headers 中的 host 地址</li></ul><p>   (4)实现原理</p><ul><li><p>proxy实际上利用<code>http-proxy-middleware </code>这个中间件，实现请求转发给其他服务器</p></li><li><p>在开发阶段，本地的地址是<code>Http://loaclhost:3000</code>,该请求发送一个前缀带有/api标识的去向服务器发送请求，但是这个服务器只是将请求发送给另一个请求</p></li><li><p>在开发阶段，<code>webpack-dev-server</code>会自动启动一个本地开发服务器，</p></li><li><p>我们应用在开发阶段是独立运行在localhost的一个端口上的，而后端服务器又运行在另一个地址上，由于同源策略，会出现跨域</p></li><li><p>所以使用代理，【浏览器发送请求】—&gt; 【中间服务器】—-&gt;【服务器】</p></li><li><p>服务器和服务器之间是不会存在跨域资源问题</p></li></ul><ol start="11"><li><p>设置了 Access-Control-Allow-Credentials和withCredentials为什么cookie还是没能成功跨域?</p><p>浏览器端要跨域</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111620.webp" alt="img"></p><p>服务器端要检查</p><p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111712.webp" alt="img"></p><p>最重要的是<code>Access-Control-Allow-Origin</code>,标识允许哪个域的请求</p><p>(1) <code>Access-Control-Allow-Origin:*</code>设置*浏览器将不会发送cookies，即使设置了<code>withCredentials</code></p><div class="note note-secondary">            <p>因为这意味着把cookies开放给所有网站</p><p>假设当前是A网站,并且在cookie里写入了身份凭证 用户同时打开了B网站, 那么B网站给A网站的服务器发的所有请求都是以A用户的身份进行的, 这将导致CSRF问题</p>          </div><p><code>withCredentials</code>：表示<code>XHR</code>是否接收cookies和发送cookies</p><p>(2) <code>Access-Control-Allow-Origin:xxx</code>指定域</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/zhilili/p/14738262.html">webpack(六）——webpack 解决跨域的原理</a></p><p><a href="https://www.jianshu.com/p/89a377c52b48">没错，就是Access-Control-Allow-Origin，跨域</a></p><p><a href="https://www.jianshu.com/p/f049ac7e2220">什么是跨域？如何实现？</a></p></li></ol>]]></content>
     
     
     <categories>
@@ -3247,12 +3018,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>灵魂3问</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3300,12 +3065,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>跳台阶</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3355,12 +3114,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>立即执行函数</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3409,12 +3162,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>分析执行顺序</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3435,12 +3182,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>执行顺序</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3463,12 +3204,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>说输出</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3489,12 +3224,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3517,12 +3246,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3543,12 +3266,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3571,12 +3288,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3597,12 +3308,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3625,12 +3330,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3652,12 +3351,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3667,7 +3360,7 @@
     <link href="/%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE/vue-adminvue-admin-03Router/"/>
     <url>/%E7%BB%83%E4%B9%A0%E9%A1%B9%E7%9B%AE/vue-adminvue-admin-03Router/</url>
     
-    <content type="html"><![CDATA[<ol><li><p>push()方法的调用</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">&#x27;home&#x27;</span>) <span class="hljs-comment">// 跳转到home界面 字符串</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;home&#x27;</span>&#125;) <span class="hljs-comment">// 跳转到home界面 对象</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">userId</span>:<span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;) <span class="hljs-comment">// 命名路由</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;register&#x27;</span>,<span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">plan</span>:private&#125;&#125;) <span class="hljs-comment">// 查询参数</span><br></code></pre></div></td></tr></table></figure></li><li><p>如果提供了path，param会被忽略，可以理解成<code>path---&gt;query</code>   <code>name---&gt;params</code></p></li><li><p>代替的是下面的这种写法</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> userId = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">`/user/<span class="hljs-subst">$&#123;userId&#125;</span>`</span>&#125;)  <span class="hljs-comment">// /user/123</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;userId&#125;) <span class="hljs-comment">// user/123</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;userId&#125;&#125;) <span class="hljs-comment">// /user params不生效</span><br></code></pre></div></td></tr></table></figure></li><li><p>路由的传参方式</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-number">1</span>、手写完整的 path:<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>: <span class="hljs-string">`/user/<span class="hljs-subst">$&#123;userId&#125;</span>`</span>&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.params.userId<br><span class="hljs-number">2</span>、用 params 传递：<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.params.userId<br> <br>    url 形式：url 不带参数，http:localhost:<span class="hljs-number">8080</span>/#/user<br><span class="hljs-number">3</span>、用 query 传递：<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>, <span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.query.userId<br> <br>    url 形式：url 带参数，http:localhost:<span class="hljs-number">8080</span>/#/user?userId=<span class="hljs-number">12</span><br></code></pre></div></td></tr></table></figure><p><code>query</code> 相当于 <code>get</code>请求，页面跳转的时候可以在地址栏看到请求参数，<code>params</code> 相当于 <code>post</code>请求，参数不在地址栏中显示。</p><p>以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>【2022-3-19补充】</p><p>（1）直接携带式： 页面刷新数据不会丢失</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">methods: &#123;<br>    <span class="hljs-function"><span class="hljs-title">test</span>(<span class="hljs-params">id</span>)</span>&#123;<br>        <span class="hljs-built_in">this</span>.$router.push(&#123;<br>            <span class="hljs-attr">path</span>: <span class="hljs-string">`/user/<span class="hljs-subst">$&#123;id&#125;</span>`</span><br>        &#125;)<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>路由配置：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&#123;<br>     <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user/:id&#x27;</span>,<br>     <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;user&#x27;</span>,<br>     <span class="hljs-attr">component</span>: user<br>   &#125;<br></code></pre></div></td></tr></table></figure><p>获取路由：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$route.params.id<br></code></pre></div></td></tr></table></figure><p>(2) 用params传参(相当于post，url中不显示参数，强制刷新参数消失)</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">methods: &#123;<br>    <span class="hljs-function"><span class="hljs-title">test</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">this</span>.$router.push(&#123;<br>            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;/user&#x27;</span>,<br>            <span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">id</span>:<span class="hljs-string">&#x27;1&#x27;</span>&#125;<br>        &#125;)<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>路由配置：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&#123;<br>     <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user&#x27;</span>,<br>     <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;user&#x27;</span>,<br>     <span class="hljs-attr">component</span>: user<br>   &#125;<br></code></pre></div></td></tr></table></figure><p>获取参数：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$route.params.id<br></code></pre></div></td></tr></table></figure><p>（3）query传递：相当于get请求，在url中看得到参数，强制刷新参数不会消失</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">methods: &#123;<br>    <span class="hljs-function"><span class="hljs-title">test</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-built_in">this</span>.$router.push(&#123;<br>            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user&#x27;</span>,<br>            <span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">id</span>:<span class="hljs-string">&#x27;1&#x27;</span>&#125;<br>        &#125;)<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>路由配置：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&#123;<br>     <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user&#x27;</span>,<br>     <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;user&#x27;</span>,<br>     <span class="hljs-attr">component</span>: user<br>   &#125;<br></code></pre></div></td></tr></table></figure><p>获取路由：</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$route.query.id<br></code></pre></div></td></tr></table></figure><ol><li><p>push()方法的调用</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">this</span>.$router.push(<span class="hljs-string">&#x27;home&#x27;</span>) <span class="hljs-comment">// 跳转到home界面 字符串</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;home&#x27;</span>&#125;) <span class="hljs-comment">// 跳转到home界面 对象</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">userId</span>:<span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;) <span class="hljs-comment">// 命名路由</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;register&#x27;</span>,<span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">plan</span>:private&#125;&#125;) <span class="hljs-comment">// 查询参数</span><br></code></pre></div></td></tr></table></figure></li><li><p>如果提供了path，param会被忽略，可以理解成<code>path---&gt;query</code>   <code>name---&gt;params</code></p></li><li><p>代替的是下面的这种写法</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">const</span> userId = <span class="hljs-string">&#x27;123&#x27;</span>;<br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">`/user/<span class="hljs-subst">$&#123;userId&#125;</span>`</span>&#125;)  <span class="hljs-comment">// /user/123</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;userId&#125;) <span class="hljs-comment">// user/123</span><br><span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>,<span class="hljs-attr">params</span>:&#123;userId&#125;&#125;) <span class="hljs-comment">// /user params不生效</span><br></code></pre></div></td></tr></table></figure></li><li><p>路由的传参方式</p><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-number">1</span>、手写完整的 path:<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>: <span class="hljs-string">`/user/<span class="hljs-subst">$&#123;userId&#125;</span>`</span>&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.params.userId<br><span class="hljs-number">2</span>、用 params 传递：<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-attr">params</span>:&#123;<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.params.userId<br> <br>    url 形式：url 不带参数，http:localhost:<span class="hljs-number">8080</span>/#/user<br><span class="hljs-number">3</span>、用 query 传递：<br> <br>    <span class="hljs-built_in">this</span>.$router.push(&#123;<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>, <span class="hljs-attr">query</span>:&#123;<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;123&#x27;</span>&#125;&#125;);<br> <br>    获取参数：<span class="hljs-built_in">this</span>.$route.query.userId<br> <br>    url 形式：url 带参数，http:localhost:<span class="hljs-number">8080</span>/#/user?userId=<span class="hljs-number">12</span><br></code></pre></div></td></tr></table></figure><p><code>query</code> 相当于 <code>get</code>请求，页面跳转的时候可以在地址栏看到请求参数，<code>params</code> 相当于 <code>post</code>请求，参数不在地址栏中显示。</p><p>以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。</p></li></ol>]]></content>
     
     
     <categories>
@@ -3678,12 +3371,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3706,12 +3393,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3732,12 +3413,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3760,12 +3435,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3786,12 +3455,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3814,12 +3477,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3840,12 +3497,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3868,12 +3519,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3894,12 +3539,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Projects</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3922,12 +3561,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -3948,12 +3581,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -3976,12 +3603,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4002,12 +3623,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4030,12 +3645,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4056,12 +3665,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4084,12 +3687,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4110,12 +3707,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4138,12 +3729,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4164,12 +3749,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4192,12 +3771,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4218,12 +3791,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4246,12 +3813,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4272,12 +3833,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4300,12 +3855,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4326,12 +3875,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4354,12 +3897,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4380,12 +3917,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4408,12 +3939,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4434,12 +3959,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4462,12 +3981,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4488,12 +4001,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4516,12 +4023,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4542,12 +4043,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>流体布局</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4570,12 +4065,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>双飞翼布局</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4596,12 +4085,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>圣杯布局</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4624,12 +4107,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4650,12 +4127,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4678,12 +4149,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4704,12 +4169,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4732,12 +4191,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4758,12 +4211,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4786,12 +4233,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4812,12 +4253,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4840,12 +4275,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4866,12 +4295,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4894,12 +4317,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4920,12 +4337,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -4948,12 +4359,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -4974,12 +4379,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5002,12 +4401,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5028,12 +4421,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5056,12 +4443,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5082,12 +4463,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5110,12 +4485,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5136,12 +4505,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5164,12 +4527,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5190,12 +4547,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5218,12 +4569,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5244,12 +4589,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5272,12 +4611,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5298,12 +4631,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5326,12 +4653,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5352,12 +4673,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5380,12 +4695,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5406,12 +4715,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5434,12 +4737,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5460,12 +4757,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5488,12 +4779,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5514,12 +4799,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5542,12 +4821,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5568,12 +4841,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5598,12 +4865,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5624,12 +4885,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5652,12 +4907,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5678,12 +4927,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5706,12 +4949,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5732,12 +4969,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5762,12 +4993,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5791,12 +5016,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5817,12 +5036,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5845,12 +5058,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5871,12 +5078,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5899,12 +5100,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5925,12 +5120,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -5953,12 +5142,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -5979,12 +5162,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6007,12 +5184,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6033,12 +5204,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6063,12 +5228,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6092,12 +5251,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6120,12 +5273,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6175,12 +5322,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6201,12 +5342,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6229,12 +5364,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6255,12 +5384,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6283,12 +5406,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6309,12 +5426,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6337,12 +5448,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Vue</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6363,12 +5468,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Vue</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6393,12 +5492,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6421,12 +5514,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6451,12 +5538,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6479,12 +5560,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6509,12 +5584,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6537,12 +5606,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6567,12 +5630,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6595,12 +5652,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6625,12 +5676,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6653,12 +5698,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6683,12 +5722,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6711,12 +5744,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6741,12 +5768,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Ts</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6767,12 +5788,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6795,12 +5810,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6822,12 +5831,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -6848,12 +5851,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -6923,12 +5920,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
     
   </entry>
   
@@ -7005,12 +5996,6 @@
     </categories>
     
     
-    <tags>
-      
-      <tag>Vue</tag>
-      
-    </tags>
-    
   </entry>
   
   
@@ -7031,12 +6016,6 @@
       
     </categories>
     
-    
-    <tags>
-      
-      <tag>Vue</tag>
-      
-    </tags>
     
   </entry>
   

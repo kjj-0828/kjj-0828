@@ -72,7 +72,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>小孔爱财~取之有道~~</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -91,7 +91,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                我的首页
               </a>
             </li>
           
@@ -103,7 +103,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                成果
+                相关成果
               </a>
             </li>
           
@@ -115,7 +115,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                知识分类
               </a>
             </li>
           
@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                智慧标签
               </a>
             </li>
           
@@ -139,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                关于小孔
               </a>
             </li>
           
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      465 字
+      647 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      7
        分钟
     </span>
   
@@ -246,34 +246,42 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 2, 2022 pm
+                  本文最后更新于：March 20, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
-<li><p>什么是vuex</p>
-<ul>
+              <p>【2022-3-20补充】</p>
+<hr>
+<p>（1）vuex通过全局注入store对象的方式，来实现状态共享</p>
+<p>（2）store是怎么挂载注入到组件中的？</p>
+<p>store通过vue的mixin混入机制，在vue的beforeCreate钩子函数之前混入vuexinit()方法；vueinit()方法实现将store对象注入vue组件实例中，并注册了store的引用属性$store。</p>
+<p>（3）state和getters是怎么映射到组件中来响应式的更新状态的？</p>
+<p>（3）vuex的state和getters是怎么映射到组件中来响应式的更新状态的？</p>
+<p>state是利用vue的data响应式，将store的state存入vue实例组件的data中；Vuex的getters是借助vue的computed属性实现数据的实时监听。</p>
+<p>【参考】</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903784708046855">深入vuex原理(上)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903784703852551">深入vuex原理(下)</a></p>
+<hr>
+<ol>
+<li>什么是vuex<ul>
 <li>vuex是vue.js的状态管理模式</li>
 <li>将组件的共享状态抽取出来，以一个全局单例模式进行管理</li>
 <li>每一个vuex应用的核心就是store</li>
 </ul>
 </li>
-<li><p>vuex与单纯的全局变量的不同点</p>
-<ul>
+<li>vuex与单纯的全局变量的不同点<ul>
 <li>vuex的状态管理是响应式的</li>
 <li>不能直接改变store中的状态值，必须通过显示提交到mutation的方式</li>
 </ul>
 </li>
-<li><p>state:单一状态树</p>
-<ul>
+<li>state:单一状态树<ul>
 <li>从store实例中读取状态最简单的方法就是在计算属性中返回这个状态</li>
 <li>通过根组件注册store，该store会注册到所有的子组件中</li>
 <li>mapState辅助函数</li>
 </ul>
 </li>
-<li><p>getter</p>
-<ul>
+<li>getter<ul>
 <li>getter可以理解换成store的计算属性，</li>
 <li>getter的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生改变的才会重新计算</li>
 <li>getter接受state作为它的第一个参数</li>
@@ -285,16 +293,14 @@
 <li>mapGetters辅助函数将store的getter映射到局部计算属性中</li>
 </ul>
 </li>
-<li><p>mutation</p>
-<ul>
+<li>mutation<ul>
 <li>每一个mutation都有一个事件类型(方法名)和一个回调函数</li>
 <li>回调函数接受state作为第一个参数</li>
 <li>可以向store.commit()中传入额外的参数</li>
 <li>mutation必须是同步函数</li>
 </ul>
 </li>
-<li><p>action</p>
-<ul>
+<li>action<ul>
 <li>action提交到mutation</li>
 <li>action中可以包含任何异步操作</li>
 <li>action通过store.dispatch()触发</li>
@@ -302,8 +308,7 @@
 <li>store.dispatch可以触发多个action函数，触发的函数都结束以后，才可以执行返回的Promise操作</li>
 </ul>
 </li>
-<li><p>modules</p>
-<ul>
+<li>modules<ul>
 <li>将store的管理模块化</li>
 </ul>
 </li>
@@ -347,7 +352,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jsmjs-js%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A8%A1%E5%BC%8F/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-js函数调用模式</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">前の記事</span>
                       </a>
                     
                   </article>
@@ -356,7 +361,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jsmjs-%E4%B9%B0%E8%82%A1%E7%A5%A8/">
                         <span class="hidden-mobile">js-买股票</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">次の記事</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -373,7 +378,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;ディレクトリ</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -399,7 +404,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -408,7 +413,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">キーワード</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

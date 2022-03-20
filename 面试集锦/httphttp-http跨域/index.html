@@ -72,7 +72,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>晶晶孔~</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>小孔爱财~取之有道~~</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -91,7 +91,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                我的首页
               </a>
             </li>
           
@@ -103,7 +103,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                成果
+                相关成果
               </a>
             </li>
           
@@ -115,7 +115,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                知识分类
               </a>
             </li>
           
@@ -127,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                智慧标签
               </a>
             </li>
           
@@ -139,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                关于小孔
               </a>
             </li>
           
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.7k 字
+      1.8k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      21
        分钟
     </span>
   
@@ -246,12 +246,17 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 2, 2022 pm
+                  本文最后更新于：March 20, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
+              <p>【2022-3-19补充】</p>
+<hr>
+<p>跨域的解决方法：</p>
+<p>1、 通过jsonp跨域<br>2、 document.domain + iframe跨域<br>3、 location.hash + iframe<br>4、 window.name + iframe跨域<br>5、 postMessage跨域<br>6、 跨域资源共享（CORS Cross-origin resource sharing）<br>7、 nginx代理跨域<br>8、 nodejs中间件代理跨域（node + webpack + webpack-dev-server）<br>9、 WebSocket协议跨域</p>
+<hr>
+<ol>
 <li><p>请求类型</p>
 <p>请求类型有8种：</p>
 <p>get:(select)从服务器请求数据，(给的少拿的多)</p>
@@ -278,7 +283,7 @@
 <p>(3)Node中间件代理(两次跨域)</p>
 <p>(4) Nginx反向代理</p>
 </li>
-<li><p>同源策略限制的内容</p>
+<li><p>在非同源时，一下情况收到限制，无法共享</p>
 <p>(1)Cookie、LocalStorage、IndexedDB等存储性内容</p>
 <p>(2) DOM节点</p>
 <p>(3) AJAX请求不能发送</p>
@@ -299,16 +304,13 @@
 <p>(2) JQuery中实现跨域</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本一)</span><br><br>&lt;script&gt;<br>$.getJSON(<span class="hljs-string">&#x27;http://example.com/data.php?callback=?&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(data);<br>&#125;);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure>
 
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本二)</span><br><br>$.ajax(&#123;<br><br>    <span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://www.xxx.com/login&#x27;</span>,<br><br>    <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;GET&#x27;</span>,<br><br>    <span class="hljs-attr">dataType</span>:<span class="hljs-string">&#x27;jsonp&#x27;</span>,<span class="hljs-comment">//请求方式为jsonp</span><br><br>    <span class="hljs-attr">jsonpCallback</span>:<span class="hljs-string">&#x27;callback&#x27;</span>,<br><br>&#125;)<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">res</span>) </span>&#123;<br><br>  <span class="hljs-built_in">console</span>.log(res);<br><br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
-</ol>
-<blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//jquery实现方式(版本二)</span><br><br>$.ajax(&#123;<br><br>    <span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;http://www.xxx.com/login&#x27;</span>,<br><br>    <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;GET&#x27;</span>,<br><br>    <span class="hljs-attr">dataType</span>:<span class="hljs-string">&#x27;jsonp&#x27;</span>,<span class="hljs-comment">//请求方式为jsonp</span><br><br>    <span class="hljs-attr">jsonpCallback</span>:<span class="hljs-string">&#x27;callback&#x27;</span>,<br><br>&#125;)<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">res</span>) </span>&#123;<br><br>  <span class="hljs-built_in">console</span>.log(res);<br><br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
 <p>JQuery会自动生成一个全局函数来代替callback=？中的问号，之后获取数据以后又会自动销毁，实际上就是起到一个临时函数的作用，<code>$.getJSON</code>会自动判断跨域，如果不存在跨域，会自动调用ajax，如果存在跨域，会利用异步加载的方式调用Jsonp中的回调函数</p>
-</blockquote>
-<ol>
-<li><p>jsonp的缺点</p>
-<p>(1) 任只要用这种方式，任何页面都可以访问b页面的数据，存在安全性问题</p>
-<p>(2)只能发送get请求，不能发送post请求</p>
-<p>(3)可能会被注入恶意代码，篡改页面内容</p>
+<p>  jsonp的缺点</p>
+<p> (1) 任只要用这种方式，任何页面都可以访问b页面的数据，存在安全性问题</p>
+<p> (2)只能发送get请求，不能发送post请求</p>
+<p> (3)可能会被注入恶意代码，篡改页面内容</p>
 </li>
 <li><p>使用CROS方式</p>
 <p>(1)允许浏览器向跨域资源服务器发送XMLHttpRequest请求</p>
@@ -317,10 +319,12 @@
 <p>(3)然后a就可以用ajax获取b里面的数据了</p>
 </li>
 <li><p>webpack解决跨域</p>
-<p>(1) webpack proxy </p>
-<p>(2) 接受客户端发送的请求以后转发给其他服务器，目的是便于开发者在开发的模式下解决跨域问题</p>
-<p>(3) 实现代理，必须有一个中间件服务器，webpack提供的中间件服务器webpack-dev-server只适用于开发阶段</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ./webpack.config.js</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>  <span class="hljs-attr">devServer</span>: &#123;<br>        <span class="hljs-comment">// host: &#x27;0.0.0.0&#x27;,</span><br>        <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启热点 */</span><br>        <span class="hljs-attr">inline</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启页面自动刷新 */</span><br>        <span class="hljs-attr">progress</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 显示打包的进度 */</span><br>        <span class="hljs-attr">disableHostCheck</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">// port:8080,</span><br>        <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">watchOptions</span>: &#123;<br>            <span class="hljs-attr">aggregateTimeout</span>: <span class="hljs-number">300</span><br>        &#125;,<br>        <span class="hljs-attr">proxy</span>: &#123;<br>            <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>                <span class="hljs-comment">// target: &#x27;http://100.64.34.171:8081&#x27;, /* 后台服务器地址 */</span><br>                <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;http://127.0.0.1:8086&#x27;</span>,<br>                <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">ws</span>: <span class="hljs-literal">false</span>,<br>                <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span><br>                 <span class="hljs-comment">/* pathRewrite: &#123;</span><br><span class="hljs-comment">                    &#x27;^/api&#x27;: &#x27;&#x27; // 这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用&#x27;http://40.00.100.100:3002/user/add&#x27;，直接写‘/api/user/add’即可</span><br><span class="hljs-comment">                &#125;*/</span><br>            &#125;<br>        &#125;<br>    &#125;,<br></code></pre></div></td></tr></table></figure>
+</li>
+</ol>
+<p>   (1) webpack proxy </p>
+<p>   (2) 接受客户端发送的请求以后转发给其他服务器，目的是便于开发者在开发的模式下解决跨域问题</p>
+<p>   (3) 实现代理，必须有一个中间件服务器，webpack提供的中间件服务器webpack-dev-server只适用于开发阶段</p>
+   <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// ./webpack.config.js</span><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>  <span class="hljs-attr">devServer</span>: &#123;<br>        <span class="hljs-comment">// host: &#x27;0.0.0.0&#x27;,</span><br>        <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启热点 */</span><br>        <span class="hljs-attr">inline</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 开启页面自动刷新 */</span><br>        <span class="hljs-attr">progress</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">/* 显示打包的进度 */</span><br>        <span class="hljs-attr">disableHostCheck</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">// port:8080,</span><br>        <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">watchOptions</span>: &#123;<br>            <span class="hljs-attr">aggregateTimeout</span>: <span class="hljs-number">300</span><br>        &#125;,<br>        <span class="hljs-attr">proxy</span>: &#123;<br>            <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;<br>                <span class="hljs-comment">// target: &#x27;http://100.64.34.171:8081&#x27;, /* 后台服务器地址 */</span><br>                <span class="hljs-attr">target</span>: <span class="hljs-string">&#x27;http://127.0.0.1:8086&#x27;</span>,<br>                <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">ws</span>: <span class="hljs-literal">false</span>,<br>                <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span><br>                 <span class="hljs-comment">/* pathRewrite: &#123;</span><br><span class="hljs-comment">                    &#x27;^/api&#x27;: &#x27;&#x27; // 这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用&#x27;http://40.00.100.100:3002/user/add&#x27;，直接写‘/api/user/add’即可</span><br><span class="hljs-comment">                &#125;*/</span><br>            &#125;<br>        &#125;<br>    &#125;,<br></code></pre></div></td></tr></table></figure>
 
 <ul>
 <li>target:表示代理到的目标地址</li>
@@ -328,7 +332,7 @@
 <li>secure默认情况下不接受转发到https服务器上，如果需要，设为false</li>
 <li>changeOrigin: 它是表示是否更新代理后请求的 headers 中的 host 地址</li>
 </ul>
-<p>(4)实现原理</p>
+<p>   (4)实现原理</p>
 <ul>
 <li><p>proxy实际上利用<code>http-proxy-middleware </code>这个中间件，实现请求转发给其他服务器</p>
 </li>
@@ -343,7 +347,7 @@
 <li><p>服务器和服务器之间是不会存在跨域资源问题</p>
 </li>
 </ul>
-</li>
+<ol start="11">
 <li><p>设置了 Access-Control-Allow-Credentials和withCredentials为什么cookie还是没能成功跨域?</p>
 <p>浏览器端要跨域</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210824111620.webp" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -401,7 +405,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss-04%E6%A0%B7%E5%BC%8F%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">css-04样式执行顺序</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">前の記事</span>
                       </a>
                     
                   </article>
@@ -410,7 +414,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss-04%E7%9B%92%E6%A8%A1%E5%9E%8B/">
                         <span class="hidden-mobile">css-04盒模型</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">次の記事</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -427,7 +431,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;ディレクトリ</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -453,7 +457,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -462,7 +466,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">キーワード</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
