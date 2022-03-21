@@ -14,13 +14,29 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="LeetCode-相交链表">
   <meta name="author" content="kjj">
   <meta name="keywords" content="">
   
-  <title>Tags - 回文序列 - kjj</title>
+  <title>LeetCode-相交链表 - kjj</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -52,7 +68,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -151,17 +167,63 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Tag - 回文序列">
+            <span class="h2" id="subtitle" title="LeetCode-相交链表">
               
             </span>
 
             
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-21 21:14" pubdate>
+        March 21, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      272 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -170,40 +232,103 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">1 posts in total.</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E5%9B%9E%E6%96%87%E5%BA%8F%E5%88%97/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">LeetCode-回文序列</span>
-      <time style="float: right;">03-20</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">LeetCode-相交链表</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 21, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <ol>
+<li><p>set方法判断重复</p>
+<p>A链先存入set中，然后存入B链，如果B链重复，跳出循环，取出B链当前值</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> getIntersectionNode = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">headA, headB</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();<br>    <span class="hljs-keyword">let</span> p = headA;<br>    <span class="hljs-keyword">while</span> (p != <span class="hljs-literal">null</span>) &#123;<br>        set.add(p);<br>        p = p.next;<br>    &#125;<br>    p = headB;<br>    <span class="hljs-keyword">while</span> (p) &#123;<br>        <span class="hljs-keyword">if</span> (set.has(p)) &#123;<br>            <span class="hljs-keyword">return</span> p;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            set.add(p);<br>            p = p.next;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>双指针</p>
+<p>得到双链的长度，2个指针从相同的位置开始遍历2条链，如果相同，存在相交点，如果不相同，遍历完，返回null</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsLen</span>(<span class="hljs-params">head</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> len = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (head) &#123;<br>        len++;<br>        head = head.next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> len;<br>&#125;<br><span class="hljs-keyword">var</span> getIntersectionNode = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">headA, headB</span>) </span>&#123;<br>    <span class="hljs-comment">// 指针从相同的位置开始遍历</span><br>    <span class="hljs-keyword">let</span> lenA = jsLen(headA);<br>    <span class="hljs-keyword">let</span> lenB = jsLen(headB);<br>    <span class="hljs-comment">// 交换链条，使得headA是长链，lenA是大值</span><br>    <span class="hljs-keyword">if</span> (lenA &lt; lenB) &#123;<br>        [headA, headB] = [headB, headA];<br>        [lenA, lenB] = [lenB, lenA];<br>    &#125;<br>    <span class="hljs-comment">// 计算差值</span><br>    <span class="hljs-keyword">let</span> i = lenA - lenB;<br>    <span class="hljs-comment">// 保证A链从和B链相同的位置开始遍历</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt; i; j++) &#123;<br>        headA = headA.next;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (headA &amp;&amp; headA != headB) &#123;<br>        headA = headA.next;<br>        headB = headB.next;<br>    &#125;<br>    <span class="hljs-comment">// headA和headB相同，或者headA遍历完，那就是null</span><br>    <span class="hljs-keyword">return</span> headA;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+</ol>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode/">LeetCode</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">LeetCode-多数元素</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/%E9%9D%A2%E8%AF%95%E7%AE%97%E6%B3%95%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0/">
+                        <span class="hidden-mobile">LeetCode-青蛙跳台</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -218,7 +343,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -227,7 +352,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -366,9 +491,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
@@ -446,9 +577,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 

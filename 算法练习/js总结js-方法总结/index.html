@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      331 字
+      1.3k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      19
        分钟
     </span>
   
@@ -246,12 +246,90 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 2, 2022 pm
+                  本文最后更新于：March 21, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="一、every"><a href="#一、every" class="headerlink" title="一、every"></a>一、every</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 1.every()方法：判断年龄是否都大于18岁</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">everyFun</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> arr.every(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> item &gt;= <span class="hljs-number">18</span>;<br>    &#125;)<br>&#125;<br></code></pre></div></td></tr></table></figure>
+              <p>【2022-3-20补充】</p>
+<h2 id="一、forEach"><a href="#一、forEach" class="headerlink" title="一、forEach"></a>一、forEach</h2><ul>
+<li>forEach没有返回值，永远返回是undefined，</li>
+<li>如果使用值类型修改，原数组不会改变，如果使用下标方式或者引用类型改变原数组会改变</li>
+<li>无法使用return、break退出循环，必须遍历完数组，自己结束</li>
+</ul>
+<p>（1） forEach遍历的是基本类型，而且不是通过下标修改的方式，不会影响原数组</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.forEach(<span class="hljs-function">(<span class="hljs-params">el, index, arr</span>) =&gt;</span> &#123;<br>    el = el * <span class="hljs-number">2</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// undefined 返回值</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">//[ 1, 2, 3, 4,5, 6, 7, 8]</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（2）forEach遍历的是基本类型，通过下标修改的方式，会影响原数组</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.forEach(<span class="hljs-function">(<span class="hljs-params">el, index, arr</span>) =&gt;</span> &#123;<br>    arr[index] = el * <span class="hljs-number">2</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// undefined 返回值</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [2,  4,  6,  8, 10, 12, 14, 16]</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（3）forEach遍历的是引用类型，会影响原数组</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [&#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">1</span> &#125;, &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;jake&#x27;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">2</span> &#125;];<br>arr.forEach(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    el.age += <span class="hljs-number">10</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&#123; name: &#x27;tom&#x27;, age: 11 &#125;,&#123; name: &#x27;jake&#x27;, age: 12 &#125;]</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="二、map"><a href="#二、map" class="headerlink" title="二、map"></a>二、map</h2><ul>
+<li>map中如果使用return则有返回值，如果没有使用，则返回undefined</li>
+<li>map如果使用值类型修改，原数组不会改变，如果使用下标方式或者引用类型改变原数组会改变</li>
+<li>map不可以使用return或者break退出</li>
+</ul>
+<p>（1）map遍历基本数据类型，且使用return返回值，原数组不变</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.map(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> el * <span class="hljs-number">2</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  [2,  4,  6,  8,10, 12, 14, 16] 因为使用return所以有返回值</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">//[ 1, 2, 3, 4,5, 6, 7, 8] </span><br></code></pre></div></td></tr></table></figure>
+
+<p>（2）map遍历基本类型，使用下标方式，原数组发生改变</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.map(<span class="hljs-function">(<span class="hljs-params">el, index</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> arr[index] = el * <span class="hljs-number">2</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  [2,  4,  6,  8,10, 12, 14, 16] 因为使用return所以有返回值</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [2,  4,  6,  8,10, 12, 14, 16]  原数组发生变化</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（3）map遍历引用类型，原数组发生改变</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [&#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom&#x27;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">1</span> &#125;, &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;jake&#x27;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">2</span> &#125;];<br><span class="hljs-keyword">let</span> res = arr.map(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    el.age += <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">return</span> el;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res);  <span class="hljs-comment">// [ &#123; name: &#x27;tom&#x27;, age: 11 &#125;, &#123; name: &#x27;jake&#x27;, age: 12 &#125; ]</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [&#123; name: &#x27;tom&#x27;, age: 11 &#125;,&#123; name: &#x27;jake&#x27;, age: 12 &#125;]</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="三、every"><a href="#三、every" class="headerlink" title="三、every"></a>三、every</h2><ul>
+<li>如果所有项都满足，返回true，有一项不满足，返回false，不再遍历之后的数据项；空数组返回true</li>
+<li>如果使用下标方式或者引用类型改变原数组会改变</li>
+<li>只要回调函数返回的是false，循环立刻终止</li>
+</ul>
+<p>（1）判断基本类型</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.every(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> el &gt; <span class="hljs-number">0</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  true</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 7, 8]  原数组不发生改变</span><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.every(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(el);  <span class="hljs-comment">// 当检测到1 不符合时，返回false，后面的数据项不在执行</span><br>    <span class="hljs-keyword">return</span> el &gt; <span class="hljs-number">3</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  false</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 7, 8]  原数组不发生改变</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="四、Some"><a href="#四、Some" class="headerlink" title="四、Some"></a>四、Some</h2><ul>
+<li>如果有一项都满足，返回true；所有项都不满足，返回false，不再遍历之后的数据项；空数组返回false</li>
+<li>如果使用下标方式或者引用类型改变原数组会改变</li>
+<li>只要回调函数返回的是true，循环立刻终止</li>
+</ul>
+<p>（1） 返回true</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.some(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(el);  <span class="hljs-comment">// 当检测到1,2,3,4  4符合时，返回true，后面的数据项不在执行</span><br>    <span class="hljs-keyword">return</span> el &gt; <span class="hljs-number">3</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  true</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 7, 8]  原数组不发生改变</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（2） 返回false</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.some(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> el &gt; <span class="hljs-number">10</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  false</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 7, 8]  原数组不发生改变</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="一、every"><a href="#一、every" class="headerlink" title="一、every"></a>一、every</h2><figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 1.every()方法：判断年龄是否都大于18岁</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">everyFun</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> arr.every(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> item &gt;= <span class="hljs-number">18</span>;<br>    &#125;)<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>案例：</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 方法二：</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr1 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;*&#125;</span> </span>arr2 </span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns </span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">arrsEqual</span>(<span class="hljs-params">arr1, arr2</span>) </span>&#123;<br>    <span class="hljs-comment">// 1.数组长度相等的基础</span><br>    <span class="hljs-comment">// 2.判断数组1和数组2的成员是否相同</span><br>    <span class="hljs-comment">// 3.every()函数对数组的每一项执行函数，如果都满足返回true</span><br>    <span class="hljs-comment">// 4.some()函数对数组的每一项执行函数，如果有一项满足返回true</span><br>    <span class="hljs-keyword">return</span> arr1.length === arr2.length &amp;&amp; arr1.every(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =&gt;</span> &#123;<br>        <span class="hljs-keyword">return</span> item === arr2[index];<br>    &#125;)<br>&#125;<br><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-built_in">console</span>.log(arrsEqual(arr1, arr2));<span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure>
@@ -277,13 +355,6 @@
                   </div>
                 
                 
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/js%E6%96%B9%E6%B3%95/">js方法</a>
-                    
-                  </div>
-                
               </div>
               
                 <p class="note note-warning">
@@ -300,7 +371,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-红宝书-什么是javascript</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -309,7 +380,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
                         <span class="hidden-mobile">js-02快速排序</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -352,7 +423,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -361,7 +432,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
