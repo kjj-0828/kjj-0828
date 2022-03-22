@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      158 字
+      109 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      1
        分钟
     </span>
   
@@ -253,14 +253,7 @@
             <div class="markdown-body">
               <ol>
 <li><p>采用迭代</p>
-<p>定义空指针p，做为新链</p>
-<p>定义q指向当前链</p>
-<p>定义next指向q的下一个</p>
-<p>q指针指向p指针</p>
-<p>p指针指向q指针</p>
-<p>q指针指向next</p>
-<p>返回p</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> reverseList = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">head</span>) </span>&#123;<br>    <span class="hljs-keyword">let</span> p = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">let</span> q = head;<br>    <span class="hljs-keyword">while</span> (q) &#123;<br>        <span class="hljs-comment">//保存后节点</span><br>        <span class="hljs-keyword">let</span> next = q.next;<br>        <span class="hljs-comment">// 断开前节点</span><br>        q.next = p;<br>        <span class="hljs-comment">// 更新头节点</span><br>        p = q;<br>        <span class="hljs-comment">// 指针后移</span><br>        q = next;<br>    &#125;<br>    <span class="hljs-keyword">return</span> p;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> reverseList = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">head</span>) </span>&#123;<br>       <span class="hljs-keyword">let</span> p = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">let</span> q = head;<br>       <span class="hljs-keyword">while</span> (q) &#123;<br>        <span class="hljs-comment">//保存后节点</span><br>           <span class="hljs-keyword">let</span> next = q.next;<br>        <span class="hljs-comment">// 断开前节点</span><br>           q.next = p;<br>        <span class="hljs-comment">// 更新头节点</span><br>           p = q;<br>        <span class="hljs-comment">// 指针后移</span><br>           q = next;<br>    &#125;<br>       <span class="hljs-keyword">return</span> p;<br>   &#125;;<br></code></pre></div></td></tr></table></figure></li>
 <li><p>采用翻转字符串的思想，直接翻转链表，</p>
 <p>有点类似c中的尾插法</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> reverseList = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">head</span>) </span>&#123;<br>    <span class="hljs-comment">//    翻转值</span><br>    <span class="hljs-keyword">let</span> ans = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x = head; x != <span class="hljs-literal">null</span>; x = x.next) &#123;<br>        ans = <span class="hljs-keyword">new</span> ListNode(x.val, ans);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;;<br></code></pre></div></td></tr></table></figure></li>
@@ -297,7 +290,7 @@
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8D%95%E8%AF%8D/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">LeetCode-翻转字符串单词</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -306,7 +299,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/">
                         <span class="hidden-mobile">LeetCode-多数元素</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -323,7 +316,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -349,7 +342,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -358,7 +351,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">關鍵字</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
