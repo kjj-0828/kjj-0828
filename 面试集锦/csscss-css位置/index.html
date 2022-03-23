@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      426 字
+      470 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      6
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 20, 2022 pm
+                  本文最后更新于：March 22, 2022 pm
                 
               </p>
             
@@ -255,11 +255,11 @@
 <hr>
 <ol>
 <li><p>relative定位</p>
-<p>relative相对自己默认的位置。定位基点是自己默认位置</p>
+<p>relative相对自己默认的位置。定位基点是自己默认位置；必须搭配<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>这四个属性一起使用</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220318123922.png" srcset="/img/loading.gif" lazyload alt="image-20220318123921923"></p>
 </li>
 <li><p>absolute定位</p>
-<p>absolute相对于上级元素一般是父元素进行定位，有限制条件是父元素的定位不能是static，定位基点：上级元素（一般是父元素）</p>
+<p>absolute相对于上级元素一般是父元素进行定位，有限制条件是父元素的定位不能是static，定位基点：上级元素（一般是父元素）；<code>absolute</code>定位也必须搭配<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>这四个属性一起使用。</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;relative&quot;</span>&gt;<br>    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;absolute&quot;</span>&gt;</span>son<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
 
 <figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-class">.relative</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>&#125;<br>   <br><span class="hljs-selector-class">.absolute</span> &#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
@@ -278,7 +278,7 @@
 <p>当滑动到某一点时，发生固定</p>
 <p>有效规则：</p>
 <p>父级的overflow必须是visible</p>
-<p>必须设置top、left、right、bottom其中某个属性</p>
+<p>必须搭配<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>这四个属性一起使用，不能省略</p>
 <p>案例：图片叠加</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.backgorund &#123;<br>    <span class="hljs-attr">position</span>: -webkit-sticky;<br>    position: sticky;<br>    top: <span class="hljs-number">0</span>;<br>   <br>&#125;	<br></code></pre></div></td></tr></table></figure>
 
@@ -346,7 +346,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/httphttp-%E7%8A%B6%E6%80%81%E7%A0%81/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">http-状态码</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -355,7 +355,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss-css%E5%B8%83%E5%B1%80/">
                         <span class="hidden-mobile">css-13css布局</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -372,7 +372,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -398,7 +398,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -407,7 +407,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">關鍵字</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
