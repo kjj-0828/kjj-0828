@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 20, 2022 pm
+                  本文最后更新于：March 23, 2022 pm
                 
               </p>
             
@@ -260,7 +260,8 @@
 <p>借用网上博主的一篇流程图说明这个过程：</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929093719.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <ol start="2">
-<li><h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>js分为2种任务类型宏任务（macrotask）和微任务（microtask）在ES中，宏任务称为task，微任务称为jobs</p>
+<li><h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>【2022-2-23补充】js的异步任务中才分宏任务和微任务</p>
+<p>js分为2种任务类型宏任务（macrotask）和微任务（microtask）在ES中，宏任务称为task，微任务称为jobs</p>
 <p>宏任务：每次执行栈执行的代码就是一个宏任务（包括从事件队列中获取一个事件回调并放到执行栈执行）</p>
 <p>每一个<code>宏任务</code>会从头到尾把这个任务执行完成，不会执行其他</p>
 <p>浏览器为了能够使得js内部的宏任务和DOM任务有序的执行，会在一个<code>宏任务</code>结束之后，下一个<code>宏任务</code>开始之前，对页面进行重新渲染（task–&gt;渲染–&gt;task–&gt;…）</p>
@@ -268,11 +269,13 @@
 <p>所以微任务的响应速度相比setTImeout要快，因为不需要等待渲染，也就是说在某一个<code>宏任务</code>执行完成后，就会立即执行在它执行期间产生的所有<code>微任务</code>，（在渲染前）</p>
 <p>宏任务主要包括：script整体代码、setTimeout、setInterval、I/O、UI交互事件、setImmediate</p>
 <p>微任务主要包括：Promise、MutaionObserver、process.nextTick(Node.js 环境)</p>
+</li>
+</ol>
 <div class="note note-secondary">
             <p>在node环境中，nextTick的执行优先级高于Promise，可以简单的理解为：在宏任务结束后会先执行微任务nextTick，在执行微任务Promise部分</p>
           </div>
 
-<p>小结：</p>
+<p>   小结：</p>
 <ol>
 <li><p>执行一个宏任务（如果没有就从事件队列中读取）</p>
 </li>
@@ -282,8 +285,6 @@
 </li>
 <li><p>当前宏任务执行完成，开始检查渲染，然后GUI线程接管渲染，渲染完成后，js线程继续接管，开始下一个宏任务</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210929111831.png" srcset="/img/loading.gif" lazyload alt="image-20210929111830215"></p>
-</li>
-</ol>
 </li>
 </ol>
 <h2 id="二、node的事件循环"><a href="#二、node的事件循环" class="headerlink" title="二、node的事件循环"></a>二、node的事件循环</h2><ol>
@@ -366,7 +367,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jsES6%E6%96%B0%E7%89%B9%E6%80%A7/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-ES6新特性</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -375,7 +376,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jsajax-axios-fetch/">
                         <span class="hidden-mobile">js-ajax-axios-fetch</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -418,7 +419,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -427,7 +428,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

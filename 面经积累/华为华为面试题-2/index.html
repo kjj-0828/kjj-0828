@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      253 字
+      929 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      10
        分钟
     </span>
   
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 22, 2022 pm
+                  本文最后更新于：March 24, 2022 pm
                 
               </p>
             
@@ -279,22 +279,50 @@
 <li><p>promise的应用场景 </p>
 </li>
 <li><p>箭头函数与普通函数的区别（this和new） </p>
+<p>【补充】</p>
+<ul>
+<li>箭头函数没有自己的this，他的this指向函数所在的对象，或者说他的this指向定义时而不是调用时的外层环境this；或者说this取决于外侧环境的this</li>
+<li>箭头函数的this一旦绑定，不会在改变，所以无法通过call、bind、apply改变this 的指向</li>
+<li>箭头函数不可以使用new关键字</li>
+<li>箭头函数没有arguments</li>
+<li>箭头函数没有原型prototype</li>
+</ul>
 </li>
 <li><p>event loop、宏任务微任务 </p>
+<p>【补充】事件循环是js的执行机制，js将事件执行分为同步任务和异步任务，同步任务直接进入主执行栈，而异步任务就被推进任务队列中，当主执行栈的为空时，会查看任务队列任务，进行操作，上述过程是循环不断的，就成为事件循环</p>
+<p>在异步任务中，又分为了宏任务和微任务，在同一个事件循环中，微任务总是先于宏任务执行的。</p>
 </li>
 <li><p>try catch能不能捕获到异步抛出的错误 </p>
+<p>不能，对于异步来讲，会把它推入到任务队列中，不在try catch的当前执行栈中，所以无法捕获异常，而且try catch只能捕获同步任务的异常，而且异常不会冒泡，再多的try catch外层的try catch也捕捉不到</p>
 </li>
 <li><p>let和var区别 </p>
+<p>【补充】变量提升角度、作用域角度</p>
 </li>
 <li><p>webpack能不能自己写一个loader，自己实现一个loader </p>
 </li>
 <li><p>vue全家桶各自的原理 </p>
 </li>
-<li><p>组件间通讯-&gt;eventbus对比vuex有哪些缺点 </p>
+<li><p>组件间通讯-&gt;event bus对比vuex有哪些缺点 ？？？？</p>
+<p>【补充】需要手动的在订阅组件销毁之前，销毁监听事件；订阅和发布必须成对的出现；当事件变多以后，无法对事件进行维护</p>
 </li>
 <li><p>http状态码 </p>
 </li>
 <li><p>http缓存机制（强制缓存，协商缓存，详细问了各个字段的含义，etag、cache-control、max-age……） </p>
+<p>【补充】</p>
+<p>强缓存：</p>
+<p>cache-control：</p>
+<p>max-age：表示缓存有效时间</p>
+<p>no-cache：表示不设置强缓存，可以走协商缓存</p>
+<p>no-store：表示不设置缓存</p>
+<p>public：表示所有用户都可以缓存资源，服务器和客户端</p>
+<p>private：表示只有浏览器端可以缓存资源</p>
+<p>expires：</p>
+<p>expires：是一个时间字符串，代表资源失效时间</p>
+<p>协商缓存：</p>
+<p>etag/if-none-match</p>
+<p>返回的是一个检验码，第一次请求返回资源时，服务器返回的头部中会加上etag，再次资源时，请求头中会携带if-none-match，其值就是响应头中返回的ETag的值；服务器判断是否命中缓存，命中，返回304，不返回资源，但是还是会返回etag</p>
+<p>last-modified/last-modified-since</p>
+<p>第一次请求返回资源时，服务器返回的头部中会加上last-modified，代表上一次修改时间，再次资源时，请求头中会携带last-modified-since，值是上一次返回的last-modified的值，服务器判断是否命中缓存，命中，返回304，不返回资源，也不返回last-modified</p>
 </li>
 </ol>
 <h2 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h2><p>二面结束对方就打电话约了二面，10分钟后开始二面，二面就写了一个数组扁平化的函数，约了28号的综合面</p>
@@ -330,7 +358,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E7%A7%AF%E7%B4%AF/%E5%8D%8E%E4%B8%BA%E5%8D%8E%E4%B8%BA%E9%9D%A2%E8%AF%95%E9%A2%98-3/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">华为面试题-3</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -339,7 +367,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/LeetCode%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/">
                         <span class="hidden-mobile">LeetCode-第k个最大元素</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -382,7 +410,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -391,7 +419,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
