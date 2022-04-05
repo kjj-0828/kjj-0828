@@ -246,17 +246,15 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 20, 2022 pm
+                  本文最后更新于：March 31, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
               <p>【<strong>2022-3-17补充</strong>】</p>
-<hr>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 构造对象的方法</span><br><span class="hljs-comment">// 第一种：字面量</span><br><span class="hljs-keyword">let</span> obj = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom1&#x27;</span><br>&#125;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>(&#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;tom2&#x27;</span> &#125;)<br><span class="hljs-comment">// 第二种：构造函数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">M</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> M(<span class="hljs-string">&#x27;tom3&#x27;</span>);<br><span class="hljs-comment">//第三种：方法</span><br><span class="hljs-keyword">let</span> obj = <span class="hljs-built_in">Object</span>.create(<span class="hljs-string">&#x27;tom4&#x27;</span>);<br></code></pre></div></td></tr></table></figure>
 
 <p>【构造函数和原型对象的关系：】</p>
-<hr>
 <p>每一个构造函数都有一个原型对象;</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">M</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> M(<span class="hljs-string">&#x27;tom3&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(M.prototype); <span class="hljs-comment">// &#123;&#125;</span><br></code></pre></div></td></tr></table></figure>
 
@@ -264,32 +262,26 @@
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">M</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> M(<span class="hljs-string">&#x27;tom3&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(M.prototype.constructor === M); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure>
 
 <p>【总结：】</p>
-<hr>
 <p>涉及到构造函数和原型对象的就是：构造函数、原型对象、prototype、constructor</p>
 <p>【原型对象和实例的关系：】</p>
-<hr>
 <p>实例通过内部的<code>__proto__</code>指向原型对象;实例和构造函数指向的是同一个原型对象</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">M</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> M(<span class="hljs-string">&#x27;tom3&#x27;</span>);<br><span class="hljs-built_in">console</span>.log(obj.__proto__);<span class="hljs-comment">//&#123;&#125;</span><br><span class="hljs-built_in">console</span>.log(obj.__proto__ === M.prototype); <span class="hljs-comment">// true</span><br></code></pre></div></td></tr></table></figure>
 
 <p>【总结：】</p>
-<hr>
 <p>涉及到实例和原型对象的就是：实例、原型对象、<code>__proto__</code></p>
 <p>任何一个对象都有<code>__proto__</code>属性，一个对象在创建的时候，就为它关联了一个对象，也就是它的原型，对象的属性和方法可以从原型中继承。</p>
 <p>实例对象可以访问原型对象的所有属性和方法</p>
 <p>所有的实例对象共享同一个原型对象</p>
 <p>【构造函数和实例的关系：】通过new一个构造函数得到对应的实例</p>
-<hr>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// 通过new---&gt;obj是构造函数M的实例</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">M</span>(<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><span class="hljs-keyword">let</span> obj = <span class="hljs-keyword">new</span> M(<span class="hljs-string">&#x27;tom3&#x27;</span>);<br></code></pre></div></td></tr></table></figure>
 
 <p>当一个对象的属性不存在时，就回去他的原型上找，如果原型上也没有，就会去原型的原型上找，最后会到Object.prototype,Object.prototype是null，如果没有找到返回undefined，如果在某原型处找到，返回值。</p>
 <p>【什么是原型链】</p>
-<hr>
 <p>只是对象就有原型，原型也是对象，因此只要定义了一个对象，就可以找到它的原型，如此反复，就可以构成一个对象序列，这就是原型链</p>
 <p>由于<code>__proto_</code>是任何对象都有的属性，而js中一切皆对象，所以就会形成一条<code>__proto__</code>连起来的链条，当递归访问</p>
 <p><code>___proto__</code>一定会都尽头，最终是null</p>
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220317215427.png" srcset="/img/loading.gif" lazyload alt="什么是原型链？"></p>
 <p>【关于Function 和Object】</p>
-<hr>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-built_in">Function</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>;<span class="hljs-comment">//true</span><br><span class="hljs-built_in">Object</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Function</span>;<span class="hljs-comment">//true</span><br><span class="hljs-comment">//因为：</span><br><span class="hljs-built_in">Function</span>.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype;<span class="hljs-comment">//true object是顶层对象</span><br><span class="hljs-built_in">Object</span>.__proto__ === <span class="hljs-built_in">Function</span>.prototype;<span class="hljs-comment">//true</span><br></code></pre></div></td></tr></table></figure>
 
 <ol>
@@ -441,7 +433,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/js%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">js-事件冒泡</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -450,7 +442,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/http%E9%A1%B5%E9%9D%A2%E8%BE%93%E5%85%A5url/">
                         <span class="hidden-mobile">http-页面输入url</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -493,7 +485,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -502,7 +494,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

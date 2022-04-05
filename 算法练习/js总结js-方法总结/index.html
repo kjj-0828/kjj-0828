@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      2.1k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      31
        分钟
     </span>
   
@@ -246,12 +246,44 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 21, 2022 pm
+                  本文最后更新于：April 4, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <p>【2022-3-20补充】</p>
+              <p>【2022-4-4补充】</p>
+<h2 id="一、includes"><a href="#一、includes" class="headerlink" title="一、includes"></a>一、includes</h2><p>includes是数组的方法，返回一个布尔值，判断数组中是否有某个元素</p>
+<h2 id="二、has"><a href="#二、has" class="headerlink" title="二、has"></a>二、has</h2><p>has是Set和Map数据结构的方法</p>
+<p>对于map和weakMap，has判断的是是否有键名</p>
+<p>对于set，has是判断是否有值</p>
+<h2 id="三、Object-keys-，Object-values-，Object-entries"><a href="#三、Object-keys-，Object-values-，Object-entries" class="headerlink" title="三、Object.keys()，Object.values()，Object.entries()"></a>三、Object.keys()，Object.values()，Object.entries()</h2><p>Object.keys 返回一个数组，值是对象本身不含继承的所有可遍历的键名</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">3</span> &#125;;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(obj)); <span class="hljs-comment">// [ &#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27; ]function Obj() &#123;</span><br>    x: <span class="hljs-number">1</span>; <span class="hljs-comment">// 原型上的不遍历</span><br>&#125;<br>obj = <span class="hljs-keyword">new</span> Obj();<br>obj = &#123; <span class="hljs-attr">foo</span>: <span class="hljs-string">&#x27;bar&#x27;</span>, <span class="hljs-attr">baz</span>: <span class="hljs-number">42</span> &#125;;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(obj));<span class="hljs-comment">// [&quot;foo&quot;, &quot;baz&quot;]</span><br></code></pre></div></td></tr></table></figure>
+
+<p>for in也是只能遍历对象本身的属性</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> obj) &#123;<br>    <span class="hljs-built_in">console</span>.log(key); <span class="hljs-comment">// foo</span><br>    baz<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>Object.values 返回一个数组，值是对象本身不含继承的所有可遍历的值</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">3</span> &#125;;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.values(obj)); <span class="hljs-comment">// [ 1, 2, 3 ]</span><br></code></pre></div></td></tr></table></figure>
+
+<p>Object.entries方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">3</span> &#125;;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.entries(obj)); <span class="hljs-comment">// [ [ &#x27;a&#x27;, 1 ], [ &#x27;b&#x27;, 2 ], [ &#x27;c&#x27;, 3 ] ]</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="四、关于set"><a href="#四、关于set" class="headerlink" title="四、关于set"></a>四、关于set</h2><p>set 对于空对象，空数组不去重</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> set = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-literal">null</span>, <span class="hljs-literal">null</span>, <span class="hljs-literal">NaN</span>, <span class="hljs-literal">NaN</span>, &#123;&#125;, &#123;&#125;, [], [], <span class="hljs-literal">undefined</span>, <span class="hljs-literal">undefined</span>]);<br><span class="hljs-built_in">console</span>.log(set); <span class="hljs-comment">//Set(7) &#123; null, NaN, &#123;&#125;, &#123;&#125;, [], [], undefined &#125;</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="五、数组的entries-，keys-和-values"><a href="#五、数组的entries-，keys-和-values" class="headerlink" title="五、数组的entries()，keys() 和 values()"></a>五、数组的entries()，keys() 和 values()</h2><p>这3个方法返回的值是遍历器，需要使用for of进行遍历</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">of</span> arr.keys()) &#123;<br>    <span class="hljs-built_in">console</span>.log(key); <span class="hljs-comment">// 0 1 2 3 4</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> value <span class="hljs-keyword">of</span> arr.values()) &#123;<br>    <span class="hljs-built_in">console</span>.log(value); <span class="hljs-comment">// 1 2 3 4 5</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> [k, v] <span class="hljs-keyword">of</span> arr.entries()) &#123;<br>    <span class="hljs-built_in">console</span>.log([k, v]); <span class="hljs-comment">//  [ 0, 1 ][ 1, 2 ][ 2, 3 ][ 3, 4 ][ 4, 5 ]</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>六、关于比较</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-literal">NaN</span> == <span class="hljs-literal">NaN</span> <span class="hljs-literal">false</span><br><span class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span> <span class="hljs-literal">false</span><br><span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span> <span class="hljs-literal">false</span><br><span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span> <br>除此之外，<span class="hljs-literal">null</span>和<span class="hljs-literal">undefined</span>和谁比都是<span class="hljs-literal">false</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<p>【2022-3-20补充】</p>
 <h2 id="一、forEach"><a href="#一、forEach" class="headerlink" title="一、forEach"></a>一、forEach</h2><ul>
 <li>forEach没有返回值，永远返回是undefined，</li>
 <li>如果使用值类型修改，原数组不会改变，如果使用下标方式或者引用类型改变原数组会改变</li>
@@ -270,6 +302,7 @@
 <li>map中如果使用return则有返回值，如果没有使用，则返回undefined</li>
 <li>map如果使用值类型修改，原数组不会改变，如果使用下标方式或者引用类型改变原数组会改变</li>
 <li>map不可以使用return或者break退出</li>
+<li>map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。</li>
 </ul>
 <p>（1）map遍历基本数据类型，且使用return返回值，原数组不变</p>
 <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>];<br><span class="hljs-keyword">let</span> res = arr.map(<span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> el * <span class="hljs-number">2</span>;<br>&#125;)<br><span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">//  [2,  4,  6,  8,10, 12, 14, 16] 因为使用return所以有返回值</span><br><span class="hljs-built_in">console</span>.log(arr); <span class="hljs-comment">//[ 1, 2, 3, 4,5, 6, 7, 8] </span><br></code></pre></div></td></tr></table></figure>
@@ -364,10 +397,10 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-html%E4%B8%AD%E7%9A%84js/">
+                      <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/js-%E7%BA%A2%E5%AE%9D%E4%B9%A6/js%E5%9F%BA%E7%A1%80js-%E7%BA%A2%E5%AE%9D%E4%B9%A6-%E4%BB%80%E4%B9%88%E6%98%AFjavascript/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">js-红宝书-html中的js</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="hidden-mobile">js-红宝书-什么是javascript</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -376,7 +409,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-02%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
                         <span class="hidden-mobile">js-02快速排序</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -419,7 +452,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -428,7 +461,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

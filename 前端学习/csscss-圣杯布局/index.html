@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.4k 字
     </span>
   
 
@@ -246,7 +246,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 20, 2022 pm
+                  本文最后更新于：March 25, 2022 am
                 
               </p>
             
@@ -260,7 +260,8 @@
 <h2 id="二、清除浮动"><a href="#二、清除浮动" class="headerlink" title="二、清除浮动"></a>二、清除浮动</h2><figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-id">#header</span>,<br><span class="hljs-selector-id">#footer</span> &#123;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">29</span>, <span class="hljs-number">27</span>, <span class="hljs-number">27</span>, <span class="hljs-number">0.726</span>);<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">60px</span>;<br>    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">60px</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">clear</span>: both;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210804113137.png" srcset="/img/loading.gif" lazyload alt="image-20210804113136448"></p>
-<h2 id="三、利用margin负值"><a href="#三、利用margin负值" class="headerlink" title="三、利用margin负值"></a>三、利用margin负值</h2><p>利用margin将左右盒子重新布局到对应位置</p>
+<h2 id="三、利用margin负值"><a href="#三、利用margin负值" class="headerlink" title="三、利用margin负值"></a>三、利用margin负值</h2><p>利用margin将左右盒子重新布局到对应位置？</p>
+<p>【2022-3-25补充】为什么可以设置margin为负值</p>
 <figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css"><span class="hljs-selector-id">#left</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">background-color</span>: aqua;<br>    <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">100%</span>;<br>&#125;<br><br><span class="hljs-selector-id">#right</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<br>    <span class="hljs-attribute">background-color</span>: wheat;<br>    <span class="hljs-attribute">margin-left</span>: -<span class="hljs-number">200px</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210804113337.png" srcset="/img/loading.gif" lazyload alt="image-20210804113336253"></p>
@@ -324,7 +325,7 @@
                       <a href="/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/csscss-%E5%8F%8C%E9%A3%9E%E7%BF%BC%E5%B8%83%E5%B1%80/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">css-双飞翼布局</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -333,7 +334,7 @@
                     
                       <a href="/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/jsjs-09%E8%8E%B7%E5%8F%96day%E5%A4%A9%E5%90%8E%E7%9A%84%E7%A7%92%E6%95%B0/">
                         <span class="hidden-mobile">js-09获取day天后的秒数</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -376,7 +377,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -385,7 +386,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

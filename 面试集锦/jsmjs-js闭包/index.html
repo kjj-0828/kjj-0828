@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      699 字
+      881 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      13
        分钟
     </span>
   
@@ -246,12 +246,16 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：March 20, 2022 pm
+                  本文最后更新于：March 29, 2022 pm
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
+              <p>【2022-3-29补充】</p>
+<p>闭包：A函数中定义了B函数，而且B函数引用了在A函数的变量，此时就会构成闭包</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> n = <span class="hljs-number">4399</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params"></span>) </span>&#123;<br>        n++;<br>        <span class="hljs-built_in">console</span>.log(n);<br>    &#125;<br>    <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">n</span>: n, <span class="hljs-attr">add</span>: add &#125;<br>&#125;<br><span class="hljs-keyword">var</span> result = test(); <span class="hljs-comment">// 设置result的属性&#123;n:4399,add:add()&#125;</span><br><span class="hljs-keyword">var</span> result2 = test(); <span class="hljs-comment">// 设置result2的属性&#123;n:4399,add:add()&#125;</span><br>result.add();  <span class="hljs-comment">// 调用result的add方法，n是4399，进行n++，n等于4400</span><br>result.add(); <span class="hljs-comment">// 调用result的add方法，进行n++,n是4400，n等于4401</span><br><span class="hljs-built_in">console</span>.log(result.n); <span class="hljs-comment">// 调用result的属性，n，值是4399</span><br>result2.add(); <span class="hljs-comment">// 调用result2的add方法，n是4399，n++之后，n的值是4400</span><br><span class="hljs-comment">// 闭包的定义：在A函数中定义B函数，在B函数中引用了A中的变量，就会产生闭包。</span><br></code></pre></div></td></tr></table></figure>
+
+<ol>
 <li><p>什么是闭包</p>
 <ul>
 <li>闭包：一个函数和对其周围状态的引用捆绑在一起，这样的组合就是闭包</li>
@@ -338,7 +342,7 @@
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/csscss-07css%E4%BC%AA%E7%B1%BB%E5%92%8C%E4%BC%AA%E5%85%83%E7%B4%A0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">css-css伪类和伪元素</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
                   </article>
@@ -347,7 +351,7 @@
                     
                       <a href="/%E9%9D%A2%E8%AF%95%E9%9B%86%E9%94%A6/jsmjs-%E5%87%A0%E7%A7%8D%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95/">
                         <span class="hidden-mobile">js-几种异步方法</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -390,7 +394,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -399,7 +403,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

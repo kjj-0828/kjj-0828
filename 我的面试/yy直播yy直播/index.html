@@ -1,0 +1,793 @@
+
+
+<!DOCTYPE html>
+<html lang="ch-ZN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816203334.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="yy直播笔试">
+  <meta name="author" content="kjj">
+  <meta name="keywords" content="">
+  
+  <title>yy直播笔试 - kjj</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>小孔爱财~取之有道~~</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                我的首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                相关成果
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                知识分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                智慧标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于小孔
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://gitee.com/porous-crystal/blog-img/raw/master/img/20210816200709.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="yy直播笔试">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      kjj
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-28 05:39" pubdate>
+        March 28, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">yy直播笔试</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：March 31, 2022 pm
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>不定项：</p>
+<p>Q：常用的浏览器内核</p>
+<ul>
+<li>Gecko</li>
+<li>Trident</li>
+<li>Webkit</li>
+<li>Chromium</li>
+</ul>
+<p>A：</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>内核</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IE</td>
+<td>Trident</td>
+<td>IE、猎豹安全、360极速浏览器、百度浏览器</td>
+</tr>
+<tr>
+<td>firefox</td>
+<td>Gecko</td>
+<td>可惜这几年已经没落了，打开速度慢、升级频繁、猪一样的队友flash、神一样的对手chrome。</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>webkit</td>
+<td>从Safari推出之时起，它的渲染引擎就是Webkit，一提到 webkit，首先想到的便是 chrome，可以说，chrome 将 Webkit内核 深入人心，殊不知，Webkit 的鼻祖其实是 Safari。</td>
+</tr>
+<tr>
+<td>chrome</td>
+<td>Chromium/Blink</td>
+<td>在 Chromium 项目中研发 Blink 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。Blink 其实是 WebKit 的分支。大部分国产浏览器最新版都采用Blink内核。二次开发</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>blink</td>
+<td>现在跟随chrome用blink内核。</td>
+</tr>
+</tbody></table>
+<p>Q：常用的前端工具</p>
+<ul>
+<li>webstorm</li>
+<li>vscode</li>
+<li>xcode</li>
+<li>sublime</li>
+</ul>
+<p>A：webstorm、vscode</p>
+<p>Q：判断true</p>
+<ul>
+<li>NaN == NaN // false</li>
+<li>typeof  null === ‘object’ // true</li>
+<li>“8” == 8 // true</li>
+</ul>
+<p>Q：判断css的权重1,10,100,1000</p>
+<p>Q：npm 含义</p>
+<p>A：Node Package Manager</p>
+<p>Q：以下哪个设置margin-left会生效</p>
+<ul>
+<li>a</li>
+<li>span</li>
+<li>img</li>
+<li>h1</li>
+</ul>
+<p>A：ABCD</p>
+<p>对块级元素设置margin，所想及所见，对行内元素设置margin-left和margin-right可以，但是设置top和bottom不起作用</p>
+<p>块级元素：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;div&gt;     <span class="hljs-comment">//定义文档中的分区或节 </span><br>&lt;form&gt; <span class="hljs-comment">//创建 HTML 表单 </span><br>&lt;h1&gt;    <span class="hljs-comment">//定义最大的标题</span><br> ...<br>&lt;h6&gt;     <span class="hljs-comment">//定义最小的标题</span><br>&lt;hr&gt;     <span class="hljs-comment">//创建一条水平线</span><br>&lt;li&gt;     <span class="hljs-comment">//标签定义列表项目</span><br>&lt;ol&gt;     <span class="hljs-comment">//定义有序列表</span><br>&lt;ul&gt;    <span class="hljs-comment">//定义无序列表</span><br>&lt;p&gt;     <span class="hljs-comment">//标签定义段落</span><br>&lt;table&gt;     <span class="hljs-comment">//标签定义 HTML 表格</span><br>    ......<br></code></pre></div></td></tr></table></figure>
+
+<p>行内元素：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;a&gt;     <span class="hljs-comment">//标签可定义锚 </span><br>&lt;br&gt;     <span class="hljs-comment">//换行 </span><br>&lt;img&gt;     <span class="hljs-comment">//向网页中嵌入一幅图像</span><br>&lt;input&gt;     <span class="hljs-comment">//输入框</span><br>&lt;select&gt; <span class="hljs-comment">// 创建单选或多选菜单</span><br>&lt;span&gt;     <span class="hljs-comment">//组合文档中的行内元素</span><br>    .......<br></code></pre></div></td></tr></table></figure>
+
+<p>Q：es6新特性</p>
+<p>A：promise、object.keys()、箭头函数</p>
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220328223331.jpeg" srcset="/img/loading.gif" lazyload alt="preview"></p>
+<p>Q：</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Foo</span>(<span class="hljs-params"></span>) </span>&#123;<br>    log = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>&#125;<br>Foo.prototype.log = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);<br>&#125;<br>Foo.log = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>&#125;<br><span class="hljs-keyword">var</span> log = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">log</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>);<br>&#125;<br><span class="hljs-comment">// print</span><br>Foo().log(); <span class="hljs-comment">// 1 调用函数的foo，其中调用log方法</span><br>log(); <span class="hljs-comment">// 1 log函数是全局函数，在上面的式调用以后，log已经定义到全局，所以输出1</span><br><span class="hljs-keyword">new</span> <span class="hljs-keyword">new</span> Foo().log(); <span class="hljs-comment">// 2 当构造函数中没有使用this赋值时，new函数会去原型上找</span><br><span class="hljs-comment">// 浏览器环境下输出</span><br></code></pre></div></td></tr></table></figure>
+
+<p>填空题：</p>
+<p>Q：在react渲染之前会调用什么</p>
+<p>A：三种状态总共有5种处理方法</p>
+<ul>
+<li><p>componentWillMount(插入真实DOM之前调用)  </p>
+</li>
+<li><p>componentDidMount(插入真实DOM之后调用) </p>
+</li>
+<li><p>componentWillUpdate(被渲染之前调用) </p>
+</li>
+<li><p>componentDidUpdate(渲染之后调用) </p>
+</li>
+<li><p>componentWillUnmount(移除之前调用)</p>
+</li>
+</ul>
+<p>Q：浏览器的本地缓存</p>
+<p>A：Cookie、localStorage、 sessionStorage、websql、 indexDB</p>
+<p>Q：同源策略</p>
+<p>Q：服务器端不认客户端发的http请求，返回什么</p>
+<p>A：505：服务器不支持请求的HTTP协议的版本，无法完成处理</p>
+<p>Q：利用iframe实现的跨域有哪些</p>
+<p>A：document.domain + iframe跨域、location.hash + iframe跨域、window.name + iframe跨域</p>
+<p>Q：BFC的中文名称</p>
+<p>A：块级格式上下文</p>
+<p>Q：http临时重定向的代码</p>
+<p>A：302</p>
+<p>Q：在http1.1协议中，设置强缓存的字段</p>
+<p>A：</p>
+<ul>
+<li>http1.0：pragma、expires</li>
+<li>http1.1：cache-control、last-modified、if-modified-since、etag、if-none-match</li>
+</ul>
+<p>Q：当对一个元素设置margin的时候，浏览器会发生？</p>
+<p>A：回流</p>
+<p>【补充回流和重绘】</p>
+<p>重绘：比如设置元素的font-size、background-color并不会影响页面的结构布局，只会引起内容的改变</p>
+<p>回流：比如width、height、padding、margin的改变会影响页面的结构布局，这些属性改变的时候，会引起浏览器的回流</p>
+<p>回流一定导致重绘，重绘不一定导致回流</p>
+<p>减少重绘和回流：</p>
+<ul>
+<li>使用transform代替top</li>
+<li>常见的触发css硬件加速的css属性：transform、opacity、filters、Will-change</li>
+<li>避免使用table布局</li>
+<li>避免多层嵌套，尽量使得结构扁平化</li>
+<li>对复杂动画的DOM元素应该将它独立出来，脱离文档流</li>
+<li>使用visibility，opacity代替display：none（前者只涉及重绘，后者涉及回流）</li>
+</ul>
+<p>Q：给一个元素设置右上圆角20px</p>
+<p>A：border-radius：（0,20,0,0）； border-top-right-radius：20px</p>
+<p>问答题：（5*8=40）</p>
+<p>Q：实现一级跨域的有哪些跨域方法</p>
+<ul>
+<li>1、通过jsonp跨域<br>2、 document.domain + iframe跨域（必须同一主域下才可以使用）<br>3、 location.hash + iframe<br>4、 window.name + iframe跨域<br>5、 postMessage跨域<br>6、 跨域资源共享（CORS Cross-origin resource sharing）<br>7、 nginx代理跨域<br>8、 nodejs中间件代理跨域（node + webpack + webpack-dev-server）<br>9、 WebSocket协议跨域</li>
+</ul>
+<p>Q：css如何选所有已经选中的复选框</p>
+<p>Q：写一个vue的diff算法的对比原则</p>
+<p>A：</p>
+<ul>
+<li><p>diff的作用</p>
+<p>diff的作用就是为了减少更新量，通过diff算法找到最小差异部分的DOM，只更新差异部分的DOM</p>
+</li>
+<li><p>diff的做法</p>
+<p>diff只会进行同层次的比较，也就是说diff只会对新旧节点中，父节点是相同节点的那一层子节点进行比较，也就是说只有两个新旧节点是相同节点时，才会比较他们各自的子节点</p>
+</li>
+<li><p>diff的比较逻辑</p>
+<p>diff比较的核心思想就是节点复用，在同层比较的基础上</p>
+<p>（1）能不移动就不移动</p>
+<p>（2）没有办法，在移动</p>
+<p>（3）实在不行，在新增和删除</p>
+<p>有以下原则：</p>
+<p>（1）先找到新旧节点中，不需要移动的节点，消耗最小</p>
+<p>（2）在找到可以移动的节点，进行移动，消耗第二小</p>
+<p>（3）最后没有可移动的节点，在进行新建和删除节点</p>
+</li>
+<li><p>注意点：<br>新旧节点只是用来比较的，真正修改的是DOM</p>
+<p>（1）当新旧节点相同时，DOM不变，不需要修改</p>
+<p>（2）当新旧节点不一样时，不需要修改新节点的Vnode，只需要对DOM进行修改</p>
+</li>
+</ul>
+<p>Q：数组去重，并返回从小到大的排序</p>
+<p>Q：一个宽度200，高度100，内部放3个蓝色圆形，水平边距相等，垂直居中</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">.div1 &#123;<br>    <span class="hljs-attr">height</span>: 100px;<br>    width: 200px;<br>    display: flex;<br>    justify-content:space-around;<br>    align-items: center;<br>    background-color: pink;<br>&#125;<br><br>.circle &#123;<br>    <span class="hljs-attr">width</span>: 50px;<br>    height: 50px;<br>    <span class="hljs-comment">/* 设置圆形 */</span><br>    border-radius: 25px;<br>    background-color: blue;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://gitee.com/porous-crystal/blog-img/raw/master/img/20220328192846.png" srcset="/img/loading.gif" lazyload alt="image-20220328192838976"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%88%91%E7%9A%84%E9%9D%A2%E8%AF%95/">我的面试</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%88%91%E7%9A%84%E9%9D%A2%E8%AF%95/yy%E7%9B%B4%E6%92%AD/">yy直播</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%A7%AF%E7%B4%AF/yy%E7%9B%B4%E6%92%ADyy%E9%9D%A2%E8%AF%95%E9%A2%98-1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">yy面试题-1</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E9%9D%A2%E8%AF%95%E7%A7%AF%E7%B4%AF/%E7%BD%91%E6%98%93%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%95-2/">
+                        <span class="hidden-mobile">网易笔试-2</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">Stichwort</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>我只想安静的</span></a> <i class="iconfont icon-love"></i> <a href="https://kjjblog.netlify.app" target="_blank" rel="nofollow noopener"><span>做一个堕落的富婆</span></a> 
+  </div>
+
+<span id="sitetime"></span>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* 
+      Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+      year - 作为date对象的年份，为4位年份值
+      month - 0-11之间的整数，做为date对象的月份
+      day - 1-31之间的整数，做为date对象的天数
+      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+      minutes - 0-59之间的整数，做为date对象的分钟数
+      seconds - 0-59之间的整数，做为date对象的秒数
+      microseconds - 0-999之间的整数，做为date对象的毫秒数
+     */
+		var t1 = Date.UTC(2020,03,14,18,12,20); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}
+	siteTime();
+</script>
+<!--// 添加运行时间-->
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问量 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 次
+      <span class="post-meta-divider">|</span>
+    </span>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      总访客 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 人
+    </span>
+    <!--
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      本站博客共 <span class="post-count">{{ totalcount(site) }}</span> 字
+    </span>
+    -->
+</div>
+
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+	</body>
+</html>
